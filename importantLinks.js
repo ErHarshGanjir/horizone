@@ -2,28 +2,22 @@ const importantLinks = [
 
     {
         name:
-            "Google Apps Script",
+            "official webpage",
 
         url:
-            "https://script.google.com/"
+            "https://rakhechamedical.in/"
     },
 
 
     {
         name:
-            "GitHub",
+            "RMS product list PDF",
 
         url:
-            "https://github.com/"
-    },
-
-
-    {
-        name:
-            "Google Drive",
-
-        url:
-            "https://drive.google.com/"
+            "https://drive.google.com/file/d/1Kg3TzJdnIHn2B4MQx4DpjVfLof-BAbNW/view"
     }
+
+
+
 
 ];
