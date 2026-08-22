@@ -5,7 +5,7 @@ const horizonApps = [
             "Example",
 
         iframeLink:
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vThrdlHkKU1nz4uzV0SzMnhH266vrnDRNYEZouS3NgduIErh65MrJBHpkU9NKGYiaTdkor1_7mbnY7c/pubhtml?widget=true&amp;headers=false",
+            "https://script.google.com/macros/s/AKfycbxLMj9QYt4_xrX1FTYzLw7fVYdUiw6iWnUwX06PnH84w9aE_juo63vDUDs6AmQVNS_K/exec",
 
         logo:
             "https://i.ibb.co/kgzJb34B/horizon-logo.png",
