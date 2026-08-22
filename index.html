@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,27 +11,30 @@
 
     <title>Horizon</title>
 
-    <!-- Favicon -->
     <link
         rel="icon"
         type="image/png"
-        href="https://i.ibb.co/G4DyH3QN/horizon-icon.png"
+        href="https://i.ibb.co/kgzJb34B/horizon-logo.png"
     >
 
-    <meta name="theme-color" content="#080b12">
+    <meta
+        name="theme-color"
+        content="#080b12"
+    >
 
     <style>
 
         /* =========================================================
            HORIZON
-           Modern Bento Web Portal
            ========================================================= */
 
         :root {
+
             --bg: #080b12;
             --bg-soft: #0d111a;
-            --card: rgba(18, 23, 34, 0.82);
-            --card-hover: rgba(27, 34, 49, 0.95);
+
+            --card: rgba(18,23,34,0.82);
+            --card-hover: rgba(27,34,49,0.96);
 
             --border: rgba(255,255,255,0.08);
             --border-hover: rgba(255,255,255,0.16);
@@ -39,14 +43,15 @@
             --muted: #8c96a8;
 
             --accent: #3498db;
-            --accent-soft: rgba(52,152,219,0.15);
+            --accent-soft: rgba(52,152,219,0.14);
 
             --danger: #ff5f6d;
+            --success: #42d17d;
 
             --radius: 24px;
 
-            --header-height: 76px;
         }
+
 
         * {
             box-sizing: border-box;
@@ -54,13 +59,18 @@
             padding: 0;
         }
 
+
         html,
         body {
+
             width: 100%;
-            height: 100%;
+            min-height: 100%;
+
         }
 
+
         body {
+
             font-family:
                 Inter,
                 ui-sans-serif,
@@ -70,37 +80,31 @@
                 "Segoe UI",
                 sans-serif;
 
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(52,152,219,0.08),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(123,92,255,0.07),
-                    transparent 30%
-                ),
-                var(--bg);
-
             color: var(--text);
 
-            overflow: hidden;
+            background:
+
+                radial-gradient(
+                    circle at 10% 0%,
+                    rgba(52,152,219,0.09),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(113,76,255,0.08),
+                    transparent 30%
+                ),
+
+                var(--bg);
+
+            overflow-x: hidden;
+
         }
+
 
         button {
             font-family: inherit;
-        }
-
-
-        /* =========================================================
-           APP
-           ========================================================= */
-
-        #app {
-            width: 100%;
-            height: 100%;
-            position: relative;
         }
 
 
@@ -109,220 +113,182 @@
            ========================================================= */
 
         #dashboard {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
 
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.15) transparent;
+            width: 100%;
+            min-height: 100vh;
 
             transition:
-                opacity 0.3s ease,
-                transform 0.3s ease;
+                opacity .3s ease,
+                transform .3s ease;
+
         }
+
 
         #dashboard.hidden {
+
             opacity: 0;
             pointer-events: none;
-            transform: scale(0.98);
+            transform: scale(.985);
+
         }
 
 
         /* =========================================================
-           HEADER
-           ========================================================= */
-
-        .topbar {
-            height: var(--header-height);
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding:
-                0 clamp(18px, 4vw, 52px);
-
-            position: sticky;
-            top: 0;
-            z-index: 20;
-
-            background:
-                rgba(8,11,18,0.78);
-
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-
-        /* =========================================================
-           BRAND
-           ========================================================= */
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            user-select: none;
-        }
-
-        .brand-logo {
-            width: 42px;
-            height: 42px;
-
-            object-fit: contain;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .brand-name {
-            font-size: 20px;
-            font-weight: 750;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-subtitle {
-            font-size: 11px;
-            color: var(--muted);
-            margin-top: 2px;
-        }
-
-
-        /* =========================================================
-           HEADER ACTIONS
-           ========================================================= */
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .icon-button {
-            width: 40px;
-            height: 40px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid var(--border);
-
-            border-radius: 12px;
-
-            background: rgba(255,255,255,0.035);
-
-            color: #dfe5ef;
-
-            cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                border 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .icon-button:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: var(--border-hover);
-            transform: translateY(-1px);
-        }
-
-
-        /* =========================================================
-           MAIN
+           MAIN CONTAINER
            ========================================================= */
 
         .main-content {
-            width: min(1500px, 100%);
 
-            margin: 0 auto;
+            width: min(1450px, 100%);
+
+            margin: auto;
 
             padding:
-                34px
-                clamp(18px, 4vw, 52px)
-                60px;
+                55px
+                clamp(18px, 5vw, 55px)
+                70px;
+
         }
 
 
         /* =========================================================
-           HERO
+           HORIZON HOME LOGO
            ========================================================= */
 
-        .hero {
-            margin-bottom: 30px;
-        }
+        .home-brand {
 
-        .hero-label {
-            display: inline-flex;
+            display: flex;
+
+            flex-direction: column;
+
             align-items: center;
-            gap: 7px;
 
-            padding: 7px 11px;
+            justify-content: center;
 
-            border-radius: 999px;
+            padding:
+                25px
+                20px
+                45px;
 
-            background: var(--accent-soft);
+            user-select: none;
 
-            border: 1px solid rgba(52,152,219,0.18);
-
-            color: #77c8ff;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-
-            margin-bottom: 14px;
         }
 
-        .hero-label::before {
-            content: "";
 
-            width: 6px;
-            height: 6px;
+        .home-logo {
 
-            border-radius: 50%;
+            width:
+                clamp(115px, 14vw, 185px);
 
-            background: #45b9ff;
+            height:
+                clamp(115px, 14vw, 185px);
 
-            box-shadow:
-                0 0 12px rgba(69,185,255,0.8);
+            object-fit: contain;
+
+            margin-bottom: 18px;
+
+            filter:
+                drop-shadow(
+                    0 18px 35px
+                    rgba(0,0,0,.35)
+                );
+
+            animation:
+                logoAppear .65s ease both;
+
         }
 
-        .hero h1 {
+
+        .home-title {
+
             font-size:
-                clamp(32px, 5vw, 60px);
-
-            line-height: 1;
-
-            letter-spacing: -2.8px;
+                clamp(30px, 4vw, 48px);
 
             font-weight: 800;
 
-            margin-bottom: 13px;
+            letter-spacing:
+                -2px;
+
+            line-height: 1;
+
+            margin-bottom: 10px;
+
         }
 
-        .hero h1 span {
-            color: #8fcfff;
-        }
 
-        .hero p {
-            max-width: 650px;
+        .home-subtitle {
 
             color: var(--muted);
 
             font-size:
-                clamp(13px, 1.5vw, 15px);
+                clamp(12px, 1.4vw, 15px);
 
-            line-height: 1.6;
+            text-align: center;
+
+            max-width: 500px;
+
+        }
+
+
+        @keyframes logoAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(.92);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           SECTION TITLE
+           ========================================================= */
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .section-title {
+
+            font-size: 14px;
+
+            font-weight: 750;
+
+            letter-spacing: -.2px;
+
+        }
+
+
+        .section-count {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
         }
 
 
@@ -335,11 +301,13 @@
             display: grid;
 
             grid-template-columns:
-                repeat(4, minmax(0, 1fr));
+                repeat(4, minmax(0,1fr));
 
-            grid-auto-rows: minmax(180px, auto);
+            grid-auto-rows:
+                minmax(180px,auto);
 
             gap: 16px;
+
         }
 
 
@@ -357,33 +325,46 @@
 
             padding: 22px;
 
-            border-radius: var(--radius);
+            border:
+                1px solid var(--border);
 
-            border: 1px solid var(--border);
+            border-radius:
+                var(--radius);
 
             background:
+
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.018)
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.018)
                 ),
+
                 var(--card);
 
             cursor: pointer;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: space-between;
 
             transition:
-                transform 0.28s cubic-bezier(.2,.8,.2,1),
-                border-color 0.28s ease,
-                background 0.28s ease,
-                box-shadow 0.28s ease;
+
+                transform .28s
+                cubic-bezier(.2,.8,.2,1),
+
+                border-color .28s ease,
+
+                background .28s ease,
+
+                box-shadow .28s ease;
 
             animation:
-                cardAppear 0.5s ease both;
+                cardAppear .5s ease both;
+
         }
+
 
         .app-card:hover {
 
@@ -392,40 +373,52 @@
                 scale(1.008);
 
             border-color:
-                rgba(255,255,255,0.16);
+                var(--border-hover);
 
             background:
+
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.075),
-                    rgba(255,255,255,0.025)
+                    rgba(255,255,255,.075),
+                    rgba(255,255,255,.025)
                 ),
+
                 var(--card-hover);
 
             box-shadow:
-                0 20px 50px rgba(0,0,0,0.28);
+                0 20px 50px
+                rgba(0,0,0,.28);
+
         }
+
 
         .app-card:active {
-            transform: scale(0.985);
+
+            transform:
+                scale(.985);
+
         }
 
-
-        /* =========================================================
-           CARD SIZES
-           ========================================================= */
 
         .app-card.large {
+
             grid-column: span 2;
             grid-row: span 2;
+
         }
+
 
         .app-card.wide {
+
             grid-column: span 2;
+
         }
 
+
         .app-card.tall {
+
             grid-row: span 2;
+
         }
 
 
@@ -446,20 +439,27 @@
             border-radius: 50%;
 
             background:
+
                 radial-gradient(
                     circle,
-                    rgba(52,152,219,0.16),
+                    rgba(52,152,219,.16),
                     transparent 70%
                 );
 
             pointer-events: none;
 
             transition:
-                transform 0.4s ease;
+                transform .4s ease;
+
         }
 
-        .app-card:hover .card-glow {
-            transform: scale(1.5);
+
+        .app-card:hover
+        .card-glow {
+
+            transform:
+                scale(1.5);
+
         }
 
 
@@ -468,12 +468,15 @@
            ========================================================= */
 
         .card-top {
+
             display: flex;
+
             align-items: flex-start;
+
             justify-content: space-between;
 
-            gap: 12px;
         }
+
 
         .app-logo {
 
@@ -487,16 +490,24 @@
             border-radius: 15px;
 
             background:
-                rgba(255,255,255,0.06);
+                rgba(255,255,255,.06);
 
             border:
-                1px solid rgba(255,255,255,0.07);
+                1px solid rgba(255,255,255,.07);
+
         }
 
 
-        /* =========================================================
-           CARD STATUS
-           ========================================================= */
+        .card-status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+        }
+
 
         .status-dot {
 
@@ -505,10 +516,22 @@
 
             border-radius: 50%;
 
-            background: #41d17c;
+            background:
+                var(--success);
 
             box-shadow:
-                0 0 12px rgba(65,209,124,0.6);
+                0 0 12px
+                rgba(66,209,125,.65);
+
+        }
+
+
+        .lock-icon {
+
+            font-size: 12px;
+
+            opacity: .65;
+
         }
 
 
@@ -517,19 +540,28 @@
            ========================================================= */
 
         .card-content {
+
             margin-top: 20px;
+
         }
+
 
         .card-title {
+
             font-size: 18px;
+
             font-weight: 750;
 
-            letter-spacing: -0.4px;
+            letter-spacing:
+                -.4px;
 
             margin-bottom: 7px;
+
         }
 
+
         .card-description {
+
             color: var(--muted);
 
             font-size: 12px;
@@ -537,6 +569,7 @@
             line-height: 1.55;
 
             max-width: 90%;
+
         }
 
 
@@ -551,9 +584,11 @@
             left: 22px;
             bottom: 18px;
 
-            color: #91d4ff;
+            color:
+                #91d4ff;
 
             font-size: 11px;
+
             font-weight: 650;
 
             opacity: 0;
@@ -562,18 +597,212 @@
                 translateY(7px);
 
             transition:
-                opacity 0.25s ease,
-                transform 0.25s ease;
+
+                opacity .25s ease,
+
+                transform .25s ease;
+
         }
 
-        .app-card:hover .hover-text {
+
+        .app-card:hover
+        .hover-text {
+
             opacity: 1;
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
+
         }
 
 
         /* =========================================================
-           IFRAME VIEW
+           IMPORTANT LINKS
+           ========================================================= */
+
+        .important-section {
+
+            margin-top: 60px;
+
+        }
+
+
+        .important-links {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
+
+            gap: 12px;
+
+        }
+
+
+        .important-link {
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,.025);
+
+            border-radius: 17px;
+
+            padding: 15px 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .important-link:hover {
+
+            background:
+                rgba(255,255,255,.055);
+
+            border-color:
+                var(--border-hover);
+
+        }
+
+
+        .important-info {
+
+            min-width: 0;
+
+        }
+
+
+        .important-name {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .important-url {
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            max-width: 300px;
+
+        }
+
+
+        .important-actions {
+
+            display: flex;
+
+            gap: 6px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .link-button {
+
+            height: 34px;
+
+            padding:
+                0 11px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid rgba(255,255,255,.08);
+
+            background:
+                rgba(255,255,255,.045);
+
+            color:
+                #dfe5ef;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 650;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .link-button:hover {
+
+            background:
+                rgba(255,255,255,.10);
+
+        }
+
+
+        .link-button.open {
+
+            background:
+                var(--accent-soft);
+
+            color:
+                #8ed3ff;
+
+            border-color:
+                rgba(52,152,219,.18);
+
+        }
+
+
+        .copy-success {
+
+            color:
+                var(--success) !important;
+
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .footer {
+
+            margin-top: 55px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.28);
+
+            font-size: 10px;
+
+        }
+
+
+        /* =========================================================
+           IFRAME VIEWER
            ========================================================= */
 
         #viewer {
@@ -586,17 +815,23 @@
 
             display: none;
 
-            background: #05070b;
+            background:
+                #05070b;
 
             opacity: 0;
+
         }
 
+
         #viewer.active {
+
             display: block;
 
             animation:
-                viewerIn 0.3s ease forwards;
+                viewerIn .3s ease forwards;
+
         }
+
 
         #viewer iframe {
 
@@ -608,6 +843,7 @@
             display: block;
 
             background: white;
+
         }
 
 
@@ -630,6 +866,7 @@
             height: 50px;
 
             display: flex;
+
             align-items: center;
 
             gap: 7px;
@@ -639,7 +876,7 @@
             border-radius: 16px;
 
             background:
-                rgba(12,15,22,0.84);
+                rgba(12,15,22,.84);
 
             backdrop-filter:
                 blur(18px);
@@ -648,23 +885,31 @@
                 blur(18px);
 
             border:
-                1px solid rgba(255,255,255,0.1);
+                1px solid rgba(255,255,255,.1);
 
             box-shadow:
-                0 15px 45px rgba(0,0,0,0.35);
+                0 15px 45px
+                rgba(0,0,0,.35);
 
             opacity: 0;
 
             pointer-events: none;
 
             transition:
-                opacity 0.25s ease;
+                opacity .25s ease;
+
         }
 
-        #viewer.active .viewer-toolbar {
+
+        #viewer.active
+        .viewer-toolbar {
+
             opacity: 1;
+
             pointer-events: auto;
+
         }
+
 
         .viewer-button {
 
@@ -676,36 +921,44 @@
             border-radius: 11px;
 
             background:
-                rgba(255,255,255,0.06);
+                rgba(255,255,255,.06);
 
-            color: #e9edf4;
+            color:
+                #e9edf4;
 
             cursor: pointer;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             transition:
-                background 0.2s ease,
-                transform 0.2s ease;
+                .2s ease;
+
         }
+
 
         .viewer-button:hover {
 
             background:
-                rgba(255,255,255,0.12);
+                rgba(255,255,255,.12);
 
             transform:
                 translateY(-1px);
+
         }
 
+
         .viewer-button.close:hover {
+
             background:
-                rgba(255,95,109,0.18);
+                rgba(255,95,109,.18);
 
             color:
                 #ff8790;
+
         }
 
 
@@ -724,10 +977,11 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             background:
-                rgba(5,7,11,0.92);
+                rgba(5,7,11,.92);
 
             backdrop-filter:
                 blur(8px);
@@ -736,18 +990,19 @@
                 blur(8px);
 
             transition:
-                opacity 0.25s ease;
+                opacity .25s ease;
+
         }
+
 
         #iframeLoader.hidden {
 
             opacity: 0;
 
             pointer-events: none;
+
         }
 
-
-        /* USER PROVIDED LOADER */
 
         .loading-wave {
 
@@ -757,8 +1012,11 @@
             display: flex;
 
             justify-content: center;
+
             align-items: flex-end;
+
         }
+
 
         .loading-bar {
 
@@ -775,19 +1033,24 @@
             animation:
                 loading-wave-animation
                 1s ease-in-out infinite;
+
         }
+
 
         .loading-bar:nth-child(2) {
-            animation-delay: 0.1s;
+            animation-delay: .1s;
         }
+
 
         .loading-bar:nth-child(3) {
-            animation-delay: 0.2s;
+            animation-delay: .2s;
         }
 
+
         .loading-bar:nth-child(4) {
-            animation-delay: 0.3s;
+            animation-delay: .3s;
         }
+
 
         @keyframes loading-wave-animation {
 
@@ -802,6 +1065,317 @@
             100% {
                 height: 10px;
             }
+
+        }
+
+
+        /* =========================================================
+           PASSWORD MODAL
+           ========================================================= */
+
+        #passwordModal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 300;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(3,5,9,.72);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                visibility .25s ease;
+
+        }
+
+
+        #passwordModal.active {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+        }
+
+
+        .password-box {
+
+            width:
+                min(410px,100%);
+
+            padding: 28px;
+
+            border-radius: 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(28,34,48,.97),
+                    rgba(13,17,26,.97)
+                );
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.5);
+
+            transform:
+                translateY(12px)
+                scale(.97);
+
+            transition:
+                transform .25s ease;
+
+        }
+
+
+        #passwordModal.active
+        .password-box {
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+
+        .password-icon {
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                var(--accent-soft);
+
+            border:
+                1px solid
+                rgba(52,152,219,.15);
+
+            font-size: 20px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .password-title {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .password-description {
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .password-input-wrap {
+
+            position: relative;
+
+        }
+
+
+        #passwordInput {
+
+            width: 100%;
+
+            height: 48px;
+
+            border-radius: 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.045);
+
+            color:
+                white;
+
+            padding:
+                0 15px;
+
+            font-size: 14px;
+
+            transition:
+                border .2s ease,
+                background .2s ease;
+
+        }
+
+
+        #passwordInput:focus {
+
+            border-color:
+                rgba(52,152,219,.5);
+
+            background:
+                rgba(255,255,255,.065);
+
+        }
+
+
+        #passwordInput.error {
+
+            border-color:
+                rgba(255,95,109,.65);
+
+            animation:
+                shake .25s ease;
+
+        }
+
+
+        .password-error {
+
+            min-height: 17px;
+
+            margin-top: 8px;
+
+            color:
+                #ff7c87;
+
+            font-size: 11px;
+
+        }
+
+
+        .password-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 13px;
+
+        }
+
+
+        .password-button {
+
+            height: 44px;
+
+            flex: 1;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            background:
+                rgba(255,255,255,.05);
+
+            color:
+                #e7ebf3;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .password-button:hover {
+
+            background:
+                rgba(255,255,255,.10);
+
+        }
+
+
+        .password-button.primary {
+
+            background:
+                #3498db;
+
+            border-color:
+                #3498db;
+
+            color:
+                white;
+
+        }
+
+
+        .password-button.primary:hover {
+
+            background:
+                #2789c7;
+
+        }
+
+
+        @keyframes shake {
+
+            0%,100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+
         }
 
 
@@ -814,22 +1388,24 @@
             grid-column:
                 1 / -1;
 
-            min-height: 260px;
+            min-height: 250px;
 
             border:
-                1px dashed rgba(255,255,255,0.1);
+                1px dashed
+                rgba(255,255,255,.10);
 
             border-radius:
                 var(--radius);
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             color:
                 var(--muted);
 
-            text-align: center;
         }
 
 
@@ -840,19 +1416,27 @@
         @keyframes cardAppear {
 
             from {
+
                 opacity: 0;
+
                 transform:
                     translateY(18px)
-                    scale(0.98);
+                    scale(.98);
+
             }
 
             to {
+
                 opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
+
             }
+
         }
+
 
         @keyframes viewerIn {
 
@@ -863,6 +1447,31 @@
             to {
                 opacity: 1;
             }
+
+        }
+
+
+        /* =========================================================
+           TABLET
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            #bentoGrid {
+
+                grid-template-columns:
+                    repeat(3,minmax(0,1fr));
+
+            }
+
+
+            .important-links {
+
+                grid-template-columns:
+                    repeat(2,minmax(0,1fr));
+
+            }
+
         }
 
 
@@ -870,67 +1479,37 @@
            MOBILE
            ========================================================= */
 
-        @media (max-width: 1000px) {
-
-            #bentoGrid {
-                grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
-            }
-
-        }
-
-
         @media (max-width: 720px) {
 
-            :root {
-                --header-height: 66px;
-                --radius: 19px;
-            }
-
-            .topbar {
-                padding:
-                    0 15px;
-            }
-
-            .brand-logo {
-                width: 37px;
-                height: 37px;
-            }
-
-            .brand-name {
-                font-size: 18px;
-            }
-
-            .brand-subtitle {
-                display: none;
-            }
-
-            .header-actions .icon-button:nth-child(2) {
-                display: none;
-            }
-
             .main-content {
+
                 padding:
                     25px
                     15px
-                    45px;
+                    50px;
+
             }
 
-            .hero {
-                margin-bottom: 22px;
+
+            .home-brand {
+
+                padding:
+                    25px
+                    10px
+                    35px;
+
             }
 
-            .hero h1 {
-                letter-spacing: -1.8px;
-            }
 
             #bentoGrid {
 
                 grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+                    repeat(2,minmax(0,1fr));
 
                 gap: 11px;
+
             }
+
 
             .app-card {
 
@@ -938,9 +1517,10 @@
 
                 padding: 17px;
 
-                border-radius:
-                    19px;
+                border-radius: 19px;
+
             }
+
 
             .app-card.large,
             .app-card.wide,
@@ -948,35 +1528,83 @@
 
                 grid-column: span 1;
                 grid-row: span 1;
+
             }
+
 
             .app-card.large {
-                grid-column: span 2;
+
+                grid-column:
+                    span 2;
+
             }
+
 
             .app-logo {
+
                 width: 43px;
                 height: 43px;
+
             }
+
 
             .card-title {
+
                 font-size: 15px;
+
             }
+
 
             .card-description {
+
                 font-size: 11px;
+
             }
 
+
             .hover-text {
+
                 display: none;
+
             }
+
+
+            .important-section {
+
+                margin-top: 40px;
+
+            }
+
+
+            .important-links {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .important-link {
+
+                padding: 13px;
+
+            }
+
+
+            .important-url {
+
+                max-width:
+                    200px;
+
+            }
+
 
             .viewer-toolbar {
 
                 top: auto;
+
                 bottom: 14px;
 
-                height: 52px;
             }
 
         }
@@ -984,465 +1612,818 @@
 
         @media (max-width: 420px) {
 
-            #bentoGrid {
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
             .app-card {
+
                 min-height: 150px;
+
                 padding: 15px;
+
             }
 
-            .card-description {
-                max-width: 100%;
+
+            .important-actions {
+
+                gap: 4px;
+
             }
 
-            .viewer-button {
-                width: 38px;
-                height: 38px;
+
+            .link-button {
+
+                padding:
+                    0 9px;
+
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-<div id="app">
+
+<div id="dashboard">
+
+    <main class="main-content">
 
 
-    <!-- =========================================================
-         DASHBOARD
-         ========================================================= -->
+        <!-- =====================================================
+             HORIZON HOME
+             ===================================================== -->
 
-    <section id="dashboard">
+        <section class="home-brand">
 
-        <header class="topbar">
+            <img
+                class="home-logo"
+                src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
+                alt="Horizon"
+            >
 
-            <div class="brand">
+            <div class="home-title">
+                Horizon
+            </div>
 
-                <img
-                    class="brand-logo"
-                    src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
-                    alt="Horizon"
-                >
+            <div class="home-subtitle">
+                Your digital workspace
+            </div>
 
-                <div>
+        </section>
 
-                    <div class="brand-name">
-                        Horizon
-                    </div>
 
-                    <div class="brand-subtitle">
-                        Your digital workspace
-                    </div>
+        <!-- =====================================================
+             APPLICATIONS
+             ===================================================== -->
 
+        <div class="section-header">
+
+            <div class="section-title">
+                Applications
+            </div>
+
+            <div
+                class="section-count"
+                id="appCount"
+            ></div>
+
+        </div>
+
+
+        <div id="bentoGrid"></div>
+
+
+        <!-- =====================================================
+             IMPORTANT LINKS
+             ===================================================== -->
+
+        <section class="important-section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+                    Important Links
+                </div>
+
+                <div class="section-count">
+                    Quick access
                 </div>
 
             </div>
 
 
-            <div class="header-actions">
+            <div
+                class="important-links"
+                id="importantLinks"
+            ></div>
 
-                <button
-                    class="icon-button"
-                    onclick="scrollToTop()"
-                    title="Home"
-                    aria-label="Home"
-                >
-                    ⌂
-                </button>
-
-                <button
-                    class="icon-button"
-                    onclick="reloadDashboard()"
-                    title="Refresh"
-                    aria-label="Refresh"
-                >
-                    ↻
-                </button>
-
-            </div>
-
-        </header>
+        </section>
 
 
-        <main class="main-content">
-
-
-            <div class="hero">
-
-                <div class="hero-label">
-                    Horizon Workspace
-                </div>
-
-                <h1>
-                    Everything.
-                    <span>In one place.</span>
-                </h1>
-
-                <p>
-                    Access your frequently used websites and applications
-                    from one clean, fast and modern workspace.
-                </p>
-
-            </div>
-
-
-            <!-- BENTO GRID -->
-
-            <div id="bentoGrid"></div>
-
-
-        </main>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         IFRAME VIEWER
-         ========================================================= -->
-
-    <section id="viewer">
-
-        <div class="viewer-toolbar">
-
-            <button
-                class="viewer-button"
-                onclick="goBack()"
-                title="Back to Horizon"
-                aria-label="Back"
-            >
-                ←
-            </button>
-
-            <button
-                class="viewer-button"
-                onclick="reloadIframe()"
-                title="Reload"
-                aria-label="Reload"
-            >
-                ↻
-            </button>
-
-            <button
-                class="viewer-button"
-                onclick="openExternal()"
-                title="Open in new tab"
-                aria-label="Open in new tab"
-            >
-                ↗
-            </button>
-
-            <button
-                class="viewer-button close"
-                onclick="goBack()"
-                title="Close"
-                aria-label="Close"
-            >
-                ×
-            </button>
-
+        <div class="footer">
+            Horizon Workspace
         </div>
 
 
-        <!-- Loader -->
-
-        <div id="iframeLoader">
-
-            <div class="loading-wave">
-
-                <div class="loading-bar"></div>
-                <div class="loading-bar"></div>
-                <div class="loading-bar"></div>
-                <div class="loading-bar"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Website -->
-
-        <iframe
-            id="siteFrame"
-            title="Horizon Website Viewer"
-            allowfullscreen
-        ></iframe>
-
-    </section>
+    </main>
 
 </div>
 
 
+
+<!-- =========================================================
+     IFRAME VIEWER
+     ========================================================= -->
+
+<div id="viewer">
+
+
+    <!-- Viewer controls only appear after opening a website -->
+
+    <div class="viewer-toolbar">
+
+        <button
+            class="viewer-button"
+            onclick="goBack()"
+            title="Back to Horizon"
+        >
+            ←
+        </button>
+
+
+        <button
+            class="viewer-button"
+            onclick="reloadIframe()"
+            title="Reload"
+        >
+            ↻
+        </button>
+
+
+        <button
+            class="viewer-button"
+            onclick="openExternal()"
+            title="Open in new tab"
+        >
+            ↗
+        </button>
+
+
+        <button
+            class="viewer-button close"
+            onclick="goBack()"
+            title="Close"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         LOADER
+         ===================================================== -->
+
+    <div id="iframeLoader">
+
+        <div class="loading-wave">
+
+            <div class="loading-bar"></div>
+
+            <div class="loading-bar"></div>
+
+            <div class="loading-bar"></div>
+
+            <div class="loading-bar"></div>
+
+        </div>
+
+    </div>
+
+
+    <iframe
+        id="siteFrame"
+        title="Horizon Website Viewer"
+        allowfullscreen
+    ></iframe>
+
+</div>
+
+
+
+<!-- =========================================================
+     PASSWORD MODAL
+     ========================================================= -->
+
+<div id="passwordModal">
+
+    <div class="password-box">
+
+        <div class="password-icon">
+            🔒
+        </div>
+
+
+        <div class="password-title">
+            Password Required
+        </div>
+
+
+        <div class="password-description">
+            This application is protected.
+            Enter the password to continue.
+        </div>
+
+
+        <div class="password-input-wrap">
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div
+            class="password-error"
+            id="passwordError"
+        ></div>
+
+
+        <div class="password-actions">
+
+            <button
+                class="password-button"
+                onclick="cancelPassword()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                class="password-button primary"
+                onclick="submitPassword()"
+            >
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <script>
 
-    /* =========================================================
-       HORIZON CONFIGURATION
-       ========================================================= */
 
+/* =============================================================
+   HORIZON DATA
+   ============================================================= */
 
-    /*
-        ADD YOUR CARDS HERE.
 
-        STRUCTURE:
+/*
+    =============================================================
+    MAIN APPLICATION DATA
 
-        {
-            iframeLink: "https://example.com",
-            logo: "https://example.com/logo.png",
+    PASSWORD OPTIONS:
 
-            description:
-                "Short description of this application.",
+    password: ""
 
-            enabled: 1,
+        No password.
+        Opens immediately.
 
-            hoverText:
-                "Open application",
 
-            size: "normal"
-        }
+    password: ["pass1"]
 
+        One password.
 
-        SIZE OPTIONS:
 
-        normal
-        wide
-        tall
-        large
+    password: ["pass1", "pass2", "pass3"]
 
-    */
+        Multiple passwords.
+        ANY ONE of them will work.
 
 
-    const horizonApps = [
+    password can also be written as:
 
-        {
-            iframeLink: "https://example.com",
+    password: ["admin123", "harsh123", "horizon123"]
 
-            logo:
-                "https://i.ibb.co/kgzJb34B/horizon-logo.png",
 
-            description:
-                "Example application. Replace this with your website.",
+    ENABLE:
 
-            enabled: 1,
+    enabled: 1
 
-            hoverText:
-                "Open application",
+        Visible.
 
-            size:
-                "large"
-        },
 
+    enabled: 0
 
-        {
-            iframeLink: "https://www.google.com",
+        Hidden.
 
-            logo:
-                "https://www.google.com/favicon.ico",
 
-            description:
-                "Search the web quickly from Horizon.",
+    SIZE:
 
-            enabled: 1,
+    normal
+    wide
+    tall
+    large
 
-            hoverText:
-                "Open Google",
+    =============================================================
+*/
 
-            size:
-                "normal"
-        },
 
+const horizonApps = [
 
-        {
-            iframeLink: "https://github.com",
 
-            logo:
-                "https://github.githubassets.com/favicons/favicon.png",
+    {
+        name: "Example",
 
-            description:
-                "Manage repositories, projects and code.",
+        iframeLink:
+            "https://example.com",
 
-            enabled: 1,
+        logo:
+            "https://i.ibb.co/kgzJb34B/horizon-logo.png",
 
-            hoverText:
-                "Open GitHub",
+        description:
+            "Example application. Replace this with your website.",
 
-            size:
-                "wide"
-        },
+        enabled: 1,
 
+        hoverText:
+            "Open Example",
 
-        {
-            iframeLink: "https://mail.google.com",
+        size:
+            "large",
 
-            logo:
-                "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
+        password:
+            ""
 
-            description:
-                "Access your email and communication.",
+    },
 
-            enabled: 1,
 
-            hoverText:
-                "Open Gmail",
+    {
+        name: "Google",
 
-            size:
-                "normal"
-        },
+        iframeLink:
+            "https://www.google.com",
 
+        logo:
+            "https://www.google.com/favicon.ico",
 
-        {
-            iframeLink: "https://drive.google.com",
+        description:
+            "Search the web quickly from Horizon.",
 
-            logo:
-                "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png",
+        enabled: 1,
 
-            description:
-                "Access your cloud files and documents.",
+        hoverText:
+            "Open Google",
 
-            enabled: 1,
+        size:
+            "normal",
 
-            hoverText:
-                "Open Drive",
+        password:
+            ""
 
-            size:
-                "tall"
-        },
+    },
 
 
-        {
-            iframeLink: "https://calendar.google.com",
+    {
+        name: "GitHub",
 
-            logo:
-                "https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png",
+        iframeLink:
+            "https://github.com",
 
-            description:
-                "Manage schedules, meetings and events.",
+        logo:
+            "https://github.githubassets.com/favicons/favicon.png",
 
-            enabled: 1,
+        description:
+            "Manage repositories, projects and code.",
 
-            hoverText:
-                "Open Calendar",
+        enabled: 1,
 
-            size:
-                "normal"
-        }
+        hoverText:
+            "Open GitHub",
 
-    ];
+        size:
+            "wide",
 
+        password:
+            ""
 
+    },
 
-    /* =========================================================
-       ELEMENTS
-       ========================================================= */
 
-    const grid =
-        document.getElementById("bentoGrid");
+    {
+        name: "Private Portal",
 
-    const dashboard =
-        document.getElementById("dashboard");
+        iframeLink:
+            "https://example.com/private",
 
-    const viewer =
-        document.getElementById("viewer");
+        logo:
+            "https://i.ibb.co/kgzJb34B/horizon-logo.png",
 
-    const iframe =
-        document.getElementById("siteFrame");
+        description:
+            "Protected application requiring a password.",
 
-    const loader =
-        document.getElementById("iframeLoader");
+        enabled: 1,
 
+        hoverText:
+            "Unlock application",
 
+        size:
+            "normal",
 
-    let currentApp = null;
+        password:
+            [
+                "pass1",
+                "pass2",
+                "pass3"
+            ]
 
+    },
 
 
-    /* =========================================================
-       SAFE TEXT
-       ========================================================= */
+    {
+        name: "Gmail",
 
-    function escapeHTML(value) {
+        iframeLink:
+            "https://mail.google.com",
 
-        if (value === null || value === undefined) {
-            return "";
-        }
+        logo:
+            "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
 
-        return String(value)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        description:
+            "Access your email and communication.",
+
+        enabled: 1,
+
+        hoverText:
+            "Open Gmail",
+
+        size:
+            "normal",
+
+        password:
+            ""
+
+    },
+
+
+    {
+        name: "Drive",
+
+        iframeLink:
+            "https://drive.google.com",
+
+        logo:
+            "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png",
+
+        description:
+            "Access your cloud files and documents.",
+
+        enabled: 1,
+
+        hoverText:
+            "Open Drive",
+
+        size:
+            "tall",
+
+        password:
+            ""
+
     }
 
 
+];
 
-    /* =========================================================
-       CREATE CARDS
-       ========================================================= */
 
-    function renderApps() {
 
-        grid.innerHTML = "";
+/* =============================================================
+   IMPORTANT LINKS
+   ============================================================= */
 
-        const enabledApps =
-            horizonApps.filter(
-                app => Number(app.enabled) === 1
+
+/*
+    STRUCTURE:
+
+    {
+        name: "Google Apps Script",
+        url: "https://script.google.com/"
+    }
+
+*/
+
+
+const importantLinks = [
+
+    {
+        name:
+            "Google Apps Script",
+
+        url:
+            "https://script.google.com/"
+
+    },
+
+
+    {
+        name:
+            "GitHub",
+
+        url:
+            "https://github.com/"
+
+    },
+
+
+    {
+        name:
+            "Google Drive",
+
+        url:
+            "https://drive.google.com/"
+
+    }
+
+];
+
+
+
+/* =============================================================
+   ELEMENTS
+   ============================================================= */
+
+const grid =
+    document.getElementById(
+        "bentoGrid"
+    );
+
+
+const appCount =
+    document.getElementById(
+        "appCount"
+    );
+
+
+const importantLinksContainer =
+    document.getElementById(
+        "importantLinks"
+    );
+
+
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+
+const viewer =
+    document.getElementById(
+        "viewer"
+    );
+
+
+const iframe =
+    document.getElementById(
+        "siteFrame"
+    );
+
+
+const loader =
+    document.getElementById(
+        "iframeLoader"
+    );
+
+
+const passwordModal =
+    document.getElementById(
+        "passwordModal"
+    );
+
+
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
+
+
+const passwordError =
+    document.getElementById(
+        "passwordError"
+    );
+
+
+
+let currentApp = null;
+
+let pendingApp = null;
+
+
+
+/* =============================================================
+   ESCAPE HTML
+   ============================================================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =============================================================
+   GET APP NAME
+   ============================================================= */
+
+function getAppName(app) {
+
+    if (app.name) {
+
+        return app.name;
+
+    }
+
+
+    try {
+
+        const url =
+            new URL(
+                app.iframeLink
             );
 
+        return url.hostname
 
-        if (!enabledApps.length) {
+            .replace(
+                /^www\./,
+                ""
+            )
 
-            grid.innerHTML = `
-                <div class="empty-state">
-                    No applications are currently enabled.
-                </div>
-            `;
+            .split(".")[0]
 
-            return;
-        }
+            .replace(
+                /^./,
+                c =>
+                    c.toUpperCase()
+            );
 
+    }
 
-        enabledApps.forEach(
-            (app, index) => {
+    catch {
 
-                const card =
-                    document.createElement("article");
+        return "Application";
 
-                card.className =
-                    `app-card ${app.size || "normal"}`;
+    }
 
-
-                card.style.animationDelay =
-                    `${index * 45}ms`;
-
-
-                const logo =
-                    app.logo ||
-                    "https://i.ibb.co/kgzJb34B/horizon-logo.png";
+}
 
 
-                card.innerHTML = `
 
-                    <div class="card-glow"></div>
+/* =============================================================
+   RENDER APPLICATIONS
+   ============================================================= */
 
-                    <div>
+function renderApps() {
 
-                        <div class="card-top">
+    grid.innerHTML = "";
 
-                            <img
-                                class="app-logo"
-                                src="${escapeHTML(logo)}"
-                                alt=""
-                                loading="lazy"
-                                onerror="
-                                    this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
-                                "
-                            >
+
+    const enabledApps =
+        horizonApps.filter(
+            app =>
+                Number(app.enabled) === 1
+        );
+
+
+    appCount.textContent =
+        `${enabledApps.length} available`;
+
+
+    if (!enabledApps.length) {
+
+        grid.innerHTML = `
+
+            <div class="empty-state">
+
+                No applications are
+                currently enabled.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    enabledApps.forEach(
+        (app,index) => {
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                `app-card ${app.size || "normal"}`;
+
+
+            card.style.animationDelay =
+                `${index * 45}ms`;
+
+
+            const logo =
+                app.logo ||
+                "https://i.ibb.co/kgzJb34B/horizon-logo.png";
+
+
+            const passwordProtected =
+                hasPassword(app);
+
+
+            card.innerHTML = `
+
+                <div class="card-glow"></div>
+
+
+                <div>
+
+                    <div class="card-top">
+
+                        <img
+
+                            class="app-logo"
+
+                            src="${escapeHTML(logo)}"
+
+                            alt=""
+
+                            loading="lazy"
+
+                            onerror="
+                                this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
+                            "
+
+                        >
+
+
+                        <div class="card-status">
+
+                            ${
+                                passwordProtected
+                                ?
+                                `<span
+                                    class="lock-icon"
+                                    title="Password protected"
+                                >🔒</span>`
+                                :
+                                ""
+                            }
 
                             <span
                                 class="status-dot"
@@ -1451,369 +2432,890 @@
 
                         </div>
 
+                    </div>
 
-                        <div class="card-content">
 
-                            <div class="card-title">
-                                ${escapeHTML(
-                                    getAppName(app)
-                                )}
-                            </div>
+                    <div class="card-content">
 
-                            <div class="card-description">
-                                ${escapeHTML(
-                                    app.description
-                                )}
-                            </div>
+                        <div class="card-title">
+
+                            ${escapeHTML(
+                                getAppName(app)
+                            )}
+
+                        </div>
+
+
+                        <div class="card-description">
+
+                            ${escapeHTML(
+                                app.description
+                            )}
 
                         </div>
 
                     </div>
 
-
-                    <div class="hover-text">
-                        ${escapeHTML(
-                            app.hoverText ||
-                            "Open application"
-                        )}
-                        &nbsp; →
-                    </div>
-                `;
+                </div>
 
 
-                card.addEventListener(
-                    "click",
-                    () => openApp(app)
-                );
+                <div class="hover-text">
+
+                    ${escapeHTML(
+                        app.hoverText ||
+                        "Open application"
+                    )}
+
+                    &nbsp; →
+
+                </div>
+
+            `;
 
 
-                grid.appendChild(card);
+            card.addEventListener(
+                "click",
+                () =>
+                    handleAppClick(app)
+            );
 
-            }
+
+            grid.appendChild(card);
+
+        }
+    );
+
+}
+
+
+
+/* =============================================================
+   PASSWORD DETECTION
+   ============================================================= */
+
+function hasPassword(app) {
+
+    if (!app) {
+        return false;
+    }
+
+
+    /*
+        Empty string = no password
+    */
+
+    if (
+        typeof app.password === "string"
+    ) {
+
+        return (
+            app.password.trim() !== ""
         );
 
     }
 
 
+    /*
+        Array = check whether
+        at least one password exists
+    */
 
-    /* =========================================================
-       APP NAME
-       ========================================================= */
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
 
-    function getAppName(app) {
-
-        /*
-            Optional:
-
-            Add:
-
-            name: "My Website"
-
-            to your card.
-
-            If name is not provided,
-            the hostname will be used.
-        */
-
-        if (app.name) {
-            return app.name;
-        }
-
-
-        try {
-
-            const url =
-                new URL(app.iframeLink);
-
-            return url.hostname
-                .replace(/^www\./, "")
-                .split(".")[0]
-                .replace(
-                    /^./,
-                    c => c.toUpperCase()
-                );
-
-        } catch {
-
-            return "Application";
-
-        }
+        return app.password.some(
+            password =>
+                String(password).trim() !== ""
+        );
 
     }
 
 
+    return false;
 
-    /* =========================================================
-       OPEN APP
-       ========================================================= */
+}
 
-    function openApp(app) {
 
-        if (!app || !app.iframeLink) {
-            return;
+
+/* =============================================================
+   NORMALIZE PASSWORDS
+   ============================================================= */
+
+function getPasswords(app) {
+
+    if (
+        typeof app.password === "string"
+    ) {
+
+        if (
+            app.password.trim() === ""
+        ) {
+
+            return [];
+
         }
 
+        return [
+            app.password
+        ];
 
-        currentApp = app;
-
-
-        /*
-            Show viewer
-        */
-
-        dashboard.classList.add("hidden");
-
-        viewer.classList.add("active");
+    }
 
 
-        /*
-            Show loader
-        */
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
 
-        loader.classList.remove("hidden");
+        return app.password
+            .map(
+                password =>
+                    String(password)
+            )
+            .filter(
+                password =>
+                    password.trim() !== ""
+            );
+
+    }
 
 
-        /*
-            Remove old iframe content
-        */
+    return [];
 
-        iframe.src = "about:blank";
+}
 
 
-        /*
-            Small delay prevents visual flashing
-        */
+
+/* =============================================================
+   HANDLE APP CLICK
+   ============================================================= */
+
+function handleAppClick(app) {
+
+    if (!app) {
+        return;
+    }
+
+
+    /*
+        No password:
+        Open directly.
+    */
+
+    if (!hasPassword(app)) {
+
+        openApp(app);
+
+        return;
+
+    }
+
+
+    /*
+        Password exists:
+        Show modal.
+    */
+
+    pendingApp = app;
+
+    passwordInput.value = "";
+
+    passwordError.textContent = "";
+
+    passwordInput.classList.remove(
+        "error"
+    );
+
+    passwordModal.classList.add(
+        "active"
+    );
+
+
+    setTimeout(
+        () => {
+
+            passwordInput.focus();
+
+        },
+        150
+    );
+
+}
+
+
+
+/* =============================================================
+   SUBMIT PASSWORD
+   ============================================================= */
+
+function submitPassword() {
+
+    if (!pendingApp) {
+        return;
+    }
+
+
+    const entered =
+        passwordInput.value;
+
+
+    const validPasswords =
+        getPasswords(
+            pendingApp
+        );
+
+
+    const valid =
+        validPasswords.some(
+            password =>
+                entered === password
+        );
+
+
+    if (!valid) {
+
+        passwordError.textContent =
+            "Incorrect password. Please try again.";
+
+        passwordInput.classList.add(
+            "error"
+        );
+
 
         setTimeout(
             () => {
 
-                iframe.src =
-                    app.iframeLink;
+                passwordInput.classList.remove(
+                    "error"
+                );
 
             },
-            80
+            350
         );
 
+        passwordInput.focus();
 
-        /*
-            Update browser history
-
-            Allows browser back button
-            to return to Horizon.
-        */
-
-        history.pushState(
-            {
-                horizonViewer: true
-            },
-            "",
-            "#app"
-        );
+        return;
 
     }
 
 
+    const app =
+        pendingApp;
 
-    /* =========================================================
-       IFRAME LOADED
-       ========================================================= */
 
-    iframe.addEventListener(
-        "load",
+    closePasswordModal();
+
+
+    /*
+        Correct password.
+        Open website.
+    */
+
+    openApp(app);
+
+}
+
+
+
+/* =============================================================
+   PASSWORD ENTER KEY
+   ============================================================= */
+
+passwordInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            submitPassword();
+
+        }
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            cancelPassword();
+
+        }
+
+    }
+);
+
+
+
+/* =============================================================
+   CLOSE PASSWORD MODAL
+   ============================================================= */
+
+function closePasswordModal() {
+
+    passwordModal.classList.remove(
+        "active"
+    );
+
+    passwordInput.value = "";
+
+    passwordError.textContent = "";
+
+}
+
+
+
+/* =============================================================
+   CANCEL PASSWORD
+   ============================================================= */
+
+function cancelPassword() {
+
+    pendingApp = null;
+
+    closePasswordModal();
+
+}
+
+
+
+/* =============================================================
+   OPEN APPLICATION
+   ============================================================= */
+
+function openApp(app) {
+
+    if (
+        !app ||
+        !app.iframeLink
+    ) {
+
+        return;
+
+    }
+
+
+    currentApp = app;
+
+
+    dashboard.classList.add(
+        "hidden"
+    );
+
+
+    viewer.classList.add(
+        "active"
+    );
+
+
+    loader.classList.remove(
+        "hidden"
+    );
+
+
+    iframe.src =
+        "about:blank";
+
+
+    setTimeout(
         () => {
+
+            iframe.src =
+                app.iframeLink;
+
+        },
+        80
+    );
+
+
+    /*
+        Browser history
+    */
+
+    history.pushState(
+        {
+            horizonViewer: true
+        },
+        "",
+        "#app"
+    );
+
+}
+
+
+
+/* =============================================================
+   IFRAME LOAD
+   ============================================================= */
+
+iframe.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                loader.classList.add(
+                    "hidden"
+                );
+
+            },
+            250
+        );
+
+    }
+);
+
+
+
+/* =============================================================
+   GO BACK
+   ============================================================= */
+
+function goBack() {
+
+    iframe.src =
+        "about:blank";
+
+
+    viewer.classList.remove(
+        "active"
+    );
+
+
+    dashboard.classList.remove(
+        "hidden"
+    );
+
+
+    currentApp = null;
+
+
+    if (
+        location.hash === "#app"
+    ) {
+
+        history.replaceState(
+            null,
+            "",
+            location.pathname +
+            location.search
+        );
+
+    }
+
+}
+
+
+
+/* =============================================================
+   BROWSER BACK
+   ============================================================= */
+
+window.addEventListener(
+    "popstate",
+    () => {
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    }
+);
+
+
+
+/* =============================================================
+   ESCAPE
+   ============================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            if (
+                passwordModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                cancelPassword();
+
+                return;
+
+            }
+
+
+            if (
+                viewer.classList.contains(
+                    "active"
+                )
+            ) {
+
+                goBack();
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =============================================================
+   RELOAD IFRAME
+   ============================================================= */
+
+function reloadIframe() {
+
+    if (!currentApp) {
+        return;
+    }
+
+
+    loader.classList.remove(
+        "hidden"
+    );
+
+
+    iframe.src =
+        currentApp.iframeLink;
+
+}
+
+
+
+/* =============================================================
+   OPEN EXTERNAL
+   ============================================================= */
+
+function openExternal() {
+
+    if (
+        !currentApp ||
+        !currentApp.iframeLink
+    ) {
+
+        return;
+
+    }
+
+
+    window.open(
+        currentApp.iframeLink,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+
+/* =============================================================
+   RENDER IMPORTANT LINKS
+   ============================================================= */
+
+function renderImportantLinks() {
+
+    importantLinksContainer.innerHTML =
+        "";
+
+
+    if (
+        !importantLinks.length
+    ) {
+
+        importantLinksContainer.innerHTML = `
+
+            <div class="empty-state">
+
+                No important links added.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    importantLinks.forEach(
+        (item,index) => {
+
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "important-link";
+
+
+            const safeName =
+                escapeHTML(
+                    item.name
+                );
+
+
+            const safeURL =
+                escapeHTML(
+                    item.url
+                );
+
+
+            wrapper.innerHTML = `
+
+                <div class="important-info">
+
+                    <div class="important-name">
+
+                        ${safeName}
+
+                    </div>
+
+
+                    <div class="important-url">
+
+                        ${safeURL}
+
+                    </div>
+
+                </div>
+
+
+                <div class="important-actions">
+
+                    <button
+                        class="link-button"
+                        data-copy="${safeURL}"
+                    >
+                        Copy
+                    </button>
+
+
+                    <button
+                        class="link-button open"
+                        data-open="${safeURL}"
+                    >
+                        Open
+                    </button>
+
+                </div>
+
+            `;
+
 
             /*
-                Give the website a tiny amount
-                of time to render.
+                Copy button
             */
 
-            setTimeout(
-                () => {
+            wrapper
+                .querySelector(
+                    "[data-copy]"
+                )
+                .addEventListener(
+                    "click",
+                    event => {
 
-                    loader.classList.add("hidden");
+                        event.stopPropagation();
 
-                },
-                250
-            );
+                        copyImportantLink(
+                            item.url,
+                            event.currentTarget
+                        );
+
+                    }
+                );
+
+
+            /*
+                Open button
+            */
+
+            wrapper
+                .querySelector(
+                    "[data-open]"
+                )
+                .addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+                        openImportantLink(
+                            item.url
+                        );
+
+                    }
+                );
+
+
+            importantLinksContainer
+                .appendChild(
+                    wrapper
+                );
 
         }
     );
 
+}
 
 
-    /* =========================================================
-       BACK
-       ========================================================= */
 
-    function goBack() {
+/* =============================================================
+   COPY IMPORTANT LINK
+   ============================================================= */
 
-        iframe.src =
-            "about:blank";
+async function copyImportantLink(
+    url,
+    button
+) {
 
+    try {
 
-        viewer.classList.remove(
-            "active"
+        await navigator.clipboard.writeText(
+            url
         );
 
 
-        dashboard.classList.remove(
-            "hidden"
+        const oldText =
+            button.textContent;
+
+
+        button.textContent =
+            "Copied ✓";
+
+
+        button.classList.add(
+            "copy-success"
         );
 
 
-        currentApp = null;
+        setTimeout(
+            () => {
 
+                button.textContent =
+                    oldText;
 
-        if (
-            location.hash === "#app"
-        ) {
+                button.classList.remove(
+                    "copy-success"
+                );
 
-            history.replaceState(
-                null,
-                "",
-                location.pathname +
-                location.search
-            );
-
-        }
+            },
+            1500
+        );
 
     }
 
-
-
-    /* =========================================================
-       BROWSER BACK BUTTON
-       ========================================================= */
-
-    window.addEventListener(
-        "popstate",
-        () => {
-
-            if (
-                viewer.classList.contains(
-                    "active"
-                )
-            ) {
-
-                goBack();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================================================
-       ESC KEY
-       ========================================================= */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape" &&
-                viewer.classList.contains(
-                    "active"
-                )
-            ) {
-
-                goBack();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================================================
-       RELOAD IFRAME
-       ========================================================= */
-
-    function reloadIframe() {
-
-        if (!currentApp) {
-            return;
-        }
-
-
-        loader.classList.remove(
-            "hidden"
-        );
-
+    catch {
 
         /*
-            Reload using current URL
+            Fallback for older browsers
         */
 
-        iframe.src =
-            currentApp.iframeLink;
-
-    }
-
-
-
-    /* =========================================================
-       OPEN EXTERNAL
-       ========================================================= */
-
-    function openExternal() {
-
-        if (
-            !currentApp ||
-            !currentApp.iframeLink
-        ) {
-            return;
-        }
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
 
 
-        window.open(
-            currentApp.iframeLink,
-            "_blank",
-            "noopener,noreferrer"
+        textarea.value =
+            url;
+
+
+        textarea.style.position =
+            "fixed";
+
+        textarea.style.opacity =
+            "0";
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        textarea.remove();
+
+
+        button.textContent =
+            "Copied ✓";
+
+
+        setTimeout(
+            () => {
+
+                button.textContent =
+                    "Copy";
+
+            },
+            1500
         );
 
     }
 
+}
 
 
-    /* =========================================================
-       SCROLL TOP
-       ========================================================= */
 
-    function scrollToTop() {
+/* =============================================================
+   OPEN IMPORTANT LINK
+   ============================================================= */
 
-        dashboard.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+function openImportantLink(url) {
 
+    if (!url) {
+        return;
     }
 
 
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
 
-    /* =========================================================
-       REFRESH DASHBOARD
-       ========================================================= */
-
-    function reloadDashboard() {
-
-        renderApps();
-
-    }
+}
 
 
 
-    /* =========================================================
-       START HORIZON
-       ========================================================= */
+/* =============================================================
+   INITIALIZE
+   ============================================================= */
 
-    renderApps();
+renderApps();
+
+renderImportantLinks();
 
 
 </script>
+
 
 </body>
 </html>
