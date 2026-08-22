@@ -1591,6 +1591,13 @@
 
         }
 
+        .settings-button.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.8);
+}
+
 
         /* =====================================================
            SETTINGS BUTTON
@@ -1608,7 +1615,7 @@
                 20px;
 
             z-index:
-                1800;
+                900;
 
             width:
                 42px;
@@ -3471,7 +3478,8 @@
     /* =========================================================
        HORIZON LOCAL STORAGE
        ========================================================= */
-
+const settingsButton =
+    document.getElementById("settingsButton");
 
     const STORAGE_KEYS = {
 
@@ -5376,55 +5384,76 @@
        OPEN IFRAME
        ========================================================= */
 
-    function openApp(
-        app
-    ) {
+function openApp(app) {
 
-        currentApp =
-            app;
+    currentApp = app;
 
+    /*
+        Hide Horizon dashboard
+    */
 
-        dashboard.classList.add(
-            "hidden"
-        );
+    dashboard.classList.add("hidden");
 
 
-        viewer.classList.add(
-            "active"
-        );
+    /*
+        Hide settings gear
+    */
+
+    settingsButton.classList.add("hidden");
 
 
-        loader.classList.remove(
-            "hidden"
-        );
+    /*
+        Close settings if somehow open
+    */
+
+    closeSettings();
 
 
-        iframe.src =
-            "about:blank";
+    /*
+        Open full-screen iframe
+    */
+
+    viewer.classList.add("active");
 
 
-        setTimeout(
-            () => {
+    /*
+        Show loader
+    */
 
-                iframe.src =
-                    app.iframeLink;
-
-            },
-            80
-        );
+    loader.classList.remove("hidden");
 
 
-        history.pushState(
-            {
-                horizonViewer:
-                    true
-            },
-            "",
-            "#app"
-        );
+    /*
+        Clear old iframe
+    */
 
-    }
+    iframe.src = "about:blank";
 
+
+    /*
+        Load application
+    */
+
+    setTimeout(() => {
+
+        iframe.src = app.iframeLink;
+
+    }, 80);
+
+
+    /*
+        Browser history
+    */
+
+    history.pushState(
+        {
+            horizonViewer: true
+        },
+        "",
+        "#app"
+    );
+
+}
 
 
     iframe.addEventListener(
@@ -5451,40 +5480,59 @@
        BACK TO HORIZON
        ========================================================= */
 
-    function goBack() {
+function goBack() {
 
-        iframe.src =
-            "about:blank";
+    /*
+        Clear iframe
+    */
+
+    iframe.src = "about:blank";
 
 
-        viewer.classList.remove(
-            "active"
+    /*
+        Close iframe viewer
+    */
+
+    viewer.classList.remove("active");
+
+
+    /*
+        Show Horizon dashboard
+    */
+
+    dashboard.classList.remove("hidden");
+
+
+    /*
+        Show settings gear again
+    */
+
+    settingsButton.classList.remove("hidden");
+
+
+    /*
+        Clear current app
+    */
+
+    currentApp = null;
+
+
+    /*
+        Remove #app from URL
+    */
+
+    if (location.hash === "#app") {
+
+        history.replaceState(
+            null,
+            "",
+            location.pathname +
+            location.search
         );
-
-
-        dashboard.classList.remove(
-            "hidden"
-        );
-
-
-        currentApp =
-            null;
-
-
-        if (
-            location.hash === "#app"
-        ) {
-
-            history.replaceState(
-                null,
-                "",
-                location.pathname +
-                location.search
-            );
-
-        }
 
     }
+
+}
 
 
 
