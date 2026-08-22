@@ -12,10 +12,6 @@
 
     <title>Horizon</title>
 
-    <!-- =====================================================
-         HORIZON FAVICON
-         ===================================================== -->
-
     <link
         rel="icon"
         type="image/png"
@@ -38,8 +34,6 @@
         :root {
 
             --bg: #080b12;
-
-            --bg-secondary: #0d111a;
 
             --card:
                 rgba(18, 23, 34, 0.82);
@@ -221,7 +215,7 @@
 
 
         /* =====================================================
-           HORIZON BRAND
+           HORIZON LOGO
            ===================================================== */
 
         .home-brand {
@@ -277,25 +271,8 @@
         }
 
 
-        .home-title {
-
-            font-size:
-                clamp(28px, 4vw, 46px);
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                -2px;
-
-            line-height:
-                1;
-
-        }
-
-
         /* =====================================================
-           HERO HEADER
+           HERO
            ===================================================== */
 
         .hero {
@@ -611,6 +588,64 @@
 
 
         /* =====================================================
+           DISABLED CARD
+           ===================================================== */
+
+        .app-card.disabled {
+
+            cursor:
+                not-allowed;
+
+            opacity:
+                0.52;
+
+            filter:
+                saturate(0.45);
+
+        }
+
+
+        .app-card.disabled:hover {
+
+            transform:
+                none;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.035),
+                    rgba(255,255,255,0.015)
+                ),
+
+                var(--card);
+
+            border-color:
+                var(--border);
+
+            box-shadow:
+                none;
+
+        }
+
+
+        .app-card.disabled:active {
+
+            transform:
+                none;
+
+        }
+
+
+        .app-card.disabled .card-glow {
+
+            display:
+                none;
+
+        }
+
+
+        /* =====================================================
            CARD GLOW
            ===================================================== */
 
@@ -752,6 +787,39 @@
         }
 
 
+        .disabled-status {
+
+            padding:
+                4px 8px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            color:
+                var(--muted);
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.4px;
+
+        }
+
+
         /* =====================================================
            CARD CONTENT
            ===================================================== */
@@ -799,7 +867,7 @@
 
 
         /* =====================================================
-           CARD HOVER TEXT
+           HOVER TEXT
            ===================================================== */
 
         .hover-text {
@@ -845,6 +913,15 @@
 
             transform:
                 translateY(0);
+
+        }
+
+
+        .app-card.disabled
+        .hover-text {
+
+            opacity:
+                0;
 
         }
 
@@ -1065,11 +1142,9 @@
 
 
         /* =====================================================
-           IFRAME VIEWER
-           IMPORTANT:
+           FULL-SCREEN IFRAME
            NO TOOLBAR
-           NO BUTTONS
-           FULL SCREEN
+           NO OVERLAY BUTTONS
            ===================================================== */
 
         #viewer {
@@ -1118,16 +1193,16 @@
                 block;
 
             width:
-                100%;
+                100vw;
 
             height:
-                100%;
+                100vh;
 
             min-width:
-                100%;
+                100vw;
 
             min-height:
-                100%;
+                100vh;
 
             border:
                 0;
@@ -1214,7 +1289,7 @@
 
 
         /* =====================================================
-           YOUR LOADING WAVE
+           LOADING WAVE
            ===================================================== */
 
         .loading-wave {
@@ -1922,21 +1997,7 @@
             }
 
 
-            /*
-                Iframe remains 100% full-screen
-            */
-
-            #viewer {
-
-                width:
-                    100vw;
-
-                height:
-                    100vh;
-
-            }
-
-
+            #viewer,
             #viewer iframe {
 
                 width:
@@ -2017,7 +2078,7 @@
 
 
         <!-- =====================================================
-             MAIN HEADER
+             MAIN HERO
              ===================================================== -->
 
         <section class="hero">
@@ -2042,13 +2103,15 @@
 
 
         <!-- =====================================================
-             APPLICATION HEADER
+             APPLICATIONS HEADER
              ===================================================== -->
 
         <div class="section-header">
 
             <div class="section-title">
+
                 Applications
+
             </div>
 
 
@@ -2076,12 +2139,16 @@
             <div class="section-header">
 
                 <div class="section-title">
+
                     Important Links
+
                 </div>
 
 
                 <div class="section-count">
+
                     Quick access
+
                 </div>
 
             </div>
@@ -2113,7 +2180,7 @@
 
 
 <!-- =========================================================
-     FULL-SCREEN IFRAME
+     FULL SCREEN IFRAME VIEWER
      ========================================================= -->
 
 <div id="viewer">
@@ -2141,12 +2208,8 @@
 
 
     <!-- =====================================================
-         WEBSITE IFRAME
-
-         IMPORTANT:
-         THERE ARE NO BUTTONS HERE.
-
-         THE WEBSITE GETS THE COMPLETE SCREEN.
+         IFRAME
+         NO BUTTONS / NO TOOLBAR
          ===================================================== -->
 
     <iframe
@@ -2154,6 +2217,7 @@
         title="Horizon Website Viewer"
         allowfullscreen
     ></iframe>
+
 
 </div>
 
@@ -2237,1569 +2301,1405 @@
 
 
 
+<!-- =========================================================
+     IMPORTANT:
+     LOAD DATA FILES BEFORE MAIN JAVASCRIPT
+     ========================================================= -->
+
+<script src="horizonApps.js"></script>
+
+<script src="importantLinks.js"></script>
+
+
+
 <script>
 
-
-/* =============================================================
-   HORIZON APPLICATION DATA
-   ============================================================= */
-
-
-/*
-    =============================================================
-    CARD STRUCTURE
-    =============================================================
-
-    {
-        name: "Application Name",
-
-        iframeLink:
-            "https://example.com",
-
-        logo:
-            "https://example.com/logo.png",
-
-        description:
-            "Application description.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open application",
-
-        size:
-            "large",
-
-        password:
-            ""
-
-    }
-
-
-    =============================================================
-    ENABLE
-    =============================================================
-
-    enabled: 1
-
-        Card is visible.
-
-
-    enabled: 0
-
-        Card is hidden.
-
-
-    =============================================================
-    SIZE
-    =============================================================
-
-    normal
-        1 x 1
-
-    wide
-        2 x 1
-
-    tall
-        1 x 2
-
-    large
-        2 x 2
-
-
-    =============================================================
-    PASSWORD
-    =============================================================
-
-    No password:
-
-        password: ""
-
-
-    One password:
-
-        password: [
-            "Horizon123"
-        ]
-
-
-    Multiple passwords:
-
-        password: [
-            "pass1",
-            "pass2",
-            "pass3"
-        ]
-
-    ANY ONE of the passwords will work.
-
-    =============================================================
-*/
-
-
-const horizonApps = [
+    /* =========================================================
+       HORIZON MAIN APPLICATION
+       ========================================================= */
 
 
     /* =========================================================
-       EXAMPLE LARGE CARD
+       CHECK DATA FILES
        ========================================================= */
-
-    {
-        name:
-            "Example",
-
-        iframeLink:
-            "https://example.com",
-
-        logo:
-            "https://i.ibb.co/kgzJb34B/horizon-logo.png",
-
-        description:
-            "Example application. Replace this with your website.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open Example",
-
-        size:
-            "large",
-
-        password:
-            ""
-
-    },
-
-
-    /* =========================================================
-       GOOGLE
-       ========================================================= */
-
-    {
-        name:
-            "Google",
-
-        iframeLink:
-            "https://www.google.com",
-
-        logo:
-            "https://www.google.com/favicon.ico",
-
-        description:
-            "Search the web quickly from Horizon.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open Google",
-
-        size:
-            "normal",
-
-        password:
-            ""
-
-    },
-
-
-    /* =========================================================
-       GITHUB
-       ========================================================= */
-
-    {
-        name:
-            "GitHub",
-
-        iframeLink:
-            "https://github.com",
-
-        logo:
-            "https://github.githubassets.com/favicons/favicon.png",
-
-        description:
-            "Manage repositories, projects and code.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open GitHub",
-
-        size:
-            "wide",
-
-        password:
-            ""
-
-    },
-
-
-    /* =========================================================
-       PASSWORD PROTECTED EXAMPLE
-       ========================================================= */
-
-    {
-        name:
-            "Private Portal",
-
-        iframeLink:
-            "https://example.com/private",
-
-        logo:
-            "https://i.ibb.co/kgzJb34B/horizon-logo.png",
-
-        description:
-            "Private application protected by multiple passwords.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Unlock application",
-
-        size:
-            "normal",
-
-        password:
-            [
-                "pass1",
-                "pass2",
-                "pass3"
-            ]
-
-    },
-
-
-    /* =========================================================
-       GMAIL
-       ========================================================= */
-
-    {
-        name:
-            "Gmail",
-
-        iframeLink:
-            "https://mail.google.com",
-
-        logo:
-            "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
-
-        description:
-            "Access your email and communication.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open Gmail",
-
-        size:
-            "normal",
-
-        password:
-            ""
-
-    },
-
-
-    /* =========================================================
-       GOOGLE DRIVE
-       ========================================================= */
-
-    {
-        name:
-            "Drive",
-
-        iframeLink:
-            "https://drive.google.com",
-
-        logo:
-            "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png",
-
-        description:
-            "Access your cloud files and documents.",
-
-        enabled:
-            1,
-
-        hoverText:
-            "Open Drive",
-
-        size:
-            "tall",
-
-        password:
-            ""
-
-    }
-
-];
-
-
-
-/* =============================================================
-   IMPORTANT LINKS
-   ============================================================= */
-
-
-/*
-    STRUCTURE:
-
-    {
-        name:
-            "Google Apps Script",
-
-        url:
-            "https://script.google.com/"
-    }
-
-*/
-
-
-const importantLinks = [
-
-
-    {
-        name:
-            "Google Apps Script",
-
-        url:
-            "https://script.google.com/"
-
-    },
-
-
-    {
-        name:
-            "GitHub",
-
-        url:
-            "https://github.com/"
-
-    },
-
-
-    {
-        name:
-            "Google Drive",
-
-        url:
-            "https://drive.google.com/"
-
-    }
-
-];
-
-
-
-/* =============================================================
-   DOM ELEMENTS
-   ============================================================= */
-
-const grid =
-    document.getElementById(
-        "bentoGrid"
-    );
-
-
-const appCount =
-    document.getElementById(
-        "appCount"
-    );
-
-
-const importantLinksContainer =
-    document.getElementById(
-        "importantLinks"
-    );
-
-
-const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
-
-
-const viewer =
-    document.getElementById(
-        "viewer"
-    );
-
-
-const iframe =
-    document.getElementById(
-        "siteFrame"
-    );
-
-
-const loader =
-    document.getElementById(
-        "iframeLoader"
-    );
-
-
-const passwordModal =
-    document.getElementById(
-        "passwordModal"
-    );
-
-
-const passwordInput =
-    document.getElementById(
-        "passwordInput"
-    );
-
-
-const passwordError =
-    document.getElementById(
-        "passwordError"
-    );
-
-
-
-/* =============================================================
-   CURRENT STATE
-   ============================================================= */
-
-let currentApp =
-    null;
-
-
-let pendingApp =
-    null;
-
-
-
-/* =============================================================
-   ESCAPE HTML
-   ============================================================= */
-
-function escapeHTML(value) {
 
     if (
-        value === null ||
-        value === undefined
+        typeof horizonApps ===
+        "undefined"
     ) {
 
-        return "";
-
-    }
-
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
+        console.error(
+            "Horizon Error: horizonApps.js was not loaded."
         );
 
-}
+    }
 
 
+    if (
+        typeof importantLinks ===
+        "undefined"
+    ) {
 
-/* =============================================================
-   APP NAME
-   ============================================================= */
-
-function getAppName(app) {
-
-    if (app.name) {
-
-        return app.name;
+        console.error(
+            "Horizon Error: importantLinks.js was not loaded."
+        );
 
     }
 
 
-    try {
+    /* =========================================================
+       DOM ELEMENTS
+       ========================================================= */
 
-        const url =
-            new URL(
-                app.iframeLink
-            );
+    const grid =
+        document.getElementById(
+            "bentoGrid"
+        );
 
 
-        return url.hostname
+    const appCount =
+        document.getElementById(
+            "appCount"
+        );
+
+
+    const importantLinksContainer =
+        document.getElementById(
+            "importantLinks"
+        );
+
+
+    const dashboard =
+        document.getElementById(
+            "dashboard"
+        );
+
+
+    const viewer =
+        document.getElementById(
+            "viewer"
+        );
+
+
+    const iframe =
+        document.getElementById(
+            "siteFrame"
+        );
+
+
+    const loader =
+        document.getElementById(
+            "iframeLoader"
+        );
+
+
+    const passwordModal =
+        document.getElementById(
+            "passwordModal"
+        );
+
+
+    const passwordInput =
+        document.getElementById(
+            "passwordInput"
+        );
+
+
+    const passwordError =
+        document.getElementById(
+            "passwordError"
+        );
+
+
+    /* =========================================================
+       CURRENT STATE
+       ========================================================= */
+
+    let currentApp =
+        null;
+
+
+    let pendingApp =
+        null;
+
+
+    /* =========================================================
+       ESCAPE HTML
+       ========================================================= */
+
+    function escapeHTML(value) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(value)
 
             .replace(
-                /^www\./,
-                ""
+                /&/g,
+                "&amp;"
             )
 
-            .split(".")[0]
+            .replace(
+                /</g,
+                "&lt;"
+            )
 
             .replace(
-                /^./,
-                character =>
-                    character.toUpperCase()
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
             );
 
     }
 
-    catch {
 
-        return "Application";
+    /* =========================================================
+       GET APP NAME
+       ========================================================= */
+
+    function getAppName(app) {
+
+        if (
+            app.name
+        ) {
+
+            return app.name;
+
+        }
+
+
+        try {
+
+            const url =
+                new URL(
+                    app.iframeLink
+                );
+
+
+            return url.hostname
+
+                .replace(
+                    /^www\./,
+                    ""
+                )
+
+                .split(".")[0]
+
+                .replace(
+                    /^./,
+                    character =>
+                        character.toUpperCase()
+                );
+
+        }
+
+        catch {
+
+            return "Application";
+
+        }
 
     }
 
-}
+
+    /* =========================================================
+       PASSWORD CHECK
+       ========================================================= */
+
+    function hasPassword(app) {
+
+        if (!app) {
+
+            return false;
+
+        }
 
 
+        /*
+            STRING PASSWORD
+        */
 
-/* =============================================================
-   PASSWORD CHECK
-   ============================================================= */
+        if (
+            typeof app.password ===
+            "string"
+        ) {
 
-function hasPassword(app) {
+            return (
+                app.password.trim() !== ""
+            );
 
-    if (!app) {
+        }
+
+
+        /*
+            MULTIPLE PASSWORDS
+        */
+
+        if (
+            Array.isArray(
+                app.password
+            )
+        ) {
+
+            return app.password.some(
+                password =>
+                    String(password)
+                        .trim() !== ""
+            );
+
+        }
+
 
         return false;
 
     }
 
 
-    /*
-        STRING PASSWORD
-    */
+    /* =========================================================
+       GET PASSWORDS
+       ========================================================= */
 
-    if (
-        typeof app.password ===
-        "string"
-    ) {
-
-        return (
-            app.password.trim() !== ""
-        );
-
-    }
-
-
-    /*
-        MULTIPLE PASSWORDS
-    */
-
-    if (
-        Array.isArray(
-            app.password
-        )
-    ) {
-
-        return app.password.some(
-            password =>
-                String(password)
-                    .trim() !== ""
-        );
-
-    }
-
-
-    return false;
-
-}
-
-
-
-/* =============================================================
-   GET PASSWORD LIST
-   ============================================================= */
-
-function getPasswords(app) {
-
-    if (
-        typeof app.password ===
-        "string"
-    ) {
+    function getPasswords(app) {
 
         if (
-            app.password.trim() === ""
+            typeof app.password ===
+            "string"
         ) {
 
-            return [];
+            if (
+                app.password.trim() === ""
+            ) {
+
+                return [];
+
+            }
+
+
+            return [
+                app.password
+            ];
 
         }
 
 
-        return [
-            app.password
-        ];
-
-    }
-
-
-    if (
-        Array.isArray(
-            app.password
-        )
-    ) {
-
-        return app.password
-
-            .map(
-                password =>
-                    String(password)
+        if (
+            Array.isArray(
+                app.password
             )
+        ) {
 
-            .filter(
-                password =>
-                    password.trim() !== ""
-            );
+            return app.password
 
-    }
+                .map(
+                    password =>
+                        String(password)
+                )
 
-
-    return [];
-
-}
-
-
-
-/* =============================================================
-   RENDER APPLICATIONS
-   ============================================================= */
-
-function renderApps() {
-
-    grid.innerHTML =
-        "";
-
-
-    const enabledApps =
-        horizonApps.filter(
-            app =>
-                Number(app.enabled) === 1
-        );
-
-
-    appCount.textContent =
-        `${enabledApps.length} available`;
-
-
-    if (
-        enabledApps.length === 0
-    ) {
-
-        grid.innerHTML = `
-
-            <div class="empty-state">
-
-                No applications are
-                currently enabled.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    enabledApps.forEach(
-        (app, index) => {
-
-
-            const card =
-                document.createElement(
-                    "article"
+                .filter(
+                    password =>
+                        password.trim() !== ""
                 );
 
-
-            card.className =
-                `app-card ${
-                    app.size || "normal"
-                }`;
+        }
 
 
-            card.style.animationDelay =
-                `${index * 45}ms`;
+        return [];
+
+    }
 
 
-            const logo =
-                app.logo ||
-                "https://i.ibb.co/kgzJb34B/horizon-logo.png";
+    /* =========================================================
+       RENDER ALL APPLICATIONS
+       IMPORTANT:
+       DISABLED CARDS ARE NOT FILTERED.
+       ========================================================= */
+
+    function renderApps() {
+
+        grid.innerHTML =
+            "";
 
 
-            const protectedApp =
-                hasPassword(app);
+        /*
+            ALL cards remain visible,
+            including enabled: 0
+        */
+
+        const apps =
+            Array.isArray(
+                horizonApps
+            )
+            ?
+            horizonApps
+            :
+            [];
 
 
-            card.innerHTML = `
-
-                <div class="card-glow"></div>
-
-
-                <div>
-
-                    <div class="card-top">
-
-                        <img
-
-                            class="app-logo"
-
-                            src="${escapeHTML(
-                                logo
-                            )}"
-
-                            alt=""
-
-                            loading="lazy"
-
-                            onerror="
-                                this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
-                            "
-
-                        >
+        const activeCount =
+            apps.filter(
+                app =>
+                    Number(app.enabled) === 1
+            ).length;
 
 
-                        <div class="card-status">
-
-                            ${
-                                protectedApp
-
-                                ?
-
-                                `
-                                <span
-                                    class="lock-icon"
-                                    title="Password protected"
-                                >
-                                    🔒
-                                </span>
-                                `
-
-                                :
-
-                                ""
-
-                            }
+        appCount.textContent =
+            `${activeCount} active · ${apps.length} total`;
 
 
-                            <span
-                                class="status-dot"
-                                title="Enabled"
-                            ></span>
+        if (
+            apps.length === 0
+        ) {
 
-                        </div>
+            grid.innerHTML = `
 
-                    </div>
+                <div class="empty-state">
 
-
-                    <div class="card-content">
-
-                        <div class="card-title">
-
-                            ${escapeHTML(
-                                getAppName(app)
-                            )}
-
-                        </div>
-
-
-                        <div class="card-description">
-
-                            ${escapeHTML(
-                                app.description
-                            )}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="hover-text">
-
-                    ${escapeHTML(
-                        app.hoverText ||
-                        "Open application"
-                    )}
-
-                    &nbsp; →
+                    No applications added.
 
                 </div>
 
             `;
 
-
-            card.addEventListener(
-                "click",
-                () =>
-                    handleAppClick(app)
-            );
-
-
-            grid.appendChild(
-                card
-            );
+            return;
 
         }
-    );
-
-}
 
 
-
-/* =============================================================
-   HANDLE APPLICATION CLICK
-   ============================================================= */
-
-function handleAppClick(app) {
-
-    if (!app) {
-
-        return;
-
-    }
+        apps.forEach(
+            (app, index) => {
 
 
-    /*
-        NO PASSWORD
-        DIRECTLY OPEN
-    */
+                /*
+                    Check whether enabled
+                */
 
-    if (
-        !hasPassword(app)
-    ) {
-
-        openApp(app);
-
-        return;
-
-    }
+                const isEnabled =
+                    Number(app.enabled) === 1;
 
 
-    /*
-        PASSWORD REQUIRED
-    */
+                /*
+                    Create card
+                */
 
-    pendingApp =
-        app;
-
-
-    passwordInput.value =
-        "";
+                const card =
+                    document.createElement(
+                        "article"
+                    );
 
 
-    passwordError.textContent =
-        "";
+                /*
+                    Disabled class
+                */
+
+                card.className =
+                    `app-card ${
+                        app.size || "normal"
+                    } ${
+                        isEnabled
+                        ?
+                        ""
+                        :
+                        "disabled"
+                    }`;
 
 
-    passwordInput.classList.remove(
-        "error"
-    );
+                card.style.animationDelay =
+                    `${index * 45}ms`;
 
 
-    passwordModal.classList.add(
-        "active"
-    );
+                /*
+                    Logo
+                */
+
+                const logo =
+                    app.logo ||
+                    "https://i.ibb.co/kgzJb34B/horizon-logo.png";
 
 
-    setTimeout(
-        () => {
+                /*
+                    Password icon
+                */
 
-            passwordInput.focus();
-
-        },
-        150
-    );
-
-}
+                const protectedApp =
+                    hasPassword(app);
 
 
+                /*
+                    Status
+                */
 
-/* =============================================================
-   SUBMIT PASSWORD
-   ============================================================= */
+                const statusHTML =
+                    isEnabled
 
-function submitPassword() {
+                    ?
 
-    if (!pendingApp) {
+                    `
+                    <span
+                        class="status-dot"
+                        title="Enabled"
+                    ></span>
+                    `
 
-        return;
+                    :
 
-    }
+                    `
+                    <span
+                        class="disabled-status"
+                        title="Disabled"
+                    >
+                        Disabled
+                    </span>
+                    `;
 
 
-    const entered =
-        passwordInput.value;
+                /*
+                    Card HTML
+                */
+
+                card.innerHTML = `
+
+                    <div class="card-glow"></div>
 
 
-    const validPasswords =
-        getPasswords(
-            pendingApp
+                    <div>
+
+                        <div class="card-top">
+
+
+                            <img
+
+                                class="app-logo"
+
+                                src="${escapeHTML(
+                                    logo
+                                )}"
+
+                                alt=""
+
+                                loading="lazy"
+
+                                onerror="
+                                    this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
+                                "
+
+                            >
+
+
+                            <div class="card-status">
+
+
+                                ${
+                                    protectedApp &&
+                                    isEnabled
+
+                                    ?
+
+                                    `
+                                    <span
+                                        class="lock-icon"
+                                        title="Password protected"
+                                    >
+                                        🔒
+                                    </span>
+                                    `
+
+                                    :
+
+                                    ""
+
+                                }
+
+
+                                ${statusHTML}
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="card-content">
+
+
+                            <div class="card-title">
+
+                                ${escapeHTML(
+                                    getAppName(app)
+                                )}
+
+                            </div>
+
+
+                            <div class="card-description">
+
+                                ${escapeHTML(
+                                    app.description ||
+                                    ""
+                                )}
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="hover-text">
+
+                        ${escapeHTML(
+                            app.hoverText ||
+                            "Open application"
+                        )}
+
+                        &nbsp; →
+
+                    </div>
+
+                `;
+
+
+                /*
+                    CLICK HANDLER
+
+                    ENABLED:
+                        Open app.
+
+                    DISABLED:
+                        Do absolutely nothing.
+                */
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        if (!isEnabled) {
+
+                            return;
+
+                        }
+
+
+                        handleAppClick(
+                            app
+                        );
+
+                    }
+                );
+
+
+                grid.appendChild(
+                    card
+                );
+
+            }
         );
 
-
-    const valid =
-        validPasswords.some(
-            password =>
-                entered === password
-        );
+    }
 
 
-    if (!valid) {
+    /* =========================================================
+       HANDLE APPLICATION CLICK
+       ========================================================= */
+
+    function handleAppClick(app) {
+
+        if (!app) {
+
+            return;
+
+        }
+
+
+        /*
+            Safety check.
+            Even if function is called manually,
+            disabled cards cannot open.
+        */
+
+        if (
+            Number(app.enabled) !== 1
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+            No password:
+            Directly open.
+        */
+
+        if (
+            !hasPassword(app)
+        ) {
+
+            openApp(
+                app
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Password required
+        */
+
+        pendingApp =
+            app;
+
+
+        passwordInput.value =
+            "";
+
 
         passwordError.textContent =
-            "Incorrect password. Please try again.";
+            "";
 
 
-        passwordInput.classList.add(
+        passwordInput.classList.remove(
             "error"
         );
 
 
-        setTimeout(
-            () => {
-
-                passwordInput.classList.remove(
-                    "error"
-                );
-
-            },
-            350
+        passwordModal.classList.add(
+            "active"
         );
 
 
-        passwordInput.focus();
+        setTimeout(
+            () => {
 
+                passwordInput.focus();
 
-        return;
+            },
+            150
+        );
 
     }
 
 
-    const app =
-        pendingApp;
+    /* =========================================================
+       SUBMIT PASSWORD
+       ========================================================= */
 
+    function submitPassword() {
 
-    pendingApp =
-        null;
+        if (!pendingApp) {
 
-
-    closePasswordModal();
-
-
-    openApp(app);
-
-}
-
-
-
-/* =============================================================
-   PASSWORD ENTER / ESC
-   ============================================================= */
-
-passwordInput.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            submitPassword();
+            return;
 
         }
 
 
-        if (
-            event.key === "Escape"
-        ) {
+        const entered =
+            passwordInput.value;
 
-            cancelPassword();
+
+        const validPasswords =
+            getPasswords(
+                pendingApp
+            );
+
+
+        /*
+            ANY matching password works
+        */
+
+        const valid =
+            validPasswords.some(
+                password =>
+                    entered === password
+            );
+
+
+        if (!valid) {
+
+            passwordError.textContent =
+                "Incorrect password. Please try again.";
+
+
+            passwordInput.classList.add(
+                "error"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    passwordInput.classList.remove(
+                        "error"
+                    );
+
+                },
+                350
+            );
+
+
+            passwordInput.focus();
+
+
+            return;
 
         }
 
-    }
-);
+
+        const app =
+            pendingApp;
 
 
-
-/* =============================================================
-   CLOSE PASSWORD MODAL
-   ============================================================= */
-
-function closePasswordModal() {
-
-    passwordModal.classList.remove(
-        "active"
-    );
+        pendingApp =
+            null;
 
 
-    passwordInput.value =
-        "";
+        closePasswordModal();
 
 
-    passwordError.textContent =
-        "";
-
-}
-
-
-
-/* =============================================================
-   CANCEL PASSWORD
-   ============================================================= */
-
-function cancelPassword() {
-
-    pendingApp =
-        null;
-
-
-    closePasswordModal();
-
-}
-
-
-
-/* =============================================================
-   OPEN IFRAME APPLICATION
-   ============================================================= */
-
-function openApp(app) {
-
-    if (
-        !app ||
-        !app.iframeLink
-    ) {
-
-        return;
+        openApp(
+            app
+        );
 
     }
 
 
-    currentApp =
-        app;
+    /* =========================================================
+       PASSWORD KEYBOARD
+       ========================================================= */
+
+    passwordInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                submitPassword();
+
+            }
 
 
-    /*
-        Hide Horizon
-    */
+            if (
+                event.key === "Escape"
+            ) {
 
-    dashboard.classList.add(
-        "hidden"
+                cancelPassword();
+
+            }
+
+        }
     );
 
 
-    /*
-        Show iframe
-    */
+    /* =========================================================
+       CLOSE PASSWORD MODAL
+       ========================================================= */
 
-    viewer.classList.add(
-        "active"
-    );
+    function closePasswordModal() {
 
-
-    /*
-        Show loader
-    */
-
-    loader.classList.remove(
-        "hidden"
-    );
+        passwordModal.classList.remove(
+            "active"
+        );
 
 
-    /*
-        Clear previous iframe
-    */
-
-    iframe.src =
-        "about:blank";
+        passwordInput.value =
+            "";
 
 
-    /*
-        Load requested website
-    */
+        passwordError.textContent =
+            "";
 
-    setTimeout(
+    }
+
+
+    /* =========================================================
+       CANCEL PASSWORD
+       ========================================================= */
+
+    function cancelPassword() {
+
+        pendingApp =
+            null;
+
+
+        closePasswordModal();
+
+    }
+
+
+    /* =========================================================
+       OPEN APP
+       ========================================================= */
+
+    function openApp(app) {
+
+        if (
+            !app ||
+            !app.iframeLink
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+            Extra safety check
+        */
+
+        if (
+            Number(app.enabled) !== 1
+        ) {
+
+            return;
+
+        }
+
+
+        currentApp =
+            app;
+
+
+        /*
+            Hide dashboard
+        */
+
+        dashboard.classList.add(
+            "hidden"
+        );
+
+
+        /*
+            Show full-screen iframe
+        */
+
+        viewer.classList.add(
+            "active"
+        );
+
+
+        /*
+            Show loader
+        */
+
+        loader.classList.remove(
+            "hidden"
+        );
+
+
+        /*
+            Clear old iframe
+        */
+
+        iframe.src =
+            "about:blank";
+
+
+        /*
+            Load requested website
+        */
+
+        setTimeout(
+            () => {
+
+                iframe.src =
+                    app.iframeLink;
+
+            },
+            80
+        );
+
+
+        /*
+            Add browser history state.
+
+            Browser Back will return
+            to Horizon.
+        */
+
+        history.pushState(
+            {
+                horizonViewer:
+                    true
+            },
+            "",
+            "#app"
+        );
+
+    }
+
+
+    /* =========================================================
+       IFRAME LOADED
+       ========================================================= */
+
+    iframe.addEventListener(
+        "load",
         () => {
 
-            iframe.src =
-                app.iframeLink;
+            setTimeout(
+                () => {
 
-        },
-        80
-    );
+                    loader.classList.add(
+                        "hidden"
+                    );
 
-
-    /*
-        Browser history.
-
-        Browser Back button will
-        return to Horizon.
-    */
-
-    history.pushState(
-        {
-            horizonViewer:
-                true
-        },
-        "",
-        "#app"
-    );
-
-}
-
-
-
-/* =============================================================
-   IFRAME LOADED
-   ============================================================= */
-
-iframe.addEventListener(
-    "load",
-    () => {
-
-        setTimeout(
-            () => {
-
-                loader.classList.add(
-                    "hidden"
-                );
-
-            },
-            250
-        );
-
-    }
-);
-
-
-
-/* =============================================================
-   RETURN TO HORIZON
-   ============================================================= */
-
-function goBack() {
-
-    iframe.src =
-        "about:blank";
-
-
-    viewer.classList.remove(
-        "active"
-    );
-
-
-    dashboard.classList.remove(
-        "hidden"
-    );
-
-
-    currentApp =
-        null;
-
-
-    /*
-        Remove #app from URL
-    */
-
-    if (
-        location.hash === "#app"
-    ) {
-
-        history.replaceState(
-            null,
-            "",
-            location.pathname +
-            location.search
-        );
-
-    }
-
-}
-
-
-
-/* =============================================================
-   BROWSER BACK BUTTON
-   ============================================================= */
-
-window.addEventListener(
-    "popstate",
-    () => {
-
-        if (
-            viewer.classList.contains(
-                "active"
-            )
-        ) {
-
-            goBack();
+                },
+                250
+            );
 
         }
-
-    }
-);
+    );
 
 
+    /* =========================================================
+       RETURN TO HORIZON
+       ========================================================= */
 
-/* =============================================================
-   ESCAPE KEY
+    function goBack() {
 
-   Escape can return to Horizon
-   without having a button over iframe.
-   ============================================================= */
+        iframe.src =
+            "about:blank";
 
-document.addEventListener(
-    "keydown",
-    event => {
 
-        if (
-            event.key !== "Escape"
-        ) {
+        viewer.classList.remove(
+            "active"
+        );
 
-            return;
 
-        }
+        dashboard.classList.remove(
+            "hidden"
+        );
+
+
+        currentApp =
+            null;
 
 
         /*
-            Password modal
+            Remove #app
         */
 
         if (
-            passwordModal.classList.contains(
-                "active"
-            )
+            location.hash === "#app"
         ) {
 
-            cancelPassword();
-
-            return;
-
-        }
-
-
-        /*
-            Iframe
-        */
-
-        if (
-            viewer.classList.contains(
-                "active"
-            )
-        ) {
-
-            goBack();
+            history.replaceState(
+                null,
+                "",
+                location.pathname +
+                location.search
+            );
 
         }
 
     }
-);
 
 
+    /* =========================================================
+       BROWSER BACK BUTTON
+       ========================================================= */
 
-/* =============================================================
-   RENDER IMPORTANT LINKS
-   ============================================================= */
+    window.addEventListener(
+        "popstate",
+        () => {
 
-function renderImportantLinks() {
+            if (
+                viewer.classList.contains(
+                    "active"
+                )
+            ) {
 
-    importantLinksContainer.innerHTML =
-        "";
+                goBack();
 
+            }
 
-    if (
-        importantLinks.length === 0
-    ) {
-
-        importantLinksContainer.innerHTML = `
-
-            <div class="empty-state">
-
-                No important links added.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
+        }
+    );
 
 
-    importantLinks.forEach(
-        item => {
+    /* =========================================================
+       ESCAPE KEY
+       ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key !== "Escape"
+            ) {
+
+                return;
+
+            }
 
 
-            const wrapper =
-                document.createElement(
-                    "div"
-                );
+            /*
+                Password modal
+            */
+
+            if (
+                passwordModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                cancelPassword();
+
+                return;
+
+            }
 
 
-            wrapper.className =
-                "important-link";
+            /*
+                Iframe
+            */
+
+            if (
+                viewer.classList.contains(
+                    "active"
+                )
+            ) {
+
+                goBack();
+
+            }
+
+        }
+    );
 
 
-            wrapper.innerHTML = `
+    /* =========================================================
+       RENDER IMPORTANT LINKS
+       ========================================================= */
 
-                <div class="important-info">
+    function renderImportantLinks() {
 
-                    <div class="important-name">
-
-                        ${escapeHTML(
-                            item.name
-                        )}
-
-                    </div>
+        importantLinksContainer.innerHTML =
+            "";
 
 
-                    <div class="important-url">
-
-                        ${escapeHTML(
-                            item.url
-                        )}
-
-                    </div>
-
-                </div>
-
-
-                <div class="important-actions">
-
-                    <button
-                        class="link-button copy-button"
-                    >
-                        Copy
-                    </button>
+        const links =
+            Array.isArray(
+                importantLinks
+            )
+            ?
+            importantLinks
+            :
+            [];
 
 
-                    <button
-                        class="link-button open"
-                    >
-                        Open
-                    </button>
+        if (
+            links.length === 0
+        ) {
+
+            importantLinksContainer.innerHTML = `
+
+                <div class="empty-state">
+
+                    No important links added.
 
                 </div>
 
             `;
 
-
-            /*
-                COPY
-            */
-
-            const copyButton =
-                wrapper.querySelector(
-                    ".copy-button"
-                );
-
-
-            copyButton.addEventListener(
-                "click",
-                event => {
-
-                    event.stopPropagation();
-
-                    copyImportantLink(
-                        item.url,
-                        copyButton
-                    );
-
-                }
-            );
-
-
-            /*
-                OPEN
-            */
-
-            const openButton =
-                wrapper.querySelector(
-                    ".open"
-                );
-
-
-            openButton.addEventListener(
-                "click",
-                event => {
-
-                    event.stopPropagation();
-
-                    openImportantLink(
-                        item.url
-                    );
-
-                }
-            );
-
-
-            importantLinksContainer
-                .appendChild(
-                    wrapper
-                );
+            return;
 
         }
-    );
-
-}
 
 
-
-/* =============================================================
-   COPY IMPORTANT LINK
-   ============================================================= */
-
-async function copyImportantLink(
-    url,
-    button
-) {
-
-    try {
-
-        await navigator.clipboard.writeText(
-            url
-        );
+        links.forEach(
+            item => {
 
 
-        const oldText =
-            button.textContent;
+                const wrapper =
+                    document.createElement(
+                        "div"
+                    );
 
 
-        button.textContent =
-            "Copied ✓";
+                wrapper.className =
+                    "important-link";
 
 
-        button.classList.add(
-            "copy-success"
-        );
+                wrapper.innerHTML = `
+
+                    <div
+                        class="important-info"
+                    >
 
 
-        setTimeout(
-            () => {
+                        <div
+                            class="important-name"
+                        >
 
-                button.textContent =
-                    oldText;
+                            ${escapeHTML(
+                                item.name
+                            )}
+
+                        </div>
 
 
-                button.classList.remove(
-                    "copy-success"
+                        <div
+                            class="important-url"
+                        >
+
+                            ${escapeHTML(
+                                item.url
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div
+                        class="important-actions"
+                    >
+
+
+                        <button
+                            class="link-button copy-button"
+                        >
+
+                            Copy
+
+                        </button>
+
+
+                        <button
+                            class="link-button open"
+                        >
+
+                            Open
+
+                        </button>
+
+
+                    </div>
+
+                `;
+
+
+                /*
+                    Copy
+                */
+
+                const copyButton =
+                    wrapper.querySelector(
+                        ".copy-button"
+                    );
+
+
+                copyButton.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        copyImportantLink(
+                            item.url,
+                            copyButton
+                        );
+
+                    }
                 );
 
-            },
-            1500
+
+                /*
+                    Open
+                */
+
+                const openButton =
+                    wrapper.querySelector(
+                        ".open"
+                    );
+
+
+                openButton.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        openImportantLink(
+                            item.url
+                        );
+
+                    }
+                );
+
+
+                importantLinksContainer
+                    .appendChild(
+                        wrapper
+                    );
+
+            }
         );
 
     }
 
-    catch {
 
-        /*
-            Fallback
-        */
+    /* =========================================================
+       COPY IMPORTANT LINK
+       ========================================================= */
 
-        const textarea =
-            document.createElement(
-                "textarea"
+    async function copyImportantLink(
+        url,
+        button
+    ) {
+
+        try {
+
+            await navigator.clipboard.writeText(
+                url
             );
 
 
-        textarea.value =
-            url;
+            const oldText =
+                button.textContent;
 
 
-        textarea.style.position =
-            "fixed";
+            button.textContent =
+                "Copied ✓";
 
 
-        textarea.style.opacity =
-            "0";
+            button.classList.add(
+                "copy-success"
+            );
 
 
-        document.body.appendChild(
-            textarea
-        );
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        oldText;
 
 
-        textarea.select();
+                    button.classList.remove(
+                        "copy-success"
+                    );
+
+                },
+                1500
+            );
+
+        }
+
+        catch {
+
+            /*
+                Fallback
+            */
+
+            const textarea =
+                document.createElement(
+                    "textarea"
+                );
 
 
-        document.execCommand(
-            "copy"
-        );
+            textarea.value =
+                url;
 
 
-        textarea.remove();
+            textarea.style.position =
+                "fixed";
 
 
-        button.textContent =
-            "Copied ✓";
+            textarea.style.opacity =
+                "0";
 
 
-        setTimeout(
-            () => {
+            document.body.appendChild(
+                textarea
+            );
 
-                button.textContent =
-                    "Copy";
 
-            },
-            1500
+            textarea.select();
+
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            textarea.remove();
+
+
+            button.textContent =
+                "Copied ✓";
+
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        "Copy";
+
+                },
+                1500
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       OPEN IMPORTANT LINK
+       ========================================================= */
+
+    function openImportantLink(url) {
+
+        if (!url) {
+
+            return;
+
+        }
+
+
+        window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
         );
 
     }
 
-}
 
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
 
+    renderApps();
 
-/* =============================================================
-   OPEN IMPORTANT LINK
-   ============================================================= */
-
-function openImportantLink(url) {
-
-    if (!url) {
-
-        return;
-
-    }
-
-
-    window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
-
-
-
-/* =============================================================
-   INITIALIZE HORIZON
-   ============================================================= */
-
-renderApps();
-
-renderImportantLinks();
-
+    renderImportantLinks();
 
 </script>
 
