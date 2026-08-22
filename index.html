@@ -25,2921 +25,2760 @@
     >
 
 
-    <style>
+<style>
 
-        /* =====================================================
-           VARIABLES
-           ===================================================== */
+/* =========================================================
+   HORIZON VARIABLES
+   ========================================================= */
 
-        :root {
+:root {
 
-            --bg: #080b12;
+    --bg: #080b12;
+    --bg-secondary: #0d111a;
 
-            --bg-secondary: #0d111a;
+    --card:
+        rgba(18, 23, 34, 0.82);
 
-            --card:
-                rgba(18, 23, 34, 0.82);
+    --card-hover:
+        rgba(27, 34, 49, 0.96);
 
-            --card-hover:
-                rgba(27, 34, 49, 0.96);
+    --border:
+        rgba(255,255,255,0.08);
 
-            --border:
-                rgba(255,255,255,0.08);
+    --border-hover:
+        rgba(255,255,255,0.16);
 
-            --border-hover:
-                rgba(255,255,255,0.16);
+    --text:
+        #f4f7fb;
 
-            --text:
-                #f4f7fb;
+    --muted:
+        #8c96a8;
 
-            --muted:
-                #8c96a8;
+    --accent:
+        #3498db;
 
-            --accent:
-                #3498db;
+    --accent-light:
+        #8fcfff;
 
-            --accent-light:
-                #8fcfff;
+    --accent-soft:
+        rgba(52,152,219,0.14);
 
-            --accent-soft:
-                rgba(52,152,219,0.14);
+    --success:
+        #42d17d;
 
-            --success:
-                #42d17d;
+    --danger:
+        #ff5f6d;
 
-            --danger:
-                #ff5f6d;
+    --input-bg:
+        rgba(255,255,255,0.045);
 
-            --input-bg:
-                rgba(255,255,255,0.045);
-
-            --radius:
-                24px;
-
-        }
-
-
-        /* =====================================================
-           LIGHT THEME
-           ===================================================== */
-
-        body.light-theme {
-
-            --bg:
-                #f4f7fb;
-
-            --bg-secondary:
-                #ffffff;
-
-            --card:
-                rgba(255,255,255,0.90);
-
-            --card-hover:
-                #ffffff;
-
-            --border:
-                rgba(15,23,42,0.09);
-
-            --border-hover:
-                rgba(15,23,42,0.16);
-
-            --text:
-                #101827;
-
-            --muted:
-                #667085;
-
-            --input-bg:
-                rgba(15,23,42,0.045);
-
-            background:
-
-                radial-gradient(
-                    circle at 10% 0%,
-                    color-mix(
-                        in srgb,
-                        var(--accent) 10%,
-                        transparent
-                    ),
-                    transparent 30%
-                ),
-
-                #f4f7fb;
-
-        }
-
-
-        /* =====================================================
-           RESET
-           ===================================================== */
-
-        * {
-
-            box-sizing:
-                border-box;
-
-            margin:
-                0;
-
-            padding:
-                0;
-
-        }
-
-
-        html {
-
-            scroll-behavior:
-                smooth;
-
-        }
-
-
-        body {
-
-            width:
-                100%;
-
-            min-height:
-                100vh;
-
-            font-family:
-
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color:
-                var(--text);
-
-            background:
-
-                radial-gradient(
-                    circle at 10% 0%,
-                    rgba(52,152,219,0.09),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 90% 10%,
-                    rgba(113,76,255,0.08),
-                    transparent 30%
-                ),
-
-                var(--bg);
-
-            overflow-x:
-                hidden;
-
-            transition:
-
-                background 0.3s ease,
-
-                color 0.3s ease;
-
-        }
-
-
-        body.modal-open {
-
-            overflow:
-                hidden;
-
-        }
-
-
-        button,
-        input {
-
-            font-family:
-                inherit;
-
-        }
-
-
-        button {
-
-            -webkit-tap-highlight-color:
-                transparent;
-
-        }
-
-
-        /* =====================================================
-           DASHBOARD
-           ===================================================== */
-
-        #dashboard {
-
-            width:
-                100%;
-
-            min-height:
-                100vh;
-
-            transition:
-
-                opacity 0.3s ease,
-
-                transform 0.3s ease;
-
-        }
-
-
-        #dashboard.hidden {
-
-            opacity:
-                0;
-
-            pointer-events:
-                none;
-
-            transform:
-                scale(0.985);
-
-        }
-
-
-        /* =====================================================
-           MAIN
-           ===================================================== */
-
-        .main-content {
-
-            width:
-                min(1500px, 100%);
-
-            margin:
-                0 auto;
-
-            padding:
-
-                45px
-                clamp(18px, 5vw, 60px)
-                100px;
-
-        }
-
-
-        /* =====================================================
-           LARGE HORIZON LOGO
-           ===================================================== */
-
-        .home-brand {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-
-                20px
-                10px
-                18px;
-
-            user-select:
-                none;
-
-        }
-
-
-        .home-logo {
-
-            width:
-                clamp(180px, 20vw, 280px);
-
-            height:
-                clamp(180px, 20vw, 280px);
-
-            object-fit:
-                contain;
-
-            filter:
-
-                drop-shadow(
-                    0 22px 45px
-                    rgba(0,0,0,0.34)
-                );
-
-            animation:
-                logoAppear 0.7s ease both;
-
-        }
-
-
-        /* =====================================================
-           HERO
-           ===================================================== */
-
-        .hero {
-
-            text-align:
-                center;
-
-            margin:
-                0 auto 42px;
-
-            animation:
-                heroAppear 0.6s ease both;
-
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(34px, 5vw, 64px);
-
-            line-height:
-                1;
-
-            letter-spacing:
-                -3px;
-
-            font-weight:
-                850;
-
-            margin-bottom:
-                15px;
-
-        }
-
-
-        .hero h1 span {
-
-            color:
-                var(--accent-light);
-
-        }
-
-
-        .hero p {
-
-            max-width:
-                680px;
-
-            margin:
-                0 auto;
-
-            color:
-                var(--muted);
-
-            font-size:
-                clamp(13px, 1.5vw, 15px);
-
-            line-height:
-                1.65;
-
-        }
-
-
-        @keyframes logoAppear {
-
-            from {
-
-                opacity:
-                    0;
-
-                transform:
-                    translateY(18px)
-                    scale(0.90);
-
-            }
-
-            to {
-
-                opacity:
-                    1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-
-            }
-
-        }
-
-
-        @keyframes heroAppear {
-
-            from {
-
-                opacity:
-                    0;
-
-                transform:
-                    translateY(12px);
-
-            }
-
-            to {
-
-                opacity:
-                    1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        /* =====================================================
-           SECTION HEADER
-           ===================================================== */
-
-        .section-header {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                16px;
-
-        }
-
-
-        .section-title {
-
-            font-size:
-                14px;
-
-            font-weight:
-                750;
-
-        }
-
-
-        .section-count {
-
-            color:
-                var(--muted);
-
-            font-size:
-                11px;
-
-        }
-
-
-        /* =====================================================
-           BENTO GRID
-           ===================================================== */
-
-        #bentoGrid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(4, minmax(0,1fr));
-
-            grid-auto-rows:
-                minmax(180px,auto);
-
-            gap:
-                16px;
-
-        }
-
-
-        /* =====================================================
-           STANDARD APP CARD
-           ===================================================== */
-
-        .app-card {
-
-            position:
-                relative;
-
-            min-height:
-                190px;
-
-            overflow:
-                hidden;
-
-            padding:
-                22px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                var(--radius);
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.018)
-                ),
-
-                var(--card);
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                space-between;
-
-            transition:
-
-                transform 0.28s cubic-bezier(.2,.8,.2,1),
-
-                border-color 0.28s ease,
-
-                background 0.28s ease,
-
-                box-shadow 0.28s ease;
-
-            animation:
-                cardAppear 0.5s ease both;
-
-        }
-
-
-        .app-card:hover {
-
-            transform:
-                translateY(-5px)
-                scale(1.008);
-
-            border-color:
-                var(--border-hover);
-
-            background:
-                var(--card-hover);
-
-            box-shadow:
-
-                0 20px 50px
-                rgba(0,0,0,0.22);
-
-        }
-
-
-        .app-card:active {
-
-            transform:
-                scale(0.985);
-
-        }
-
-
-        .app-card.large {
-
-            grid-column:
-                span 2;
-
-            grid-row:
-                span 2;
-
-        }
-
-
-        .app-card.wide {
-
-            grid-column:
-                span 2;
-
-        }
-
-
-        .app-card.tall {
-
-            grid-row:
-                span 2;
-
-        }
-
-
-        /* =====================================================
-           DISABLED APP
-           ===================================================== */
-
-        .app-card.disabled {
-
-            cursor:
-                not-allowed;
-
-            opacity:
-                0.52;
-
-            filter:
-                saturate(0.45);
-
-        }
-
-
-        .app-card.disabled:hover {
-
-            transform:
-                none;
-
-            background:
-                var(--card);
-
-            border-color:
-                var(--border);
-
-            box-shadow:
-                none;
-
-        }
-
-
-        .app-card.disabled .card-glow {
-
-            display:
-                none;
-
-        }
-
-
-        /* =====================================================
-           CARD GLOW
-           ===================================================== */
-
-        .card-glow {
-
-            position:
-                absolute;
-
-            width:
-                180px;
-
-            height:
-                180px;
-
-            right:
-                -80px;
-
-            bottom:
-                -100px;
-
-            border-radius:
-                50%;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    color-mix(
-                        in srgb,
-                        var(--accent) 20%,
-                        transparent
-                    ),
-                    transparent 70%
-                );
-
-            pointer-events:
-                none;
-
-            transition:
-                transform 0.4s ease;
-
-        }
-
-
-        .app-card:hover
-        .card-glow {
-
-            transform:
-                scale(1.5);
-
-        }
-
-
-        /* =====================================================
-           CARD TOP
-           ===================================================== */
-
-        .card-top {
-
-            display:
-                flex;
-
-            align-items:
-                flex-start;
-
-            justify-content:
-                space-between;
-
-        }
-
-
-        .app-logo {
-
-            width:
-                50px;
-
-            height:
-                50px;
-
-            object-fit:
-                contain;
-
-            padding:
-                8px;
-
-            border-radius:
-                15px;
-
-            background:
-                rgba(255,255,255,0.06);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.07);
-
-        }
-
-
-        .card-status {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                7px;
-
-        }
-
-
-        .status-dot {
-
-            width:
-                8px;
-
-            height:
-                8px;
-
-            border-radius:
-                50%;
-
-            background:
-                var(--success);
-
-            box-shadow:
-
-                0 0 12px
-                rgba(66,209,125,0.65);
-
-        }
-
-
-        .lock-icon {
-
-            font-size:
-                12px;
-
-            opacity:
-                0.65;
-
-        }
-
-
-        .disabled-status {
-
-            padding:
-                4px 8px;
-
-            border-radius:
-                999px;
-
-            background:
-                rgba(255,255,255,0.06);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            color:
-                var(--muted);
-
-            font-size:
-                9px;
-
-            font-weight:
-                700;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        /* =====================================================
-           CARD CONTENT
-           ===================================================== */
-
-        .card-content {
-
-            margin-top:
-                20px;
-
-        }
-
-
-        .card-title {
-
-            font-size:
-                18px;
-
-            font-weight:
-                750;
-
-            margin-bottom:
-                7px;
-
-        }
-
-
-        .card-description {
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            line-height:
-                1.55;
-
-            max-width:
-                90%;
-
-        }
-
-
-        .hover-text {
-
-            position:
-                absolute;
-
-            left:
-                22px;
-
-            bottom:
-                18px;
-
-            color:
-                var(--accent-light);
-
-            font-size:
-                11px;
-
-            font-weight:
-                650;
-
-            opacity:
-                0;
-
-            transform:
-                translateY(7px);
-
-            transition:
-                0.25s ease;
-
-        }
-
-
-        .app-card:hover
-        .hover-text {
-
-            opacity:
-                1;
-
-            transform:
-                translateY(0);
-
-        }
-
-
-        .app-card.disabled
-        .hover-text {
-
-            opacity:
-                0;
-
-        }
-
-
-        /* =====================================================
-           TODO CARD
-           ===================================================== */
-
-        .todo-card {
-
-            grid-column:
-                span 2;
-
-            grid-row:
-                span 2;
-
-            cursor:
-                default;
-
-        }
-
-
-        .todo-card:hover {
-
-            transform:
-                none;
-
-        }
-
-
-        .todo-header {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                16px;
-
-        }
-
-
-        .todo-title-area {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                11px;
-
-        }
-
-
-        .todo-icon {
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border-radius:
-                13px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                var(--accent-soft);
-
-            color:
-                var(--accent-light);
-
-            font-size:
-                19px;
-
-        }
-
-
-        .todo-title {
-
-            font-size:
-                18px;
-
-            font-weight:
-                800;
-
-        }
-
-
-        .todo-counter {
-
-            color:
-                var(--muted);
-
-            font-size:
-                10px;
-
-        }
-
-
-        .todo-input-row {
-
-            display:
-                flex;
-
-            gap:
-                7px;
-
-            margin-bottom:
-                12px;
-
-        }
-
-
-        .todo-input {
-
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            height:
-                40px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                11px;
-
-            background:
-                var(--input-bg);
-
-            color:
-                var(--text);
-
-            outline:
-                none;
-
-            padding:
-                0 12px;
-
-            font-size:
-                12px;
-
-        }
-
-
-        .todo-input:focus {
-
-            border-color:
-                color-mix(
-                    in srgb,
-                    var(--accent) 55%,
-                    transparent
-                );
-
-        }
-
-
-        .todo-add {
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            border:
-                0;
-
-            border-radius:
-                11px;
-
-            background:
-                var(--accent);
-
-            color:
-                white;
-
-            font-size:
-                20px;
-
-            cursor:
-                pointer;
-
-            transition:
-                0.2s ease;
-
-        }
-
-
-        .todo-add:hover {
-
-            filter:
-                brightness(1.08);
-
-            transform:
-                translateY(-1px);
-
-        }
-
-
-        .todo-list {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                6px;
-
-            max-height:
-                230px;
-
-            overflow-y:
-                auto;
-
-            padding-right:
-                3px;
-
-        }
-
-
-        .todo-list::-webkit-scrollbar {
-
-            width:
-                5px;
-
-        }
-
-
-        .todo-list::-webkit-scrollbar-thumb {
-
-            background:
-                rgba(128,128,128,0.25);
-
-            border-radius:
-                20px;
-
-        }
-
-
-        .todo-item {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            padding:
-                8px 9px;
-
-            border:
-                1px solid transparent;
-
-            border-radius:
-                10px;
-
-            transition:
-                0.2s ease;
-
-        }
-
-
-        .todo-item:hover {
-
-            background:
-                rgba(255,255,255,0.035);
-
-            border-color:
-                var(--border);
-
-        }
-
-
-        .todo-check {
-
-            width:
-                18px;
-
-            height:
-                18px;
-
-            flex-shrink:
-                0;
-
-            border:
-                1px solid
-                var(--border-hover);
-
-            border-radius:
-                6px;
-
-            background:
-                transparent;
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            color:
-                white;
-
-            font-size:
-                11px;
-
-        }
-
-
-        .todo-item.completed
-        .todo-check {
-
-            background:
-                var(--accent);
-
-            border-color:
-                var(--accent);
-
-        }
-
-
-        .todo-text {
-
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            color:
-                var(--text);
-
-            font-size:
-                12px;
-
-            line-height:
-                1.35;
-
-            word-break:
-                break-word;
-
-        }
-
-
-        .todo-item.completed
-        .todo-text {
-
-            text-decoration:
-                line-through;
-
-            opacity:
-                0.45;
-
-        }
-
-
-        .todo-delete {
-
-            border:
-                0;
-
-            background:
-                transparent;
-
-            color:
-                var(--muted);
-
-            cursor:
-                pointer;
-
-            font-size:
-                15px;
-
-            opacity:
-                0;
-
-            padding:
-                2px 4px;
-
-        }
-
-
-        .todo-item:hover
-        .todo-delete {
-
-            opacity:
-                1;
-
-        }
-
-
-        .todo-empty {
-
-            padding:
-                20px 5px;
-
-            text-align:
-                center;
-
-            color:
-                var(--muted);
-
-            font-size:
-                11px;
-
-        }
-
-
-        /* =====================================================
-           IMPORTANT LINKS
-           ===================================================== */
-
-        .important-section {
-
-            margin-top:
-                60px;
-
-        }
-
-
-        .important-links {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0,1fr));
-
-            gap:
-                12px;
-
-        }
-
-
-        .important-link {
-
-            border:
-                1px solid var(--border);
-
-            background:
-                var(--card);
-
-            border-radius:
-                17px;
-
-            padding:
-                15px 16px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                12px;
-
-            transition:
-                0.2s ease;
-
-        }
-
-
-        .important-link:hover {
-
-            border-color:
-                var(--border-hover);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .important-info {
-
-            min-width:
-                0;
-
-        }
-
-
-        .important-name {
-
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                5px;
-
-        }
-
-
-        .important-url {
-
-            color:
-                var(--muted);
-
-            font-size:
-                11px;
-
-            white-space:
-                nowrap;
-
-            overflow:
-                hidden;
-
-            text-overflow:
-                ellipsis;
-
-            max-width:
-                300px;
-
-        }
-
-
-        .important-actions {
-
-            display:
-                flex;
-
-            gap:
-                6px;
-
-            flex-shrink:
-                0;
-
-        }
-
-
-        .link-button {
-
-            height:
-                34px;
-
-            padding:
-                0 11px;
-
-            border-radius:
-                10px;
-
-            border:
-                1px solid var(--border);
-
-            background:
-                var(--input-bg);
-
-            color:
-                var(--text);
-
-            cursor:
-                pointer;
-
-            font-size:
-                11px;
-
-            font-weight:
-                650;
-
-        }
-
-
-        .link-button.open {
-
-            background:
-                var(--accent-soft);
-
-            color:
-                var(--accent-light);
-
-            border-color:
-                color-mix(
-                    in srgb,
-                    var(--accent) 25%,
-                    transparent
-                );
-
-        }
-
-
-        .copy-success {
-
-            color:
-                var(--success) !important;
-
-        }
-
-
-        /* =====================================================
-           FOOTER
-           ===================================================== */
-
-        .footer {
-
-            margin-top:
-                55px;
-
-            text-align:
-                center;
-
-            color:
-                rgba(128,128,128,0.55);
-
-            font-size:
-                10px;
-
-        }
-
-        .settings-button.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: scale(0.8);
+    --radius:
+        24px;
 }
 
 
-        /* =====================================================
-           SETTINGS BUTTON
-           ===================================================== */
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
 
-        .settings-button {
+body.light-theme {
 
-            position:
-                fixed;
+    --bg:
+        #f4f7fb;
 
-            right:
-                22px;
+    --bg-secondary:
+        #ffffff;
 
-            bottom:
-                20px;
+    --card:
+        rgba(255,255,255,0.90);
 
-            z-index:
-                900;
+    --card-hover:
+        #ffffff;
 
-            width:
-                42px;
+    --border:
+        rgba(15,23,42,0.09);
 
-            height:
-                42px;
+    --border-hover:
+        rgba(15,23,42,0.16);
 
-            border-radius:
-                50%;
+    --text:
+        #101827;
 
-            border:
-                1px solid var(--border);
+    --muted:
+        #667085;
 
-            background:
-                var(--card);
+    --input-bg:
+        rgba(15,23,42,0.045);
 
-            color:
-                var(--text);
+    background:
+        #f4f7fb;
+}
 
-            display:
-                flex;
 
-            align-items:
-                center;
+/* =========================================================
+   RESET
+   ========================================================= */
 
-            justify-content:
-                center;
+* {
 
-            cursor:
-                pointer;
+    box-sizing:
+        border-box;
 
-            font-size:
-                18px;
+    margin:
+        0;
 
-            box-shadow:
-                0 8px 30px rgba(0,0,0,0.22);
+    padding:
+        0;
+}
 
-            backdrop-filter:
-                blur(12px);
 
-            transition:
-                0.25s ease;
+html {
 
-        }
+    scroll-behavior:
+        smooth;
 
+}
 
-        .settings-button:hover {
 
-            transform:
-                rotate(35deg)
-                scale(1.05);
+body {
 
-            border-color:
-                var(--border-hover);
+    width:
+        100%;
 
-        }
+    min-height:
+        100vh;
 
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-        /* =====================================================
-           SETTINGS OVERLAY
-           ===================================================== */
+    color:
+        var(--text);
 
-        #settingsOverlay {
+    background:
 
-            position:
-                fixed;
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(52,152,219,0.09),
+            transparent 30%
+        ),
 
-            inset:
-                0;
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(113,76,255,0.08),
+            transparent 30%
+        ),
 
-            z-index:
-                2000;
+        var(--bg);
 
-            background:
-                rgba(0,0,0,0.48);
+    overflow-x:
+        hidden;
 
-            backdrop-filter:
-                blur(7px);
+    transition:
 
-            opacity:
-                0;
+        background 0.3s ease,
+        color 0.3s ease;
+}
 
-            visibility:
-                hidden;
 
-            pointer-events:
-                none;
+body.modal-open {
 
-            transition:
-                0.25s ease;
+    overflow:
+        hidden;
+}
 
-        }
 
+button,
+input {
 
-        #settingsOverlay.active {
+    font-family:
+        inherit;
+}
 
-            opacity:
-                1;
 
-            visibility:
-                visible;
+button {
 
-            pointer-events:
-                auto;
+    -webkit-tap-highlight-color:
+        transparent;
+}
 
-        }
 
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
 
-        /* =====================================================
-           SETTINGS PANEL
-           ===================================================== */
+#dashboard {
 
-        .settings-panel {
+    width:
+        100%;
 
-            position:
-                fixed;
+    min-height:
+        100vh;
 
-            right:
-                16px;
+    transition:
 
-            bottom:
-                16px;
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
 
-            z-index:
-                2100;
 
-            width:
-                min(390px, calc(100vw - 30px));
+#dashboard.hidden {
 
-            max-height:
-                calc(100vh - 30px);
+    opacity:
+        0;
 
-            overflow-y:
-                auto;
+    pointer-events:
+        none;
 
-            padding:
-                22px;
+    transform:
+        scale(0.985);
+}
 
-            border:
-                1px solid var(--border);
 
-            border-radius:
-                24px;
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
 
-            background:
-                var(--bg-secondary);
+.main-content {
 
-            box-shadow:
-                0 30px 100px rgba(0,0,0,0.42);
+    width:
+        min(1500px, 100%);
 
-            transform:
-                translateY(25px)
-                scale(0.97);
+    margin:
+        0 auto;
 
-            opacity:
-                0;
+    padding:
 
-            visibility:
-                hidden;
+        45px
+        clamp(18px, 5vw, 60px)
+        100px;
+}
 
-            pointer-events:
-                none;
 
-            transition:
-                0.25s ease;
+/* =========================================================
+   LARGE HORIZON LOGO
+   ========================================================= */
 
-        }
+.home-brand {
 
+    display:
+        flex;
 
-        .settings-panel.active {
+    align-items:
+        center;
 
-            transform:
-                translateY(0)
-                scale(1);
+    justify-content:
+        center;
 
-            opacity:
-                1;
+    padding:
 
-            visibility:
-                visible;
+        15px
+        10px
+        18px;
 
-            pointer-events:
-                auto;
+    user-select:
+        none;
+}
 
-        }
 
+.home-logo {
 
-        .settings-header {
+    width:
+        clamp(190px, 21vw, 300px);
 
-            display:
-                flex;
+    height:
+        clamp(190px, 21vw, 300px);
 
-            align-items:
-                center;
+    object-fit:
+        contain;
 
-            justify-content:
-                space-between;
+    filter:
 
-            margin-bottom:
-                22px;
+        drop-shadow(
+            0 22px 45px
+            rgba(0,0,0,0.34)
+        );
 
-        }
+    animation:
+        logoAppear 0.7s ease both;
+}
 
 
-        .settings-heading {
+/* =========================================================
+   HERO
+   ========================================================= */
 
-            font-size:
-                20px;
+.hero {
 
-            font-weight:
-                800;
+    text-align:
+        center;
 
-        }
+    margin:
+        0 auto 42px;
 
+    animation:
+        heroAppear 0.6s ease both;
+}
 
-        .settings-close {
 
-            width:
-                32px;
+.hero h1 {
 
-            height:
-                32px;
+    font-size:
+        clamp(34px, 5vw, 64px);
 
-            border:
-                1px solid var(--border);
+    line-height:
+        1;
 
-            border-radius:
-                10px;
+    letter-spacing:
+        -3px;
 
-            background:
-                var(--input-bg);
+    font-weight:
+        850;
 
-            color:
-                var(--text);
+    margin-bottom:
+        15px;
+}
 
-            cursor:
-                pointer;
 
-        }
+.hero h1 span {
 
+    color:
+        var(--accent-light);
+}
 
-        .settings-section {
 
-            padding:
-                15px 0;
+.hero p {
 
-            border-top:
-                1px solid var(--border);
+    max-width:
+        680px;
 
-        }
+    margin:
+        0 auto;
 
+    color:
+        var(--muted);
 
-        .settings-section:first-of-type {
+    font-size:
+        clamp(13px, 1.5vw, 15px);
 
-            border-top:
-                0;
+    line-height:
+        1.65;
+}
 
-        }
 
+@keyframes logoAppear {
 
-        .settings-label {
+    from {
 
-            display:
-                block;
+        opacity:
+            0;
 
-            font-size:
-                12px;
+        transform:
+            translateY(18px)
+            scale(0.90);
+    }
 
-            font-weight:
-                750;
+    to {
 
-            margin-bottom:
-                5px;
+        opacity:
+            1;
 
-        }
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
 
 
-        .settings-description {
+@keyframes heroAppear {
 
-            color:
-                var(--muted);
+    from {
 
-            font-size:
-                10px;
+        opacity:
+            0;
 
-            line-height:
-                1.5;
+        transform:
+            translateY(12px);
+    }
 
-            margin-bottom:
-                12px;
+    to {
 
-        }
+        opacity:
+            1;
 
+        transform:
+            translateY(0);
+    }
+}
 
-        /* =====================================================
-           THEME OPTIONS
-           ===================================================== */
 
-        .theme-options {
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
 
-            display:
-                grid;
+.section-header {
 
-            grid-template-columns:
-                repeat(3,1fr);
+    display:
+        flex;
 
-            gap:
-                7px;
+    align-items:
+        center;
 
-        }
+    justify-content:
+        space-between;
 
+    margin-bottom:
+        16px;
+}
 
-        .theme-option {
 
-            min-height:
-                42px;
+.section-title {
 
-            border:
-                1px solid var(--border);
+    font-size:
+        14px;
 
-            border-radius:
-                10px;
+    font-weight:
+        750;
+}
 
-            background:
-                var(--input-bg);
 
-            color:
-                var(--text);
+.section-count {
 
-            cursor:
-                pointer;
+    color:
+        var(--muted);
 
-            font-size:
-                10px;
+    font-size:
+        11px;
+}
 
-            font-weight:
-                650;
 
-        }
+/* =========================================================
+   BENTO GRID
+   ========================================================= */
 
+#bentoGrid {
 
-        .theme-option.active {
+    display:
+        grid;
 
-            border-color:
-                var(--accent);
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
 
-            background:
-                var(--accent-soft);
+    grid-auto-rows:
+        minmax(180px,auto);
 
-            color:
-                var(--accent-light);
+    gap:
+        16px;
+}
 
-        }
 
+/* =========================================================
+   APP CARD
+   ========================================================= */
 
-        /* =====================================================
-           COLOR OPTIONS
-           ===================================================== */
+.app-card {
 
-        .color-options {
+    position:
+        relative;
 
-            display:
-                flex;
+    min-height:
+        190px;
 
-            flex-wrap:
-                wrap;
+    overflow:
+        hidden;
 
-            gap:
-                9px;
+    padding:
+        22px;
 
-        }
+    border:
+        1px solid var(--border);
 
+    border-radius:
+        var(--radius);
 
-        .color-option {
+    background:
 
-            width:
-                29px;
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        ),
 
-            height:
-                29px;
+        var(--card);
 
-            border-radius:
-                50%;
+    cursor:
+        pointer;
 
-            border:
-                3px solid transparent;
+    display:
+        flex;
 
-            outline:
-                1px solid var(--border);
+    flex-direction:
+        column;
 
-            outline-offset:
-                2px;
+    justify-content:
+        space-between;
 
-            cursor:
-                pointer;
+    transition:
 
-            transition:
-                0.2s ease;
+        transform 0.28s cubic-bezier(.2,.8,.2,1),
 
-        }
+        border-color 0.28s ease,
 
+        background 0.28s ease,
 
-        .color-option:hover {
+        box-shadow 0.28s ease;
 
-            transform:
-                scale(1.1);
+    animation:
+        cardAppear 0.5s ease both;
+}
 
-        }
 
+.app-card:hover {
 
-        .color-option.active {
+    transform:
+        translateY(-5px)
+        scale(1.008);
 
-            border-color:
-                white;
+    border-color:
+        var(--border-hover);
 
-            outline-color:
-                var(--accent);
+    background:
+        var(--card-hover);
 
-            transform:
-                scale(1.1);
+    box-shadow:
 
-        }
+        0 20px 50px
+        rgba(0,0,0,0.22);
+}
 
 
-        /* =====================================================
-           TODO SETTINGS
-           ===================================================== */
+.app-card:active {
 
-        .settings-toggle-row {
+    transform:
+        scale(0.985);
+}
 
-            display:
-                flex;
 
-            align-items:
-                center;
+/* =========================================================
+   CARD SIZES
+   ========================================================= */
 
-            justify-content:
-                space-between;
+.app-card.large {
 
-            gap:
-                15px;
+    grid-column:
+        span 2;
 
-        }
+    grid-row:
+        span 2;
+}
 
 
-        .toggle {
+.app-card.wide {
 
-            width:
-                42px;
+    grid-column:
+        span 2;
+}
 
-            height:
-                23px;
 
-            position:
-                relative;
+.app-card.tall {
 
-            cursor:
-                pointer;
+    grid-row:
+        span 2;
+}
 
-        }
 
+/* =========================================================
+   DISABLED CARD
+   ========================================================= */
 
-        .toggle input {
+.app-card.disabled {
 
-            opacity:
-                0;
+    cursor:
+        not-allowed;
 
-            width:
-                0;
+    opacity:
+        0.52;
 
-            height:
-                0;
+    filter:
+        saturate(0.45);
+}
 
-        }
 
+.app-card.disabled:hover {
 
-        .toggle-slider {
+    transform:
+        none;
 
-            position:
-                absolute;
+    background:
+        var(--card);
 
-            inset:
-                0;
+    border-color:
+        var(--border);
 
-            border-radius:
-                30px;
+    box-shadow:
+        none;
+}
 
-            background:
-                rgba(128,128,128,0.3);
 
-            transition:
-                0.2s ease;
+.app-card.disabled .card-glow {
 
-        }
+    display:
+        none;
+}
 
 
-        .toggle-slider::before {
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
 
-            content:
-                "";
+.card-glow {
 
-            position:
-                absolute;
+    position:
+        absolute;
 
-            width:
-                17px;
+    width:
+        180px;
 
-            height:
-                17px;
+    height:
+        180px;
 
-            left:
-                3px;
+    right:
+        -80px;
 
-            top:
-                3px;
+    bottom:
+        -100px;
 
-            border-radius:
-                50%;
+    border-radius:
+        50%;
 
-            background:
-                white;
+    background:
 
-            transition:
-                0.2s ease;
+        radial-gradient(
+            circle,
+            rgba(52,152,219,0.18),
+            transparent 70%
+        );
 
-        }
+    pointer-events:
+        none;
 
+    transition:
+        transform 0.4s ease;
+}
 
-        .toggle input:checked
-        + .toggle-slider {
 
-            background:
-                var(--accent);
+.app-card:hover
+.card-glow {
 
-        }
+    transform:
+        scale(1.5);
+}
 
 
-        .toggle input:checked
-        + .toggle-slider::before {
+/* =========================================================
+   CARD TOP
+   ========================================================= */
 
-            transform:
-                translateX(19px);
+.card-top {
 
-        }
+    display:
+        flex;
 
+    align-items:
+        flex-start;
 
-        .settings-reset {
+    justify-content:
+        space-between;
+}
 
-            width:
-                100%;
 
-            height:
-                40px;
+.app-logo {
 
-            margin-top:
-                8px;
+    width:
+        50px;
 
-            border:
-                1px solid var(--border);
+    height:
+        50px;
 
-            border-radius:
-                11px;
+    object-fit:
+        contain;
 
-            background:
-                var(--input-bg);
+    padding:
+        8px;
 
-            color:
-                var(--text);
+    border-radius:
+        15px;
 
-            cursor:
-                pointer;
+    background:
+        rgba(255,255,255,0.06);
 
-            font-size:
-                11px;
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+}
 
-            font-weight:
-                700;
 
-        }
+.card-status {
 
+    display:
+        flex;
 
-        /* =====================================================
-           FULL SCREEN IFRAME
-           ===================================================== */
+    align-items:
+        center;
 
-        #viewer {
+    gap:
+        7px;
+}
 
-            position:
-                fixed;
 
-            inset:
-                0;
+.status-dot {
 
-            z-index:
-                1000;
+    width:
+        8px;
 
-            display:
-                none;
+    height:
+        8px;
 
-            width:
-                100vw;
+    border-radius:
+        50%;
 
-            height:
-                100vh;
+    background:
+        var(--success);
 
-            background:
-                white;
+    box-shadow:
+        0 0 12px
+        rgba(66,209,125,0.65);
+}
 
-            opacity:
-                0;
 
-        }
+.lock-icon {
 
+    font-size:
+        12px;
 
-        #viewer.active {
+    opacity:
+        0.65;
+}
 
-            display:
-                block;
 
-            animation:
-                viewerIn 0.25s ease forwards;
+.disabled-status {
 
-        }
+    padding:
+        4px 8px;
 
+    border-radius:
+        999px;
 
-        #viewer iframe {
+    background:
+        rgba(255,255,255,0.06);
 
-            display:
-                block;
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-            width:
-                100vw;
+    color:
+        var(--muted);
 
-            height:
-                100vh;
+    font-size:
+        9px;
 
-            border:
-                0;
+    font-weight:
+        700;
 
-            margin:
-                0;
+    text-transform:
+        uppercase;
+}
 
-            padding:
-                0;
 
-        }
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
 
+.card-content {
 
-        @keyframes viewerIn {
+    margin-top:
+        20px;
+}
 
-            from {
 
-                opacity:
-                    0;
+.card-title {
 
-            }
+    font-size:
+        18px;
 
-            to {
+    font-weight:
+        750;
 
-                opacity:
-                    1;
+    margin-bottom:
+        7px;
+}
 
-            }
 
-        }
+.card-description {
 
+    color:
+        var(--muted);
 
-        /* =====================================================
-           IFRAME LOADER
-           ===================================================== */
+    font-size:
+        12px;
 
-        #iframeLoader {
+    line-height:
+        1.55;
 
-            position:
-                fixed;
+    max-width:
+        90%;
+}
 
-            inset:
-                0;
 
-            z-index:
-                1100;
+.hover-text {
 
-            display:
-                flex;
+    position:
+        absolute;
 
-            align-items:
-                center;
+    left:
+        22px;
 
-            justify-content:
-                center;
+    bottom:
+        18px;
 
-            background:
-                rgba(5,7,11,0.94);
+    color:
+        var(--accent-light);
 
-            backdrop-filter:
-                blur(8px);
+    font-size:
+        11px;
 
-            transition:
-                opacity 0.25s ease;
+    font-weight:
+        650;
 
-        }
+    opacity:
+        0;
 
+    transform:
+        translateY(7px);
 
-        #iframeLoader.hidden {
+    transition:
+        0.25s ease;
+}
 
-            opacity:
-                0;
 
-            pointer-events:
-                none;
+.app-card:hover
+.hover-text {
 
-        }
+    opacity:
+        1;
 
+    transform:
+        translateY(0);
+}
 
-        .loading-wave {
 
-            width:
-                300px;
+.app-card.disabled
+.hover-text {
 
-            height:
-                100px;
+    opacity:
+        0;
+}
 
-            display:
-                flex;
 
-            justify-content:
-                center;
+/* =========================================================
+   TODO CARD
+   ========================================================= */
 
-            align-items:
-                flex-end;
+.todo-card {
 
-        }
+    grid-column:
+        span 2;
 
+    grid-row:
+        span 2;
 
-        .loading-bar {
+    cursor:
+        default;
+}
 
-            width:
-                20px;
 
-            height:
-                10px;
+.todo-card:hover {
 
-            margin:
-                0 5px;
+    transform:
+        none;
+}
 
-            background-color:
-                var(--accent);
 
-            border-radius:
-                5px;
+.todo-header {
 
-            animation:
-                loading-wave-animation
-                1s ease-in-out infinite;
+    display:
+        flex;
 
-        }
+    align-items:
+        center;
 
+    justify-content:
+        space-between;
 
-        .loading-bar:nth-child(2) {
+    margin-bottom:
+        16px;
+}
 
-            animation-delay:
-                0.1s;
 
-        }
+.todo-title-area {
 
+    display:
+        flex;
 
-        .loading-bar:nth-child(3) {
+    align-items:
+        center;
 
-            animation-delay:
-                0.2s;
+    gap:
+        11px;
+}
 
-        }
 
+.todo-icon {
 
-        .loading-bar:nth-child(4) {
+    width:
+        42px;
 
-            animation-delay:
-                0.3s;
+    height:
+        42px;
 
-        }
+    border-radius:
+        13px;
 
+    display:
+        flex;
 
-        @keyframes loading-wave-animation {
+    align-items:
+        center;
 
-            0% {
+    justify-content:
+        center;
 
-                height:
-                    10px;
+    background:
+        var(--accent-soft);
 
-            }
+    color:
+        var(--accent-light);
 
-            50% {
+    font-size:
+        19px;
+}
 
-                height:
-                    50px;
 
-            }
+.todo-title {
 
-            100% {
+    font-size:
+        18px;
 
-                height:
-                    10px;
+    font-weight:
+        800;
+}
 
-            }
 
-        }
+.todo-counter {
 
+    color:
+        var(--muted);
 
-        /* =====================================================
-           PASSWORD MODAL
-           ===================================================== */
+    font-size:
+        10px;
+}
 
-        #passwordModal {
 
-            position:
-                fixed;
+.todo-input-row {
 
-            inset:
-                0;
+    display:
+        flex;
 
-            z-index:
-                3000;
+    gap:
+        7px;
 
-            display:
-                flex;
+    margin-bottom:
+        12px;
+}
 
-            align-items:
-                center;
 
-            justify-content:
-                center;
+.todo-input {
 
-            padding:
-                20px;
+    flex:
+        1;
 
-            background:
-                rgba(3,5,9,0.72);
+    min-width:
+        0;
 
-            backdrop-filter:
-                blur(18px);
+    height:
+        40px;
 
-            opacity:
-                0;
+    border:
+        1px solid var(--border);
 
-            visibility:
-                hidden;
+    border-radius:
+        11px;
 
-            pointer-events:
-                none;
+    background:
+        var(--input-bg);
 
-            transition:
-                0.25s ease;
+    color:
+        var(--text);
 
-        }
+    outline:
+        none;
 
+    padding:
+        0 12px;
 
-        #passwordModal.active {
+    font-size:
+        12px;
+}
 
-            opacity:
-                1;
 
-            visibility:
-                visible;
+.todo-input:focus {
 
-            pointer-events:
-                auto;
+    border-color:
+        var(--accent);
+}
 
-        }
 
+.todo-add {
 
-        .password-box {
+    width:
+        40px;
 
-            width:
-                min(410px,100%);
+    height:
+        40px;
 
-            padding:
-                28px;
+    border:
+        0;
 
-            border-radius:
-                25px;
+    border-radius:
+        11px;
 
-            border:
-                1px solid var(--border);
+    background:
+        var(--accent);
 
-            background:
-                var(--bg-secondary);
+    color:
+        white;
 
-            box-shadow:
-                0 30px 100px rgba(0,0,0,0.5);
+    font-size:
+        20px;
 
-        }
+    cursor:
+        pointer;
 
+    transition:
+        0.2s ease;
+}
 
-        .password-icon {
 
-            width:
-                48px;
+.todo-add:hover {
 
-            height:
-                48px;
+    filter:
+        brightness(1.08);
 
-            border-radius:
-                15px;
+    transform:
+        translateY(-1px);
+}
 
-            display:
-                flex;
 
-            align-items:
-                center;
+.todo-list {
 
-            justify-content:
-                center;
+    display:
+        flex;
 
-            background:
-                var(--accent-soft);
+    flex-direction:
+        column;
 
-            margin-bottom:
-                18px;
+    gap:
+        6px;
 
-        }
+    max-height:
+        230px;
 
+    overflow-y:
+        auto;
 
-        .password-title {
+    padding-right:
+        3px;
+}
 
-            font-size:
-                20px;
 
-            font-weight:
-                800;
+.todo-list::-webkit-scrollbar {
 
-            margin-bottom:
-                7px;
+    width:
+        5px;
+}
 
-        }
 
+.todo-list::-webkit-scrollbar-thumb {
 
-        .password-description {
+    background:
+        rgba(128,128,128,0.25);
 
-            color:
-                var(--muted);
+    border-radius:
+        20px;
+}
 
-            font-size:
-                12px;
 
-            line-height:
-                1.5;
+.todo-item {
 
-            margin-bottom:
-                20px;
+    display:
+        flex;
 
-        }
+    align-items:
+        center;
 
+    gap:
+        9px;
 
-        #passwordInput {
+    padding:
+        8px 9px;
 
-            width:
-                100%;
+    border:
+        1px solid transparent;
 
-            height:
-                48px;
+    border-radius:
+        10px;
 
-            border-radius:
-                13px;
+    transition:
+        0.2s ease;
+}
 
-            border:
-                1px solid var(--border);
 
-            outline:
-                none;
+.todo-item:hover {
 
-            background:
-                var(--input-bg);
+    background:
+        rgba(255,255,255,0.035);
 
-            color:
-                var(--text);
+    border-color:
+        var(--border);
+}
 
-            padding:
-                0 15px;
 
-            font-size:
-                14px;
+.todo-check {
 
-        }
+    width:
+        18px;
 
+    height:
+        18px;
 
-        .password-error {
+    flex-shrink:
+        0;
 
-            min-height:
-                17px;
+    border:
+        1px solid
+        var(--border-hover);
 
-            margin-top:
-                8px;
+    border-radius:
+        6px;
 
-            color:
-                #ff7c87;
+    background:
+        transparent;
 
-            font-size:
-                11px;
+    cursor:
+        pointer;
 
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        .password-actions {
+    justify-content:
+        center;
 
-            display:
-                flex;
+    color:
+        white;
 
-            gap:
-                8px;
+    font-size:
+        11px;
+}
 
-            margin-top:
-                13px;
 
-        }
+.todo-item.completed
+.todo-check {
 
+    background:
+        var(--accent);
 
-        .password-button {
+    border-color:
+        var(--accent);
+}
 
-            height:
-                44px;
 
-            flex:
-                1;
+.todo-text {
 
-            border-radius:
-                12px;
+    flex:
+        1;
 
-            border:
-                1px solid var(--border);
+    min-width:
+        0;
 
-            background:
-                var(--input-bg);
+    color:
+        var(--text);
 
-            color:
-                var(--text);
+    font-size:
+        12px;
 
-            cursor:
-                pointer;
+    line-height:
+        1.35;
 
-            font-weight:
-                700;
+    word-break:
+        break-word;
+}
 
-        }
 
+.todo-item.completed
+.todo-text {
 
-        .password-button.primary {
+    text-decoration:
+        line-through;
 
-            background:
-                var(--accent);
+    opacity:
+        0.45;
+}
 
-            border-color:
-                var(--accent);
 
-            color:
-                white;
+.todo-delete {
 
-        }
+    border:
+        0;
 
+    background:
+        transparent;
 
-        /* =====================================================
-           CARD ANIMATION
-           ===================================================== */
+    color:
+        var(--muted);
 
-        @keyframes cardAppear {
+    cursor:
+        pointer;
 
-            from {
+    font-size:
+        15px;
 
-                opacity:
-                    0;
+    opacity:
+        0;
 
-                transform:
-                    translateY(18px)
-                    scale(0.98);
+    padding:
+        2px 4px;
+}
 
-            }
 
-            to {
+.todo-item:hover
+.todo-delete {
 
-                opacity:
-                    1;
+    opacity:
+        1;
+}
 
-                transform:
-                    translateY(0)
-                    scale(1);
 
-            }
+.todo-empty {
 
-        }
+    padding:
+        20px 5px;
 
+    text-align:
+        center;
 
-        /* =====================================================
-           TABLET
-           ===================================================== */
+    color:
+        var(--muted);
 
-        @media (max-width:1000px) {
+    font-size:
+        11px;
+}
 
-            #bentoGrid {
 
-                grid-template-columns:
-                    repeat(3,minmax(0,1fr));
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
 
-            }
+.important-section {
 
+    margin-top:
+        60px;
+}
 
-            .important-links {
 
-                grid-template-columns:
-                    repeat(2,minmax(0,1fr));
+.important-links {
 
-            }
+    display:
+        grid;
 
-        }
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
 
+    gap:
+        12px;
+}
 
-        /* =====================================================
-           MOBILE
-           ===================================================== */
 
-        @media (max-width:720px) {
+.important-link {
 
-            .main-content {
+    border:
+        1px solid var(--border);
 
-                padding:
+    background:
+        var(--card);
 
-                    25px
-                    15px
-                    90px;
+    border-radius:
+        17px;
 
-            }
+    padding:
+        15px 16px;
 
+    display:
+        flex;
 
-            .home-logo {
+    align-items:
+        center;
 
-                width:
-                    190px;
+    justify-content:
+        space-between;
 
-                height:
-                    190px;
+    gap:
+        12px;
 
-            }
+    transition:
+        0.2s ease;
+}
 
 
-            .hero h1 {
+.important-link:hover {
 
-                letter-spacing:
-                    -2px;
+    border-color:
+        var(--border-hover);
 
-            }
+    transform:
+        translateY(-2px);
+}
 
 
-            #bentoGrid {
+.important-info {
 
-                grid-template-columns:
-                    repeat(2,minmax(0,1fr));
+    min-width:
+        0;
+}
 
-                gap:
-                    11px;
 
-            }
+.important-name {
 
+    font-size:
+        13px;
 
-            .app-card {
+    font-weight:
+        700;
 
-                min-height:
-                    165px;
+    margin-bottom:
+        5px;
+}
 
-                padding:
-                    17px;
 
-                border-radius:
-                    19px;
+.important-url {
 
-            }
+    color:
+        var(--muted);
 
+    font-size:
+        11px;
 
-            .app-card.large,
-            .app-card.wide,
-            .app-card.tall {
+    white-space:
+        nowrap;
 
-                grid-column:
-                    span 1;
+    overflow:
+        hidden;
 
-                grid-row:
-                    span 1;
+    text-overflow:
+        ellipsis;
 
-            }
+    max-width:
+        300px;
+}
 
 
-            .app-card.large {
+.important-actions {
 
-                grid-column:
-                    span 2;
+    display:
+        flex;
 
-            }
+    gap:
+        6px;
 
+    flex-shrink:
+        0;
+}
 
-            .todo-card {
 
-                grid-column:
-                    span 2;
+.link-button {
 
-                grid-row:
-                    span 1;
+    height:
+        34px;
 
-            }
+    padding:
+        0 11px;
 
+    border-radius:
+        10px;
 
-            .app-logo {
+    border:
+        1px solid var(--border);
 
-                width:
-                    43px;
+    background:
+        var(--input-bg);
 
-                height:
-                    43px;
+    color:
+        var(--text);
 
-            }
+    cursor:
+        pointer;
 
+    font-size:
+        11px;
 
-            .card-title {
+    font-weight:
+        650;
+}
 
-                font-size:
-                    15px;
 
-            }
+.link-button.open {
 
+    background:
+        var(--accent-soft);
 
-            .card-description {
+    color:
+        var(--accent-light);
 
-                font-size:
-                    11px;
+    border-color:
+        var(--accent);
+}
 
-            }
 
+.copy-success {
 
-            .hover-text {
+    color:
+        var(--success) !important;
+}
 
-                display:
-                    none;
 
-            }
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
+.footer {
 
-            .important-links {
+    margin-top:
+        55px;
 
-                grid-template-columns:
-                    1fr;
+    text-align:
+        center;
 
-            }
+    color:
+        rgba(128,128,128,0.55);
 
+    font-size:
+        10px;
+}
 
-            .important-url {
 
-                max-width:
-                    200px;
+/* =========================================================
+   SETTINGS GEAR
+   IMPORTANT:
+   Z-INDEX IS BELOW IFRAME VIEWER
+   ========================================================= */
 
-            }
+.settings-button {
 
+    position:
+        fixed;
 
-            .settings-button {
+    right:
+        22px;
 
-                right:
-                    15px;
+    bottom:
+        20px;
 
-                bottom:
-                    15px;
+    z-index:
+        900;
 
-            }
+    width:
+        42px;
 
+    height:
+        42px;
 
-            .settings-panel {
+    border-radius:
+        50%;
 
-                right:
-                    10px;
+    border:
+        1px solid var(--border);
 
-                bottom:
-                    10px;
+    background:
+        var(--card);
 
-                width:
-                    calc(100vw - 20px);
+    color:
+        var(--text);
 
-            }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-            #viewer,
-            #viewer iframe {
+    justify-content:
+        center;
 
-                width:
-                    100vw;
+    cursor:
+        pointer;
 
-                height:
-                    100vh;
+    font-size:
+        18px;
 
-            }
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.22);
 
-        }
+    backdrop-filter:
+        blur(12px);
 
+    transition:
+        0.25s ease;
+}
 
-        /* =====================================================
-           SMALL MOBILE
-           ===================================================== */
 
-        @media (max-width:420px) {
+.settings-button:hover {
 
-            .home-logo {
+    transform:
+        rotate(35deg)
+        scale(1.05);
+}
 
-                width:
-                    170px;
 
-                height:
-                    170px;
+/*
+    Explicitly hidden while iframe is open.
+*/
 
-            }
+.settings-button.hidden {
 
+    opacity:
+        0;
 
-            .todo-list {
+    visibility:
+        hidden;
 
-                max-height:
-                    190px;
+    pointer-events:
+        none;
 
-            }
+    transform:
+        scale(0.8);
+}
 
-        }
 
-    </style>
+/* =========================================================
+   SETTINGS OVERLAY
+   ========================================================= */
+
+#settingsOverlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        2000;
+
+    background:
+        rgba(0,0,0,0.48);
+
+    backdrop-filter:
+        blur(7px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        0.25s ease;
+}
+
+
+#settingsOverlay.active {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+}
+
+
+/* =========================================================
+   SETTINGS PANEL
+   ========================================================= */
+
+.settings-panel {
+
+    position:
+        fixed;
+
+    right:
+        16px;
+
+    bottom:
+        16px;
+
+    z-index:
+        2100;
+
+    width:
+        min(390px,calc(100vw - 30px));
+
+    max-height:
+        calc(100vh - 30px);
+
+    overflow-y:
+        auto;
+
+    padding:
+        22px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        24px;
+
+    background:
+        var(--bg-secondary);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.42);
+
+    transform:
+        translateY(25px)
+        scale(0.97);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        0.25s ease;
+}
+
+
+.settings-panel.active {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+}
+
+
+.settings-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        22px;
+}
+
+
+.settings-heading {
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
+}
+
+
+.settings-close {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-size:
+        18px;
+}
+
+
+.settings-section {
+
+    padding:
+        15px 0;
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+.settings-section:first-of-type {
+
+    border-top:
+        0;
+}
+
+
+.settings-label {
+
+    display:
+        block;
+
+    font-size:
+        12px;
+
+    font-weight:
+        750;
+
+    margin-bottom:
+        5px;
+}
+
+
+.settings-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        12px;
+}
+
+
+/* =========================================================
+   THEME OPTIONS
+   ========================================================= */
+
+.theme-options {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        7px;
+}
+
+
+.theme-option {
+
+    min-height:
+        42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+}
+
+
+.theme-option.active {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--accent-light);
+}
+
+
+/* =========================================================
+   COLOR OPTIONS
+   ========================================================= */
+
+.color-options {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+}
+
+
+.color-option {
+
+    width:
+        29px;
+
+    height:
+        29px;
+
+    border-radius:
+        50%;
+
+    border:
+        3px solid transparent;
+
+    outline:
+        1px solid var(--border);
+
+    outline-offset:
+        2px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.color-option:hover {
+
+    transform:
+        scale(1.1);
+}
+
+
+.color-option.active {
+
+    border-color:
+        white;
+
+    outline-color:
+        var(--accent);
+
+    transform:
+        scale(1.1);
+}
+
+
+/* =========================================================
+   SETTINGS TOGGLE
+   ========================================================= */
+
+.settings-toggle-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+}
+
+
+.toggle {
+
+    width:
+        42px;
+
+    height:
+        23px;
+
+    position:
+        relative;
+
+    cursor:
+        pointer;
+}
+
+
+.toggle input {
+
+    opacity:
+        0;
+
+    width:
+        0;
+
+    height:
+        0;
+}
+
+
+.toggle-slider {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(128,128,128,0.3);
+
+    transition:
+        0.2s ease;
+}
+
+
+.toggle-slider::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        17px;
+
+    height:
+        17px;
+
+    left:
+        3px;
+
+    top:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    transition:
+        0.2s ease;
+}
+
+
+.toggle input:checked
++ .toggle-slider {
+
+    background:
+        var(--accent);
+}
+
+
+.toggle input:checked
++ .toggle-slider::before {
+
+    transform:
+        translateX(19px);
+}
+
+
+.settings-reset {
+
+    width:
+        100%;
+
+    height:
+        40px;
+
+    margin-top:
+        8px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        11px;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   FULL SCREEN IFRAME
+   ========================================================= */
+
+#viewer {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1000;
+
+    display:
+        none;
+
+    width:
+        100vw;
+
+    height:
+        100vh;
+
+    background:
+        #ffffff;
+
+    opacity:
+        0;
+}
+
+
+#viewer.active {
+
+    display:
+        block;
+
+    animation:
+        viewerIn 0.25s ease forwards;
+}
+
+
+#viewer iframe {
+
+    display:
+        block;
+
+    width:
+        100vw;
+
+    height:
+        100vh;
+
+    min-width:
+        100vw;
+
+    min-height:
+        100vh;
+
+    border:
+        0;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    background:
+        #ffffff;
+}
+
+
+@keyframes viewerIn {
+
+    from {
+
+        opacity:
+            0;
+    }
+
+    to {
+
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================================================
+   IFRAME LOADER
+   ========================================================= */
+
+#iframeLoader {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1100;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(5,7,11,0.94);
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+#iframeLoader.hidden {
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+.loading-wave {
+
+    width:
+        300px;
+
+    height:
+        100px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-end;
+}
+
+
+.loading-bar {
+
+    width:
+        20px;
+
+    height:
+        10px;
+
+    margin:
+        0 5px;
+
+    background-color:
+        var(--accent);
+
+    border-radius:
+        5px;
+
+    animation:
+        loading-wave-animation
+        1s ease-in-out infinite;
+}
+
+
+.loading-bar:nth-child(2) {
+
+    animation-delay:
+        0.1s;
+}
+
+
+.loading-bar:nth-child(3) {
+
+    animation-delay:
+        0.2s;
+}
+
+
+.loading-bar:nth-child(4) {
+
+    animation-delay:
+        0.3s;
+}
+
+
+@keyframes loading-wave-animation {
+
+    0% {
+
+        height:
+            10px;
+    }
+
+    50% {
+
+        height:
+            50px;
+    }
+
+    100% {
+
+        height:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   PASSWORD MODAL
+   ========================================================= */
+
+#passwordModal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        3000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(3,5,9,0.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        0.25s ease;
+}
+
+
+#passwordModal.active {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+}
+
+
+.password-box {
+
+    width:
+        min(410px,100%);
+
+    padding:
+        28px;
+
+    border-radius:
+        25px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--bg-secondary);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+}
+
+
+.password-icon {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        15px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--accent-soft);
+
+    margin-bottom:
+        18px;
+}
+
+
+.password-title {
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        7px;
+}
+
+
+.password-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        20px;
+}
+
+
+#passwordInput {
+
+    width:
+        100%;
+
+    height:
+        48px;
+
+    border-radius:
+        13px;
+
+    border:
+        1px solid var(--border);
+
+    outline:
+        none;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    padding:
+        0 15px;
+
+    font-size:
+        14px;
+}
+
+
+#passwordInput:focus {
+
+    border-color:
+        var(--accent);
+}
+
+
+.password-error {
+
+    min-height:
+        17px;
+
+    margin-top:
+        8px;
+
+    color:
+        #ff7c87;
+
+    font-size:
+        11px;
+}
+
+
+.password-actions {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+
+    margin-top:
+        13px;
+}
+
+
+.password-button {
+
+    height:
+        44px;
+
+    flex:
+        1;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        700;
+}
+
+
+.password-button.primary {
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    color:
+        white;
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(18px)
+            scale(0.98);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width:1000px) {
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+
+
+    .important-links {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:720px) {
+
+    .main-content {
+
+        padding:
+
+            25px
+            15px
+            90px;
+    }
+
+
+    .home-logo {
+
+        width:
+            190px;
+
+        height:
+            190px;
+    }
+
+
+    .hero h1 {
+
+        letter-spacing:
+            -2px;
+    }
+
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:
+            11px;
+    }
+
+
+    .app-card {
+
+        min-height:
+            165px;
+
+        padding:
+            17px;
+
+        border-radius:
+            19px;
+    }
+
+
+    .app-card.large,
+    .app-card.wide,
+    .app-card.tall {
+
+        grid-column:
+            span 1;
+
+        grid-row:
+            span 1;
+    }
+
+
+    .app-card.large {
+
+        grid-column:
+            span 2;
+    }
+
+
+    .todo-card {
+
+        grid-column:
+            span 2;
+
+        grid-row:
+            span 1;
+    }
+
+
+    .app-logo {
+
+        width:
+            43px;
+
+        height:
+            43px;
+    }
+
+
+    .card-title {
+
+        font-size:
+            15px;
+    }
+
+
+    .card-description {
+
+        font-size:
+            11px;
+    }
+
+
+    .hover-text {
+
+        display:
+            none;
+    }
+
+
+    .important-links {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .important-url {
+
+        max-width:
+            200px;
+    }
+
+
+    .settings-button {
+
+        right:
+            15px;
+
+        bottom:
+            15px;
+    }
+
+
+    .settings-panel {
+
+        right:
+            10px;
+
+        bottom:
+            10px;
+
+        width:
+            calc(100vw - 20px);
+    }
+
+
+    #viewer,
+    #viewer iframe {
+
+        width:
+            100vw;
+
+        height:
+            100vh;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width:420px) {
+
+    .home-logo {
+
+        width:
+            170px;
+
+        height:
+            170px;
+    }
+
+
+    .todo-list {
+
+        max-height:
+            190px;
+    }
+}
+
+</style>
 
 </head>
 
@@ -2948,7 +2787,7 @@
 
 
 <!-- =========================================================
-     DASHBOARD
+     HORIZON DASHBOARD
      ========================================================= -->
 
 <div id="dashboard">
@@ -2956,9 +2795,7 @@
     <main class="main-content">
 
 
-        <!-- =====================================================
-             HORIZON LOGO
-             ===================================================== -->
+        <!-- LOGO -->
 
         <section class="home-brand">
 
@@ -2971,9 +2808,7 @@
         </section>
 
 
-        <!-- =====================================================
-             HERO
-             ===================================================== -->
+        <!-- HERO -->
 
         <section class="hero">
 
@@ -2996,9 +2831,7 @@
         </section>
 
 
-        <!-- =====================================================
-             APPLICATIONS
-             ===================================================== -->
+        <!-- APPLICATIONS -->
 
         <div class="section-header">
 
@@ -3017,17 +2850,12 @@
         </div>
 
 
-        <!-- =====================================================
-             BENTO GRID
-             TODO WILL BE INSERTED FIRST
-             ===================================================== -->
+        <!-- BENTO -->
 
         <div id="bentoGrid"></div>
 
 
-        <!-- =====================================================
-             IMPORTANT LINKS
-             ===================================================== -->
+        <!-- IMPORTANT LINKS -->
 
         <section class="important-section">
 
@@ -3071,6 +2899,9 @@
 
 <!-- =========================================================
      SETTINGS BUTTON
+
+     IMPORTANT:
+     This is hidden when iframe opens.
      ========================================================= -->
 
 <button
@@ -3086,9 +2917,7 @@
 
 
 
-<!-- =========================================================
-     SETTINGS OVERLAY
-     ========================================================= -->
+<!-- SETTINGS OVERLAY -->
 
 <div
     id="settingsOverlay"
@@ -3096,9 +2925,7 @@
 
 
 
-<!-- =========================================================
-     SETTINGS PANEL
-     ========================================================= -->
+<!-- SETTINGS PANEL -->
 
 <div
     class="settings-panel"
@@ -3127,10 +2954,7 @@
     </div>
 
 
-
-    <!-- =====================================================
-         THEME
-         ===================================================== -->
+    <!-- THEME -->
 
     <section class="settings-section">
 
@@ -3186,10 +3010,7 @@
     </section>
 
 
-
-    <!-- =====================================================
-         ACCENT COLOR
-         ===================================================== -->
+    <!-- COLOR -->
 
     <section class="settings-section">
 
@@ -3279,10 +3100,7 @@
     </section>
 
 
-
-    <!-- =====================================================
-         TODO SETTINGS
-         ===================================================== -->
+    <!-- TODO -->
 
     <section class="settings-section">
 
@@ -3321,16 +3139,12 @@
 
             </label>
 
-
         </div>
 
     </section>
 
 
-
-    <!-- =====================================================
-         RESET
-         ===================================================== -->
+    <!-- RESET -->
 
     <section class="settings-section">
 
@@ -3352,27 +3166,34 @@
 
 <!-- =========================================================
      FULL SCREEN IFRAME
+
+     Z-INDEX 1000
+
+     SETTINGS GEAR = 900
+
+     Therefore gear CANNOT appear above iframe.
      ========================================================= -->
 
 <div id="viewer">
 
+
+    <!-- LOADER -->
 
     <div id="iframeLoader">
 
         <div class="loading-wave">
 
             <div class="loading-bar"></div>
-
             <div class="loading-bar"></div>
-
             <div class="loading-bar"></div>
-
             <div class="loading-bar"></div>
 
         </div>
 
     </div>
 
+
+    <!-- WEBSITE -->
 
     <iframe
         id="siteFrame"
@@ -3475,635 +3296,486 @@
 
 <script>
 
-    /* =========================================================
-       HORIZON LOCAL STORAGE
-       ========================================================= */
+/* =========================================================
+   LOCAL STORAGE KEYS
+   ========================================================= */
+
+const STORAGE_KEYS = {
+
+    theme:
+        "horizon_theme",
+
+    accent:
+        "horizon_accent",
+
+    todos:
+        "horizon_todos",
+
+    todoVisible:
+        "horizon_todo_visible"
+
+};
+
+
+/* =========================================================
+   DEFAULT SETTINGS
+   ========================================================= */
+
+const DEFAULT_SETTINGS = {
+
+    theme:
+        "system",
+
+    accent:
+        "#3498db",
+
+    todoVisible:
+        true
+
+};
+
+
+/* =========================================================
+   DOM
+   ========================================================= */
+
+const grid =
+    document.getElementById(
+        "bentoGrid"
+    );
+
+
+const appCount =
+    document.getElementById(
+        "appCount"
+    );
+
+
+const importantLinksContainer =
+    document.getElementById(
+        "importantLinks"
+    );
+
+
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+
+const viewer =
+    document.getElementById(
+        "viewer"
+    );
+
+
+const iframe =
+    document.getElementById(
+        "siteFrame"
+    );
+
+
+const loader =
+    document.getElementById(
+        "iframeLoader"
+    );
+
+
+const passwordModal =
+    document.getElementById(
+        "passwordModal"
+    );
+
+
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
+
+
+const passwordError =
+    document.getElementById(
+        "passwordError"
+    );
+
+
+/*
+    IMPORTANT:
+    This element is the gear.
+*/
+
 const settingsButton =
-    document.getElementById("settingsButton");
+    document.getElementById(
+        "settingsButton"
+    );
 
-    const STORAGE_KEYS = {
 
-        theme:
-            "horizon_theme",
+const settingsPanel =
+    document.getElementById(
+        "settingsPanel"
+    );
 
-        accent:
-            "horizon_accent",
 
-        todos:
-            "horizon_todos",
+const settingsOverlay =
+    document.getElementById(
+        "settingsOverlay"
+    );
 
-        todoVisible:
-            "horizon_todo_visible"
 
-    };
+const settingsClose =
+    document.getElementById(
+        "settingsClose"
+    );
 
 
+const todoVisibleToggle =
+    document.getElementById(
+        "todoVisibleToggle"
+    );
 
-    /* =========================================================
-       DEFAULT SETTINGS
-       ========================================================= */
 
-    const DEFAULT_SETTINGS = {
+/* =========================================================
+   STATE
+   ========================================================= */
 
-        theme:
-            "system",
+let pendingApp =
+    null;
 
-        accent:
-            "#3498db",
 
-        todoVisible:
-            true
+let currentApp =
+    null;
 
-    };
 
+let todos =
+    loadTodos();
 
 
-    /* =========================================================
-       DOM
-       ========================================================= */
+let settings =
+    loadSettings();
 
-    const grid =
-        document.getElementById(
-            "bentoGrid"
-        );
 
+/* =========================================================
+   STORAGE
+   ========================================================= */
 
-    const appCount =
-        document.getElementById(
-            "appCount"
-        );
+function getStorage(
+    key,
+    fallback
+) {
 
+    try {
 
-    const importantLinksContainer =
-        document.getElementById(
-            "importantLinks"
-        );
-
-
-    const dashboard =
-        document.getElementById(
-            "dashboard"
-        );
-
-
-    const viewer =
-        document.getElementById(
-            "viewer"
-        );
-
-
-    const iframe =
-        document.getElementById(
-            "siteFrame"
-        );
-
-
-    const loader =
-        document.getElementById(
-            "iframeLoader"
-        );
-
-
-    const passwordModal =
-        document.getElementById(
-            "passwordModal"
-        );
-
-
-    const passwordInput =
-        document.getElementById(
-            "passwordInput"
-        );
-
-
-    const passwordError =
-        document.getElementById(
-            "passwordError"
-        );
-
-
-    const settingsButton =
-        document.getElementById(
-            "settingsButton"
-        );
-
-
-    const settingsPanel =
-        document.getElementById(
-            "settingsPanel"
-        );
-
-
-    const settingsOverlay =
-        document.getElementById(
-            "settingsOverlay"
-        );
-
-
-    const settingsClose =
-        document.getElementById(
-            "settingsClose"
-        );
-
-
-    const todoVisibleToggle =
-        document.getElementById(
-            "todoVisibleToggle"
-        );
-
-
-    /* =========================================================
-       STATE
-       ========================================================= */
-
-    let pendingApp =
-        null;
-
-
-    let currentApp =
-        null;
-
-
-    let todos =
-        loadTodos();
-
-
-
-    /* =========================================================
-       LOCAL STORAGE HELPERS
-       ========================================================= */
-
-    function getStorage(
-        key,
-        fallback
-    ) {
-
-        try {
-
-            const value =
-                localStorage.getItem(
-                    key
-                );
-
-
-            if (
-                value === null
-            ) {
-
-                return fallback;
-
-            }
-
-
-            return JSON.parse(
-                value
+        const value =
+            localStorage.getItem(
+                key
             );
 
-        }
 
-        catch {
+        if (
+            value === null
+        ) {
 
             return fallback;
 
         }
 
-    }
 
-
-
-    function setStorage(
-        key,
-        value
-    ) {
-
-        try {
-
-            localStorage.setItem(
-                key,
-                JSON.stringify(
-                    value
-                )
-            );
-
-        }
-
-        catch {
-
-            console.warn(
-                "Horizon: localStorage unavailable."
-            );
-
-        }
+        return JSON.parse(
+            value
+        );
 
     }
 
+    catch {
+
+        return fallback;
+
+    }
+
+}
 
 
-    /* =========================================================
-       TODO STORAGE
-       ========================================================= */
+function setStorage(
+    key,
+    value
+) {
 
-    function loadTodos() {
+    try {
 
-        const saved =
-            getStorage(
-                STORAGE_KEYS.todos,
-                []
-            );
+        localStorage.setItem(
+            key,
+            JSON.stringify(
+                value
+            )
+        );
+
+    }
+
+    catch {
+
+        console.warn(
+            "Horizon: localStorage unavailable."
+        );
+
+    }
+
+}
 
 
-        return Array.isArray(
-            saved
-        )
+/* =========================================================
+   TODO STORAGE
+   ========================================================= */
+
+function loadTodos() {
+
+    const saved =
+        getStorage(
+            STORAGE_KEYS.todos,
+            []
+        );
+
+
+    return Array.isArray(saved)
         ?
         saved
         :
         [];
 
-    }
+}
 
 
+function saveTodos() {
 
-    function saveTodos() {
+    setStorage(
+        STORAGE_KEYS.todos,
+        todos
+    );
 
-        setStorage(
-            STORAGE_KEYS.todos,
-            todos
-        );
-
-    }
-
+}
 
 
-    /* =========================================================
-       SETTINGS
-       ========================================================= */
+/* =========================================================
+   SETTINGS STORAGE
+   ========================================================= */
 
-    function loadSettings() {
+function loadSettings() {
 
-        return {
+    return {
 
-            theme:
-                getStorage(
-                    STORAGE_KEYS.theme,
-                    DEFAULT_SETTINGS.theme
-                ),
+        theme:
+            getStorage(
+                STORAGE_KEYS.theme,
+                DEFAULT_SETTINGS.theme
+            ),
 
-            accent:
-                getStorage(
-                    STORAGE_KEYS.accent,
-                    DEFAULT_SETTINGS.accent
-                ),
+        accent:
+            getStorage(
+                STORAGE_KEYS.accent,
+                DEFAULT_SETTINGS.accent
+            ),
 
-            todoVisible:
-                getStorage(
-                    STORAGE_KEYS.todoVisible,
-                    DEFAULT_SETTINGS.todoVisible
-                )
+        todoVisible:
+            getStorage(
+                STORAGE_KEYS.todoVisible,
+                DEFAULT_SETTINGS.todoVisible
+            )
 
-        };
+    };
 
-    }
-
-
-
-    let settings =
-        loadSettings();
+}
 
 
+function saveSettings() {
 
-    /* =========================================================
-       APPLY ACCENT COLOR
-       ========================================================= */
+    setStorage(
+        STORAGE_KEYS.theme,
+        settings.theme
+    );
 
-    function applyAccent(
-        color
+
+    setStorage(
+        STORAGE_KEYS.accent,
+        settings.accent
+    );
+
+
+    setStorage(
+        STORAGE_KEYS.todoVisible,
+        settings.todoVisible
+    );
+
+}
+
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+function hexToRGB(
+    hex
+) {
+
+    const clean =
+        String(hex)
+            .replace("#","");
+
+
+    if (
+        clean.length !== 6
     ) {
 
-        if (
-            !color
-        ) {
+        return null;
 
-            color =
-                DEFAULT_SETTINGS.accent;
+    }
 
-        }
+
+    const number =
+        parseInt(
+            clean,
+            16
+        );
+
+
+    return {
+
+        r:
+            (number >> 16) & 255,
+
+        g:
+            (number >> 8) & 255,
+
+        b:
+            number & 255
+
+    };
+
+}
+
+
+function applyAccent(
+    color
+) {
+
+    if (
+        !color
+    ) {
+
+        color =
+            DEFAULT_SETTINGS.accent;
+
+    }
+
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
+
+
+    const rgb =
+        hexToRGB(
+            color
+        );
+
+
+    if (
+        rgb
+    ) {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-soft",
+                `rgba(
+                    ${rgb.r},
+                    ${rgb.g},
+                    ${rgb.b},
+                    0.14
+                )`
+            );
 
 
         document.documentElement
             .style
             .setProperty(
-                "--accent",
-                color
+                "--accent-light",
+                `rgb(
+                    ${Math.min(rgb.r + 70,255)},
+                    ${Math.min(rgb.g + 70,255)},
+                    ${Math.min(rgb.b + 70,255)}
+                )`
             );
 
+    }
 
-        /*
-            Create a lighter accent
-            automatically.
-        */
-
-        const rgb =
-            hexToRGB(
-                color
-            );
+}
 
 
-        if (rgb) {
+/* =========================================================
+   THEME
+   ========================================================= */
 
-            document.documentElement
-                .style
-                .setProperty(
-                    "--accent-soft",
-                    `rgba(
-                        ${rgb.r},
-                        ${rgb.g},
-                        ${rgb.b},
-                        0.14
-                    )`
-                );
+function applyTheme(
+    theme
+) {
+
+    document.body.classList.remove(
+        "light-theme"
+    );
 
 
-            document.documentElement
-                .style
-                .setProperty(
-                    "--accent-light",
-                    `rgb(
-                        ${Math.min(rgb.r + 70,255)},
-                        ${Math.min(rgb.g + 70,255)},
-                        ${Math.min(rgb.b + 70,255)}
-                    )`
-                );
+    let actualTheme =
+        theme;
 
-        }
+
+    if (
+        theme === "system"
+    ) {
+
+        actualTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: light)"
+            ).matches
+            ?
+            "light"
+            :
+            "dark";
 
     }
 
 
-
-    function hexToRGB(
-        hex
+    if (
+        actualTheme === "light"
     ) {
 
-        const clean =
-            String(hex)
-                .replace("#","");
-
-
-        if (
-            clean.length !== 6
-        ) {
-
-            return null;
-
-        }
-
-
-        const number =
-            parseInt(
-                clean,
-                16
-            );
-
-
-        return {
-
-            r:
-                (number >> 16) & 255,
-
-            g:
-                (number >> 8) & 255,
-
-            b:
-                number & 255
-
-        };
-
-    }
-
-
-
-    /* =========================================================
-       APPLY THEME
-       ========================================================= */
-
-    function applyTheme(
-        theme
-    ) {
-
-        document.body.classList.remove(
+        document.body.classList.add(
             "light-theme"
         );
 
-
-        let actualTheme =
-            theme;
+    }
 
 
-        if (
-            theme === "system"
-        ) {
-
-            actualTheme =
-                window.matchMedia(
-                    "(prefers-color-scheme: light)"
-                ).matches
-                ?
-                "light"
-                :
-                "dark";
-
-        }
+    const meta =
+        document.getElementById(
+            "themeColorMeta"
+        );
 
 
-        if (
+    if (
+        meta
+    ) {
+
+        meta.content =
             actualTheme === "light"
-        ) {
-
-            document.body.classList.add(
-                "light-theme"
-            );
-
-        }
-
-
-        const meta =
-            document.getElementById(
-                "themeColorMeta"
-            );
-
-
-        if (meta) {
-
-            meta.content =
-                actualTheme === "light"
-                ?
-                "#f4f7fb"
-                :
-                "#080b12";
-
-        }
-
-
-        document
-            .querySelectorAll(
-                ".theme-option"
-            )
-            .forEach(
-                button => {
-
-                    button.classList.toggle(
-                        "active",
-                        button.dataset.theme === theme
-                    );
-
-                }
-            );
+            ?
+            "#f4f7fb"
+            :
+            "#080b12";
 
     }
 
-
-
-    /* =========================================================
-       SAVE SETTINGS
-       ========================================================= */
-
-    function saveSettings() {
-
-        setStorage(
-            STORAGE_KEYS.theme,
-            settings.theme
-        );
-
-
-        setStorage(
-            STORAGE_KEYS.accent,
-            settings.accent
-        );
-
-
-        setStorage(
-            STORAGE_KEYS.todoVisible,
-            settings.todoVisible
-        );
-
-    }
-
-
-
-    /* =========================================================
-       APPLY ALL SETTINGS
-       ========================================================= */
-
-    function applySettings() {
-
-        applyTheme(
-            settings.theme
-        );
-
-
-        applyAccent(
-            settings.accent
-        );
-
-
-        todoVisibleToggle.checked =
-            settings.todoVisible;
-
-
-        document
-            .querySelectorAll(
-                ".color-option"
-            )
-            .forEach(
-                option => {
-
-                    option.classList.toggle(
-                        "active",
-                        option.dataset.color
-                        .toLowerCase()
-                        ===
-                        settings.accent
-                        .toLowerCase()
-                    );
-
-                }
-            );
-
-    }
-
-
-
-    /* =========================================================
-       SETTINGS OPEN
-       ========================================================= */
-
-    function openSettings() {
-
-        settingsPanel.classList.add(
-            "active"
-        );
-
-
-        settingsOverlay.classList.add(
-            "active"
-        );
-
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
-    }
-
-
-
-    /* =========================================================
-       SETTINGS CLOSE
-       ========================================================= */
-
-    function closeSettings() {
-
-        settingsPanel.classList.remove(
-            "active"
-        );
-
-
-        settingsOverlay.classList.remove(
-            "active"
-        );
-
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
-    }
-
-
-
-    settingsButton.addEventListener(
-        "click",
-        openSettings
-    );
-
-
-    settingsClose.addEventListener(
-        "click",
-        closeSettings
-    );
-
-
-    settingsOverlay.addEventListener(
-        "click",
-        closeSettings
-    );
-
-
-
-    /* =========================================================
-       THEME BUTTONS
-       ========================================================= */
 
     document
         .querySelectorAll(
@@ -4112,72 +3784,242 @@ const settingsButton =
         .forEach(
             button => {
 
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        settings.theme =
-                            button.dataset.theme;
-
-
-                        saveSettings();
-
-
-                        applySettings();
-
-                    }
+                button.classList.toggle(
+                    "active",
+                    button.dataset.theme === theme
                 );
 
             }
         );
 
+}
 
 
-    /* =========================================================
-       COLOR BUTTONS
-       ========================================================= */
+/* =========================================================
+   APPLY SETTINGS
+   ========================================================= */
+
+function applySettings() {
+
+    applyTheme(
+        settings.theme
+    );
+
+
+    applyAccent(
+        settings.accent
+    );
+
+
+    todoVisibleToggle.checked =
+        settings.todoVisible;
+
 
     document
         .querySelectorAll(
             ".color-option"
         )
         .forEach(
-            button => {
+            option => {
 
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        settings.accent =
-                            button.dataset.color;
-
-
-                        saveSettings();
-
-
-                        applySettings();
-
-                    }
+                option.classList.toggle(
+                    "active",
+                    option.dataset.color.toLowerCase()
+                    ===
+                    settings.accent.toLowerCase()
                 );
 
             }
         );
 
+}
 
 
-    /* =========================================================
-       TODO VISIBILITY
-       ========================================================= */
+/* =========================================================
+   SETTINGS OPEN
+   ========================================================= */
 
-    todoVisibleToggle.addEventListener(
-        "change",
+function openSettings() {
+
+    /*
+        Extra protection:
+        NEVER open settings while iframe is active.
+    */
+
+    if (
+        viewer.classList.contains(
+            "active"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    settingsPanel.classList.add(
+        "active"
+    );
+
+
+    settingsOverlay.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   SETTINGS CLOSE
+   ========================================================= */
+
+function closeSettings() {
+
+    settingsPanel.classList.remove(
+        "active"
+    );
+
+
+    settingsOverlay.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+settingsButton.addEventListener(
+    "click",
+    openSettings
+);
+
+
+settingsClose.addEventListener(
+    "click",
+    closeSettings
+);
+
+
+settingsOverlay.addEventListener(
+    "click",
+    closeSettings
+);
+
+
+/* =========================================================
+   THEME BUTTONS
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        ".theme-option"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    settings.theme =
+                        button.dataset.theme;
+
+
+                    saveSettings();
+
+
+                    applySettings();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   COLOR BUTTONS
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        ".color-option"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    settings.accent =
+                        button.dataset.color;
+
+
+                    saveSettings();
+
+
+                    applySettings();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   TODO VISIBILITY
+   ========================================================= */
+
+todoVisibleToggle.addEventListener(
+    "change",
+    () => {
+
+        settings.todoVisible =
+            todoVisibleToggle.checked;
+
+
+        saveSettings();
+
+
+        renderApps();
+
+    }
+);
+
+
+/* =========================================================
+   RESET SETTINGS
+   ========================================================= */
+
+document
+    .getElementById(
+        "resetSettings"
+    )
+    .addEventListener(
+        "click",
         () => {
 
-            settings.todoVisible =
-                todoVisibleToggle.checked;
+            settings =
+                {
+                    ...DEFAULT_SETTINGS
+                };
 
 
             saveSettings();
+
+
+            applySettings();
 
 
             renderApps();
@@ -4186,647 +4028,579 @@ const settingsButton =
     );
 
 
+/* =========================================================
+   SYSTEM THEME
+   ========================================================= */
 
-    /* =========================================================
-       RESET SETTINGS
-       ========================================================= */
+window
+    .matchMedia(
+        "(prefers-color-scheme: light)"
+    )
+    .addEventListener(
+        "change",
+        () => {
 
-    document
-        .getElementById(
-            "resetSettings"
-        )
-        .addEventListener(
-            "click",
-            () => {
+            if (
+                settings.theme ===
+                "system"
+            ) {
 
-                settings =
-                    {
-                        ...DEFAULT_SETTINGS
-                    };
-
-
-                saveSettings();
-
-
-                applySettings();
-
-
-                renderApps();
-
-
-                renderTodos();
-
-            }
-        );
-
-
-
-    /* =========================================================
-       SYSTEM THEME CHANGE
-       ========================================================= */
-
-    window
-        .matchMedia(
-            "(prefers-color-scheme: light)"
-        )
-        .addEventListener(
-            "change",
-            () => {
-
-                if (
-                    settings.theme ===
+                applyTheme(
                     "system"
-                ) {
-
-                    applyTheme(
-                        "system"
-                    );
-
-                }
+                );
 
             }
+
+        }
+    );
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
         );
 
+}
 
 
-    /* =========================================================
-       ESCAPE HTML
-       ========================================================= */
+/* =========================================================
+   APP NAME
+   ========================================================= */
 
-    function escapeHTML(
-        value
+function getAppName(
+    app
+) {
+
+    if (
+        app.name
     ) {
 
-        if (
-            value === null ||
-            value === undefined
-        ) {
-
-            return "";
-
-        }
-
-
-        return String(value)
-
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-
-            .replace(
-                /</g,
-                "&lt;"
-            )
-
-            .replace(
-                />/g,
-                "&gt;"
-            )
-
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+        return app.name;
 
     }
 
 
+    try {
 
-    /* =========================================================
-       GET APP NAME
-       ========================================================= */
-
-    function getAppName(
-        app
-    ) {
-
-        if (
-            app.name
-        ) {
-
-            return app.name;
-
-        }
+        const url =
+            new URL(
+                app.iframeLink
+            );
 
 
-        try {
+        return url.hostname
 
-            const url =
-                new URL(
-                    app.iframeLink
-                );
+            .replace(
+                /^www\./,
+                ""
+            )
 
+            .split(".")[0]
 
-            return url.hostname
-
-                .replace(
-                    /^www\./,
-                    ""
-                )
-
-                .split(".")[0]
-
-                .replace(
-                    /^./,
-                    c =>
-                        c.toUpperCase()
-                );
-
-        }
-
-        catch {
-
-            return "Application";
-
-        }
+            .replace(
+                /^./,
+                c =>
+                    c.toUpperCase()
+            );
 
     }
 
+    catch {
+
+        return "Application";
+
+    }
+
+}
 
 
-    /* =========================================================
-       PASSWORD
-       ========================================================= */
+/* =========================================================
+   PASSWORD CHECK
+   ========================================================= */
 
-    function hasPassword(
-        app
+function hasPassword(
+    app
+) {
+
+    if (
+        !app
     ) {
-
-        if (
-            !app
-        ) {
-
-            return false;
-
-        }
-
-
-        if (
-            typeof app.password ===
-            "string"
-        ) {
-
-            return (
-                app.password.trim() !== ""
-            );
-
-        }
-
-
-        if (
-            Array.isArray(
-                app.password
-            )
-        ) {
-
-            return app.password.some(
-                password =>
-                    String(password)
-                        .trim() !== ""
-            );
-
-        }
-
 
         return false;
 
     }
 
 
-
-    function getPasswords(
-        app
+    if (
+        typeof app.password ===
+        "string"
     ) {
 
-        if (
-            typeof app.password ===
-            "string"
-        ) {
-
-            return app.password.trim()
-                ?
-                [app.password]
-                :
-                [];
-
-        }
-
-
-        if (
-            Array.isArray(
-                app.password
-            )
-        ) {
-
-            return app.password
-
-                .map(
-                    password =>
-                        String(password)
-                )
-
-                .filter(
-                    password =>
-                        password.trim() !== ""
-                );
-
-        }
-
-
-        return [];
+        return (
+            app.password.trim() !== ""
+        );
 
     }
 
 
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
 
-    /* =========================================================
-       TODO CARD HTML
-       ========================================================= */
+        return app.password.some(
+            password =>
+                String(password)
+                    .trim() !== ""
+        );
 
-    function createTodoCard() {
-
-        if (
-            !settings.todoVisible
-        ) {
-
-            return null;
-
-        }
+    }
 
 
-        const card =
-            document.createElement(
-                "article"
+    return false;
+
+}
+
+
+function getPasswords(
+    app
+) {
+
+    if (
+        typeof app.password ===
+        "string"
+    ) {
+
+        return app.password.trim()
+            ?
+            [app.password]
+            :
+            [];
+
+    }
+
+
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
+
+        return app.password
+
+            .map(
+                password =>
+                    String(password)
+            )
+
+            .filter(
+                password =>
+                    password.trim() !== ""
             );
 
-
-        card.className =
-            "app-card todo-card";
+    }
 
 
-        card.innerHTML = `
+    return [];
 
-            <div class="todo-header">
-
-
-                <div class="todo-title-area">
+}
 
 
-                    <div class="todo-icon">
+/* =========================================================
+   TODO CARD
+   ========================================================= */
 
-                        ✓
+function createTodoCard() {
 
-                    </div>
+    if (
+        !settings.todoVisible
+    ) {
 
+        return null;
 
-                    <div>
-
-                        <div class="todo-title">
-
-                            To-Do
-
-                        </div>
+    }
 
 
-                        <div
-                            class="todo-counter"
-                            id="todoCounter"
-                        >
+    const card =
+        document.createElement(
+            "article"
+        );
 
-                            0 tasks
 
-                        </div>
+    card.className =
+        "app-card todo-card";
 
-                    </div>
 
+    card.innerHTML = `
+
+        <div class="todo-header">
+
+            <div class="todo-title-area">
+
+                <div class="todo-icon">
+
+                    ✓
 
                 </div>
 
 
+                <div>
+
+                    <div class="todo-title">
+
+                        To-Do
+
+                    </div>
+
+
+                    <div
+                        class="todo-counter"
+                        id="todoCounter"
+                    >
+
+                        0 tasks
+
+                    </div>
+
+                </div>
+
             </div>
 
+        </div>
 
-            <div class="todo-input-row">
+
+        <div class="todo-input-row">
+
+            <input
+                class="todo-input"
+                id="todoInput"
+                type="text"
+                maxlength="180"
+                placeholder="Add a task..."
+                autocomplete="off"
+            >
 
 
-                <input
-                    class="todo-input"
-                    id="todoInput"
-                    type="text"
-                    maxlength="180"
-                    placeholder="Add a task..."
-                    autocomplete="off"
-                >
+            <button
+                class="todo-add"
+                id="todoAdd"
+            >
 
+                +
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="todo-list"
+            id="todoList"
+        ></div>
+
+    `;
+
+
+    card.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+    setTimeout(
+        () => {
+
+            const input =
+                document.getElementById(
+                    "todoInput"
+                );
+
+
+            const add =
+                document.getElementById(
+                    "todoAdd"
+                );
+
+
+            if (
+                input &&
+                add
+            ) {
+
+                add.addEventListener(
+                    "click",
+                    addTodoFromInput
+                );
+
+
+                input.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key ===
+                            "Enter"
+                        ) {
+
+                            addTodoFromInput();
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            renderTodos();
+
+        },
+        0
+    );
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   ADD TODO
+   ========================================================= */
+
+function addTodoFromInput() {
+
+    const input =
+        document.getElementById(
+            "todoInput"
+        );
+
+
+    if (
+        !input
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        input.value.trim();
+
+
+    if (
+        !text
+    ) {
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    todos.unshift({
+
+        id:
+            Date.now(),
+
+        text:
+            text,
+
+        completed:
+            false,
+
+        created:
+            new Date().toISOString()
+
+    });
+
+
+    saveTodos();
+
+
+    input.value =
+        "";
+
+
+    renderTodos();
+
+
+    input.focus();
+
+}
+
+
+/* =========================================================
+   RENDER TODO
+   ========================================================= */
+
+function renderTodos() {
+
+    const list =
+        document.getElementById(
+            "todoList"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "todoCounter"
+        );
+
+
+    if (
+        !list ||
+        !counter
+    ) {
+
+        return;
+
+    }
+
+
+    const remaining =
+        todos.filter(
+            todo =>
+                !todo.completed
+        ).length;
+
+
+    counter.textContent =
+        `${remaining} remaining · ${todos.length} total`;
+
+
+    list.innerHTML =
+        "";
+
+
+    if (
+        todos.length === 0
+    ) {
+
+        list.innerHTML = `
+
+            <div class="todo-empty">
+
+                No tasks yet.
+                Add something you need to remember.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    todos.forEach(
+        todo => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                `todo-item ${
+                    todo.completed
+                    ?
+                    "completed"
+                    :
+                    ""
+                }`;
+
+
+            item.innerHTML = `
 
                 <button
-                    class="todo-add"
-                    id="todoAdd"
-                    title="Add task"
+                    class="todo-check"
                 >
 
-                    +
+                    ${
+                        todo.completed
+                        ?
+                        "✓"
+                        :
+                        ""
+                    }
 
                 </button>
 
 
-            </div>
-
-
-            <div
-                class="todo-list"
-                id="todoList"
-            ></div>
-
-        `;
-
-
-        /*
-            Prevent card click behavior
-        */
-
-        card.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-            }
-        );
-
-
-        /*
-            Add button
-        */
-
-        setTimeout(
-            () => {
-
-                const input =
-                    document.getElementById(
-                        "todoInput"
-                    );
-
-
-                const add =
-                    document.getElementById(
-                        "todoAdd"
-                    );
-
-
-                if (
-                    input &&
-                    add
-                ) {
-
-                    add.addEventListener(
-                        "click",
-                        addTodoFromInput
-                    );
-
-
-                    input.addEventListener(
-                        "keydown",
-                        event => {
-
-                            if (
-                                event.key ===
-                                "Enter"
-                            ) {
-
-                                addTodoFromInput();
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                renderTodos();
-
-            },
-            0
-        );
-
-
-        return card;
-
-    }
-
-
-
-    /* =========================================================
-       ADD TODO
-       ========================================================= */
-
-    function addTodoFromInput() {
-
-        const input =
-            document.getElementById(
-                "todoInput"
-            );
-
-
-        if (
-            !input
-        ) {
-
-            return;
-
-        }
-
-
-        const text =
-            input.value.trim();
-
-
-        if (
-            !text
-        ) {
-
-            input.focus();
-
-            return;
-
-        }
-
-
-        todos.unshift({
-
-            id:
-                Date.now(),
-
-            text:
-                text,
-
-            completed:
-                false,
-
-            created:
-                new Date().toISOString()
-
-        });
-
-
-        saveTodos();
-
-
-        input.value =
-            "";
-
-
-        renderTodos();
-
-
-        input.focus();
-
-    }
-
-
-
-    /* =========================================================
-       RENDER TODOS
-       ========================================================= */
-
-    function renderTodos() {
-
-        const list =
-            document.getElementById(
-                "todoList"
-            );
-
-
-        const counter =
-            document.getElementById(
-                "todoCounter"
-            );
-
-
-        if (
-            !list ||
-            !counter
-        ) {
-
-            return;
-
-        }
-
-
-        const remaining =
-            todos.filter(
-                todo =>
-                    !todo.completed
-            ).length;
-
-
-        counter.textContent =
-            `${remaining} remaining · ${todos.length} total`;
-
-
-        list.innerHTML =
-            "";
-
-
-        if (
-            todos.length === 0
-        ) {
-
-            list.innerHTML = `
-
-                <div class="todo-empty">
-
-                    No tasks yet.
-                    Add something you need to remember.
+                <div class="todo-text">
+
+                    ${escapeHTML(
+                        todo.text
+                    )}
 
                 </div>
 
+
+                <button
+                    class="todo-delete"
+                >
+
+                    ×
+
+                </button>
+
             `;
 
-            return;
 
-        }
-
-
-        todos.forEach(
-            todo => {
-
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                item.className =
-                    `todo-item ${
-                        todo.completed
-                        ?
-                        "completed"
-                        :
-                        ""
-                    }`;
-
-
-                item.innerHTML = `
-
-                    <button
-                        class="todo-check"
-                        title="Complete task"
-                    >
-
-                        ${
-                            todo.completed
-                            ?
-                            "✓"
-                            :
-                            ""
-                        }
-
-                    </button>
-
-
-                    <div class="todo-text">
-
-                        ${escapeHTML(
-                            todo.text
-                        )}
-
-                    </div>
-
-
-                    <button
-                        class="todo-delete"
-                        title="Delete task"
-                    >
-
-                        ×
-
-                    </button>
-
-                `;
-
-
-                const check =
-                    item.querySelector(
-                        ".todo-check"
-                    );
-
-
-                const deleteButton =
-                    item.querySelector(
-                        ".todo-delete"
-                    );
-
-
-                check.addEventListener(
+            item
+                .querySelector(
+                    ".todo-check"
+                )
+                .addEventListener(
                     "click",
                     event => {
 
@@ -4841,7 +4615,11 @@ const settingsButton =
                 );
 
 
-                deleteButton.addEventListener(
+            item
+                .querySelector(
+                    ".todo-delete"
+                )
+                .addEventListener(
                     "click",
                     event => {
 
@@ -4856,598 +4634,614 @@ const settingsButton =
                 );
 
 
-                list.appendChild(
-                    item
-                );
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   TODO TOGGLE
+   ========================================================= */
+
+function toggleTodo(
+    id
+) {
+
+    todos =
+        todos.map(
+            todo => {
+
+                if (
+                    todo.id === id
+                ) {
+
+                    return {
+
+                        ...todo,
+
+                        completed:
+                            !todo.completed
+
+                    };
+
+                }
+
+
+                return todo;
 
             }
+        );
+
+
+    saveTodos();
+
+
+    renderTodos();
+
+}
+
+
+/* =========================================================
+   TODO DELETE
+   ========================================================= */
+
+function deleteTodo(
+    id
+) {
+
+    todos =
+        todos.filter(
+            todo =>
+                todo.id !== id
+        );
+
+
+    saveTodos();
+
+
+    renderTodos();
+
+}
+
+
+/* =========================================================
+   RENDER APPLICATIONS
+   ========================================================= */
+
+function renderApps() {
+
+    grid.innerHTML =
+        "";
+
+
+    /*
+        TODO IS ALWAYS THE FIRST CARD
+    */
+
+    const todoCard =
+        createTodoCard();
+
+
+    if (
+        todoCard
+    ) {
+
+        grid.appendChild(
+            todoCard
         );
 
     }
 
 
+    const apps =
+        Array.isArray(
+            horizonApps
+        )
+        ?
+        horizonApps
+        :
+        [];
 
-    /* =========================================================
-       TOGGLE TODO
-       ========================================================= */
 
-    function toggleTodo(
-        id
-    ) {
+    const activeCount =
+        apps.filter(
+            app =>
+                Number(app.enabled) === 1
+        ).length;
 
-        todos =
-            todos.map(
-                todo => {
+
+    appCount.textContent =
+        `${activeCount} active · ${apps.length} total`;
+
+
+    apps.forEach(
+        (app,index) => {
+
+            const enabled =
+                Number(
+                    app.enabled
+                ) === 1;
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                `app-card ${
+                    app.size ||
+                    "normal"
+                } ${
+                    enabled
+                    ?
+                    ""
+                    :
+                    "disabled"
+                }`;
+
+
+            card.style.animationDelay =
+                `${(index + 1) * 45}ms`;
+
+
+            const logo =
+                app.logo ||
+                "https://i.ibb.co/kgzJb34B/horizon-logo.png";
+
+
+            const protectedApp =
+                hasPassword(
+                    app
+                );
+
+
+            card.innerHTML = `
+
+                <div class="card-glow"></div>
+
+
+                <div>
+
+                    <div class="card-top">
+
+
+                        <img
+                            class="app-logo"
+                            src="${escapeHTML(
+                                logo
+                            )}"
+                            alt=""
+                            loading="lazy"
+                            onerror="
+                                this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
+                            "
+                        >
+
+
+                        <div class="card-status">
+
+
+                            ${
+                                protectedApp &&
+                                enabled
+
+                                ?
+
+                                `
+                                <span
+                                    class="lock-icon"
+                                    title="Password protected"
+                                >
+                                    🔒
+                                </span>
+                                `
+
+                                :
+
+                                ""
+
+                            }
+
+
+                            ${
+                                enabled
+
+                                ?
+
+                                `
+                                <span
+                                    class="status-dot"
+                                ></span>
+                                `
+
+                                :
+
+                                `
+                                <span
+                                    class="disabled-status"
+                                >
+                                    Disabled
+                                </span>
+                                `
+
+                            }
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+
+                        <div class="card-title">
+
+                            ${escapeHTML(
+                                getAppName(app)
+                            )}
+
+                        </div>
+
+
+                        <div class="card-description">
+
+                            ${escapeHTML(
+                                app.description ||
+                                ""
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="hover-text">
+
+                    ${escapeHTML(
+                        app.hoverText ||
+                        "Open application"
+                    )}
+
+                    &nbsp; →
+
+                </div>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                () => {
 
                     if (
-                        todo.id === id
+                        !enabled
                     ) {
 
-                        return {
-
-                            ...todo,
-
-                            completed:
-                                !todo.completed
-
-                        };
+                        return;
 
                     }
 
 
-                    return todo;
+                    handleAppClick(
+                        app
+                    );
 
                 }
             );
 
 
-        saveTodos();
-
-
-        renderTodos();
-
-    }
-
-
-
-    /* =========================================================
-       DELETE TODO
-       ========================================================= */
-
-    function deleteTodo(
-        id
-    ) {
-
-        todos =
-            todos.filter(
-                todo =>
-                    todo.id !== id
-            );
-
-
-        saveTodos();
-
-
-        renderTodos();
-
-    }
-
-
-
-    /* =========================================================
-       RENDER APPLICATIONS
-       ========================================================= */
-
-    function renderApps() {
-
-        grid.innerHTML =
-            "";
-
-
-        /*
-            FIRST CARD = TODO
-        */
-
-        const todoCard =
-            createTodoCard();
-
-
-        if (
-            todoCard
-        ) {
-
             grid.appendChild(
-                todoCard
+                card
             );
 
         }
+    );
 
+}
 
-        const apps =
-            Array.isArray(
-                horizonApps
-            )
-            ?
-            horizonApps
-            :
-            [];
 
+/* =========================================================
+   APP CLICK
+   ========================================================= */
 
-        const activeCount =
-            apps.filter(
-                app =>
-                    Number(app.enabled) === 1
-            ).length;
+function handleAppClick(
+    app
+) {
 
-
-        appCount.textContent =
-            `${activeCount} active · ${apps.length} total`;
-
-
-        apps.forEach(
-            (app,index) => {
-
-
-                const enabled =
-                    Number(
-                        app.enabled
-                    ) === 1;
-
-
-                const card =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                card.className =
-                    `app-card ${
-                        app.size ||
-                        "normal"
-                    } ${
-                        enabled
-                        ?
-                        ""
-                        :
-                        "disabled"
-                    }`;
-
-
-                card.style.animationDelay =
-                    `${(index + 1) * 45}ms`;
-
-
-                const logo =
-                    app.logo ||
-                    "https://i.ibb.co/kgzJb34B/horizon-logo.png";
-
-
-                const protectedApp =
-                    hasPassword(
-                        app
-                    );
-
-
-                card.innerHTML = `
-
-                    <div class="card-glow"></div>
-
-
-                    <div>
-
-
-                        <div class="card-top">
-
-
-                            <img
-                                class="app-logo"
-                                src="${escapeHTML(
-                                    logo
-                                )}"
-                                alt=""
-                                loading="lazy"
-                                onerror="
-                                    this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
-                                "
-                            >
-
-
-                            <div class="card-status">
-
-
-                                ${
-                                    protectedApp &&
-                                    enabled
-
-                                    ?
-
-                                    `
-                                    <span
-                                        class="lock-icon"
-                                        title="Password protected"
-                                    >
-                                        🔒
-                                    </span>
-                                    `
-
-                                    :
-
-                                    ""
-
-                                }
-
-
-                                ${
-                                    enabled
-
-                                    ?
-
-                                    `
-                                    <span
-                                        class="status-dot"
-                                    ></span>
-                                    `
-
-                                    :
-
-                                    `
-                                    <span
-                                        class="disabled-status"
-                                    >
-                                        Disabled
-                                    </span>
-                                    `
-
-                                }
-
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="card-content">
-
-
-                            <div class="card-title">
-
-                                ${escapeHTML(
-                                    getAppName(app)
-                                )}
-
-                            </div>
-
-
-                            <div class="card-description">
-
-                                ${escapeHTML(
-                                    app.description ||
-                                    ""
-                                )}
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="hover-text">
-
-                        ${escapeHTML(
-                            app.hoverText ||
-                            "Open application"
-                        )}
-
-                        &nbsp; →
-
-                    </div>
-
-                `;
-
-
-                /*
-                    ONLY ENABLED CARDS CAN OPEN
-                */
-
-                card.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            !enabled
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        handleAppClick(
-                            app
-                        );
-
-                    }
-                );
-
-
-                grid.appendChild(
-                    card
-                );
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================================================
-       APP CLICK
-       ========================================================= */
-
-    function handleAppClick(
-        app
+    if (
+        !app ||
+        Number(app.enabled) !== 1
     ) {
 
-        if (
-            !app ||
-            Number(app.enabled) !== 1
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            !hasPassword(
-                app
-            )
-        ) {
-
-            openApp(
-                app
-            );
-
-            return;
-
-        }
-
-
-        pendingApp =
-            app;
-
-
-        passwordInput.value =
-            "";
-
-
-        passwordError.textContent =
-            "";
-
-
-        passwordModal.classList.add(
-            "active"
-        );
-
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
-
-        setTimeout(
-            () =>
-                passwordInput.focus(),
-            100
-        );
+        return;
 
     }
 
 
-
-    /* =========================================================
-       PASSWORD
-       ========================================================= */
-
-    function submitPassword() {
-
-        if (
-            !pendingApp
-        ) {
-
-            return;
-
-        }
-
-
-        const entered =
-            passwordInput.value;
-
-
-        const valid =
-            getPasswords(
-                pendingApp
-            ).some(
-                password =>
-                    entered === password
-            );
-
-
-        if (
-            !valid
-        ) {
-
-            passwordError.textContent =
-                "Incorrect password. Please try again.";
-
-
-            passwordInput.value =
-                "";
-
-
-            passwordInput.focus();
-
-
-            return;
-
-        }
-
-
-        const app =
-            pendingApp;
-
-
-        pendingApp =
-            null;
-
-
-        closePasswordModal();
-
+    if (
+        !hasPassword(
+            app
+        )
+    ) {
 
         openApp(
             app
         );
 
+        return;
+
     }
 
 
+    pendingApp =
+        app;
 
-    function closePasswordModal() {
 
-        passwordModal.classList.remove(
-            "active"
+    passwordInput.value =
+        "";
+
+
+    passwordError.textContent =
+        "";
+
+
+    passwordModal.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    setTimeout(
+        () =>
+            passwordInput.focus(),
+        100
+    );
+
+}
+
+
+/* =========================================================
+   PASSWORD SUBMIT
+   ========================================================= */
+
+function submitPassword() {
+
+    if (
+        !pendingApp
+    ) {
+
+        return;
+
+    }
+
+
+    const entered =
+        passwordInput.value;
+
+
+    const valid =
+        getPasswords(
+            pendingApp
+        ).some(
+            password =>
+                entered === password
         );
 
 
-        document.body.classList.remove(
-            "modal-open"
-        );
+    if (
+        !valid
+    ) {
+
+        passwordError.textContent =
+            "Incorrect password. Please try again.";
 
 
         passwordInput.value =
             "";
 
 
-        passwordError.textContent =
-            "";
+        passwordInput.focus();
+
+
+        return;
 
     }
 
 
-
-    function cancelPassword() {
-
-        pendingApp =
-            null;
+    const app =
+        pendingApp;
 
 
-        closePasswordModal();
-
-    }
-
+    pendingApp =
+        null;
 
 
-    passwordInput.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key ===
-                "Enter"
-            ) {
-
-                submitPassword();
-
-            }
+    closePasswordModal();
 
 
-            if (
-                event.key ===
-                "Escape"
-            ) {
+    openApp(
+        app
+    );
 
-                cancelPassword();
+}
 
-            }
 
-        }
+/* =========================================================
+   PASSWORD CLOSE
+   ========================================================= */
+
+function closePasswordModal() {
+
+    passwordModal.classList.remove(
+        "active"
     );
 
 
+    document.body.classList.remove(
+        "modal-open"
+    );
 
-    /* =========================================================
-       OPEN IFRAME
-       ========================================================= */
 
-function openApp(app) {
+    passwordInput.value =
+        "";
 
-    currentApp = app;
+
+    passwordError.textContent =
+        "";
+
+}
+
+
+function cancelPassword() {
+
+    pendingApp =
+        null;
+
+
+    closePasswordModal();
+
+}
+
+
+passwordInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            submitPassword();
+
+        }
+
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            cancelPassword();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   OPEN APP
+   ========================================================= */
+
+function openApp(
+    app
+) {
+
+    if (
+        !app ||
+        Number(app.enabled) !== 1
+    ) {
+
+        return;
+
+    }
+
+
+    currentApp =
+        app;
+
 
     /*
-        Hide Horizon dashboard
-    */
-
-    dashboard.classList.add("hidden");
-
-
-    /*
-        Hide settings gear
-    */
-
-    settingsButton.classList.add("hidden");
-
-
-    /*
-        Close settings if somehow open
+        CLOSE SETTINGS
     */
 
     closeSettings();
 
 
     /*
-        Open full-screen iframe
+        HIDE DASHBOARD
     */
 
-    viewer.classList.add("active");
+    dashboard.classList.add(
+        "hidden"
+    );
 
 
     /*
-        Show loader
+        CRITICAL:
+        HIDE SETTINGS GEAR
     */
 
-    loader.classList.remove("hidden");
+    settingsButton.classList.add(
+        "hidden"
+    );
 
 
     /*
-        Clear old iframe
+        OPEN FULL SCREEN VIEWER
     */
 
-    iframe.src = "about:blank";
+    viewer.classList.add(
+        "active"
+    );
 
 
     /*
-        Load application
+        SHOW LOADER
     */
 
-    setTimeout(() => {
-
-        iframe.src = app.iframeLink;
-
-    }, 80);
+    loader.classList.remove(
+        "hidden"
+    );
 
 
     /*
-        Browser history
+        CLEAR PREVIOUS PAGE
+    */
+
+    iframe.src =
+        "about:blank";
+
+
+    /*
+        LOAD NEW PAGE
+    */
+
+    setTimeout(
+        () => {
+
+            iframe.src =
+                app.iframeLink;
+
+        },
+        80
+    );
+
+
+    /*
+        BROWSER HISTORY
     */
 
     history.pushState(
         {
-            horizonViewer: true
+            horizonViewer:
+                true
         },
         "",
         "#app"
@@ -5456,72 +5250,86 @@ function openApp(app) {
 }
 
 
-    iframe.addEventListener(
-        "load",
-        () => {
+/* =========================================================
+   IFRAME LOADED
+   ========================================================= */
 
-            setTimeout(
-                () => {
+iframe.addEventListener(
+    "load",
+    () => {
 
-                    loader.classList.add(
-                        "hidden"
-                    );
+        setTimeout(
+            () => {
 
-                },
-                250
-            );
+                loader.classList.add(
+                    "hidden"
+                );
 
-        }
-    );
+            },
+            250
+        );
+
+    }
+);
 
 
-
-    /* =========================================================
-       BACK TO HORIZON
-       ========================================================= */
+/* =========================================================
+   RETURN TO HORIZON
+   ========================================================= */
 
 function goBack() {
 
     /*
-        Clear iframe
+        CLEAR IFRAME
     */
 
-    iframe.src = "about:blank";
+    iframe.src =
+        "about:blank";
 
 
     /*
-        Close iframe viewer
+        CLOSE VIEWER
     */
 
-    viewer.classList.remove("active");
+    viewer.classList.remove(
+        "active"
+    );
 
 
     /*
-        Show Horizon dashboard
+        SHOW DASHBOARD
     */
 
-    dashboard.classList.remove("hidden");
+    dashboard.classList.remove(
+        "hidden"
+    );
 
 
     /*
-        Show settings gear again
+        CRITICAL:
+        SHOW SETTINGS GEAR AGAIN
     */
 
-    settingsButton.classList.remove("hidden");
+    settingsButton.classList.remove(
+        "hidden"
+    );
 
 
     /*
-        Clear current app
+        RESET APP
     */
 
-    currentApp = null;
+    currentApp =
+        null;
 
 
     /*
-        Remove #app from URL
+        REMOVE #app
     */
 
-    if (location.hash === "#app") {
+    if (
+        location.hash === "#app"
+    ) {
 
         history.replaceState(
             null,
@@ -5535,307 +5343,338 @@ function goBack() {
 }
 
 
+/* =========================================================
+   BROWSER BACK
+   ========================================================= */
 
-    window.addEventListener(
-        "popstate",
+window.addEventListener(
+    "popstate",
+    () => {
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key !==
+            "Escape"
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+            Password modal
+        */
+
+        if (
+            passwordModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            cancelPassword();
+
+            return;
+
+        }
+
+
+        /*
+            Settings
+        */
+
+        if (
+            settingsPanel.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeSettings();
+
+            return;
+
+        }
+
+
+        /*
+            Iframe
+        */
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
+
+function renderImportantLinks() {
+
+    importantLinksContainer.innerHTML =
+        "";
+
+
+    const links =
+        Array.isArray(
+            importantLinks
+        )
+        ?
+        importantLinks
+        :
+        [];
+
+
+    links.forEach(
+        item => {
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "important-link";
+
+
+            wrapper.innerHTML = `
+
+                <div
+                    class="important-info"
+                >
+
+                    <div
+                        class="important-name"
+                    >
+
+                        ${escapeHTML(
+                            item.name
+                        )}
+
+                    </div>
+
+
+                    <div
+                        class="important-url"
+                    >
+
+                        ${escapeHTML(
+                            item.url
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="important-actions"
+                >
+
+                    <button
+                        class="link-button copy-button"
+                    >
+
+                        Copy
+
+                    </button>
+
+
+                    <button
+                        class="link-button open"
+                    >
+
+                        Open
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const copyButton =
+                wrapper.querySelector(
+                    ".copy-button"
+                );
+
+
+            const openButton =
+                wrapper.querySelector(
+                    ".open"
+                );
+
+
+            copyButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+
+                    copyLink(
+                        item.url,
+                        copyButton
+                    );
+
+                }
+            );
+
+
+            openButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+
+                    window.open(
+                        item.url,
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+                }
+            );
+
+
+            importantLinksContainer
+                .appendChild(
+                    wrapper
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   COPY LINK
+   ========================================================= */
+
+async function copyLink(
+    url,
+    button
+) {
+
+    try {
+
+        await navigator.clipboard.writeText(
+            url
+        );
+
+    }
+
+    catch {
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+
+        textarea.value =
+            url;
+
+
+        textarea.style.position =
+            "fixed";
+
+
+        textarea.style.opacity =
+            "0";
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        textarea.remove();
+
+    }
+
+
+    const original =
+        button.textContent;
+
+
+    button.textContent =
+        "Copied ✓";
+
+
+    button.classList.add(
+        "copy-success"
+    );
+
+
+    setTimeout(
         () => {
 
-            if (
-                viewer.classList.contains(
-                    "active"
-                )
-            ) {
+            button.textContent =
+                original;
 
-                goBack();
 
-            }
+            button.classList.remove(
+                "copy-success"
+            );
 
-        }
+        },
+        1500
     );
 
+}
 
 
-    document.addEventListener(
-        "keydown",
-        event => {
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
-            if (
-                event.key !==
-                "Escape"
-            ) {
+applySettings();
 
-                return;
+renderApps();
 
-            }
-
-
-            if (
-                passwordModal.classList.contains(
-                    "active"
-                )
-            ) {
-
-                cancelPassword();
-
-                return;
-
-            }
-
-
-            if (
-                viewer.classList.contains(
-                    "active"
-                )
-            ) {
-
-                goBack();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================================================
-       IMPORTANT LINKS
-       ========================================================= */
-
-    function renderImportantLinks() {
-
-        importantLinksContainer.innerHTML =
-            "";
-
-
-        const links =
-            Array.isArray(
-                importantLinks
-            )
-            ?
-            importantLinks
-            :
-            [];
-
-
-        links.forEach(
-            item => {
-
-
-                const wrapper =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                wrapper.className =
-                    "important-link";
-
-
-                wrapper.innerHTML = `
-
-                    <div
-                        class="important-info"
-                    >
-
-                        <div
-                            class="important-name"
-                        >
-
-                            ${escapeHTML(
-                                item.name
-                            )}
-
-                        </div>
-
-
-                        <div
-                            class="important-url"
-                        >
-
-                            ${escapeHTML(
-                                item.url
-                            )}
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="important-actions"
-                    >
-
-                        <button
-                            class="link-button copy-button"
-                        >
-                            Copy
-                        </button>
-
-
-                        <button
-                            class="link-button open"
-                        >
-                            Open
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                const copyButton =
-                    wrapper.querySelector(
-                        ".copy-button"
-                    );
-
-
-                const openButton =
-                    wrapper.querySelector(
-                        ".open"
-                    );
-
-
-                copyButton.addEventListener(
-                    "click",
-                    event => {
-
-                        event.stopPropagation();
-
-
-                        copyLink(
-                            item.url,
-                            copyButton
-                        );
-
-                    }
-                );
-
-
-                openButton.addEventListener(
-                    "click",
-                    event => {
-
-                        event.stopPropagation();
-
-
-                        window.open(
-                            item.url,
-                            "_blank",
-                            "noopener,noreferrer"
-                        );
-
-                    }
-                );
-
-
-                importantLinksContainer
-                    .appendChild(
-                        wrapper
-                    );
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================================================
-       COPY
-       ========================================================= */
-
-    async function copyLink(
-        url,
-        button
-    ) {
-
-        try {
-
-            await navigator.clipboard.writeText(
-                url
-            );
-
-        }
-
-        catch {
-
-            const textarea =
-                document.createElement(
-                    "textarea"
-                );
-
-
-            textarea.value =
-                url;
-
-
-            textarea.style.position =
-                "fixed";
-
-
-            textarea.style.opacity =
-                "0";
-
-
-            document.body.appendChild(
-                textarea
-            );
-
-
-            textarea.select();
-
-
-            document.execCommand(
-                "copy"
-            );
-
-
-            textarea.remove();
-
-        }
-
-
-        const original =
-            button.textContent;
-
-
-        button.textContent =
-            "Copied ✓";
-
-
-        button.classList.add(
-            "copy-success"
-        );
-
-
-        setTimeout(
-            () => {
-
-                button.textContent =
-                    original;
-
-
-                button.classList.remove(
-                    "copy-success"
-                );
-
-            },
-            1500
-        );
-
-    }
-
-
-
-    /* =========================================================
-       INITIALIZE
-       ========================================================= */
-
-    applySettings();
-
-    renderApps();
-
-    renderImportantLinks();
+renderImportantLinks();
 
 </script>
 
