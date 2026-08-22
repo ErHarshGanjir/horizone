@@ -90,7 +90,7 @@ const horizonApps = [
             "Google",
 
         iframeLink:
-            "https://www.google.com",
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vThrdlHkKU1nz4uzV0SzMnhH266vrnDRNYEZouS3NgduIErh65MrJBHpkU9NKGYiaTdkor1_7mbnY7c/pubhtml?widget=true&amp;headers=false",
 
         logo:
             "https://www.google.com/favicon.ico",
