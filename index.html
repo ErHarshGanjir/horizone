@@ -5071,8 +5071,368 @@ setInterval(
    AFFIRMATIONS
    ========================================================= */
 
+/* =========================================================
+   AFFIRMATIONS
+   ========================================================= */
+
 let currentAffirmation =
     "Believe in yourself and keep moving forward.";
+
+let affirmationRequestInProgress = false;
+
+
+/* Create card */
+
+function createAffirmationCard() {
+
+    if (!settings.affirmation) {
+        return null;
+    }
+
+    const card =
+        document.createElement("article");
+
+    card.className =
+        "app-card affirmation-card";
+
+    card.innerHTML = `
+
+<div>
+
+<div class="affirmation-mark">
+    “
+</div>
+
+<div
+    class="affirmation-text"
+    id="affirmationText"
+>
+    ${escapeHTML(currentAffirmation)}
+</div>
+
+</div>
+
+<div class="affirmation-footer">
+
+<div class="affirmation-label">
+    Positive words
+</div>
+
+<button
+    class="refresh-affirmation"
+    id="refreshAffirmation"
+>
+    New affirmation ↻
+</button>
+
+</div>
+
+`;
+
+    /*
+        Prevent clicking the card from
+        triggering anything underneath.
+    */
+
+    card.onclick =
+        e => e.stopPropagation();
+
+
+    setTimeout(() => {
+
+        const button =
+            document.getElementById(
+                "refreshAffirmation"
+            );
+
+        if (button) {
+
+            button.onclick =
+                async e => {
+
+                    e.stopPropagation();
+
+                    await loadAffirmation();
+
+                };
+
+        }
+
+    }, 0);
+
+
+    return card;
+}
+
+
+/* =========================================================
+   LOAD NEW AFFIRMATION
+   ========================================================= */
+
+async function loadAffirmation() {
+
+    if (affirmationRequestInProgress) {
+        return;
+    }
+
+    const text =
+        document.getElementById(
+            "affirmationText"
+        );
+
+    const button =
+        document.getElementById(
+            "refreshAffirmation"
+        );
+
+
+    affirmationRequestInProgress =
+        true;
+
+
+    /*
+        Loading state
+    */
+
+    if (text) {
+
+        text.style.opacity = ".45";
+
+        text.textContent =
+            "Finding a new positive thought…";
+
+    }
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Loading…";
+
+    }
+
+
+    try {
+
+        /*
+            Cache-busting parameter makes
+            the browser request a fresh response.
+        */
+
+        const response =
+            await fetch(
+                "https://www.affirmations.dev/?t=" +
+                Date.now(),
+                {
+                    method:"GET",
+
+                    cache:"no-store",
+
+                    headers:{
+                        "Accept":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "API request failed: " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !data ||
+            typeof data.affirmation !==
+                "string" ||
+            !data.affirmation.trim()
+        ) {
+
+            throw new Error(
+                "Invalid API response"
+            );
+
+        }
+
+
+        currentAffirmation =
+            data.affirmation.trim();
+
+
+        /*
+            Update card immediately.
+        */
+
+        if (text) {
+
+            text.textContent =
+                currentAffirmation;
+
+            text.style.opacity =
+                "1";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Affirmation API error:",
+            error
+        );
+
+
+        /*
+            Don't replace the existing
+            affirmation with the same
+            hard-coded sentence.
+        */
+
+        const fallbackAffirmations = [
+
+            "You are capable of more than you think.",
+
+            "Small progress is still progress.",
+
+            "Believe in yourself and keep going.",
+
+            "Your effort today builds your future.",
+
+            "Every new day is another opportunity.",
+
+            "Keep learning, keep growing, keep moving.",
+
+            "You don't have to be perfect to make progress.",
+
+            "Great things often begin with small steps.",
+
+            "Your mindset can change your entire day.",
+
+            "Stay patient with yourself and your journey."
+
+        ];
+
+
+        let newFallback;
+
+
+        do {
+
+            newFallback =
+                fallbackAffirmations[
+                    Math.floor(
+                        Math.random() *
+                        fallbackAffirmations.length
+                    )
+                ];
+
+        }
+        while (
+            newFallback ===
+            currentAffirmation &&
+            fallbackAffirmations.length > 1
+        );
+
+
+        currentAffirmation =
+            newFallback;
+
+
+        if (text) {
+
+            text.textContent =
+                currentAffirmation;
+
+            text.style.opacity =
+                "1";
+
+        }
+
+    }
+
+
+    if (button) {
+
+        button.disabled = false;
+
+        button.textContent =
+            "New affirmation ↻";
+
+    }
+
+
+    affirmationRequestInProgress =
+        false;
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+   ========================================================= */
+
+function initializeAffirmation() {
+
+    if (
+        !settings.affirmation
+    ) {
+        return;
+    }
+
+
+    /*
+        Give the card a moment to render
+        before requesting the API.
+    */
+
+    setTimeout(
+        () => {
+
+            loadAffirmation();
+
+        },
+        300
+    );
+
+}
+
+
+/* =========================================================
+   AUTOMATIC REFRESH
+   =========================================================
+
+   A new positive sentence is requested
+   every 10 minutes while the feature
+   is enabled.
+   ========================================================= */
+
+setInterval(
+    () => {
+
+        if (
+            settings.affirmation &&
+            !document.hidden
+        ) {
+
+            loadAffirmation();
+
+        }
+
+    },
+    10 * 60 * 1000
+);
 
 
 function createAffirmationCard() {
