@@ -24,62 +24,59 @@
     id="themeColorMeta"
 >
 
-
 <style>
 
 /* =========================================================
-   HORIZON VARIABLES
+   HORIZON CORE
    ========================================================= */
 
 :root {
 
-    --bg: #080b12;
-    --bg-secondary: #0d111a;
+    --bg:#080b12;
+    --bg-secondary:#0d111a;
 
-    --card: rgba(18,23,34,.82);
-    --card-hover: rgba(27,34,49,.96);
+    --card:rgba(18,23,34,.82);
+    --card-hover:rgba(27,34,49,.96);
 
-    --border: rgba(255,255,255,.08);
-    --border-hover: rgba(255,255,255,.16);
+    --border:rgba(255,255,255,.08);
+    --border-hover:rgba(255,255,255,.17);
 
-    --text: #f4f7fb;
-    --muted: #8c96a8;
+    --text:#f4f7fb;
+    --muted:#8c96a8;
 
-    --accent: #3498db;
-    --accent-light: #8fcfff;
+    --accent:#3498db;
+    --accent-light:#8fcfff;
+    --accent-soft:rgba(52,152,219,.14);
 
-    --accent-soft: rgba(52,152,219,.14);
+    --success:#42d17d;
+    --danger:#ff5f6d;
+    --warning:#f5b642;
 
-    --success: #42d17d;
-    --danger: #ff5f6d;
+    --input-bg:rgba(255,255,255,.045);
 
-    --input-bg: rgba(255,255,255,.045);
-
-    --radius: 24px;
+    --radius:24px;
 }
 
 
 /* =========================================================
-   LIGHT THEME
+   LIGHT
    ========================================================= */
 
 body.light-theme {
 
-    --bg: #f4f7fb;
-    --bg-secondary: #ffffff;
+    --bg:#f4f7fb;
+    --bg-secondary:#ffffff;
 
-    --card: rgba(255,255,255,.90);
-    --card-hover: #ffffff;
+    --card:rgba(255,255,255,.92);
+    --card-hover:#ffffff;
 
-    --border: rgba(15,23,42,.09);
-    --border-hover: rgba(15,23,42,.16);
+    --border:rgba(15,23,42,.09);
+    --border-hover:rgba(15,23,42,.17);
 
-    --text: #101827;
-    --muted: #667085;
+    --text:#101827;
+    --muted:#667085;
 
-    --input-bg: rgba(15,23,42,.045);
-
-    background: #f4f7fb;
+    --input-bg:rgba(15,23,42,.045);
 }
 
 
@@ -88,21 +85,18 @@ body.light-theme {
    ========================================================= */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
-
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
-
 
 body {
 
-    width: 100%;
-    min-height: 100vh;
+    min-height:100vh;
 
     font-family:
         Inter,
@@ -113,46 +107,44 @@ body {
         "Segoe UI",
         sans-serif;
 
-    color: var(--text);
+    color:var(--text);
 
     background:
 
         radial-gradient(
-            circle at 10% 0%,
-            rgba(52,152,219,.09),
+            circle at 8% 0%,
+            rgba(52,152,219,.10),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 90% 10%,
+            circle at 92% 8%,
             rgba(113,76,255,.08),
             transparent 30%
         ),
 
         var(--bg);
 
-    overflow-x: hidden;
+    overflow-x:hidden;
 
     transition:
         background .3s ease,
         color .3s ease;
 }
 
-
-body.modal-open {
-    overflow: hidden;
-}
-
-
 button,
 input,
+textarea,
 select {
-    font-family: inherit;
+    font-family:inherit;
 }
 
-
 button {
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body.modal-open {
+    overflow:hidden;
 }
 
 
@@ -162,21 +154,20 @@ button {
 
 #dashboard {
 
-    width: 100%;
-    min-height: 100vh;
+    min-height:100vh;
 
     transition:
         opacity .3s ease,
         transform .3s ease;
 }
 
-
 #dashboard.hidden {
 
-    opacity: 0;
-    pointer-events: none;
+    opacity:0;
 
-    transform: scale(.985);
+    pointer-events:none;
+
+    transform:scale(.985);
 }
 
 
@@ -186,9 +177,9 @@ button {
 
 .main-content {
 
-    width: min(1500px,100%);
+    width:min(1500px,100%);
 
-    margin: 0 auto;
+    margin:auto;
 
     padding:
         45px
@@ -198,29 +189,30 @@ button {
 
 
 /* =========================================================
-   LOGO
+   HOME LOGO
    ========================================================= */
 
 .home-brand {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+
+    justify-content:center;
 
     padding:
-        15px
         10px
-        18px;
+        10px
+        20px;
 }
-
 
 .home-logo {
 
-    width: clamp(190px,21vw,300px);
-    height: clamp(190px,21vw,300px);
+    width:clamp(190px,21vw,300px);
 
-    object-fit: contain;
+    height:clamp(190px,21vw,300px);
+
+    object-fit:contain;
 
     filter:
         drop-shadow(
@@ -231,22 +223,17 @@ button {
         logoAppear .7s ease both;
 }
 
-
 @keyframes logoAppear {
 
     from {
-
-        opacity: 0;
-
+        opacity:0;
         transform:
             translateY(18px)
             scale(.9);
     }
 
     to {
-
-        opacity: 1;
-
+        opacity:1;
         transform:
             translateY(0)
             scale(1);
@@ -260,7 +247,7 @@ button {
 
 .hero {
 
-    text-align: center;
+    text-align:center;
 
     margin:
         0 auto 42px;
@@ -269,97 +256,89 @@ button {
         heroAppear .6s ease both;
 }
 
-
 .hero h1 {
 
     font-size:
         clamp(34px,5vw,64px);
 
-    line-height: 1;
+    line-height:1;
 
-    letter-spacing: -3px;
+    letter-spacing:-3px;
 
-    font-weight: 850;
+    font-weight:850;
 
-    margin-bottom: 15px;
+    margin-bottom:15px;
 }
-
 
 .hero h1 span {
-    color: var(--accent-light);
+    color:var(--accent-light);
 }
-
 
 .hero p {
 
-    max-width: 680px;
+    max-width:680px;
 
-    margin: 0 auto;
+    margin:auto;
 
-    color: var(--muted);
+    color:var(--muted);
 
     font-size:
         clamp(13px,1.5vw,15px);
 
-    line-height: 1.65;
+    line-height:1.65;
 }
-
 
 @keyframes heroAppear {
 
     from {
-
-        opacity: 0;
-        transform: translateY(12px);
+        opacity:0;
+        transform:translateY(12px);
     }
 
     to {
-
-        opacity: 1;
-        transform: translateY(0);
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
 
 /* =========================================================
-   SECTION HEADER
+   SECTION
    ========================================================= */
 
 .section-header {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    margin-bottom: 16px;
+    margin-bottom:16px;
 }
-
 
 .section-title {
 
-    font-size: 14px;
+    font-size:14px;
 
-    font-weight: 750;
+    font-weight:750;
 }
-
 
 .section-count {
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 11px;
+    font-size:11px;
 }
 
 
 /* =========================================================
-   BENTO GRID
+   BENTO
    ========================================================= */
 
 #bentoGrid {
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         repeat(4,minmax(0,1fr));
@@ -367,28 +346,28 @@ button {
     grid-auto-rows:
         minmax(180px,auto);
 
-    gap: 16px;
+    gap:16px;
 }
 
 
 /* =========================================================
-   STANDARD CARD
+   GENERIC APP CARD
    ========================================================= */
 
 .app-card {
 
-    position: relative;
+    position:relative;
 
-    min-height: 190px;
+    min-height:190px;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    padding: 22px;
+    padding:22px;
 
     border:
         1px solid var(--border);
 
-    border-radius: var(--radius);
+    border-radius:var(--radius);
 
     background:
 
@@ -400,16 +379,15 @@ button {
 
         var(--card);
 
-    cursor: pointer;
+    cursor:pointer;
 
-    display: flex;
+    display:flex;
 
-    flex-direction: column;
+    flex-direction:column;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
     transition:
-
         transform .28s cubic-bezier(.2,.8,.2,1),
         border-color .28s ease,
         background .28s ease,
@@ -418,7 +396,6 @@ button {
     animation:
         cardAppear .5s ease both;
 }
-
 
 .app-card:hover {
 
@@ -436,54 +413,43 @@ button {
         0 20px 50px rgba(0,0,0,.22);
 }
 
-
 .app-card:active {
-
-    transform:
-        scale(.985);
-}
-
-
-.app-card.large {
-
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-
-.app-card.wide {
-    grid-column: span 2;
-}
-
-
-.app-card.tall {
-    grid-row: span 2;
+    transform:scale(.985);
 }
 
 
 /* =========================================================
-   DISABLED
+   CARD SIZES
    ========================================================= */
 
-.app-card.disabled {
+.app-card.small {
 
-    cursor: not-allowed;
-
-    opacity: .52;
-
-    filter: saturate(.45);
+    grid-column:span 1;
+    grid-row:span 1;
 }
 
+.app-card.medium {
 
-.app-card.disabled:hover {
+    grid-column:span 1;
+    grid-row:span 1;
+}
 
-    transform: none;
+.app-card.large {
 
-    background: var(--card);
+    grid-column:span 2;
+    grid-row:span 2;
+}
 
-    border-color: var(--border);
+.app-card.wide {
 
-    box-shadow: none;
+    grid-column:span 2;
+    grid-row:span 1;
+}
+
+.app-card.tall {
+
+    grid-column:span 1;
+    grid-row:span 2;
 }
 
 
@@ -493,61 +459,82 @@ button {
 
 .card-glow {
 
-    position: absolute;
+    position:absolute;
 
-    width: 180px;
-    height: 180px;
+    width:180px;
+    height:180px;
 
-    right: -80px;
-    bottom: -100px;
+    right:-80px;
+    bottom:-100px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
-
         radial-gradient(
             circle,
             rgba(52,152,219,.18),
             transparent 70%
         );
 
-    pointer-events: none;
+    pointer-events:none;
 
     transition:
         transform .4s ease;
 }
 
-
 .app-card:hover .card-glow {
-
-    transform: scale(1.5);
+    transform:scale(1.5);
 }
 
 
 /* =========================================================
-   CARD TOP
+   DISABLED
+   ========================================================= */
+
+.app-card.disabled {
+
+    cursor:not-allowed;
+
+    opacity:.52;
+
+    filter:saturate(.45);
+}
+
+.app-card.disabled:hover {
+
+    transform:none;
+
+    background:var(--card);
+
+    border-color:var(--border);
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   APP CARD
    ========================================================= */
 
 .card-top {
 
-    display: flex;
+    display:flex;
 
-    align-items: flex-start;
+    align-items:flex-start;
 
-    justify-content: space-between;
+    justify-content:space-between;
 }
-
 
 .app-logo {
 
-    width: 50px;
-    height: 50px;
+    width:50px;
+    height:50px;
 
-    object-fit: contain;
+    object-fit:contain;
 
-    padding: 8px;
+    padding:8px;
 
-    border-radius: 15px;
+    border-radius:15px;
 
     background:
         rgba(255,255,255,.06);
@@ -556,20 +543,19 @@ button {
         1px solid rgba(255,255,255,.07);
 }
 
-
 .emoji-logo {
 
-    width: 50px;
-    height: 50px;
+    width:50px;
+    height:50px;
 
-    border-radius: 15px;
+    border-radius:15px;
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 28px;
+    font-size:28px;
 
     background:
         rgba(255,255,255,.055);
@@ -578,45 +564,39 @@ button {
         1px solid rgba(255,255,255,.08);
 }
 
-
 .card-status {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 7px;
+    gap:7px;
 }
-
 
 .status-dot {
 
-    width: 8px;
-    height: 8px;
+    width:8px;
+    height:8px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background:
-        var(--success);
+    background:var(--success);
 
     box-shadow:
         0 0 12px rgba(66,209,125,.65);
 }
 
-
 .lock-icon {
-
-    font-size: 12px;
-
-    opacity: .65;
+    font-size:12px;
+    opacity:.65;
 }
-
 
 .disabled-status {
 
-    padding: 4px 8px;
+    padding:
+        4px 8px;
 
-    border-radius: 999px;
+    border-radius:999px;
 
     background:
         rgba(255,255,255,.06);
@@ -624,272 +604,309 @@ button {
     border:
         1px solid rgba(255,255,255,.08);
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 9px;
+    font-size:9px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 }
-
-
-/* =========================================================
-   CARD CONTENT
-   ========================================================= */
 
 .card-content {
-
-    margin-top: 20px;
+    margin-top:20px;
 }
-
 
 .card-title {
 
-    font-size: 18px;
+    font-size:18px;
 
-    font-weight: 750;
+    font-weight:750;
 
-    margin-bottom: 7px;
+    margin-bottom:7px;
 }
-
 
 .card-description {
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 12px;
+    font-size:12px;
 
-    line-height: 1.55;
+    line-height:1.55;
 
-    max-width: 90%;
+    max-width:90%;
 }
-
 
 .hover-text {
 
-    position: absolute;
+    position:absolute;
 
-    left: 22px;
-    bottom: 18px;
+    left:22px;
+    bottom:18px;
 
-    color: var(--accent-light);
+    color:var(--accent-light);
 
-    font-size: 11px;
+    font-size:11px;
 
-    font-weight: 650;
+    font-weight:650;
 
-    opacity: 0;
+    opacity:0;
 
-    transform: translateY(7px);
+    transform:translateY(7px);
 
-    transition: .25s ease;
+    transition:.25s ease;
 }
-
 
 .app-card:hover .hover-text {
 
-    opacity: 1;
+    opacity:1;
 
-    transform: translateY(0);
+    transform:translateY(0);
 }
 
 
 /* =========================================================
-   ANIMATION
-   ========================================================= */
-
-@keyframes cardAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(18px)
-            scale(.98);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   TODO
+   TODO CARD
    ========================================================= */
 
 .todo-card {
 
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-column:span 2;
+    grid-row:span 2;
 
-    cursor: default;
+    cursor:default;
+
+    padding:25px;
 }
-
 
 .todo-card:hover {
-    transform: none;
+    transform:none;
 }
 
+
+/* Header */
 
 .todo-header {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:flex-start;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    margin-bottom: 16px;
+    gap:20px;
 }
-
 
 .todo-title-area {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 11px;
+    gap:12px;
 }
-
 
 .todo-icon {
 
-    width: 42px;
-    height: 42px;
+    width:46px;
+    height:46px;
 
-    border-radius: 13px;
+    border-radius:15px;
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    background: var(--accent-soft);
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-soft),
+            rgba(255,255,255,.025)
+        );
 
-    color: var(--accent-light);
+    color:var(--accent-light);
 
-    font-size: 19px;
+    font-size:20px;
+
+    border:
+        1px solid var(--border);
 }
-
 
 .todo-title {
 
-    font-size: 18px;
+    font-size:19px;
 
-    font-weight: 800;
+    font-weight:800;
+}
+
+.todo-subtitle {
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
 }
 
 
-.todo-counter {
+/* Progress */
 
-    color: var(--muted);
+.todo-progress-box {
 
-    font-size: 10px;
+    text-align:right;
+
+    min-width:90px;
 }
 
+.todo-progress-number {
+
+    font-size:19px;
+
+    font-weight:800;
+
+    color:var(--accent-light);
+}
+
+.todo-progress-label {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:2px;
+}
+
+.todo-progress {
+
+    height:5px;
+
+    margin:
+        17px 0
+        15px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.todo-progress-bar {
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    transition:
+        width .35s ease;
+}
+
+
+/* Input */
 
 .todo-input-row {
 
-    display: flex;
+    display:flex;
 
-    gap: 7px;
+    gap:7px;
 
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
-
 
 .todo-input {
 
-    flex: 1;
+    flex:1;
 
-    min-width: 0;
+    min-width:0;
 
-    height: 40px;
+    height:42px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 11px;
+    border-radius:12px;
 
-    background: var(--input-bg);
+    background:var(--input-bg);
 
-    color: var(--text);
+    color:var(--text);
 
-    outline: none;
+    outline:none;
 
-    padding: 0 12px;
+    padding:
+        0 13px;
 
-    font-size: 12px;
+    font-size:12px;
 }
-
 
 .todo-input:focus {
-
-    border-color:
-        var(--accent);
+    border-color:var(--accent);
 }
-
 
 .todo-add {
 
-    width: 40px;
-    height: 40px;
+    width:42px;
+    height:42px;
 
-    border: 0;
+    border:0;
 
-    border-radius: 11px;
+    border-radius:12px;
 
-    background: var(--accent);
+    background:var(--accent);
 
-    color: white;
+    color:white;
 
-    font-size: 20px;
+    font-size:20px;
 
-    cursor: pointer;
+    cursor:pointer;
 }
 
+
+/* Task list */
 
 .todo-list {
 
-    display: flex;
+    display:flex;
 
-    flex-direction: column;
+    flex-direction:column;
 
-    gap: 6px;
+    gap:6px;
 
-    max-height: 230px;
+    max-height:230px;
 
-    overflow-y: auto;
+    overflow-y:auto;
 
-    padding-right: 3px;
+    padding-right:3px;
 }
-
 
 .todo-item {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 9px;
+    gap:10px;
 
-    padding: 8px 9px;
+    padding:
+        9px 10px;
 
     border:
         1px solid transparent;
 
-    border-radius: 10px;
-}
+    border-radius:12px;
 
+    transition:.2s ease;
+}
 
 .todo-item:hover {
 
@@ -900,130 +917,186 @@ button {
         var(--border);
 }
 
-
 .todo-check {
 
-    width: 18px;
-    height: 18px;
+    width:19px;
+    height:19px;
 
-    flex-shrink: 0;
+    flex-shrink:0;
 
     border:
         1px solid var(--border-hover);
 
-    border-radius: 6px;
+    border-radius:6px;
 
-    background: transparent;
+    background:transparent;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    color: white;
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
 }
-
 
 .todo-item.completed .todo-check {
 
-    background:
-        var(--accent);
+    background:var(--accent);
 
-    border-color:
-        var(--accent);
+    border-color:var(--accent);
 }
-
 
 .todo-text {
 
-    flex: 1;
+    flex:1;
 
-    min-width: 0;
+    min-width:0;
 
-    color: var(--text);
+    font-size:12px;
 
-    font-size: 12px;
+    line-height:1.4;
 
-    line-height: 1.35;
-
-    word-break: break-word;
+    word-break:break-word;
 }
-
 
 .todo-item.completed .todo-text {
 
-    text-decoration: line-through;
+    text-decoration:line-through;
 
-    opacity: .45;
+    opacity:.43;
 }
-
 
 .todo-delete {
 
-    border: 0;
+    border:0;
 
-    background: transparent;
+    background:transparent;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    cursor: pointer;
+    cursor:pointer;
 
-    font-size: 15px;
+    font-size:15px;
 
-    opacity: 0;
+    opacity:0;
 }
-
 
 .todo-item:hover .todo-delete {
-    opacity: 1;
+    opacity:1;
 }
-
 
 .todo-empty {
 
-    padding: 20px 5px;
+    padding:
+        25px 5px;
 
-    text-align: center;
+    text-align:center;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 11px;
+    font-size:11px;
+}
+
+
+/* Footer */
+
+.todo-footer {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:13px;
+}
+
+.todo-counter {
+
+    color:var(--muted);
+
+    font-size:9px;
+}
+
+.clear-completed {
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    transition:.2s ease;
+}
+
+.clear-completed:hover {
+    color:var(--danger);
 }
 
 
 /* =========================================================
-   DATE / TIME CARD
+   DATE TIME PREMIUM CARD
    ========================================================= */
 
 .datetime-card {
 
-    cursor: default;
-}
+    grid-column:span 2;
+    grid-row:span 2;
 
+    cursor:default;
+
+    padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 20%,
+            var(--accent-soft),
+            transparent 35%
+        ),
+
+        var(--card);
+}
 
 .datetime-card:hover {
-    transform: none;
+    transform:none;
 }
 
+.datetime-top {
 
-.datetime-header {
+    display:flex;
 
-    display: flex;
+    align-items:flex-start;
 
-    align-items: flex-start;
-
-    justify-content: space-between;
+    justify-content:space-between;
 }
 
+.datetime-brand {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+}
 
 .datetime-icon {
 
-    width: 50px;
-    height: 50px;
+    width:45px;
+    height:45px;
 
-    border-radius: 15px;
+    border-radius:14px;
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
     background:
         var(--accent-soft);
@@ -1031,245 +1104,393 @@ button {
     color:
         var(--accent-light);
 
-    font-size: 25px;
+    font-size:21px;
+
+    border:
+        1px solid var(--border);
+}
+
+.datetime-title {
+
+    font-size:13px;
+
+    font-weight:750;
+}
+
+.datetime-zone {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+.datetime-mode {
+
+    padding:
+        5px 8px;
+
+    border-radius:999px;
+
+    color:var(--accent-light);
+
+    background:
+        var(--accent-soft);
+
+    font-size:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
 }
 
 
-.clock-type-label {
+/* Digital */
 
-    color:
-        var(--muted);
+.digital-clock-area {
 
-    font-size: 9px;
+    margin-top:28px;
 
-    text-transform:
-        uppercase;
-
-    letter-spacing:
-        .7px;
+    position:relative;
 }
-
 
 .digital-time {
 
     font-size:
-        clamp(27px,3vw,44px);
+        clamp(38px,4.7vw,67px);
 
-    font-weight:
-        800;
+    line-height:.95;
 
-    letter-spacing:
-        -2px;
+    letter-spacing:-4px;
 
-    margin-top:
-        18px;
+    font-weight:850;
+
+    white-space:nowrap;
 }
 
+.digital-seconds {
+
+    color:var(--accent-light);
+
+    font-size:.43em;
+
+    letter-spacing:-1px;
+
+    vertical-align:top;
+
+    margin-left:4px;
+}
 
 .digital-date {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        12px;
+    font-size:12px;
 
-    margin-top:
-        5px;
+    margin-top:13px;
+}
+
+.digital-day {
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin-top:5px;
+
+    color:var(--accent-light);
 }
 
 
-/* =========================================================
-   ANALOG CLOCK
-   ========================================================= */
+/* Bottom visual */
 
-.analog-wrap {
+.time-visual {
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    align-items:center;
 
-    align-items: center;
+    gap:15px;
 
-    margin-top: 13px;
+    margin-top:25px;
 }
 
+.time-line {
+
+    flex:1;
+
+    height:5px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+.time-line-fill {
+
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    border-radius:inherit;
+}
+
+.time-percent {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    min-width:34px;
+
+    text-align:right;
+}
+
+
+/* Analog */
+
+.analog-layout {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:18px;
+}
 
 .analog-clock {
 
-    position: relative;
+    position:relative;
 
-    width: 125px;
-    height: 125px;
+    width:165px;
+    height:165px;
 
-    border-radius: 50%;
+    flex-shrink:0;
+
+    border-radius:50%;
 
     border:
         2px solid var(--border-hover);
 
     background:
-        rgba(255,255,255,.025);
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.035),
+            transparent 65%
+        );
 
     box-shadow:
-        inset 0 0 30px rgba(0,0,0,.15);
+        0 15px 45px rgba(0,0,0,.16),
+        inset 0 0 35px rgba(0,0,0,.12);
 }
 
+.clock-number {
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    color:var(--muted);
+
+    transform:
+        translate(-50%,-50%);
+}
 
 .clock-mark {
 
-    position: absolute;
+    position:absolute;
 
-    left: 50%;
-    top: 50%;
+    left:50%;
+    top:50%;
 
-    width: 2px;
-    height: 6px;
+    width:2px;
+    height:7px;
 
-    background:
-        var(--muted);
+    background:var(--muted);
 
     transform-origin:
-        50% -57px;
+        50% -76px;
 }
-
 
 .clock-hand {
 
-    position: absolute;
+    position:absolute;
 
-    left: 50%;
-    bottom: 50%;
+    left:50%;
+    bottom:50%;
 
-    width: 2px;
+    width:2px;
 
     transform-origin:
         bottom center;
 
-    border-radius: 10px;
+    border-radius:10px;
 
     transform:
         translateX(-50%);
 }
 
-
 .hour-hand {
 
-    height: 29px;
+    height:38px;
 
-    background:
-        var(--text);
+    width:4px;
+
+    background:var(--text);
 }
-
 
 .minute-hand {
 
-    height: 40px;
+    height:52px;
 
-    background:
-        var(--accent-light);
+    background:var(--accent-light);
 }
-
 
 .second-hand {
 
-    height: 45px;
+    height:59px;
 
-    width: 1px;
+    width:1px;
 
-    background:
-        var(--danger);
+    background:var(--danger);
 }
-
 
 .clock-center {
 
-    position: absolute;
+    position:absolute;
 
-    left: 50%;
-    top: 50%;
+    left:50%;
+    top:50%;
 
-    width: 7px;
-    height: 7px;
+    width:8px;
+    height:8px;
 
     transform:
         translate(-50%,-50%);
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background:
-        var(--accent);
+    background:var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+}
+
+.analog-info {
+
+    text-align:left;
+}
+
+.analog-time {
+
+    font-size:24px;
+
+    font-weight:800;
+}
+
+.analog-date {
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    margin-top:5px;
+
+    max-width:150px;
 }
 
 
 /* =========================================================
-   AFFIRMATION CARD
+   AFFIRMATION
    ========================================================= */
 
 .affirmation-card {
 
-    cursor: default;
-}
+    grid-column:span 2;
+    grid-row:span 2;
 
+    cursor:default;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            var(--accent-soft),
+            transparent 35%
+        ),
+
+        var(--card);
+}
 
 .affirmation-card:hover {
-    transform: none;
+    transform:none;
 }
-
 
 .affirmation-mark {
 
-    font-size: 34px;
+    font-size:45px;
 
-    line-height: 1;
+    color:var(--accent-light);
 
-    color:
-        var(--accent-light);
+    opacity:.55;
 
-    opacity:
-        .65;
+    line-height:1;
 }
-
 
 .affirmation-text {
 
     font-size:
-        clamp(17px,2vw,24px);
+        clamp(18px,2vw,25px);
 
-    line-height:
-        1.45;
+    line-height:1.45;
 
-    font-weight:
-        700;
+    font-weight:700;
 
-    margin-top:
-        18px;
+    margin-top:12px;
 }
-
 
 .affirmation-footer {
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    gap: 10px;
+    gap:10px;
 
-    margin-top:
-        20px;
+    margin-top:20px;
 }
-
 
 .affirmation-label {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        10px;
+    font-size:10px;
 }
-
 
 .refresh-affirmation {
 
@@ -1279,20 +1500,16 @@ button {
     background:
         var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    border-radius:
-        10px;
+    border-radius:10px;
 
     padding:
         7px 10px;
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        10px;
+    font-size:10px;
 }
 
 
@@ -1301,24 +1518,18 @@ button {
    ========================================================= */
 
 .important-section {
-
-    margin-top:
-        60px;
+    margin-top:60px;
 }
-
 
 .important-links {
 
-    display:
-        grid;
+    display:grid;
 
     grid-template-columns:
         repeat(3,minmax(0,1fr));
 
-    gap:
-        12px;
+    gap:12px;
 }
-
 
 .important-link {
 
@@ -1328,104 +1539,75 @@ button {
     background:
         var(--card);
 
-    border-radius:
-        17px;
+    border-radius:17px;
 
     padding:
         15px 16px;
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    justify-content:
-        space-between;
+    justify-content:space-between;
 
-    gap:
-        12px;
+    gap:12px;
 
-    transition:
-        .2s ease;
+    transition:.2s ease;
 }
-
 
 .important-link:hover {
 
     border-color:
         var(--border-hover);
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 }
-
 
 .important-info {
-
-    min-width:
-        0;
+    min-width:0;
 }
-
 
 .important-name {
 
-    font-size:
-        13px;
+    font-size:13px;
 
-    font-weight:
-        700;
+    font-weight:700;
 
-    margin-bottom:
-        5px;
+    margin-bottom:5px;
 }
-
 
 .important-url {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        11px;
+    font-size:11px;
 
-    white-space:
-        nowrap;
+    white-space:nowrap;
 
-    overflow:
-        hidden;
+    overflow:hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow:ellipsis;
 
-    max-width:
-        300px;
+    max-width:300px;
 }
-
 
 .important-actions {
 
-    display:
-        flex;
+    display:flex;
 
-    gap:
-        6px;
+    gap:6px;
 
-    flex-shrink:
-        0;
+    flex-shrink:0;
 }
-
 
 .link-button {
 
-    height:
-        34px;
+    height:34px;
 
     padding:
         0 11px;
 
-    border-radius:
-        10px;
+    border-radius:10px;
 
     border:
         1px solid var(--border);
@@ -1433,27 +1615,21 @@ button {
     background:
         var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        11px;
+    font-size:11px;
 
-    font-weight:
-        650;
+    font-weight:650;
 }
-
 
 .link-button.open {
 
     background:
         var(--accent-soft);
 
-    color:
-        var(--accent-light);
+    color:var(--accent-light);
 
     border-color:
         var(--accent);
@@ -1466,46 +1642,34 @@ button {
 
 .footer {
 
-    margin-top:
-        55px;
+    margin-top:55px;
 
-    text-align:
-        center;
+    text-align:center;
 
     color:
         rgba(128,128,128,.55);
 
-    font-size:
-        10px;
+    font-size:10px;
 }
 
 
 /* =========================================================
-   SETTINGS GEAR
+   SETTINGS BUTTON
    ========================================================= */
 
 .settings-button {
 
-    position:
-        fixed;
+    position:fixed;
 
-    right:
-        22px;
+    right:22px;
+    bottom:20px;
 
-    bottom:
-        20px;
+    z-index:900;
 
-    z-index:
-        900;
+    width:42px;
+    height:42px;
 
-    width:
-        42px;
-
-    height:
-        42px;
-
-    border-radius:
-        50%;
+    border-radius:50%;
 
     border:
         1px solid var(--border);
@@ -1513,34 +1677,24 @@ button {
     background:
         var(--card);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
+    justify-content:center;
 
-    justify-content:
-        center;
+    cursor:pointer;
 
-    cursor:
-        pointer;
-
-    font-size:
-        18px;
+    font-size:18px;
 
     box-shadow:
         0 8px 30px rgba(0,0,0,.22);
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter:blur(12px);
 
-    transition:
-        .25s ease;
+    transition:.25s ease;
 }
-
 
 .settings-button:hover {
 
@@ -1549,106 +1703,76 @@ button {
         scale(1.05);
 }
 
-
 .settings-button.hidden {
 
-    opacity:
-        0;
+    opacity:0;
 
-    visibility:
-        hidden;
+    visibility:hidden;
 
-    pointer-events:
-        none;
+    pointer-events:none;
 
-    transform:
-        scale(.8);
+    transform:scale(.8);
 }
 
 
 /* =========================================================
-   SETTINGS OVERLAY
+   SETTINGS
    ========================================================= */
 
 #settingsOverlay {
 
-    position:
-        fixed;
+    position:fixed;
 
-    inset:
-        0;
+    inset:0;
 
-    z-index:
-        2000;
+    z-index:2000;
 
     background:
         rgba(0,0,0,.48);
 
-    backdrop-filter:
-        blur(7px);
+    backdrop-filter:blur(7px);
 
-    opacity:
-        0;
+    opacity:0;
 
-    visibility:
-        hidden;
+    visibility:hidden;
 
-    pointer-events:
-        none;
+    pointer-events:none;
 
-    transition:
-        .25s ease;
+    transition:.25s ease;
 }
-
 
 #settingsOverlay.active {
 
-    opacity:
-        1;
+    opacity:1;
 
-    visibility:
-        visible;
+    visibility:visible;
 
-    pointer-events:
-        auto;
+    pointer-events:auto;
 }
-
-
-/* =========================================================
-   SETTINGS PANEL
-   ========================================================= */
 
 .settings-panel {
 
-    position:
-        fixed;
+    position:fixed;
 
-    right:
-        16px;
+    right:16px;
+    bottom:16px;
 
-    bottom:
-        16px;
-
-    z-index:
-        2100;
+    z-index:2100;
 
     width:
-        min(450px,calc(100vw - 30px));
+        min(470px,calc(100vw - 30px));
 
     max-height:
         calc(100vh - 30px);
 
-    overflow-y:
-        auto;
+    overflow-y:auto;
 
-    padding:
-        22px;
+    padding:22px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        24px;
+    border-radius:24px;
 
     background:
         var(--bg-secondary);
@@ -1660,19 +1784,14 @@ button {
         translateY(25px)
         scale(.97);
 
-    opacity:
-        0;
+    opacity:0;
 
-    visibility:
-        hidden;
+    visibility:hidden;
 
-    pointer-events:
-        none;
+    pointer-events:none;
 
-    transition:
-        .25s ease;
+    transition:.25s ease;
 }
-
 
 .settings-panel.active {
 
@@ -1680,70 +1799,49 @@ button {
         translateY(0)
         scale(1);
 
-    opacity:
-        1;
+    opacity:1;
 
-    visibility:
-        visible;
+    visibility:visible;
 
-    pointer-events:
-        auto;
+    pointer-events:auto;
 }
-
 
 .settings-header {
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    justify-content:
-        space-between;
+    justify-content:space-between;
 
-    margin-bottom:
-        22px;
+    margin-bottom:22px;
 }
-
 
 .settings-heading {
 
-    font-size:
-        20px;
+    font-size:20px;
 
-    font-weight:
-        800;
+    font-weight:800;
 }
-
 
 .settings-close {
 
-    width:
-        32px;
-
-    height:
-        32px;
+    width:32px;
+    height:32px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        10px;
+    border-radius:10px;
 
-    background:
-        var(--input-bg);
+    background:var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        18px;
+    font-size:18px;
 }
-
 
 .settings-section {
 
@@ -1754,265 +1852,191 @@ button {
         1px solid var(--border);
 }
 
-
 .settings-section:first-of-type {
-    border-top: 0;
+    border-top:0;
 }
-
 
 .settings-label {
 
-    display:
-        block;
+    display:block;
 
-    font-size:
-        12px;
+    font-size:12px;
 
-    font-weight:
-        750;
+    font-weight:750;
 
-    margin-bottom:
-        5px;
+    margin-bottom:5px;
 }
-
 
 .settings-description {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        10px;
+    font-size:10px;
 
-    line-height:
-        1.5;
+    line-height:1.5;
 
-    margin-bottom:
-        12px;
+    margin-bottom:12px;
 }
 
 
 /* =========================================================
-   THEME
+   SETTINGS BUTTON OPTIONS
    ========================================================= */
 
 .theme-options {
 
-    display:
-        grid;
+    display:grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:
-        7px;
+    gap:7px;
 }
-
 
 .theme-option {
 
-    min-height:
-        42px;
+    min-height:42px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        10px;
+    border-radius:10px;
 
-    background:
-        var(--input-bg);
+    background:var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        10px;
+    font-size:10px;
 
-    font-weight:
-        650;
+    font-weight:650;
 }
-
 
 .theme-option.active {
 
-    border-color:
-        var(--accent);
+    border-color:var(--accent);
 
-    background:
-        var(--accent-soft);
+    background:var(--accent-soft);
 
-    color:
-        var(--accent-light);
+    color:var(--accent-light);
 }
 
 
 /* =========================================================
-   COLOR
+   COLORS
    ========================================================= */
 
 .color-options {
 
-    display:
-        flex;
+    display:flex;
 
-    flex-wrap:
-        wrap;
+    flex-wrap:wrap;
 
-    gap:
-        9px;
+    gap:9px;
 }
-
 
 .color-option {
 
-    width:
-        29px;
+    width:29px;
+    height:29px;
 
-    height:
-        29px;
+    border-radius:50%;
 
-    border-radius:
-        50%;
-
-    border:
-        3px solid transparent;
+    border:3px solid transparent;
 
     outline:
         1px solid var(--border);
 
-    outline-offset:
-        2px;
+    outline-offset:2px;
 
-    cursor:
-        pointer;
+    cursor:pointer;
 }
-
 
 .color-option.active {
 
-    border-color:
-        white;
+    border-color:white;
 
-    outline-color:
-        var(--accent);
+    outline-color:var(--accent);
 
-    transform:
-        scale(1.1);
+    transform:scale(1.1);
 }
 
 
 /* =========================================================
-   SETTINGS TOGGLE
+   TOGGLE
    ========================================================= */
 
 .settings-toggle-row {
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    justify-content:
-        space-between;
+    justify-content:space-between;
 
-    gap:
-        15px;
+    gap:15px;
 }
-
 
 .toggle {
 
-    width:
-        42px;
+    width:42px;
+    height:23px;
 
-    height:
-        23px;
+    position:relative;
 
-    position:
-        relative;
-
-    cursor:
-        pointer;
+    cursor:pointer;
 }
-
 
 .toggle input {
 
-    opacity:
-        0;
+    opacity:0;
 
-    width:
-        0;
-
-    height:
-        0;
+    width:0;
+    height:0;
 }
-
 
 .toggle-slider {
 
-    position:
-        absolute;
+    position:absolute;
 
-    inset:
-        0;
+    inset:0;
 
-    border-radius:
-        30px;
+    border-radius:30px;
 
     background:
         rgba(128,128,128,.3);
 
-    transition:
-        .2s ease;
+    transition:.2s ease;
 }
-
 
 .toggle-slider::before {
 
-    content:
-        "";
+    content:"";
 
-    position:
-        absolute;
+    position:absolute;
 
-    width:
-        17px;
+    width:17px;
+    height:17px;
 
-    height:
-        17px;
+    left:3px;
+    top:3px;
 
-    left:
-        3px;
+    border-radius:50%;
 
-    top:
-        3px;
+    background:white;
 
-    border-radius:
-        50%;
-
-    background:
-        white;
-
-    transition:
-        .2s ease;
+    transition:.2s ease;
 }
 
+.toggle input:checked +
+.toggle-slider {
 
-.toggle input:checked + .toggle-slider {
-
-    background:
-        var(--accent);
+    background:var(--accent);
 }
 
-
-.toggle input:checked
-+ .toggle-slider::before {
+.toggle input:checked +
+.toggle-slider::before {
 
     transform:
         translateX(19px);
@@ -2020,277 +2044,262 @@ button {
 
 
 /* =========================================================
-   CUSTOM CARD FORM
+   FORM
    ========================================================= */
 
 .custom-form {
 
-    display:
-        flex;
+    display:flex;
 
-    flex-direction:
-        column;
+    flex-direction:column;
 
-    gap:
-        9px;
+    gap:9px;
 }
-
 
 .form-input {
 
-    width:
-        100%;
+    width:100%;
 
-    min-height:
-        42px;
+    min-height:42px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        11px;
+    border-radius:11px;
 
     background:
         var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    outline:
-        none;
+    outline:none;
 
     padding:
         0 12px;
 
-    font-size:
-        12px;
+    font-size:12px;
 }
-
 
 .form-input:focus {
-
-    border-color:
-        var(--accent);
+    border-color:var(--accent);
 }
-
 
 .form-textarea {
 
-    min-height:
-        75px;
+    min-height:75px;
 
     padding:
         11px 12px;
 
-    resize:
-        vertical;
+    resize:vertical;
 }
-
 
 .form-row {
 
-    display:
-        grid;
+    display:grid;
 
     grid-template-columns:
-        85px 1fr;
+        80px 1fr;
 
-    gap:
-        8px;
+    gap:8px;
 }
-
 
 .emoji-input {
 
-    text-align:
-        center;
+    text-align:center;
 
-    font-size:
-        23px;
+    font-size:23px;
+}
+
+
+/* =========================================================
+   CUSTOM SIZE
+   ========================================================= */
+
+.custom-size-title {
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    margin-top:4px;
+}
+
+.custom-size-options {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:6px;
+}
+
+.size-option {
+
+    height:38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:9px;
+
+    background:
+        var(--input-bg);
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:650;
+}
+
+.size-option.active {
+
+    color:var(--accent-light);
+
+    border-color:var(--accent);
+
+    background:var(--accent-soft);
 }
 
 
 .custom-password-help {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        9px;
+    font-size:9px;
 
-    line-height:
-        1.45;
+    line-height:1.45;
 }
-
 
 .add-custom-button {
 
-    height:
-        42px;
+    height:42px;
 
-    border:
-        0;
+    border:0;
 
-    border-radius:
-        11px;
+    border-radius:11px;
 
-    background:
-        var(--accent);
+    background:var(--accent);
 
-    color:
-        white;
+    color:white;
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        11px;
+    font-size:11px;
 
-    font-weight:
-        750;
-
-    margin-top:
-        3px;
+    font-weight:750;
 }
 
 
 /* =========================================================
-   CUSTOM CARDS LIST
+   CUSTOM LIST
    ========================================================= */
 
 .custom-list {
 
-    display:
-        flex;
+    display:flex;
 
-    flex-direction:
-        column;
+    flex-direction:column;
 
-    gap:
-        7px;
+    gap:7px;
 
-    margin-top:
-        12px;
+    margin-top:12px;
 }
-
 
 .custom-item {
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    gap:
-        10px;
+    gap:10px;
 
-    padding:
-        9px;
+    padding:9px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        12px;
+    border-radius:12px;
 
-    background:
-        var(--input-bg);
+    background:var(--input-bg);
 }
-
 
 .custom-item-emoji {
 
-    width:
-        35px;
+    width:35px;
+    height:35px;
 
-    height:
-        35px;
+    flex-shrink:0;
 
-    flex-shrink:
-        0;
+    display:flex;
 
-    display:
-        flex;
+    align-items:center;
+    justify-content:center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        10px;
+    border-radius:10px;
 
     background:
         rgba(255,255,255,.05);
 
-    font-size:
-        19px;
+    font-size:19px;
 }
-
 
 .custom-item-info {
 
-    min-width:
-        0;
+    min-width:0;
 
-    flex:
-        1;
+    flex:1;
 }
-
 
 .custom-item-name {
 
-    font-size:
-        11px;
+    font-size:11px;
 
-    font-weight:
-        700;
+    font-weight:700;
 }
-
 
 .custom-item-url {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        9px;
+    font-size:9px;
 
-    white-space:
-        nowrap;
+    white-space:nowrap;
 
-    overflow:
-        hidden;
+    overflow:hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow:ellipsis;
 }
 
+.custom-item-protected {
+
+    color:var(--accent-light);
+
+    font-size:9px;
+
+    margin-top:3px;
+}
 
 .custom-delete {
 
-    width:
-        31px;
-
-    height:
-        31px;
+    width:31px;
+    height:31px;
 
     border:
         1px solid rgba(255,95,109,.18);
 
-    border-radius:
-        9px;
+    border-radius:9px;
 
     background:
         rgba(255,95,109,.07);
 
-    color:
-        #ff7c87;
+    color:#ff7c87;
 
-    cursor:
-        pointer;
+    cursor:pointer;
 }
 
 
@@ -2300,311 +2309,227 @@ button {
 
 .settings-reset {
 
-    width:
-        100%;
+    width:100%;
 
-    height:
-        40px;
+    height:40px;
 
-    margin-top:
-        8px;
+    margin-top:8px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        11px;
+    border-radius:11px;
 
-    background:
-        var(--input-bg);
+    background:var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-size:
-        11px;
+    font-size:11px;
 
-    font-weight:
-        700;
+    font-weight:700;
 }
 
 
 /* =========================================================
-   IFRAME
+   VIEWER
    ========================================================= */
 
 #viewer {
 
-    position:
-        fixed;
+    position:fixed;
 
-    inset:
-        0;
+    inset:0;
 
-    z-index:
-        1000;
+    z-index:1000;
 
-    display:
-        none;
+    display:none;
 
-    width:
-        100vw;
+    width:100vw;
+    height:100vh;
 
-    height:
-        100vh;
+    background:white;
 
-    background:
-        #ffffff;
-
-    opacity:
-        0;
+    opacity:0;
 }
-
 
 #viewer.active {
 
-    display:
-        block;
+    display:block;
 
     animation:
         viewerIn .25s ease forwards;
 }
 
-
 #viewer iframe {
 
-    display:
-        block;
+    display:block;
 
-    width:
-        100vw;
+    width:100vw;
+    height:100vh;
 
-    height:
-        100vh;
+    border:0;
 
-    min-width:
-        100vw;
+    margin:0;
+    padding:0;
 
-    min-height:
-        100vh;
-
-    border:
-        0;
-
-    margin:
-        0;
-
-    padding:
-        0;
-
-    background:
-        #ffffff;
+    background:white;
 }
-
 
 @keyframes viewerIn {
 
     from {
-        opacity: 0;
+        opacity:0;
     }
 
     to {
-        opacity: 1;
+        opacity:1;
     }
 }
 
 
 /* =========================================================
-   IFRAME LOADER
+   LOADER
    ========================================================= */
 
 #iframeLoader {
 
-    position:
-        fixed;
+    position:fixed;
 
-    inset:
-        0;
+    inset:0;
 
-    z-index:
-        1100;
+    z-index:1100;
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    justify-content:
-        center;
+    justify-content:center;
 
     background:
         rgba(5,7,11,.94);
 
-    backdrop-filter:
-        blur(8px);
+    backdrop-filter:blur(8px);
 
-    transition:
-        opacity .25s ease;
+    transition:opacity .25s ease;
 }
-
 
 #iframeLoader.hidden {
 
-    opacity:
-        0;
+    opacity:0;
 
-    pointer-events:
-        none;
+    pointer-events:none;
 }
-
 
 .loading-wave {
 
-    width:
-        300px;
+    width:300px;
+    height:100px;
 
-    height:
-        100px;
+    display:flex;
 
-    display:
-        flex;
+    justify-content:center;
 
-    justify-content:
-        center;
-
-    align-items:
-        flex-end;
+    align-items:flex-end;
 }
-
 
 .loading-bar {
 
-    width:
-        20px;
-
-    height:
-        10px;
+    width:20px;
+    height:10px;
 
     margin:
         0 5px;
 
-    background-color:
-        var(--accent);
+    background-color:var(--accent);
 
-    border-radius:
-        5px;
+    border-radius:5px;
 
     animation:
         loading-wave-animation
         1s ease-in-out infinite;
 }
 
-
 .loading-bar:nth-child(2) {
-    animation-delay: .1s;
+    animation-delay:.1s;
 }
-
 
 .loading-bar:nth-child(3) {
-    animation-delay: .2s;
+    animation-delay:.2s;
 }
-
 
 .loading-bar:nth-child(4) {
-    animation-delay: .3s;
+    animation-delay:.3s;
 }
-
 
 @keyframes loading-wave-animation {
 
     0% {
-        height: 10px;
+        height:10px;
     }
 
     50% {
-        height: 50px;
+        height:50px;
     }
 
     100% {
-        height: 10px;
+        height:10px;
     }
 }
 
 
 /* =========================================================
-   PASSWORD MODAL
+   PASSWORD
    ========================================================= */
 
 #passwordModal {
 
-    position:
-        fixed;
+    position:fixed;
 
-    inset:
-        0;
+    inset:0;
 
-    z-index:
-        3000;
+    z-index:3000;
 
-    display:
-        flex;
+    display:flex;
 
-    align-items:
-        center;
+    align-items:center;
 
-    justify-content:
-        center;
+    justify-content:center;
 
-    padding:
-        20px;
+    padding:20px;
 
     background:
         rgba(3,5,9,.72);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter:blur(18px);
 
-    opacity:
-        0;
+    opacity:0;
 
-    visibility:
-        hidden;
+    visibility:hidden;
 
-    pointer-events:
-        none;
+    pointer-events:none;
 
-    transition:
-        .25s ease;
+    transition:.25s ease;
 }
-
 
 #passwordModal.active {
 
-    opacity:
-        1;
+    opacity:1;
 
-    visibility:
-        visible;
+    visibility:visible;
 
-    pointer-events:
-        auto;
+    pointer-events:auto;
 }
-
 
 .password-box {
 
     width:
         min(410px,100%);
 
-    padding:
-        28px;
+    padding:28px;
 
-    border-radius:
-        25px;
+    border-radius:25px;
 
     border:
         1px solid var(--border);
@@ -2616,134 +2541,95 @@ button {
         0 30px 100px rgba(0,0,0,.5);
 }
 
-
 .password-icon {
 
-    width:
-        48px;
+    width:48px;
+    height:48px;
 
-    height:
-        48px;
+    border-radius:15px;
 
-    border-radius:
-        15px;
+    display:flex;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    align-items:center;
+    justify-content:center;
 
     background:
         var(--accent-soft);
 
-    margin-bottom:
-        18px;
+    margin-bottom:18px;
 }
-
 
 .password-title {
 
-    font-size:
-        20px;
+    font-size:20px;
 
-    font-weight:
-        800;
+    font-weight:800;
 
-    margin-bottom:
-        7px;
+    margin-bottom:7px;
 }
-
 
 .password-description {
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        12px;
+    font-size:12px;
 
-    line-height:
-        1.5;
+    line-height:1.5;
 
-    margin-bottom:
-        20px;
+    margin-bottom:20px;
 }
-
 
 #passwordInput {
 
-    width:
-        100%;
+    width:100%;
 
-    height:
-        48px;
+    height:48px;
 
-    border-radius:
-        13px;
+    border-radius:13px;
 
     border:
         1px solid var(--border);
 
-    outline:
-        none;
+    outline:none;
 
     background:
         var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
     padding:
         0 15px;
 
-    font-size:
-        14px;
+    font-size:14px;
 }
-
 
 .password-error {
 
-    min-height:
-        17px;
+    min-height:17px;
 
-    margin-top:
-        8px;
+    margin-top:8px;
 
-    color:
-        #ff7c87;
+    color:#ff7c87;
 
-    font-size:
-        11px;
+    font-size:11px;
 }
-
 
 .password-actions {
 
-    display:
-        flex;
+    display:flex;
 
-    gap:
-        8px;
+    gap:8px;
 
-    margin-top:
-        13px;
+    margin-top:13px;
 }
-
 
 .password-button {
 
-    height:
-        44px;
+    height:44px;
 
-    flex:
-        1;
+    flex:1;
 
-    border-radius:
-        12px;
+    border-radius:12px;
 
     border:
         1px solid var(--border);
@@ -2751,27 +2637,46 @@ button {
     background:
         var(--input-bg);
 
-    color:
-        var(--text);
+    color:var(--text);
 
-    cursor:
-        pointer;
+    cursor:pointer;
 
-    font-weight:
-        700;
+    font-weight:700;
 }
-
 
 .password-button.primary {
 
-    background:
-        var(--accent);
+    background:var(--accent);
 
-    border-color:
-        var(--accent);
+    border-color:var(--accent);
 
-    color:
-        white;
+    color:white;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity:0;
+
+        transform:
+            translateY(18px)
+            scale(.98);
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
@@ -2786,7 +2691,6 @@ button {
         grid-template-columns:
             repeat(3,minmax(0,1fr));
     }
-
 
     .important-links {
 
@@ -2806,144 +2710,106 @@ button {
             90px;
     }
 
-
     .home-logo {
 
-        width:
-            190px;
-
-        height:
-            190px;
+        width:190px;
+        height:190px;
     }
-
-
-    .hero h1 {
-
-        letter-spacing:
-            -2px;
-    }
-
 
     #bentoGrid {
 
         grid-template-columns:
             repeat(2,minmax(0,1fr));
 
-        gap:
-            11px;
+        gap:11px;
     }
-
-
-    .app-card {
-
-        min-height:
-            165px;
-
-        padding:
-            17px;
-
-        border-radius:
-            19px;
-    }
-
 
     .app-card.large,
     .app-card.wide,
-    .app-card.tall {
+    .app-card.tall,
+    .todo-card,
+    .datetime-card,
+    .affirmation-card {
 
-        grid-column:
-            span 1;
-
-        grid-row:
-            span 1;
+        grid-column:span 2;
+        grid-row:span 1;
     }
 
+    .app-card {
 
-    .app-card.large,
-    .todo-card {
+        min-height:165px;
 
-        grid-column:
-            span 2;
+        padding:17px;
+
+        border-radius:19px;
     }
-
 
     .app-logo,
     .emoji-logo {
 
-        width:
-            43px;
-
-        height:
-            43px;
+        width:43px;
+        height:43px;
     }
-
 
     .card-title {
-
-        font-size:
-            15px;
+        font-size:15px;
     }
-
 
     .card-description {
-
-        font-size:
-            11px;
+        font-size:11px;
     }
-
 
     .hover-text {
-
-        display:
-            none;
+        display:none;
     }
 
+    .analog-layout {
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .analog-info {
+
+        text-align:center;
+    }
 
     .important-links {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
-
 
     .important-url {
-
-        max-width:
-            200px;
+        max-width:200px;
     }
-
 
     .settings-button {
 
-        right:
-            15px;
-
-        bottom:
-            15px;
+        right:15px;
+        bottom:15px;
     }
-
 
     .settings-panel {
 
-        right:
-            10px;
-
-        bottom:
-            10px;
+        right:10px;
+        bottom:10px;
 
         width:
             calc(100vw - 20px);
     }
 
+    .custom-size-options {
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
 
     #viewer,
     #viewer iframe {
 
-        width:
-            100vw;
-
-        height:
-            100vh;
+        width:100vw;
+        height:100vh;
     }
 }
 
@@ -2952,25 +2818,16 @@ button {
 
     .home-logo {
 
-        width:
-            170px;
-
-        height:
-            170px;
+        width:170px;
+        height:170px;
     }
-
 
     .todo-list {
-
-        max-height:
-            190px;
+        max-height:190px;
     }
 
-
     .form-row {
-
-        grid-template-columns:
-            70px 1fr;
+        grid-template-columns:70px 1fr;
     }
 
 }
@@ -3068,7 +2925,6 @@ button {
 </div>
 
 
-
 <!-- =========================================================
      SETTINGS BUTTON
      ========================================================= -->
@@ -3077,19 +2933,12 @@ button {
     class="settings-button"
     id="settingsButton"
     title="Settings"
-    aria-label="Open settings"
 >
     ⚙
 </button>
 
 
-
-<!-- =========================================================
-     SETTINGS OVERLAY
-     ========================================================= -->
-
 <div id="settingsOverlay"></div>
-
 
 
 <!-- =========================================================
@@ -3118,7 +2967,6 @@ button {
 </div>
 
 
-
 <!-- APPEARANCE -->
 
 <section class="settings-section">
@@ -3130,7 +2978,6 @@ button {
 <div class="settings-description">
     Choose how Horizon should look.
 </div>
-
 
 <div class="theme-options">
 
@@ -3160,7 +3007,6 @@ button {
 </section>
 
 
-
 <!-- COLOR -->
 
 <section class="settings-section">
@@ -3173,69 +3019,59 @@ button {
     Change Horizon's accent color.
 </div>
 
-
 <div class="color-options">
 
 <button
     class="color-option"
     data-color="#3498db"
     style="background:#3498db"
-    title="Blue"
 ></button>
 
 <button
     class="color-option"
     data-color="#8b5cf6"
     style="background:#8b5cf6"
-    title="Purple"
 ></button>
 
 <button
     class="color-option"
     data-color="#10b981"
     style="background:#10b981"
-    title="Green"
 ></button>
 
 <button
     class="color-option"
     data-color="#f59e0b"
     style="background:#f59e0b"
-    title="Amber"
 ></button>
 
 <button
     class="color-option"
     data-color="#ef4444"
     style="background:#ef4444"
-    title="Red"
 ></button>
 
 <button
     class="color-option"
     data-color="#ec4899"
     style="background:#ec4899"
-    title="Pink"
 ></button>
 
 <button
     class="color-option"
     data-color="#06b6d4"
     style="background:#06b6d4"
-    title="Cyan"
 ></button>
 
 <button
     class="color-option"
     data-color="#84cc16"
     style="background:#84cc16"
-    title="Lime"
 ></button>
 
 </div>
 
 </section>
-
 
 
 <!-- DATE TIME -->
@@ -3251,11 +3087,10 @@ button {
 </div>
 
 <div class="settings-description">
-    Show a live clock and date on your Horizon dashboard.
+    Show a premium live clock and date.
 </div>
 
 </div>
-
 
 <label class="toggle">
 
@@ -3280,7 +3115,6 @@ button {
     Clock Style
 </div>
 
-
 <div class="theme-options">
 
 <button
@@ -3304,7 +3138,6 @@ button {
 </section>
 
 
-
 <!-- AFFIRMATION -->
 
 <section class="settings-section">
@@ -3318,12 +3151,10 @@ button {
 </div>
 
 <div class="settings-description">
-    Show a positive affirmation from the
-    affirmations.dev API.
+    Show a positive affirmation from affirmations.dev.
 </div>
 
 </div>
-
 
 <label class="toggle">
 
@@ -3341,7 +3172,6 @@ button {
 </section>
 
 
-
 <!-- TODO -->
 
 <section class="settings-section">
@@ -3355,11 +3185,10 @@ button {
 </div>
 
 <div class="settings-description">
-    Keep your personal task list visible.
+    Keep your personal task manager visible.
 </div>
 
 </div>
-
 
 <label class="toggle">
 
@@ -3377,8 +3206,7 @@ button {
 </section>
 
 
-
-<!-- CREATE CARD -->
+<!-- CUSTOM CARD -->
 
 <section class="settings-section">
 
@@ -3387,8 +3215,8 @@ button {
 </div>
 
 <div class="settings-description">
-    Create a personal shortcut. It will be stored
-    only in this browser and opens in a new tab.
+    Create a personal shortcut. It is stored locally and
+    opens in a new browser tab.
 </div>
 
 
@@ -3437,8 +3265,53 @@ button {
     id="customHover"
     type="text"
     maxlength="60"
-    placeholder="Hover text, e.g. Open website"
+    placeholder="Hover text"
 >
+
+</div>
+
+
+<div class="custom-size-title">
+    Card Size
+</div>
+
+
+<div class="custom-size-options">
+
+<button
+    class="size-option"
+    data-size="small"
+>
+    Small
+</button>
+
+<button
+    class="size-option active"
+    data-size="medium"
+>
+    Medium
+</button>
+
+<button
+    class="size-option"
+    data-size="large"
+>
+    Large
+</button>
+
+<button
+    class="size-option"
+    data-size="wide"
+>
+    Wide
+</button>
+
+<button
+    class="size-option"
+    data-size="tall"
+>
+    Tall
+</button>
 
 </div>
 
@@ -3452,8 +3325,8 @@ button {
 
 
 <div class="custom-password-help">
-    You can enter multiple passwords separated by commas.
-    Example: pass1, pass2, pass3
+    Multiple passwords can be entered using commas:
+    pass1, pass2, pass3
 </div>
 
 
@@ -3468,7 +3341,6 @@ button {
 </div>
 
 
-
 <div
     class="custom-list"
     id="customList"
@@ -3477,9 +3349,6 @@ button {
 
 </section>
 
-
-
-<!-- RESET -->
 
 <section class="settings-section">
 
@@ -3496,13 +3365,11 @@ button {
 </div>
 
 
-
 <!-- =========================================================
-     IFRAME VIEWER
+     IFRAME
      ========================================================= -->
 
 <div id="viewer">
-
 
 <div id="iframeLoader">
 
@@ -3524,9 +3391,7 @@ button {
     allowfullscreen
 ></iframe>
 
-
 </div>
-
 
 
 <!-- =========================================================
@@ -3535,25 +3400,20 @@ button {
 
 <div id="passwordModal">
 
-
 <div class="password-box">
-
 
 <div class="password-icon">
     🔒
 </div>
 
-
 <div class="password-title">
     Password Required
 </div>
-
 
 <div class="password-description">
     This application is protected.
     Enter the password to continue.
 </div>
-
 
 <input
     type="password"
@@ -3562,12 +3422,10 @@ button {
     autocomplete="off"
 >
 
-
 <div
     class="password-error"
     id="passwordError"
 ></div>
-
 
 <div class="password-actions">
 
@@ -3578,7 +3436,6 @@ button {
     Cancel
 </button>
 
-
 <button
     class="password-button primary"
     onclick="submitPassword()"
@@ -3588,81 +3445,55 @@ button {
 
 </div>
 
-
 </div>
 
 </div>
 
-
-
-<!-- =========================================================
-     EXISTING DATA FILES
-     ========================================================= -->
 
 <script src="horizonApps.js"></script>
-
 <script src="importantLinks.js"></script>
-
 
 
 <script>
 
 /* =========================================================
-   STORAGE KEYS
+   STORAGE
    ========================================================= */
 
 const STORAGE_KEYS = {
 
-    theme:
-        "horizon_theme",
+    theme:"horizon_theme",
 
-    accent:
-        "horizon_accent",
+    accent:"horizon_accent",
 
-    todos:
-        "horizon_todos",
+    todos:"horizon_todos",
 
-    todoVisible:
-        "horizon_todo_visible",
+    todoVisible:"horizon_todo_visible",
 
-    datetime:
-        "horizon_datetime",
+    datetime:"horizon_datetime",
 
-    clockType:
-        "horizon_clock_type",
+    clockType:"horizon_clock_type",
 
-    affirmation:
-        "horizon_affirmation",
+    affirmation:"horizon_affirmation",
 
-    customCards:
-        "horizon_custom_cards"
+    customCards:"horizon_custom_cards"
 
 };
 
 
-/* =========================================================
-   DEFAULTS
-   ========================================================= */
-
 const DEFAULT_SETTINGS = {
 
-    theme:
-        "system",
+    theme:"system",
 
-    accent:
-        "#3498db",
+    accent:"#3498db",
 
-    todoVisible:
-        true,
+    todoVisible:true,
 
-    datetime:
-        false,
+    datetime:false,
 
-    clockType:
-        "digital",
+    clockType:"digital",
 
-    affirmation:
-        false
+    affirmation:false
 
 };
 
@@ -3672,194 +3503,71 @@ const DEFAULT_SETTINGS = {
    ========================================================= */
 
 const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
-
+    document.getElementById("dashboard");
 
 const grid =
-    document.getElementById(
-        "bentoGrid"
-    );
-
+    document.getElementById("bentoGrid");
 
 const appCount =
-    document.getElementById(
-        "appCount"
-    );
-
+    document.getElementById("appCount");
 
 const importantLinksContainer =
-    document.getElementById(
-        "importantLinks"
-    );
-
+    document.getElementById("importantLinks");
 
 const viewer =
-    document.getElementById(
-        "viewer"
-    );
-
+    document.getElementById("viewer");
 
 const iframe =
-    document.getElementById(
-        "siteFrame"
-    );
-
+    document.getElementById("siteFrame");
 
 const loader =
-    document.getElementById(
-        "iframeLoader"
-    );
-
+    document.getElementById("iframeLoader");
 
 const settingsButton =
-    document.getElementById(
-        "settingsButton"
-    );
-
+    document.getElementById("settingsButton");
 
 const settingsPanel =
-    document.getElementById(
-        "settingsPanel"
-    );
-
+    document.getElementById("settingsPanel");
 
 const settingsOverlay =
-    document.getElementById(
-        "settingsOverlay"
-    );
-
+    document.getElementById("settingsOverlay");
 
 const passwordModal =
-    document.getElementById(
-        "passwordModal"
-    );
-
+    document.getElementById("passwordModal");
 
 const passwordInput =
-    document.getElementById(
-        "passwordInput"
-    );
-
+    document.getElementById("passwordInput");
 
 const passwordError =
-    document.getElementById(
-        "passwordError"
-    );
-
+    document.getElementById("passwordError");
 
 const datetimeToggle =
-    document.getElementById(
-        "datetimeToggle"
-    );
-
+    document.getElementById("datetimeToggle");
 
 const affirmationToggle =
-    document.getElementById(
-        "affirmationToggle"
-    );
-
+    document.getElementById("affirmationToggle");
 
 const todoVisibleToggle =
-    document.getElementById(
-        "todoVisibleToggle"
-    );
-
+    document.getElementById("todoVisibleToggle");
 
 const clockTypeArea =
-    document.getElementById(
-        "clockTypeArea"
-    );
+    document.getElementById("clockTypeArea");
 
 
 /* =========================================================
-   STATE
+   LOAD
    ========================================================= */
 
-let pendingApp = null;
-
-let currentApp = null;
-
-let todos = loadJSON(
-    STORAGE_KEYS.todos,
-    []
-);
-
-let customCards = loadJSON(
-    STORAGE_KEYS.customCards,
-    []
-);
-
-
-let settings = {
-
-    theme:
-        loadJSON(
-            STORAGE_KEYS.theme,
-            DEFAULT_SETTINGS.theme
-        ),
-
-    accent:
-        loadJSON(
-            STORAGE_KEYS.accent,
-            DEFAULT_SETTINGS.accent
-        ),
-
-    todoVisible:
-        loadJSON(
-            STORAGE_KEYS.todoVisible,
-            DEFAULT_SETTINGS.todoVisible
-        ),
-
-    datetime:
-        loadJSON(
-            STORAGE_KEYS.datetime,
-            DEFAULT_SETTINGS.datetime
-        ),
-
-    clockType:
-        loadJSON(
-            STORAGE_KEYS.clockType,
-            DEFAULT_SETTINGS.clockType
-        ),
-
-    affirmation:
-        loadJSON(
-            STORAGE_KEYS.affirmation,
-            DEFAULT_SETTINGS.affirmation
-        )
-
-};
-
-
-/* =========================================================
-   LOCAL STORAGE
-   ========================================================= */
-
-function loadJSON(
-    key,
-    fallback
-) {
+function loadJSON(key,fallback) {
 
     try {
 
         const value =
-            localStorage.getItem(
-                key
-            );
+            localStorage.getItem(key);
 
-        if (
-            value === null
-        ) {
-
-            return fallback;
-
-        }
-
-        return JSON.parse(
-            value
-        );
+        return value === null
+            ? fallback
+            : JSON.parse(value);
 
     }
 
@@ -3872,18 +3580,13 @@ function loadJSON(
 }
 
 
-function saveJSON(
-    key,
-    value
-) {
+function saveJSON(key,value) {
 
     try {
 
         localStorage.setItem(
             key,
-            JSON.stringify(
-                value
-            )
+            JSON.stringify(value)
         );
 
     }
@@ -3891,7 +3594,7 @@ function saveJSON(
     catch {
 
         console.warn(
-            "Horizon localStorage error."
+            "Horizon storage unavailable."
         );
 
     }
@@ -3900,144 +3603,96 @@ function saveJSON(
 
 
 /* =========================================================
-   ESCAPE HTML
+   STATE
    ========================================================= */
 
-function escapeHTML(
-    value
-) {
+let todos =
+    loadJSON(
+        STORAGE_KEYS.todos,
+        []
+    );
+
+let customCards =
+    loadJSON(
+        STORAGE_KEYS.customCards,
+        []
+    );
+
+let pendingApp =
+    null;
+
+let currentApp =
+    null;
+
+let selectedCustomSize =
+    "medium";
+
+
+let settings = {
+
+    theme:
+        loadJSON(
+            STORAGE_KEYS.theme,
+            "system"
+        ),
+
+    accent:
+        loadJSON(
+            STORAGE_KEYS.accent,
+            "#3498db"
+        ),
+
+    todoVisible:
+        loadJSON(
+            STORAGE_KEYS.todoVisible,
+            true
+        ),
+
+    datetime:
+        loadJSON(
+            STORAGE_KEYS.datetime,
+            false
+        ),
+
+    clockType:
+        loadJSON(
+            STORAGE_KEYS.clockType,
+            "digital"
+        ),
+
+    affirmation:
+        loadJSON(
+            STORAGE_KEYS.affirmation,
+            false
+        )
+
+};
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+function escapeHTML(value) {
 
     if (
         value === null ||
         value === undefined
     ) {
-
         return "";
-
     }
 
     return String(value)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+        .replace(/&/g,"&amp;")
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+        .replace(/</g,"&lt;")
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+        .replace(/>/g,"&gt;")
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+        .replace(/"/g,"&quot;")
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   ACCENT
-   ========================================================= */
-
-function hexToRGB(
-    hex
-) {
-
-    const clean =
-        String(hex)
-            .replace("#","");
-
-
-    if (
-        clean.length !== 6
-    ) {
-
-        return null;
-
-    }
-
-
-    const number =
-        parseInt(
-            clean,
-            16
-        );
-
-
-    return {
-
-        r:
-            (number >> 16) & 255,
-
-        g:
-            (number >> 8) & 255,
-
-        b:
-            number & 255
-
-    };
-
-}
-
-
-function applyAccent(
-    color
-) {
-
-    document.documentElement
-        .style
-        .setProperty(
-            "--accent",
-            color
-        );
-
-
-    const rgb =
-        hexToRGB(
-            color
-        );
-
-
-    if (
-        rgb
-    ) {
-
-        document.documentElement
-            .style
-            .setProperty(
-                "--accent-soft",
-                `rgba(
-                    ${rgb.r},
-                    ${rgb.g},
-                    ${rgb.b},
-                    .14
-                )`
-            );
-
-
-        document.documentElement
-            .style
-            .setProperty(
-                "--accent-light",
-                `rgb(
-                    ${Math.min(rgb.r + 70,255)},
-                    ${Math.min(rgb.g + 70,255)},
-                    ${Math.min(rgb.b + 70,255)}
-                )`
-            );
-
-    }
+        .replace(/'/g,"&#039;");
 
 }
 
@@ -4046,18 +3701,14 @@ function applyAccent(
    THEME
    ========================================================= */
 
-function applyTheme(
-    theme
-) {
+function applyTheme(theme) {
 
     document.body.classList.remove(
         "light-theme"
     );
 
-
     let actual =
         theme;
-
 
     if (
         theme === "system"
@@ -4074,7 +3725,6 @@ function applyTheme(
 
     }
 
-
     if (
         actual === "light"
     ) {
@@ -4085,7 +3735,6 @@ function applyTheme(
 
     }
 
-
     document
         .querySelectorAll(
             ".theme-option"
@@ -4093,25 +3742,93 @@ function applyTheme(
         .forEach(
             button => {
 
-                button.classList.toggle(
-                    "active",
-                    button.dataset.theme === theme
-                );
+                if (
+                    button.dataset.theme
+                ) {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.theme === theme
+                    );
+
+                }
 
             }
         );
 
+}
 
-    document
-        .getElementById(
-            "themeColorMeta"
-        )
-        .content =
-            actual === "light"
-            ?
-            "#f4f7fb"
-            :
-            "#080b12";
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+function hexToRGB(hex) {
+
+    const clean =
+        String(hex)
+            .replace("#","");
+
+    if (
+        clean.length !== 6
+    ) {
+        return null;
+    }
+
+    const number =
+        parseInt(clean,16);
+
+    return {
+
+        r:(number >> 16) & 255,
+
+        g:(number >> 8) & 255,
+
+        b:number & 255
+
+    };
+
+}
+
+
+function applyAccent(color) {
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
+
+    const rgb =
+        hexToRGB(color);
+
+    if (rgb) {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-soft",
+                `rgba(
+                    ${rgb.r},
+                    ${rgb.g},
+                    ${rgb.b},
+                    .14
+                )`
+            );
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-light",
+                `rgb(
+                    ${Math.min(rgb.r+70,255)},
+                    ${Math.min(rgb.g+70,255)},
+                    ${Math.min(rgb.b+70,255)}
+                )`
+            );
+
+    }
 
 }
 
@@ -4161,23 +3878,18 @@ function applySettings() {
         settings.theme
     );
 
-
     applyAccent(
         settings.accent
     );
 
-
-    todoVisibleToggle.checked =
-        settings.todoVisible;
-
-
     datetimeToggle.checked =
         settings.datetime;
-
 
     affirmationToggle.checked =
         settings.affirmation;
 
+    todoVisibleToggle.checked =
+        settings.todoVisible;
 
     clockTypeArea.style.display =
         settings.datetime
@@ -4227,36 +3939,24 @@ function applySettings() {
 
 
 /* =========================================================
-   SETTINGS OPEN/CLOSE
+   SETTINGS OPEN
    ========================================================= */
 
 function openSettings() {
 
     if (
-        viewer.classList.contains(
-            "active"
-        )
+        viewer.classList.contains("active")
     ) {
-
         return;
-
     }
 
+    settingsPanel.classList.add("active");
 
-    settingsPanel.classList.add(
-        "active"
-    );
-
-
-    settingsOverlay.classList.add(
-        "active"
-    );
-
+    settingsOverlay.classList.add("active");
 
     document.body.classList.add(
         "modal-open"
     );
-
 
     renderCustomCardsList();
 
@@ -4269,11 +3969,9 @@ function closeSettings() {
         "active"
     );
 
-
     settingsOverlay.classList.remove(
         "active"
     );
-
 
     document.body.classList.remove(
         "modal-open"
@@ -4282,42 +3980,36 @@ function closeSettings() {
 }
 
 
-settingsButton.addEventListener(
-    "click",
-    openSettings
-);
-
+settingsButton.onclick =
+    openSettings;
 
 document
-    .getElementById(
-        "settingsClose"
-    )
-    .addEventListener(
-        "click",
-        closeSettings
-    );
+    .getElementById("settingsClose")
+    .onclick =
+    closeSettings;
 
-
-settingsOverlay.addEventListener(
-    "click",
-    closeSettings
-);
+settingsOverlay.onclick =
+    closeSettings;
 
 
 /* =========================================================
-   THEME EVENTS
+   THEME
    ========================================================= */
 
 document
-    .querySelectorAll(
-        ".theme-option"
-    )
+    .querySelectorAll(".theme-option")
     .forEach(
         button => {
 
             button.addEventListener(
                 "click",
                 () => {
+
+                    if (
+                        !button.dataset.theme
+                    ) {
+                        return;
+                    }
 
                     settings.theme =
                         button.dataset.theme;
@@ -4334,13 +4026,11 @@ document
 
 
 /* =========================================================
-   COLOR EVENTS
+   COLORS
    ========================================================= */
 
 document
-    .querySelectorAll(
-        ".color-option"
-    )
+    .querySelectorAll(".color-option")
     .forEach(
         button => {
 
@@ -4365,11 +4055,10 @@ document
 
 
 /* =========================================================
-   DATE TIME EVENTS
+   DATE TIME
    ========================================================= */
 
-datetimeToggle.addEventListener(
-    "change",
+datetimeToggle.onchange =
     () => {
 
         settings.datetime =
@@ -4381,19 +4070,15 @@ datetimeToggle.addEventListener(
 
         renderApps();
 
-    }
-);
+    };
 
 
 document
-    .querySelectorAll(
-        ".clock-option"
-    )
+    .querySelectorAll(".clock-option")
     .forEach(
         button => {
 
-            button.addEventListener(
-                "click",
+            button.onclick =
                 () => {
 
                     settings.clockType =
@@ -4405,8 +4090,7 @@ document
 
                     renderApps();
 
-                }
-            );
+                };
 
         }
     );
@@ -4416,16 +4100,13 @@ document
    AFFIRMATION
    ========================================================= */
 
-affirmationToggle.addEventListener(
-    "change",
+affirmationToggle.onchange =
     () => {
 
         settings.affirmation =
             affirmationToggle.checked;
 
         saveSettings();
-
-        applySettings();
 
         renderApps();
 
@@ -4437,16 +4118,14 @@ affirmationToggle.addEventListener(
 
         }
 
-    }
-);
+    };
 
 
 /* =========================================================
-   TODO
+   TODO VISIBILITY
    ========================================================= */
 
-todoVisibleToggle.addEventListener(
-    "change",
+todoVisibleToggle.onchange =
     () => {
 
         settings.todoVisible =
@@ -4456,8 +4135,7 @@ todoVisibleToggle.addEventListener(
 
         renderApps();
 
-    }
-);
+    };
 
 
 /* =========================================================
@@ -4469,16 +4147,12 @@ function createTodoCard() {
     if (
         !settings.todoVisible
     ) {
-
         return null;
-
     }
 
 
     const card =
-        document.createElement(
-            "article"
-        );
+        document.createElement("article");
 
 
     card.className =
@@ -4498,19 +4172,42 @@ function createTodoCard() {
 <div>
 
 <div class="todo-title">
-    To-Do
+    My Tasks
 </div>
+
+<div class="todo-subtitle">
+    Stay focused and keep moving.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="todo-progress-box">
 
 <div
-    class="todo-counter"
-    id="todoCounter"
+    class="todo-progress-number"
+    id="todoProgressNumber"
 >
-    0 tasks
+    0%
+</div>
+
+<div class="todo-progress-label">
+    complete
 </div>
 
 </div>
 
 </div>
+
+
+<div class="todo-progress">
+
+<div
+    class="todo-progress-bar"
+    id="todoProgressBar"
+></div>
 
 </div>
 
@@ -4522,7 +4219,7 @@ function createTodoCard() {
     id="todoInput"
     type="text"
     maxlength="180"
-    placeholder="Add a task..."
+    placeholder="What needs to be done?"
 >
 
 <button
@@ -4540,13 +4237,31 @@ function createTodoCard() {
     id="todoList"
 ></div>
 
+
+<div class="todo-footer">
+
+<div
+    class="todo-counter"
+    id="todoCounter"
+>
+    0 tasks
+</div>
+
+<button
+    class="clear-completed"
+    id="clearCompleted"
+>
+    Clear completed
+</button>
+
+</div>
+
 `;
 
 
-    card.addEventListener(
-        "click",
-        e => e.stopPropagation()
-    );
+    card.onclick =
+        e =>
+            e.stopPropagation();
 
 
     setTimeout(
@@ -4557,41 +4272,51 @@ function createTodoCard() {
                     "todoInput"
                 );
 
-
             const add =
                 document.getElementById(
                     "todoAdd"
                 );
 
-
-            if (
-                input &&
-                add
-            ) {
-
-                add.addEventListener(
-                    "click",
-                    addTodo
+            const clear =
+                document.getElementById(
+                    "clearCompleted"
                 );
 
+            if (
+                add
+            ) {
+                add.onclick =
+                    addTodo;
+            }
 
-                input.addEventListener(
-                    "keydown",
+            if (
+                input
+            ) {
+
+                input.onkeydown =
                     e => {
 
                         if (
-                            e.key === "Enter"
+                            e.key ===
+                            "Enter"
                         ) {
 
                             addTodo();
 
                         }
 
-                    }
-                );
+                    };
 
             }
 
+            if (
+                clear
+            ) {
+
+                clear.onclick =
+                    clearCompleted;
+
+            }
 
             renderTodos();
 
@@ -4612,52 +4337,63 @@ function addTodo() {
             "todoInput"
         );
 
-
-    if (
-        !input
-    ) {
-
+    if (!input) {
         return;
-
     }
-
 
     const text =
         input.value.trim();
 
-
-    if (
-        !text
-    ) {
-
+    if (!text) {
         return;
-
     }
-
 
     todos.unshift({
 
-        id:
-            Date.now(),
+        id:Date.now(),
 
-        text:
-            text,
+        text:text,
 
-        completed:
-            false
+        completed:false
 
     });
-
 
     saveJSON(
         STORAGE_KEYS.todos,
         todos
     );
 
+    input.value = "";
 
-    input.value =
-        "";
+    renderTodos();
 
+}
+
+
+function clearCompleted() {
+
+    const completed =
+        todos.filter(
+            item =>
+                item.completed
+        );
+
+    if (
+        completed.length === 0
+    ) {
+        return;
+    }
+
+    todos =
+        todos.filter(
+            item =>
+                !item.completed
+        );
+
+    saveJSON(
+        STORAGE_KEYS.todos,
+        todos
+    );
 
     renderTodos();
 
@@ -4671,32 +4407,77 @@ function renderTodos() {
             "todoList"
         );
 
-
     const counter =
         document.getElementById(
             "todoCounter"
         );
 
+    const progressBar =
+        document.getElementById(
+            "todoProgressBar"
+        );
+
+    const progressNumber =
+        document.getElementById(
+            "todoProgressNumber"
+        );
+
 
     if (
-        !list ||
-        !counter
+        !list
+    ) {
+        return;
+    }
+
+
+    const total =
+        todos.length;
+
+    const completed =
+        todos.filter(
+            item =>
+                item.completed
+        ).length;
+
+
+    const percentage =
+        total === 0
+        ?
+        0
+        :
+        Math.round(
+            (completed / total) * 100
+        );
+
+
+    if (
+        counter
     ) {
 
-        return;
+        counter.textContent =
+            `${completed} completed · ${total} total`;
 
     }
 
 
-    const remaining =
-        todos.filter(
-            item =>
-                !item.completed
-        ).length;
+    if (
+        progressBar
+    ) {
+
+        progressBar.style.width =
+            percentage + "%";
+
+    }
 
 
-    counter.textContent =
-        `${remaining} remaining · ${todos.length} total`;
+    if (
+        progressNumber
+    ) {
+
+        progressNumber.textContent =
+            percentage + "%";
+
+    }
 
 
     list.innerHTML =
@@ -4704,13 +4485,13 @@ function renderTodos() {
 
 
     if (
-        todos.length === 0
+        total === 0
     ) {
 
         list.innerHTML = `
 
 <div class="todo-empty">
-    No tasks yet.
+    ✨ Nothing pending. Add your first task above.
 </div>
 
 `;
@@ -4728,15 +4509,15 @@ function renderTodos() {
                     "div"
                 );
 
-
             item.className =
-                `todo-item ${
+                "todo-item " +
+                (
                     todo.completed
                     ?
                     "completed"
                     :
                     ""
-                }`;
+                );
 
 
             item.innerHTML = `
@@ -4767,9 +4548,7 @@ function renderTodos() {
 
 
             item
-                .querySelector(
-                    ".todo-check"
-                )
+                .querySelector(".todo-check")
                 .onclick =
                 () => {
 
@@ -4787,16 +4566,15 @@ function renderTodos() {
 
 
             item
-                .querySelector(
-                    ".todo-delete"
-                )
+                .querySelector(".todo-delete")
                 .onclick =
                 () => {
 
                     todos =
                         todos.filter(
                             x =>
-                                x.id !== todo.id
+                                x.id !==
+                                todo.id
                         );
 
                     saveJSON(
@@ -4820,7 +4598,7 @@ function renderTodos() {
 
 
 /* =========================================================
-   DATE / TIME CARD
+   DATE TIME
    ========================================================= */
 
 function createDateTimeCard() {
@@ -4828,20 +4606,16 @@ function createDateTimeCard() {
     if (
         !settings.datetime
     ) {
-
         return null;
-
     }
 
 
     const card =
-        document.createElement(
-            "article"
-        );
+        document.createElement("article");
 
 
     card.className =
-        "app-card datetime-card large";
+        "app-card datetime-card";
 
 
     if (
@@ -4851,33 +4625,77 @@ function createDateTimeCard() {
 
         card.innerHTML = `
 
-<div class="datetime-header">
+<div class="datetime-top">
+
+<div class="datetime-brand">
 
 <div class="datetime-icon">
-    🕐
+    ◷
 </div>
 
-<div class="clock-type-label">
+<div>
+
+<div class="datetime-title">
+    Local Time
+</div>
+
+<div class="datetime-zone">
+    Your current date & time
+</div>
+
+</div>
+
+</div>
+
+<div class="datetime-mode">
     Digital
 </div>
 
 </div>
 
 
-<div>
+<div class="digital-clock-area">
 
 <div
     class="digital-time"
     id="digitalTime"
 >
-    --:--:--
+    --:--<span class="digital-seconds">--</span>
 </div>
 
 <div
     class="digital-date"
     id="digitalDate"
 >
-    Loading date...
+    Loading...
+</div>
+
+<div
+    class="digital-day"
+    id="digitalDay"
+>
+    --
+</div>
+
+</div>
+
+
+<div class="time-visual">
+
+<div class="time-line">
+
+<div
+    class="time-line-fill"
+    id="timeLineFill"
+></div>
+
+</div>
+
+<div
+    class="time-percent"
+    id="timePercent"
+>
+    0%
 </div>
 
 </div>
@@ -4890,22 +4708,81 @@ function createDateTimeCard() {
 
         card.innerHTML = `
 
-<div class="datetime-header">
+<div class="datetime-top">
+
+<div class="datetime-brand">
 
 <div class="datetime-icon">
-    🕐
+    ◷
 </div>
 
-<div class="clock-type-label">
+<div>
+
+<div class="datetime-title">
+    Local Time
+</div>
+
+<div class="datetime-zone">
+    Your current date & time
+</div>
+
+</div>
+
+</div>
+
+<div class="datetime-mode">
     Analog
 </div>
 
 </div>
 
 
-<div class="analog-wrap">
+<div class="analog-layout">
 
 <div class="analog-clock">
+
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateY(-59px)"
+>
+    12
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateX(59px)"
+>
+    3
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateY(59px)"
+>
+    6
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateX(-59px)"
+>
+    9
+</div>
+
 
 <div
     class="clock-hand hour-hand"
@@ -4926,13 +4803,25 @@ function createDateTimeCard() {
 
 </div>
 
+
+<div class="analog-info">
+
+<div
+    class="analog-time"
+    id="analogTime"
+>
+    --:--
 </div>
 
 <div
-    class="digital-date"
+    class="analog-date"
     id="analogDate"
-    style="text-align:center;margin-top:10px;"
 >
+    Loading...
+</div>
+
+</div>
+
 </div>
 
 `;
@@ -4940,73 +4829,22 @@ function createDateTimeCard() {
     }
 
 
+    card.onclick =
+        e =>
+            e.stopPropagation();
+
+
     return card;
 
 }
 
-
-/* =========================================================
-   CLOCK MARKS
-   ========================================================= */
-
-function createClockMarks() {
-
-    const clock =
-        document.querySelector(
-            ".analog-clock"
-        );
-
-
-    if (
-        !clock
-    ) {
-
-        return;
-
-    }
-
-
-    for (
-        let i = 0;
-        i < 12;
-        i++
-    ) {
-
-        const mark =
-            document.createElement(
-                "div"
-            );
-
-
-        mark.className =
-            "clock-mark";
-
-
-        mark.style.transform =
-            `translate(-50%,-50%) rotate(${i * 30}deg) translateY(-57px)`;
-
-
-        clock.appendChild(
-            mark
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   UPDATE CLOCK
-   ========================================================= */
 
 function updateClock() {
 
     if (
         !settings.datetime
     ) {
-
         return;
-
     }
 
 
@@ -5017,10 +4855,8 @@ function updateClock() {
     const hours =
         now.getHours();
 
-
     const minutes =
         now.getMinutes();
-
 
     const seconds =
         now.getSeconds();
@@ -5030,147 +4866,195 @@ function updateClock() {
         now.toLocaleDateString(
             undefined,
             {
-                weekday:
-                    "long",
-
-                year:
-                    "numeric",
-
-                month:
-                    "long",
-
-                day:
-                    "numeric"
+                weekday:"long",
+                year:"numeric",
+                month:"long",
+                day:"numeric"
             }
         );
 
 
+    const day =
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"long"
+            }
+        );
+
+
+    /*
+       DIGITAL
+    */
+
+    const digital =
+        document.getElementById(
+            "digitalTime"
+        );
+
+
     if (
-        settings.clockType ===
-        "digital"
+        digital
     ) {
 
-        const time =
-            now.toLocaleTimeString(
-                undefined,
-                {
-                    hour:
-                        "2-digit",
+        let hh =
+            hours % 12 || 12;
 
-                    minute:
-                        "2-digit",
+        const mm =
+            String(minutes)
+                .padStart(2,"0");
 
-                    second:
-                        "2-digit"
-                }
-            );
+        const ss =
+            String(seconds)
+                .padStart(2,"0");
 
+        digital.innerHTML =
+            `${hh}:${mm}<span class="digital-seconds">${ss}</span>`;
 
-        const timeElement =
-            document.getElementById(
-                "digitalTime"
-            );
-
-
-        const dateElement =
-            document.getElementById(
+        document
+            .getElementById(
                 "digitalDate"
-            );
+            )
+            .textContent =
+            dateText;
+
+        document
+            .getElementById(
+                "digitalDay"
+            )
+            .textContent =
+            `${day} · ${
+                hours >= 12
+                ?
+                "PM"
+                :
+                "AM"
+            }`;
 
 
-        if (
-            timeElement
-        ) {
+        const secondsOfDay =
+            hours * 3600 +
+            minutes * 60 +
+            seconds;
 
-            timeElement.textContent =
-                time;
+        const dayPercentage =
+            (
+                secondsOfDay /
+                86400
+            ) * 100;
 
-        }
+
+        document
+            .getElementById(
+                "timeLineFill"
+            )
+            .style.width =
+            dayPercentage + "%";
 
 
-        if (
-            dateElement
-        ) {
-
-            dateElement.textContent =
-                dateText;
-
-        }
+        document
+            .getElementById(
+                "timePercent"
+            )
+            .textContent =
+            Math.round(
+                dayPercentage
+            ) + "%";
 
     }
 
-    else {
 
-        const hour =
-            document.getElementById(
-                "hourHand"
+    /*
+       ANALOG
+    */
+
+    const hour =
+        document.getElementById(
+            "hourHand"
+        );
+
+    if (
+        hour
+    ) {
+
+        hour.style.transform =
+            `translateX(-50%) rotate(${
+                (hours % 12) * 30 +
+                minutes * .5
+            }deg)`;
+
+    }
+
+
+    const minute =
+        document.getElementById(
+            "minuteHand"
+        );
+
+    if (
+        minute
+    ) {
+
+        minute.style.transform =
+            `translateX(-50%) rotate(${
+                minutes * 6 +
+                seconds * .1
+            }deg)`;
+
+    }
+
+
+    const second =
+        document.getElementById(
+            "secondHand"
+        );
+
+    if (
+        second
+    ) {
+
+        second.style.transform =
+            `translateX(-50%) rotate(${
+                seconds * 6
+            }deg)`;
+
+    }
+
+
+    const analogTime =
+        document.getElementById(
+            "analogTime"
+        );
+
+
+    if (
+        analogTime
+    ) {
+
+        analogTime.textContent =
+            now.toLocaleTimeString(
+                undefined,
+                {
+                    hour:"2-digit",
+                    minute:"2-digit"
+                }
             );
 
-
-        const minute =
-            document.getElementById(
-                "minuteHand"
-            );
+    }
 
 
-        const second =
-            document.getElementById(
-                "secondHand"
-            );
+    const analogDate =
+        document.getElementById(
+            "analogDate"
+        );
 
 
-        const date =
-            document.getElementById(
-                "analogDate"
-            );
+    if (
+        analogDate
+    ) {
 
-
-        if (
-            hour
-        ) {
-
-            hour.style.transform =
-                `translateX(-50%) rotate(${
-                    ((hours % 12) * 30) +
-                    (minutes * .5)
-                }deg)`;
-
-        }
-
-
-        if (
-            minute
-        ) {
-
-            minute.style.transform =
-                `translateX(-50%) rotate(${
-                    minutes * 6 +
-                    seconds * .1
-                }deg)`;
-
-        }
-
-
-        if (
-            second
-        ) {
-
-            second.style.transform =
-                `translateX(-50%) rotate(${
-                    seconds * 6
-                }deg)`;
-
-        }
-
-
-        if (
-            date
-        ) {
-
-            date.textContent =
-                dateText;
-
-        }
+        analogDate.textContent =
+            dateText;
 
     }
 
@@ -5184,7 +5068,7 @@ setInterval(
 
 
 /* =========================================================
-   AFFIRMATION CARD
+   AFFIRMATIONS
    ========================================================= */
 
 let currentAffirmation =
@@ -5196,20 +5080,16 @@ function createAffirmationCard() {
     if (
         !settings.affirmation
     ) {
-
         return null;
-
     }
 
 
     const card =
-        document.createElement(
-            "article"
-        );
+        document.createElement("article");
 
 
     card.className =
-        "app-card affirmation-card large";
+        "app-card affirmation-card";
 
 
     card.innerHTML = `
@@ -5219,7 +5099,6 @@ function createAffirmationCard() {
 <div class="affirmation-mark">
     “
 </div>
-
 
 <div
     class="affirmation-text"
@@ -5239,7 +5118,6 @@ function createAffirmationCard() {
     Positive words
 </div>
 
-
 <button
     class="refresh-affirmation"
     id="refreshAffirmation"
@@ -5252,10 +5130,9 @@ function createAffirmationCard() {
 `;
 
 
-    card.addEventListener(
-        "click",
-        e => e.stopPropagation()
-    );
+    card.onclick =
+        e =>
+            e.stopPropagation();
 
 
     setTimeout(
@@ -5265,7 +5142,6 @@ function createAffirmationCard() {
                 document.getElementById(
                     "refreshAffirmation"
                 );
-
 
             if (
                 button
@@ -5285,10 +5161,6 @@ function createAffirmationCard() {
 
 }
 
-
-/* =========================================================
-   AFFIRMATION API
-   ========================================================= */
 
 async function loadAffirmation() {
 
@@ -5314,11 +5186,7 @@ async function loadAffirmation() {
             await fetch(
                 "https://www.affirmations.dev/",
                 {
-                    method:
-                        "GET",
-
-                    cache:
-                        "no-store"
+                    cache:"no-store"
                 }
             );
 
@@ -5326,11 +5194,7 @@ async function loadAffirmation() {
         if (
             !response.ok
         ) {
-
-            throw new Error(
-                "API request failed"
-            );
-
+            throw new Error();
         }
 
 
@@ -5348,7 +5212,6 @@ async function loadAffirmation() {
 
         }
 
-
     }
 
     catch {
@@ -5359,17 +5222,17 @@ async function loadAffirmation() {
     }
 
 
-    const textElement =
+    const element =
         document.getElementById(
             "affirmationText"
         );
 
 
     if (
-        textElement
+        element
     ) {
 
-        textElement.textContent =
+        element.textContent =
             currentAffirmation;
 
     }
@@ -5378,12 +5241,50 @@ async function loadAffirmation() {
 
 
 /* =========================================================
-   CUSTOM CARD PASSWORD
+   CUSTOM SIZE SELECTOR
    ========================================================= */
 
-function customHasPassword(
-    card
-) {
+document
+    .querySelectorAll(
+        ".size-option"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () => {
+
+                    selectedCustomSize =
+                        button.dataset.size;
+
+
+                    document
+                        .querySelectorAll(
+                            ".size-option"
+                        )
+                        .forEach(
+                            option => {
+
+                                option.classList.toggle(
+                                    "active",
+                                    option.dataset.size ===
+                                    selectedCustomSize
+                                );
+
+                            }
+                        );
+
+                };
+
+        }
+    );
+
+
+/* =========================================================
+   PASSWORD HELPERS
+   ========================================================= */
+
+function customHasPassword(card) {
 
     return (
         Array.isArray(card.passwords) &&
@@ -5393,22 +5294,80 @@ function customHasPassword(
 }
 
 
-function customPasswords(
-    card
-) {
+function customPasswords(card) {
+
+    return Array.isArray(card.passwords)
+        ?
+        card.passwords
+        :
+        [];
+
+}
+
+
+function hasPassword(app) {
 
     if (
-        !Array.isArray(
-            card.passwords
-        )
+        typeof app.password === "string"
     ) {
 
-        return [];
+        return (
+            app.password.trim() !== ""
+        );
 
     }
 
 
-    return card.passwords;
+    if (
+        Array.isArray(app.password)
+    ) {
+
+        return app.password.some(
+            p =>
+                String(p).trim() !== ""
+        );
+
+    }
+
+
+    return false;
+
+}
+
+
+function getPasswords(app) {
+
+    if (
+        typeof app.password === "string"
+    ) {
+
+        return app.password.trim()
+            ?
+            [app.password]
+            :
+            [];
+
+    }
+
+
+    if (
+        Array.isArray(app.password)
+    ) {
+
+        return app.password
+            .map(
+                p =>
+                    String(p)
+            )
+            .filter(
+                p =>
+                    p.trim() !== ""
+            );
+
+    }
+
+
+    return [];
 
 }
 
@@ -5421,46 +5380,36 @@ document
     .getElementById(
         "addCustomCard"
     )
-    .addEventListener(
-        "click",
-        createCustomCard
-    );
+    .onclick =
+    createCustomCard;
 
 
 function createCustomCard() {
 
     const name =
         document
-            .getElementById(
-                "customName"
-            )
+            .getElementById("customName")
             .value
             .trim();
 
 
     const url =
         document
-            .getElementById(
-                "customUrl"
-            )
+            .getElementById("customUrl")
             .value
             .trim();
 
 
     const description =
         document
-            .getElementById(
-                "customDescription"
-            )
+            .getElementById("customDescription")
             .value
             .trim();
 
 
     const emoji =
         document
-            .getElementById(
-                "customEmoji"
-            )
+            .getElementById("customEmoji")
             .value
             .trim()
             ||
@@ -5469,9 +5418,7 @@ function createCustomCard() {
 
     const hover =
         document
-            .getElementById(
-                "customHover"
-            )
+            .getElementById("customHover")
             .value
             .trim()
             ||
@@ -5480,16 +5427,12 @@ function createCustomCard() {
 
     const passwordText =
         document
-            .getElementById(
-                "customPassword"
-            )
+            .getElementById("customPassword")
             .value
             .trim();
 
 
-    if (
-        !name
-    ) {
+    if (!name) {
 
         alert(
             "Please enter a card name."
@@ -5500,9 +5443,7 @@ function createCustomCard() {
     }
 
 
-    if (
-        !url
-    ) {
+    if (!url) {
 
         alert(
             "Please enter a website URL."
@@ -5515,9 +5456,7 @@ function createCustomCard() {
 
     try {
 
-        new URL(
-            url
-        );
+        new URL(url);
 
     }
 
@@ -5532,8 +5471,7 @@ function createCustomCard() {
     }
 
 
-    let passwords =
-        [];
+    let passwords = [];
 
 
     if (
@@ -5560,24 +5498,23 @@ function createCustomCard() {
             "custom_" +
             Date.now(),
 
-        name:
-            name,
+        name:name,
 
-        url:
-            url,
+        url:url,
 
         description:
             description ||
             "Custom Horizon shortcut.",
 
-        emoji:
-            emoji,
+        emoji:emoji,
 
-        hoverText:
-            hover,
+        hoverText:hover,
 
-        passwords:
-            passwords,
+        passwords:passwords,
+
+        size:
+            selectedCustomSize ||
+            "medium",
 
         createdAt:
             new Date().toISOString()
@@ -5597,55 +5534,53 @@ function createCustomCard() {
 
 
     /*
-        Clear form
+       Clear
     */
 
     document
-        .getElementById(
-            "customName"
-        )
-        .value =
-        "";
+        .getElementById("customName")
+        .value = "";
+
+    document
+        .getElementById("customUrl")
+        .value = "";
+
+    document
+        .getElementById("customDescription")
+        .value = "";
+
+    document
+        .getElementById("customEmoji")
+        .value = "🌐";
+
+    document
+        .getElementById("customHover")
+        .value = "";
+
+    document
+        .getElementById("customPassword")
+        .value = "";
+
+
+    selectedCustomSize =
+        "medium";
 
 
     document
-        .getElementById(
-            "customUrl"
+        .querySelectorAll(
+            ".size-option"
         )
-        .value =
-        "";
+        .forEach(
+            button => {
 
+                button.classList.toggle(
+                    "active",
+                    button.dataset.size ===
+                    "medium"
+                );
 
-    document
-        .getElementById(
-            "customDescription"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "customEmoji"
-        )
-        .value =
-        "🌐";
-
-
-    document
-        .getElementById(
-            "customHover"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "customPassword"
-        )
-        .value =
-        "";
+            }
+        );
 
 
     renderApps();
@@ -5671,15 +5606,6 @@ function renderCustomCardsList() {
         "";
 
 
-    if (
-        customCards.length === 0
-    ) {
-
-        return;
-
-    }
-
-
     customCards.forEach(
         card => {
 
@@ -5693,11 +5619,24 @@ function renderCustomCardsList() {
                 "custom-item";
 
 
+            const protectedCard =
+                customHasPassword(
+                    card
+                );
+
+
+            /*
+                IMPORTANT:
+                If password exists,
+                DO NOT expose URL.
+            */
+
             item.innerHTML = `
 
 <div class="custom-item-emoji">
     ${escapeHTML(
-        card.emoji
+        card.emoji ||
+        "🌐"
     )}
 </div>
 
@@ -5710,24 +5649,35 @@ function renderCustomCardsList() {
         card.name
     )}
 
-    ${
-        customHasPassword(card)
-        ?
-        " 🔒"
-        :
-        ""
-    }
-
 </div>
 
 
-<div class="custom-item-url">
+${
+    protectedCard
 
-    ${escapeHTML(
-        card.url
-    )}
+    ?
 
-</div>
+    `<div class="custom-item-protected">
+        🔒 Protected · ${escapeHTML(
+            card.size || "medium"
+        )}
+    </div>`
+
+    :
+
+    `<div class="custom-item-url">
+        ${escapeHTML(
+            card.url
+        )}
+    </div>
+
+    <div class="custom-item-protected">
+        ${escapeHTML(
+            card.size || "medium"
+        )}
+    </div>`
+
+}
 
 </div>
 
@@ -5746,13 +5696,10 @@ function renderCustomCardsList() {
                     ".custom-delete"
                 )
                 .onclick =
-                () => {
-
+                () =>
                     deleteCustomCard(
                         card.id
                     );
-
-                };
 
 
             list.appendChild(
@@ -5765,13 +5712,7 @@ function renderCustomCardsList() {
 }
 
 
-/* =========================================================
-   DELETE CUSTOM CARD
-   ========================================================= */
-
-function deleteCustomCard(
-    id
-) {
+function deleteCustomCard(id) {
 
     const card =
         customCards.find(
@@ -5780,12 +5721,8 @@ function deleteCustomCard(
         );
 
 
-    if (
-        !card
-    ) {
-
+    if (!card) {
         return;
-
     }
 
 
@@ -5794,9 +5731,7 @@ function deleteCustomCard(
             `Delete "${card.name}"?`
         )
     ) {
-
         return;
-
     }
 
 
@@ -5821,19 +5756,13 @@ function deleteCustomCard(
 
 
 /* =========================================================
-   GET APP NAME
+   APP NAME
    ========================================================= */
 
-function getAppName(
-    app
-) {
+function getAppName(app) {
 
-    if (
-        app.name
-    ) {
-
+    if (app.name) {
         return app.name;
-
     }
 
 
@@ -5844,16 +5773,9 @@ function getAppName(
                 app.iframeLink
             );
 
-
         return url.hostname
-
-            .replace(
-                /^www\./,
-                ""
-            )
-
+            .replace(/^www\./,"")
             .split(".")[0]
-
             .replace(
                 /^./,
                 c =>
@@ -5872,90 +5794,7 @@ function getAppName(
 
 
 /* =========================================================
-   EXISTING APP PASSWORD
-   ========================================================= */
-
-function hasPassword(
-    app
-) {
-
-    if (
-        typeof app.password ===
-        "string"
-    ) {
-
-        return (
-            app.password.trim() !== ""
-        );
-
-    }
-
-
-    if (
-        Array.isArray(
-            app.password
-        )
-    ) {
-
-        return app.password.some(
-            p =>
-                String(p).trim() !== ""
-        );
-
-    }
-
-
-    return false;
-
-}
-
-
-function getPasswords(
-    app
-) {
-
-    if (
-        typeof app.password ===
-        "string"
-    ) {
-
-        return app.password.trim()
-            ?
-            [app.password]
-            :
-            [];
-
-    }
-
-
-    if (
-        Array.isArray(
-            app.password
-        )
-    ) {
-
-        return app.password
-
-            .map(
-                p =>
-                    String(p)
-            )
-
-            .filter(
-                p =>
-                    p.trim() !== ""
-            );
-
-    }
-
-
-    return [];
-
-}
-
-
-/* =========================================================
-   RENDER STANDARD APPS
+   RENDER APPS
    ========================================================= */
 
 function renderApps() {
@@ -5964,58 +5803,29 @@ function renderApps() {
         "";
 
 
-    /*
-        Special cards first
-    */
-
     const todo =
         createTodoCard();
 
-
-    if (
-        todo
-    ) {
-
-        grid.appendChild(
-            todo
-        );
-
+    if (todo) {
+        grid.appendChild(todo);
     }
 
 
     const datetime =
         createDateTimeCard();
 
-
-    if (
-        datetime
-    ) {
-
-        grid.appendChild(
-            datetime
-        );
-
+    if (datetime) {
+        grid.appendChild(datetime);
     }
 
 
     const affirmation =
         createAffirmationCard();
 
-
-    if (
-        affirmation
-    ) {
-
-        grid.appendChild(
-            affirmation
-        );
-
+    if (affirmation) {
+        grid.appendChild(affirmation);
     }
 
-
-    /*
-        Existing Horizon Apps
-    */
 
     const apps =
         Array.isArray(
@@ -6026,10 +5836,6 @@ function renderApps() {
         :
         [];
 
-
-    /*
-        User-created cards
-    */
 
     const active =
         apps.filter(
@@ -6047,76 +5853,38 @@ function renderApps() {
     apps.forEach(
         (app,index) => {
 
-            const card =
+            grid.appendChild(
                 createStandardAppCard(
                     app,
                     index
-                );
-
-
-            grid.appendChild(
-                card
+                )
             );
 
         }
     );
 
-
-    /*
-        Custom cards
-    */
 
     customCards.forEach(
         (app,index) => {
 
-            const card =
+            grid.appendChild(
                 createCustomAppCard(
                     app,
                     index
-                );
-
-
-            grid.appendChild(
-                card
+                )
             );
 
         }
     );
 
 
-    /*
-        Clock
-    */
-
-    if (
-        settings.datetime
-    ) {
-
-        setTimeout(
-            () => {
-
-                if (
-                    settings.clockType ===
-                    "analog"
-                ) {
-
-                    createClockMarks();
-
-                }
-
-                updateClock();
-
-            },
-            0
-        );
-
-    }
+    updateClock();
 
 }
 
 
 /* =========================================================
-   STANDARD CARD
+   STANDARD APP
    ========================================================= */
 
 function createStandardAppCard(
@@ -6125,15 +5893,11 @@ function createStandardAppCard(
 ) {
 
     const enabled =
-        Number(
-            app.enabled
-        ) === 1;
+        Number(app.enabled) === 1;
 
 
     const protectedApp =
-        hasPassword(
-            app
-        );
+        hasPassword(app);
 
 
     const card =
@@ -6145,7 +5909,7 @@ function createStandardAppCard(
     card.className =
         `app-card ${
             app.size ||
-            "normal"
+            "large"
         } ${
             enabled
             ?
@@ -6167,7 +5931,6 @@ function createStandardAppCard(
 <div>
 
 <div class="card-top">
-
 
 <img
     class="app-logo"
@@ -6194,17 +5957,17 @@ ${
     ""
 }
 
-
 ${
     enabled
     ?
     `<span class="status-dot"></span>`
     :
-    `<span class="disabled-status">Disabled</span>`
+    `<span class="disabled-status">
+        Disabled
+    </span>`
 }
 
 </div>
-
 
 </div>
 
@@ -6217,14 +5980,12 @@ ${
     )}
 </div>
 
-
 <div class="card-description">
     ${escapeHTML(
         app.description ||
         ""
     )}
 </div>
-
 
 </div>
 
@@ -6245,17 +6006,11 @@ ${escapeHTML(
 `;
 
 
-    if (
-        enabled
-    ) {
+    if (enabled) {
 
-        card.addEventListener(
-            "click",
+        card.onclick =
             () =>
-                handleAppClick(
-                    app
-                )
-        );
+                handleAppClick(app);
 
     }
 
@@ -6266,7 +6021,7 @@ ${escapeHTML(
 
 
 /* =========================================================
-   CUSTOM CARD
+   CUSTOM APP
    ========================================================= */
 
 function createCustomAppCard(
@@ -6280,8 +6035,29 @@ function createCustomAppCard(
         );
 
 
+    /*
+        Backward compatibility:
+        Old cards without size become large.
+    */
+
+    const size =
+        [
+            "small",
+            "medium",
+            "large",
+            "wide",
+            "tall"
+        ].includes(
+            app.size
+        )
+        ?
+        app.size
+        :
+        "large";
+
+
     card.className =
-        "app-card large";
+        `app-card ${size}`;
 
 
     card.style.animationDelay =
@@ -6289,9 +6065,7 @@ function createCustomAppCard(
 
 
     const protectedApp =
-        customHasPassword(
-            app
-        );
+        customHasPassword(app);
 
 
     card.innerHTML = `
@@ -6302,7 +6076,6 @@ function createCustomAppCard(
 <div>
 
 <div class="card-top">
-
 
 <div class="emoji-logo">
 
@@ -6327,7 +6100,6 @@ ${
 <span class="status-dot"></span>
 
 </div>
-
 
 </div>
 
@@ -6371,16 +6143,9 @@ ${escapeHTML(
 `;
 
 
-    card.addEventListener(
-        "click",
-        () => {
-
-            openCustomCard(
-                app
-            );
-
-        }
-    );
+    card.onclick =
+        () =>
+            openCustomCard(app);
 
 
     return card;
@@ -6389,46 +6154,37 @@ ${escapeHTML(
 
 
 /* =========================================================
-   STANDARD APP CLICK
+   OPEN STANDARD
    ========================================================= */
 
-function handleAppClick(
-    app
-) {
+function handleAppClick(app) {
 
     if (
         !app ||
         Number(app.enabled) !== 1
     ) {
-
         return;
-
     }
 
 
     if (
-        !hasPassword(
-            app
-        )
+        !hasPassword(app)
     ) {
 
-        openApp(
-            app
-        );
+        openApp(app);
 
         return;
 
     }
 
 
-    pendingApp =
-        {
-            type:
-                "iframe",
+    pendingApp = {
 
-            app:
-                app
-        };
+        type:"iframe",
+
+        app:app
+
+    };
 
 
     showPasswordModal();
@@ -6437,36 +6193,29 @@ function handleAppClick(
 
 
 /* =========================================================
-   CUSTOM APP CLICK
+   CUSTOM OPEN
    ========================================================= */
 
-function openCustomCard(
-    app
-) {
+function openCustomCard(app) {
 
     if (
-        !customHasPassword(
-            app
-        )
+        !customHasPassword(app)
     ) {
 
-        openCustomInNewTab(
-            app
-        );
+        openCustomInNewTab(app);
 
         return;
 
     }
 
 
-    pendingApp =
-        {
-            type:
-                "custom",
+    pendingApp = {
 
-            app:
-                app
-        };
+        type:"custom",
+
+        app:app
+
+    };
 
 
     showPasswordModal();
@@ -6475,7 +6224,7 @@ function openCustomCard(
 
 
 /* =========================================================
-   PASSWORD MODAL
+   PASSWORD
    ========================================================= */
 
 function showPasswordModal() {
@@ -6483,20 +6232,16 @@ function showPasswordModal() {
     passwordInput.value =
         "";
 
-
     passwordError.textContent =
         "";
-
 
     passwordModal.classList.add(
         "active"
     );
 
-
     document.body.classList.add(
         "modal-open"
     );
-
 
     setTimeout(
         () =>
@@ -6509,12 +6254,8 @@ function showPasswordModal() {
 
 function submitPassword() {
 
-    if (
-        !pendingApp
-    ) {
-
+    if (!pendingApp) {
         return;
-
     }
 
 
@@ -6522,8 +6263,7 @@ function submitPassword() {
         passwordInput.value;
 
 
-    let passwords =
-        [];
+    let passwords = [];
 
 
     if (
@@ -6555,9 +6295,7 @@ function submitPassword() {
         );
 
 
-    if (
-        !valid
-    ) {
+    if (!valid) {
 
         passwordError.textContent =
             "Incorrect password. Please try again.";
@@ -6610,7 +6348,6 @@ function cancelPassword() {
     pendingApp =
         null;
 
-
     closePasswordModal();
 
 }
@@ -6622,15 +6359,12 @@ function closePasswordModal() {
         "active"
     );
 
-
     document.body.classList.remove(
         "modal-open"
     );
 
-
     passwordInput.value =
         "";
-
 
     passwordError.textContent =
         "";
@@ -6638,56 +6372,7 @@ function closePasswordModal() {
 }
 
 
-/* =========================================================
-   CUSTOM NEW TAB
-   ========================================================= */
-
-function openCustomInNewTab(
-    app
-) {
-
-    /*
-        Use a temporary anchor instead of
-        window.open where possible.
-    */
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        app.url;
-
-
-    link.target =
-        "_blank";
-
-
-    link.rel =
-        "noopener noreferrer";
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-}
-
-
-/* =========================================================
-   PASSWORD KEYBOARD
-   ========================================================= */
-
-passwordInput.addEventListener(
-    "keydown",
+passwordInput.onkeydown =
     event => {
 
         if (
@@ -6699,7 +6384,6 @@ passwordInput.addEventListener(
 
         }
 
-
         if (
             event.key ===
             "Escape"
@@ -6709,25 +6393,51 @@ passwordInput.addEventListener(
 
         }
 
-    }
-);
+    };
 
 
 /* =========================================================
-   OPEN IFRAME
+   NEW TAB
    ========================================================= */
 
-function openApp(
-    app
-) {
+function openCustomInNewTab(app) {
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href =
+        app.url;
+
+    link.target =
+        "_blank";
+
+    link.rel =
+        "noopener noreferrer";
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+}
+
+
+/* =========================================================
+   IFRAME
+   ========================================================= */
+
+function openApp(app) {
 
     if (
         !app ||
         Number(app.enabled) !== 1
     ) {
-
         return;
-
     }
 
 
@@ -6735,52 +6445,28 @@ function openApp(
         app;
 
 
-    /*
-        CLOSE SETTINGS
-    */
-
     closeSettings();
 
-
-    /*
-        HIDE HOME
-    */
 
     dashboard.classList.add(
         "hidden"
     );
 
 
-    /*
-        HIDE GEAR
-    */
-
     settingsButton.classList.add(
         "hidden"
     );
 
-
-    /*
-        OPEN VIEWER
-    */
 
     viewer.classList.add(
         "active"
     );
 
 
-    /*
-        SHOW LOADER
-    */
-
     loader.classList.remove(
         "hidden"
     );
 
-
-    /*
-        RESET IFRAME
-    */
 
     iframe.src =
         "about:blank";
@@ -6799,8 +6485,7 @@ function openApp(
 
     history.pushState(
         {
-            horizonViewer:
-                true
+            horizonViewer:true
         },
         "",
         "#app"
@@ -6809,12 +6494,7 @@ function openApp(
 }
 
 
-/* =========================================================
-   IFRAME LOAD
-   ========================================================= */
-
-iframe.addEventListener(
-    "load",
+iframe.onload =
     () => {
 
         setTimeout(
@@ -6828,13 +6508,8 @@ iframe.addEventListener(
             250
         );
 
-    }
-);
+    };
 
-
-/* =========================================================
-   GO BACK
-   ========================================================= */
 
 function goBack() {
 
@@ -6851,10 +6526,6 @@ function goBack() {
         "hidden"
     );
 
-
-    /*
-        SHOW GEAR AGAIN
-    */
 
     settingsButton.classList.remove(
         "hidden"
@@ -6882,12 +6553,7 @@ function goBack() {
 }
 
 
-/* =========================================================
-   BROWSER BACK
-   ========================================================= */
-
-window.addEventListener(
-    "popstate",
+window.onpopstate =
     () => {
 
         if (
@@ -6900,25 +6566,21 @@ window.addEventListener(
 
         }
 
-    }
-);
+    };
 
 
 /* =========================================================
    ESCAPE
    ========================================================= */
 
-document.addEventListener(
-    "keydown",
+document.onkeydown =
     event => {
 
         if (
             event.key !==
             "Escape"
         ) {
-
             return;
-
         }
 
 
@@ -6958,8 +6620,7 @@ document.addEventListener(
 
         }
 
-    }
-);
+    };
 
 
 /* =========================================================
@@ -7000,16 +6661,11 @@ function renderImportantLinks() {
 <div class="important-info">
 
 <div class="important-name">
-    ${escapeHTML(
-        item.name
-    )}
+    ${escapeHTML(item.name)}
 </div>
 
-
 <div class="important-url">
-    ${escapeHTML(
-        item.url
-    )}
+    ${escapeHTML(item.url)}
 </div>
 
 </div>
@@ -7022,7 +6678,6 @@ function renderImportantLinks() {
 >
     Copy
 </button>
-
 
 <button
     class="link-button open"
@@ -7051,15 +6706,12 @@ function renderImportantLinks() {
                     ".open"
                 )
                 .onclick =
-                () => {
-
+                () =>
                     window.open(
                         item.url,
                         "_blank",
                         "noopener,noreferrer"
                     );
-
-                };
 
 
             importantLinksContainer
@@ -7077,9 +6729,7 @@ function renderImportantLinks() {
    CLIPBOARD
    ========================================================= */
 
-async function copyToClipboard(
-    text
-) {
+async function copyToClipboard(text) {
 
     try {
 
@@ -7092,51 +6742,37 @@ async function copyToClipboard(
                 text
             );
 
-            showClipboardToast(
-                "Copied to clipboard ✓"
-            );
-
-            return;
-
         }
 
+        else {
 
-        /*
-            Fallback
-        */
+            const textarea =
+                document.createElement(
+                    "textarea"
+                );
 
-        const textarea =
-            document.createElement(
-                "textarea"
+            textarea.value =
+                text;
+
+            textarea.style.position =
+                "fixed";
+
+            textarea.style.opacity =
+                "0";
+
+            document.body.appendChild(
+                textarea
             );
 
+            textarea.select();
 
-        textarea.value =
-            text;
+            document.execCommand(
+                "copy"
+            );
 
+            textarea.remove();
 
-        textarea.style.position =
-            "fixed";
-
-
-        textarea.style.opacity =
-            "0";
-
-
-        document.body.appendChild(
-            textarea
-        );
-
-
-        textarea.select();
-
-
-        document.execCommand(
-            "copy"
-        );
-
-
-        textarea.remove();
+        }
 
 
         showClipboardToast(
@@ -7156,13 +6792,7 @@ async function copyToClipboard(
 }
 
 
-/* =========================================================
-   CLIPBOARD TOAST
-   ========================================================= */
-
-function showClipboardToast(
-    message
-) {
+function showClipboardToast(message) {
 
     let toast =
         document.getElementById(
@@ -7170,62 +6800,49 @@ function showClipboardToast(
         );
 
 
-    if (
-        !toast
-    ) {
+    if (!toast) {
 
         toast =
             document.createElement(
                 "div"
             );
 
-
         toast.id =
             "clipboardToast";
 
 
-        toast.style.position =
-            "fixed";
+        Object.assign(
+            toast.style,
+            {
 
+                position:"fixed",
 
-        toast.style.left =
-            "50%";
+                left:"50%",
 
+                bottom:"28px",
 
-        toast.style.bottom =
-            "28px";
+                transform:
+                    "translateX(-50%)",
 
+                zIndex:"5000",
 
-        toast.style.transform =
-            "translateX(-50%)";
+                padding:
+                    "10px 15px",
 
+                borderRadius:"12px",
 
-        toast.style.zIndex =
-            "5000";
+                background:
+                    "rgba(20,25,35,.94)",
 
+                color:"#fff",
 
-        toast.style.padding =
-            "10px 15px";
+                fontSize:"11px",
 
+                boxShadow:
+                    "0 10px 35px rgba(0,0,0,.3)"
 
-        toast.style.borderRadius =
-            "12px";
-
-
-        toast.style.background =
-            "rgba(20,25,35,.94)";
-
-
-        toast.style.color =
-            "#fff";
-
-
-        toast.style.fontSize =
-            "11px";
-
-
-        toast.style.boxShadow =
-            "0 10px 35px rgba(0,0,0,.3)";
+            }
+        );
 
 
         document.body.appendChild(
@@ -7246,11 +6863,8 @@ function showClipboardToast(
 
     toast._timer =
         setTimeout(
-            () => {
-
-                toast.remove();
-
-            },
+            () =>
+                toast.remove(),
             1800
         );
 
@@ -7265,37 +6879,33 @@ document
     .getElementById(
         "resetSettings"
     )
-    .addEventListener(
-        "click",
-        () => {
+    .onclick =
+    () => {
 
-            if (
-                !confirm(
-                    "Reset Horizon preferences? Your To-Do tasks and custom cards will not be deleted."
-                )
-            ) {
+        if (
+            !confirm(
+                "Reset Horizon preferences? To-Do tasks and custom cards will remain."
+            )
+        ) {
 
-                return;
-
-            }
-
-
-            settings =
-                {
-                    ...DEFAULT_SETTINGS
-                };
-
-
-            saveSettings();
-
-
-            applySettings();
-
-
-            renderApps();
+            return;
 
         }
-    );
+
+
+        settings =
+            {
+                ...DEFAULT_SETTINGS
+            };
+
+
+        saveSettings();
+
+        applySettings();
+
+        renderApps();
+
+    };
 
 
 /* =========================================================
@@ -7326,7 +6936,7 @@ window
 
 
 /* =========================================================
-   INITIALIZATION
+   START
    ========================================================= */
 
 applySettings();
@@ -7349,5 +6959,4 @@ if (
 </script>
 
 </body>
-
 </html>
