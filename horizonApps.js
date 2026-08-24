@@ -186,7 +186,7 @@ const horizonApps = [
             "Open product directory",
 
         size:
-            "tall",
+            "wide",
 
         password:
             ""
