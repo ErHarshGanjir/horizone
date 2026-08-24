@@ -1,64 +1,99 @@
-# Horizon
+# 🌐 Horizon
 
 <p align="center">
-  <img src="https://i.ibb.co/kgzJb34B/horizon-logo.png" alt="Horizon Logo" width="180">
+  <img
+    src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
+    alt="Horizon Logo"
+    width="420"
+  >
 </p>
 
-<h3 align="center">Everything. In one place.</h3>
+<h1 align="center">Everything. In one place.</h1>
 
 <p align="center">
-  A clean, fast and modern personal workspace for accessing frequently used websites and applications.
+  <strong>
+    A clean, fast and modern personal web workspace for accessing
+    frequently used websites, applications, tools and resources
+    from one beautiful dashboard.
+  </strong>
+</p>
+
+<p align="center">
+  <a href="#features">Features</a>
+  ·
+  <a href="#getting-started">Getting Started</a>
+  ·
+  <a href="#configuration">Configuration</a>
+  ·
+  <a href="#pwa-support">PWA</a>
+  ·
+  <a href="#custom-cards">Custom Cards</a>
 </p>
 
 ---
 
-## ✨ Overview
+## ✨ About Horizon
 
-**Horizon** is a modern web-based workspace designed to bring frequently used websites and applications into one organized dashboard.
+**Horizon** is a modern, lightweight and responsive web workspace designed to solve a simple problem:
 
-Instead of keeping multiple browser tabs or bookmarks open, Horizon provides a centralized Bento-style interface where each application can be launched directly inside a full-screen workspace.
+> **Why keep frequently used websites scattered across bookmarks, browser tabs and shortcuts when they can all be available from one place?**
 
-Horizon is designed primarily for **PC/Desktop use**, while also being fully responsive and **PWA-ready for mobile devices**.
+Horizon brings your frequently used applications into a single customizable dashboard.
+
+Each application is represented by a beautiful **Bento-style card** containing its name, logo, description and status.
+
+When a card is opened, the application loads into a **full-screen Horizon workspace**, allowing the user to work without leaving the dashboard.
+
+Horizon is designed primarily for **desktop and PC environments**, while also providing a responsive mobile interface and **Progressive Web App support**.
 
 ---
 
-## 🚀 Features
+# 🎯 Project Goals
 
-### 🧩 Bento Application Dashboard
+Horizon was designed around several core principles.
 
-- Modern Bento Grid interface
-- Multiple card sizes
-- Small, Medium, Large, Wide and Tall cards
-- Application logos
-- Application descriptions
-- Hover text
-- Search applications
-- Disabled applications remain visible
-- Disabled cards cannot be opened
+### 🧹 Keep everything organized
 
-### 🌐 Full-Screen Web Workspace
+Frequently used applications should be available from one place instead of being scattered across multiple browser tabs.
 
-Applications open directly inside Horizon using an iframe.
+### ⚡ Keep it fast
 
-When an application is opened:
+Horizon is completely client-side for its core functionality.
 
-- The iframe occupies the complete screen
-- No unnecessary overlay buttons
-- No Close/Open buttons covering the external website
-- Settings FAB is automatically hidden
-- Press `Esc` to return to the Horizon dashboard
+There is no required backend server or database.
 
-### 🔐 Password Protection
+### 🎨 Keep it modern
 
-Applications can optionally be password protected.
+The interface uses a modern Bento Grid layout with responsive cards, glass-style surfaces, smooth animations and customizable colors.
 
-A card can have:
+### 🔐 Keep access controlled
 
-- No password
-- One password
-- Multiple passwords
+Applications can optionally be protected with one or multiple passwords.
 
-Example:
+### 📱 Work everywhere
 
-```javascript
-password: ""
+The interface adapts to:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Horizon can also be installed as a PWA on supported devices.
+
+---
+
+# 🚀 Features
+
+## 🧩 Modern Bento Grid
+
+The main Horizon dashboard uses a flexible Bento Grid.
+
+Applications can have different sizes:
+
+```text
+Small
+Medium
+Large
+Wide
+Tall
