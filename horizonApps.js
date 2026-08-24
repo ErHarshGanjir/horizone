@@ -1,8 +1,6 @@
 const horizonApps = [
 
     {
-        name:
-            "real time tracking system",
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycbxLMj9QYt4_xrX1FTYzLw7fVYdUiw6iWnUwX06PnH84w9aE_juo63vDUDs6AmQVNS_K/exec",
@@ -28,8 +26,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "Cheque book",
+
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycbx2KVyvFiSVQE5EF8IDl-3BiL7RN2uW4QcSNiP7g25wEP6GYzfaJWWmtVTwckEYnCsF7w/exec",
@@ -55,8 +52,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "Coming Soon",
+
 
         iframeLink:
             "https://example.com",
@@ -86,8 +82,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "Integer",
+
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycby9F-3m5CqXUm2xUmXCEZwTaAnS1T74wqJN9NFir8ujTzYwnPyss46f585QuCk-fpCO/exec",
@@ -113,8 +108,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "Integer pro",
+
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycbzS1MpyNNDIFvKsy-vOoCL_hoeI6WnZGSAWq4vdIQLEW1ZhIemubPI0GJ57DGeFg_UG/exec",
@@ -140,8 +134,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "DocBox",
+
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycbwPnb5ieuhrpKAMQURDMjEFrhTZyYdoM5kafGuVD61-O5q1pP90mc4SyaT0BSDuFsBA/exec",
@@ -167,8 +160,7 @@ const horizonApps = [
 
 
     {
-        name:
-            "product directory",
+
 
         iframeLink:
             "https://script.google.com/macros/s/AKfycbzKY0OOHnlr1n6Y-sJVZgG9XotXI0zrPaVqGcOt6LgvLE8ZTQp1QiWhmhzMoSA7OpjJPw/exec",
