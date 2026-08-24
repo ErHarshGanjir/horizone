@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <meta name="theme-color" content="#3498db">
-    <meta
-        name="description"
-        content="Horizon — Everything. In one place."
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
     <title>Horizon</title>
@@ -22,1936 +18,3168 @@
         href="https://i.ibb.co/kgzJb34B/horizon-logo.png"
     >
 
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <meta
+        name="theme-color"
+        content="#080b12"
+        id="themeColorMeta"
+    >
 
-    <style>
 
-        /* =========================================================
-           HORIZON
-           ========================================================= */
+<style>
 
-        :root {
-            --accent: #3498db;
+/* =========================================================
+   HORIZON VARIABLES
+   ========================================================= */
 
-            --bg:
-                #f5f7fb;
+:root {
 
-            --surface:
-                rgba(255, 255, 255, 0.86);
+    --bg: #080b12;
+    --bg-secondary: #0d111a;
 
-            --surface-solid:
-                #ffffff;
+    --card:
+        rgba(18, 23, 34, 0.82);
 
-            --text:
-                #111827;
+    --card-hover:
+        rgba(27, 34, 49, 0.96);
 
-            --muted:
-                #6b7280;
+    --border:
+        rgba(255,255,255,0.08);
 
-            --border:
-                rgba(15, 23, 42, 0.08);
+    --border-hover:
+        rgba(255,255,255,0.16);
 
-            --shadow:
-                0 18px 50px rgba(15, 23, 42, 0.08);
+    --text:
+        #f4f7fb;
 
-            --radius:
-                24px;
+    --muted:
+        #8c96a8;
 
-            --header-height:
-                72px;
+    --accent:
+        #3498db;
 
-            --transition:
-                220ms cubic-bezier(.2,.8,.2,1);
-        }
+    --accent-light:
+        #8fcfff;
 
+    --accent-soft:
+        rgba(52,152,219,0.14);
 
-        html[data-theme="dark"] {
+    --success:
+        #42d17d;
 
-            --bg:
-                #0b0f14;
+    --danger:
+        #ff5f6d;
 
-            --surface:
-                rgba(20, 27, 36, 0.88);
+    --input-bg:
+        rgba(255,255,255,0.045);
 
-            --surface-solid:
-                #141b24;
+    --radius:
+        24px;
+}
 
-            --text:
-                #f4f7fb;
 
-            --muted:
-                #9ca8b6;
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
 
-            --border:
-                rgba(255, 255, 255, 0.08);
+body.light-theme {
 
-            --shadow:
-                0 20px 60px rgba(0,0,0,.35);
-        }
+    --bg:
+        #f4f7fb;
 
+    --bg-secondary:
+        #ffffff;
 
-        * {
-            box-sizing: border-box;
-        }
+    --card:
+        rgba(255,255,255,0.90);
 
+    --card-hover:
+        #ffffff;
 
-        html {
-            scroll-behavior: smooth;
-        }
+    --border:
+        rgba(15,23,42,0.09);
 
+    --border-hover:
+        rgba(15,23,42,0.16);
 
-        body {
-            margin: 0;
+    --text:
+        #101827;
 
-            min-height: 100vh;
+    --muted:
+        #667085;
 
-            background:
-                radial-gradient(
-                    circle at 10% 0%,
-                    color-mix(
-                        in srgb,
-                        var(--accent) 10%,
-                        transparent
-                    ),
-                    transparent 35%
-                ),
-                var(--bg);
+    --input-bg:
+        rgba(15,23,42,0.045);
 
-            color: var(--text);
+    background:
+        #f4f7fb;
+}
 
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
 
-            overflow-x: hidden;
+/* =========================================================
+   RESET
+   ========================================================= */
 
-            transition:
-                background var(--transition),
-                color var(--transition);
-        }
+* {
 
+    box-sizing:
+        border-box;
 
-        button,
-        input,
-        select,
-        textarea {
-            font: inherit;
-        }
+    margin:
+        0;
 
+    padding:
+        0;
+}
 
-        button {
-            cursor: pointer;
-        }
 
+html {
 
-        /* =========================================================
-           LOADER
-           ========================================================= */
+    scroll-behavior:
+        smooth;
 
-        #loader {
+}
 
-            position: fixed;
 
-            inset: 0;
+body {
 
-            z-index: 99999;
+    width:
+        100%;
 
-            display: flex;
+    min-height:
+        100vh;
 
-            align-items: center;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-            justify-content: center;
+    color:
+        var(--text);
 
-            background: var(--bg);
+    background:
 
-            transition:
-                opacity .35s ease,
-                visibility .35s ease;
-        }
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(52,152,219,0.09),
+            transparent 30%
+        ),
 
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(113,76,255,0.08),
+            transparent 30%
+        ),
 
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
+        var(--bg);
 
+    overflow-x:
+        hidden;
 
-        .loading-wave {
-            width: 180px;
-            height: 70px;
+    transition:
 
-            display: flex;
+        background 0.3s ease,
+        color 0.3s ease;
+}
 
-            justify-content: center;
-            align-items: flex-end;
-        }
 
+body.modal-open {
 
-        .loading-bar {
-            width: 12px;
-            height: 8px;
+    overflow:
+        hidden;
+}
 
-            margin: 0 4px;
 
-            background-color: var(--accent);
+button,
+input {
 
-            border-radius: 5px;
+    font-family:
+        inherit;
+}
 
-            animation:
-                loading-wave-animation
-                1s ease-in-out infinite;
-        }
 
+button {
 
-        .loading-bar:nth-child(2) {
-            animation-delay: .1s;
-        }
+    -webkit-tap-highlight-color:
+        transparent;
+}
 
 
-        .loading-bar:nth-child(3) {
-            animation-delay: .2s;
-        }
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
 
+#dashboard {
 
-        .loading-bar:nth-child(4) {
-            animation-delay: .3s;
-        }
+    width:
+        100%;
 
+    min-height:
+        100vh;
 
-        @keyframes loading-wave-animation {
+    transition:
 
-            0% {
-                height: 8px;
-            }
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
 
-            50% {
-                height: 42px;
-            }
 
-            100% {
-                height: 8px;
-            }
-        }
+#dashboard.hidden {
 
+    opacity:
+        0;
 
-        /* =========================================================
-           HOME
-           ========================================================= */
+    pointer-events:
+        none;
 
-        #homeView {
-            min-height: 100vh;
-        }
+    transform:
+        scale(0.985);
+}
 
 
-        .page {
-            width: min(1380px, calc(100% - 40px));
-            margin: auto;
-        }
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
 
+.main-content {
 
-        /* =========================================================
-           HERO
-           ========================================================= */
+    width:
+        min(1500px, 100%);
 
-        .hero {
+    margin:
+        0 auto;
 
-            min-height: 390px;
+    padding:
 
-            display: flex;
+        45px
+        clamp(18px, 5vw, 60px)
+        100px;
+}
 
-            flex-direction: column;
 
-            align-items: center;
+/* =========================================================
+   LARGE HORIZON LOGO
+   ========================================================= */
 
-            justify-content: center;
+.home-brand {
 
-            text-align: center;
+    display:
+        flex;
 
-            padding:
-                70px
-                20px
-                35px;
-        }
+    align-items:
+        center;
 
+    justify-content:
+        center;
 
-        .hero-logo {
+    padding:
 
-            width: clamp(150px, 22vw, 280px);
+        15px
+        10px
+        18px;
 
-            max-height: 180px;
+    user-select:
+        none;
+}
 
-            object-fit: contain;
 
-            margin-bottom: 25px;
+.home-logo {
 
-            filter:
-                drop-shadow(
-                    0 20px 35px
-                    color-mix(
-                        in srgb,
-                        var(--accent) 18%,
-                        transparent
-                    )
-                );
+    width:
+        clamp(190px, 21vw, 300px);
 
-            user-select: none;
-        }
+    height:
+        clamp(190px, 21vw, 300px);
 
+    object-fit:
+        contain;
 
-        .hero h1 {
+    filter:
 
-            margin: 0;
+        drop-shadow(
+            0 22px 45px
+            rgba(0,0,0,0.34)
+        );
 
-            font-size:
-                clamp(34px, 5vw, 62px);
+    animation:
+        logoAppear 0.7s ease both;
+}
 
-            letter-spacing:
-                -0.045em;
 
-            font-weight: 800;
-        }
+/* =========================================================
+   HERO
+   ========================================================= */
 
+.hero {
 
-        .hero p {
+    text-align:
+        center;
 
-            max-width: 720px;
+    margin:
+        0 auto 42px;
 
-            margin:
-                14px auto 0;
+    animation:
+        heroAppear 0.6s ease both;
+}
 
-            color: var(--muted);
 
-            font-size:
-                clamp(15px, 2vw, 18px);
+.hero h1 {
 
-            line-height: 1.65;
-        }
+    font-size:
+        clamp(34px, 5vw, 64px);
 
+    line-height:
+        1;
 
-        /* =========================================================
-           SEARCH
-           ========================================================= */
+    letter-spacing:
+        -3px;
 
-        .search-wrap {
+    font-weight:
+        850;
 
-            display: flex;
+    margin-bottom:
+        15px;
+}
 
-            justify-content: center;
 
-            margin:
-                0 auto 28px;
-        }
+.hero h1 span {
 
+    color:
+        var(--accent-light);
+}
 
-        .search-box {
 
-            width: min(620px, 100%);
+.hero p {
 
-            position: relative;
-        }
+    max-width:
+        680px;
 
+    margin:
+        0 auto;
 
-        .search-box input {
+    color:
+        var(--muted);
 
-            width: 100%;
+    font-size:
+        clamp(13px, 1.5vw, 15px);
 
-            border:
-                1px solid var(--border);
+    line-height:
+        1.65;
+}
 
-            background: var(--surface);
 
-            backdrop-filter: blur(18px);
+@keyframes logoAppear {
 
-            color: var(--text);
+    from {
 
-            border-radius: 18px;
+        opacity:
+            0;
 
-            padding:
-                15px
-                20px
-                15px
-                48px;
+        transform:
+            translateY(18px)
+            scale(0.90);
+    }
 
-            outline: none;
+    to {
 
-            box-shadow:
-                0 8px 30px
-                rgba(15, 23, 42, .05);
+        opacity:
+            1;
 
-            transition:
-                border var(--transition),
-                box-shadow var(--transition);
-        }
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
 
 
-        .search-box input:focus {
+@keyframes heroAppear {
 
-            border-color:
-                color-mix(
-                    in srgb,
-                    var(--accent) 55%,
-                    transparent
-                );
+    from {
 
-            box-shadow:
-                0 0 0 4px
-                color-mix(
-                    in srgb,
-                    var(--accent) 12%,
-                    transparent
-                );
-        }
+        opacity:
+            0;
 
+        transform:
+            translateY(12px);
+    }
 
-        .search-icon {
+    to {
 
-            position: absolute;
+        opacity:
+            1;
 
-            left: 17px;
+        transform:
+            translateY(0);
+    }
+}
 
-            top: 50%;
 
-            transform:
-                translateY(-50%);
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
 
-            opacity: .55;
+.section-header {
 
-            pointer-events: none;
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        /* =========================================================
-           SECTION
-           ========================================================= */
+    justify-content:
+        space-between;
 
-        .section {
+    margin-bottom:
+        16px;
+}
 
-            padding:
-                15px
-                0
-                55px;
-        }
 
+.section-title {
 
-        .section-title {
+    font-size:
+        14px;
 
-            display: flex;
+    font-weight:
+        750;
+}
 
-            align-items: center;
 
-            justify-content: space-between;
+.section-count {
 
-            gap: 15px;
+    color:
+        var(--muted);
 
-            margin-bottom: 18px;
-        }
+    font-size:
+        11px;
+}
 
 
-        .section-title h2 {
+/* =========================================================
+   BENTO GRID
+   ========================================================= */
 
-            margin: 0;
+#bentoGrid {
 
-            font-size: 21px;
+    display:
+        grid;
 
-            letter-spacing:
-                -.02em;
-        }
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
 
+    grid-auto-rows:
+        minmax(180px,auto);
 
-        .section-title span {
+    gap:
+        16px;
+}
 
-            color: var(--muted);
 
-            font-size: 13px;
-        }
+/* =========================================================
+   APP CARD
+   ========================================================= */
 
+.app-card {
 
-        /* =========================================================
-           BENTO GRID
-           ========================================================= */
+    position:
+        relative;
 
-        .bento-grid {
+    min-height:
+        190px;
 
-            display: grid;
+    overflow:
+        hidden;
 
-            grid-template-columns:
-                repeat(4, minmax(0, 1fr));
+    padding:
+        22px;
 
-            grid-auto-rows:
-                minmax(155px, auto);
+    border:
+        1px solid var(--border);
 
-            gap: 16px;
+    border-radius:
+        var(--radius);
 
-            grid-auto-flow: dense;
-        }
+    background:
 
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        ),
 
-        .app-card {
+        var(--card);
 
-            position: relative;
+    cursor:
+        pointer;
 
-            min-height: 155px;
+    display:
+        flex;
 
-            overflow: hidden;
+    flex-direction:
+        column;
 
-            padding: 22px;
+    justify-content:
+        space-between;
 
-            border:
-                1px solid var(--border);
+    transition:
 
-            border-radius:
-                var(--radius);
+        transform 0.28s cubic-bezier(.2,.8,.2,1),
 
-            background:
-                linear-gradient(
-                    145deg,
-                    var(--surface),
-                    color-mix(
-                        in srgb,
-                        var(--surface-solid) 72%,
-                        transparent
-                    )
-                );
+        border-color 0.28s ease,
 
-            backdrop-filter:
-                blur(18px);
+        background 0.28s ease,
 
-            box-shadow:
-                var(--shadow);
+        box-shadow 0.28s ease;
 
-            display: flex;
+    animation:
+        cardAppear 0.5s ease both;
+}
 
-            flex-direction: column;
 
-            justify-content: space-between;
+.app-card:hover {
 
-            text-align: left;
+    transform:
+        translateY(-5px)
+        scale(1.008);
 
-            color: var(--text);
+    border-color:
+        var(--border-hover);
 
-            transition:
-                transform var(--transition),
-                box-shadow var(--transition),
-                border-color var(--transition),
-                opacity var(--transition);
-        }
+    background:
+        var(--card-hover);
 
+    box-shadow:
 
-        .app-card:not(.disabled):hover {
+        0 20px 50px
+        rgba(0,0,0,0.22);
+}
 
-            transform:
-                translateY(-5px);
 
-            border-color:
-                color-mix(
-                    in srgb,
-                    var(--accent) 30%,
-                    var(--border)
-                );
+.app-card:active {
 
-            box-shadow:
-                0 25px 65px
-                rgba(15, 23, 42, .13);
-        }
+    transform:
+        scale(0.985);
+}
 
 
-        .app-card.disabled {
+/* =========================================================
+   CARD SIZES
+   ========================================================= */
 
-            opacity: .52;
+.app-card.large {
 
-            cursor: not-allowed;
+    grid-column:
+        span 2;
 
-            filter: grayscale(.15);
-        }
+    grid-row:
+        span 2;
+}
 
 
-        .app-card.small {
-            grid-column: span 1;
-        }
+.app-card.wide {
 
+    grid-column:
+        span 2;
+}
 
-        .app-card.medium {
-            grid-column: span 2;
-        }
 
+.app-card.tall {
 
-        .app-card.large {
-            grid-column: span 2;
-            grid-row: span 2;
-            min-height: 326px;
-        }
+    grid-row:
+        span 2;
+}
 
 
-        .app-card.wide {
-            grid-column: span 3;
-        }
+/* =========================================================
+   DISABLED CARD
+   ========================================================= */
 
+.app-card.disabled {
 
-        .app-card.tall {
-            grid-column: span 1;
-            grid-row: span 2;
-            min-height: 326px;
-        }
+    cursor:
+        not-allowed;
 
+    opacity:
+        0.52;
 
-        .card-top {
+    filter:
+        saturate(0.45);
+}
 
-            display: flex;
 
-            align-items: flex-start;
+.app-card.disabled:hover {
 
-            justify-content: space-between;
+    transform:
+        none;
 
-            gap: 15px;
-        }
+    background:
+        var(--card);
 
+    border-color:
+        var(--border);
 
-        .card-logo {
+    box-shadow:
+        none;
+}
 
-            width: 58px;
-            height: 58px;
 
-            border-radius: 16px;
+.app-card.disabled .card-glow {
 
-            object-fit: contain;
+    display:
+        none;
+}
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--surface-solid) 80%,
-                    transparent
-                );
 
-            padding: 9px;
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
 
-            border:
-                1px solid var(--border);
-        }
+.card-glow {
 
+    position:
+        absolute;
 
-        .emoji-logo {
+    width:
+        180px;
 
-            width: 58px;
-            height: 58px;
+    height:
+        180px;
 
-            display: flex;
+    right:
+        -80px;
 
-            align-items: center;
+    bottom:
+        -100px;
 
-            justify-content: center;
+    border-radius:
+        50%;
 
-            border-radius: 16px;
+    background:
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--accent) 10%,
-                    var(--surface-solid)
-                );
+        radial-gradient(
+            circle,
+            rgba(52,152,219,0.18),
+            transparent 70%
+        );
 
-            font-size: 30px;
-        }
+    pointer-events:
+        none;
 
+    transition:
+        transform 0.4s ease;
+}
 
-        .status {
 
-            font-size: 11px;
+.app-card:hover
+.card-glow {
 
-            font-weight: 700;
+    transform:
+        scale(1.5);
+}
 
-            padding:
-                5px
-                9px;
 
-            border-radius: 999px;
+/* =========================================================
+   CARD TOP
+   ========================================================= */
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--accent) 10%,
-                    transparent
-                );
+.card-top {
 
-            color: var(--accent);
-        }
+    display:
+        flex;
 
+    align-items:
+        flex-start;
 
-        .status.disabled-status {
+    justify-content:
+        space-between;
+}
 
-            color: var(--muted);
 
-            background:
-                rgba(127,127,127,.1);
-        }
+.app-logo {
 
+    width:
+        50px;
 
-        .card-body {
+    height:
+        50px;
 
-            margin-top: 18px;
-        }
+    object-fit:
+        contain;
 
+    padding:
+        8px;
 
-        .card-name {
+    border-radius:
+        15px;
 
-            margin: 0 0 6px;
+    background:
+        rgba(255,255,255,0.06);
 
-            font-size: 18px;
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+}
 
-            font-weight: 750;
 
-            letter-spacing:
-                -.02em;
-        }
+.card-status {
 
+    display:
+        flex;
 
-        .card-description {
+    align-items:
+        center;
 
-            margin: 0;
+    gap:
+        7px;
+}
 
-            color: var(--muted);
 
-            font-size: 13px;
+.status-dot {
 
-            line-height: 1.55;
+    width:
+        8px;
 
-            display:
-                -webkit-box;
+    height:
+        8px;
 
-            -webkit-line-clamp: 3;
+    border-radius:
+        50%;
 
-            -webkit-box-orient: vertical;
+    background:
+        var(--success);
 
-            overflow: hidden;
-        }
+    box-shadow:
+        0 0 12px
+        rgba(66,209,125,0.65);
+}
 
 
-        .hover-label {
+.lock-icon {
 
-            position: absolute;
+    font-size:
+        12px;
 
-            left: 22px;
-            bottom: 19px;
+    opacity:
+        0.65;
+}
 
-            color: var(--accent);
 
-            font-size: 12px;
+.disabled-status {
 
-            font-weight: 700;
+    padding:
+        4px 8px;
 
-            opacity: 0;
+    border-radius:
+        999px;
 
-            transform:
-                translateY(5px);
+    background:
+        rgba(255,255,255,0.06);
 
-            transition:
-                opacity var(--transition),
-                transform var(--transition);
-        }
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
+    color:
+        var(--muted);
 
-        .app-card:not(.disabled):hover
-        .hover-label {
+    font-size:
+        9px;
 
-            opacity: 1;
+    font-weight:
+        700;
 
-            transform:
-                translateY(0);
-        }
+    text-transform:
+        uppercase;
+}
 
 
-        /* =========================================================
-           UTILITY CARDS
-           ========================================================= */
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
 
-        .utility-card {
+.card-content {
 
-            min-height: 155px;
+    margin-top:
+        20px;
+}
 
-            padding: 22px;
 
-            border:
-                1px solid var(--border);
+.card-title {
 
-            border-radius:
-                var(--radius);
+    font-size:
+        18px;
 
-            background:
-                var(--surface);
+    font-weight:
+        750;
 
-            backdrop-filter:
-                blur(18px);
+    margin-bottom:
+        7px;
+}
 
-            box-shadow:
-                var(--shadow);
 
-            overflow: hidden;
-        }
+.card-description {
 
+    color:
+        var(--muted);
 
-        .utility-card.large {
+    font-size:
+        12px;
 
-            grid-column: span 2;
+    line-height:
+        1.55;
 
-            grid-row: span 2;
+    max-width:
+        90%;
+}
 
-            min-height: 326px;
-        }
 
+.hover-text {
 
-        .utility-header {
+    position:
+        absolute;
 
-            display: flex;
+    left:
+        22px;
 
-            align-items: center;
+    bottom:
+        18px;
 
-            justify-content: space-between;
+    color:
+        var(--accent-light);
 
-            gap: 15px;
+    font-size:
+        11px;
 
-            margin-bottom: 15px;
-        }
+    font-weight:
+        650;
 
+    opacity:
+        0;
 
-        .utility-title {
+    transform:
+        translateY(7px);
 
-            font-weight: 750;
+    transition:
+        0.25s ease;
+}
 
-            font-size: 17px;
-        }
 
+.app-card:hover
+.hover-text {
 
-        .utility-subtitle {
+    opacity:
+        1;
 
-            color: var(--muted);
+    transform:
+        translateY(0);
+}
 
-            font-size: 12px;
-        }
 
+.app-card.disabled
+.hover-text {
 
-        /* =========================================================
-           DATE / TIME
-           ========================================================= */
+    opacity:
+        0;
+}
 
-        .clock-card {
 
-            display: flex;
+/* =========================================================
+   TODO CARD
+   ========================================================= */
 
-            flex-direction: column;
+.todo-card {
 
-            justify-content: center;
+    grid-column:
+        span 2;
 
-            text-align: center;
+    grid-row:
+        span 2;
 
-            position: relative;
-        }
+    cursor:
+        default;
+}
 
 
-        .digital-clock {
+.todo-card:hover {
 
-            font-size:
-                clamp(32px, 5vw, 55px);
+    transform:
+        none;
+}
 
-            font-weight: 800;
 
-            letter-spacing:
-                -.05em;
+.todo-header {
 
-            font-variant-numeric:
-                tabular-nums;
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        .date-display {
+    justify-content:
+        space-between;
 
-            margin-top: 8px;
+    margin-bottom:
+        16px;
+}
 
-            color: var(--muted);
 
-            font-size: 14px;
-        }
+.todo-title-area {
 
+    display:
+        flex;
 
-        .clock-zone {
+    align-items:
+        center;
 
-            margin-top: 10px;
+    gap:
+        11px;
+}
 
-            font-size: 11px;
 
-            color: var(--muted);
-        }
+.todo-icon {
 
+    width:
+        42px;
 
-        .analog-clock {
+    height:
+        42px;
 
-            width: 155px;
-            height: 155px;
+    border-radius:
+        13px;
 
-            border:
-                3px solid
-                color-mix(
-                    in srgb,
-                    var(--accent) 35%,
-                    var(--border)
-                );
+    display:
+        flex;
 
-            border-radius: 50%;
+    align-items:
+        center;
 
-            position: relative;
+    justify-content:
+        center;
 
-            margin: auto;
+    background:
+        var(--accent-soft);
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--surface-solid) 70%,
-                    transparent
-                );
-        }
+    color:
+        var(--accent-light);
 
+    font-size:
+        19px;
+}
 
-        .clock-center {
 
-            position: absolute;
+.todo-title {
 
-            width: 10px;
-            height: 10px;
+    font-size:
+        18px;
 
-            border-radius: 50%;
+    font-weight:
+        800;
+}
 
-            background: var(--accent);
 
-            left: 50%;
-            top: 50%;
+.todo-counter {
 
-            transform:
-                translate(-50%, -50%);
+    color:
+        var(--muted);
 
-            z-index: 5;
-        }
+    font-size:
+        10px;
+}
 
 
-        .hand {
+.todo-input-row {
 
-            position: absolute;
+    display:
+        flex;
 
-            left: 50%;
+    gap:
+        7px;
 
-            bottom: 50%;
+    margin-bottom:
+        12px;
+}
 
-            transform-origin:
-                50% 100%;
 
-            border-radius: 999px;
+.todo-input {
 
-            transform:
-                translateX(-50%)
-                rotate(0deg);
-        }
+    flex:
+        1;
 
+    min-width:
+        0;
 
-        .hour-hand {
+    height:
+        40px;
 
-            width: 5px;
-            height: 38px;
+    border:
+        1px solid var(--border);
 
-            background: var(--text);
-        }
+    border-radius:
+        11px;
 
+    background:
+        var(--input-bg);
 
-        .minute-hand {
+    color:
+        var(--text);
 
-            width: 4px;
-            height: 53px;
+    outline:
+        none;
 
-            background: var(--text);
-        }
+    padding:
+        0 12px;
 
+    font-size:
+        12px;
+}
 
-        .second-hand {
 
-            width: 2px;
-            height: 62px;
+.todo-input:focus {
 
-            background: var(--accent);
-        }
+    border-color:
+        var(--accent);
+}
 
 
-        /* =========================================================
-           TODO
-           ========================================================= */
+.todo-add {
 
-        .todo-card {
+    width:
+        40px;
 
-            display: flex;
+    height:
+        40px;
 
-            flex-direction: column;
-        }
+    border:
+        0;
 
+    border-radius:
+        11px;
 
-        .todo-input-row {
+    background:
+        var(--accent);
 
-            display: flex;
+    color:
+        white;
 
-            gap: 8px;
+    font-size:
+        20px;
 
-            margin-bottom: 13px;
-        }
+    cursor:
+        pointer;
 
+    transition:
+        0.2s ease;
+}
 
-        .todo-input {
 
-            min-width: 0;
+.todo-add:hover {
 
-            flex: 1;
+    filter:
+        brightness(1.08);
 
-            border:
-                1px solid var(--border);
+    transform:
+        translateY(-1px);
+}
 
-            background:
-                var(--surface-solid);
 
-            color: var(--text);
+.todo-list {
 
-            border-radius: 12px;
+    display:
+        flex;
 
-            padding:
-                10px
-                12px;
+    flex-direction:
+        column;
 
-            outline: none;
-        }
+    gap:
+        6px;
 
+    max-height:
+        230px;
 
-        .todo-add {
+    overflow-y:
+        auto;
 
-            width: 42px;
+    padding-right:
+        3px;
+}
 
-            border: 0;
 
-            border-radius: 12px;
+.todo-list::-webkit-scrollbar {
 
-            color: white;
+    width:
+        5px;
+}
 
-            background: var(--accent);
 
-            font-size: 20px;
-        }
+.todo-list::-webkit-scrollbar-thumb {
 
+    background:
+        rgba(128,128,128,0.25);
 
-        .todo-list {
+    border-radius:
+        20px;
+}
 
-            display: flex;
 
-            flex-direction: column;
+.todo-item {
 
-            gap: 7px;
+    display:
+        flex;
 
-            max-height: 230px;
+    align-items:
+        center;
 
-            overflow-y: auto;
+    gap:
+        9px;
 
-            padding-right: 2px;
-        }
+    padding:
+        8px 9px;
 
+    border:
+        1px solid transparent;
 
-        .todo-item {
+    border-radius:
+        10px;
 
-            display: flex;
+    transition:
+        0.2s ease;
+}
 
-            align-items: center;
 
-            gap: 9px;
+.todo-item:hover {
 
-            padding:
-                9px
-                10px;
+    background:
+        rgba(255,255,255,0.035);
 
-            border-radius: 11px;
+    border-color:
+        var(--border);
+}
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--accent) 5%,
-                    var(--surface-solid)
-                );
-        }
 
+.todo-check {
 
-        .todo-check {
+    width:
+        18px;
 
-            width: 18px;
-            height: 18px;
+    height:
+        18px;
 
-            accent-color:
-                var(--accent);
+    flex-shrink:
+        0;
 
-            flex: 0 0 auto;
-        }
+    border:
+        1px solid
+        var(--border-hover);
 
+    border-radius:
+        6px;
 
-        .todo-text {
+    background:
+        transparent;
 
-            flex: 1;
+    cursor:
+        pointer;
 
-            min-width: 0;
+    display:
+        flex;
 
-            font-size: 13px;
+    align-items:
+        center;
 
-            word-break: break-word;
-        }
+    justify-content:
+        center;
 
+    color:
+        white;
 
-        .todo-item.completed
-        .todo-text {
+    font-size:
+        11px;
+}
 
-            text-decoration: line-through;
 
-            color: var(--muted);
-        }
+.todo-item.completed
+.todo-check {
 
+    background:
+        var(--accent);
 
-        .todo-delete {
+    border-color:
+        var(--accent);
+}
 
-            border: 0;
 
-            background: transparent;
+.todo-text {
 
-            color: var(--muted);
+    flex:
+        1;
 
-            font-size: 17px;
+    min-width:
+        0;
 
-            padding: 2px 5px;
-        }
+    color:
+        var(--text);
 
+    font-size:
+        12px;
 
-        /* =========================================================
-           IMPORTANT LINKS
-           ========================================================= */
+    line-height:
+        1.35;
 
-        .important-link {
+    word-break:
+        break-word;
+}
 
-            display: flex;
 
-            align-items: center;
+.todo-item.completed
+.todo-text {
 
-            justify-content: space-between;
+    text-decoration:
+        line-through;
 
-            gap: 15px;
+    opacity:
+        0.45;
+}
 
-            padding:
-                13px
-                14px;
 
-            border:
-                1px solid var(--border);
+.todo-delete {
 
-            border-radius: 14px;
+    border:
+        0;
 
-            margin-bottom: 9px;
+    background:
+        transparent;
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--surface-solid) 80%,
-                    transparent
-                );
-        }
+    color:
+        var(--muted);
 
+    cursor:
+        pointer;
 
-        .important-link:last-child {
-            margin-bottom: 0;
-        }
+    font-size:
+        15px;
 
+    opacity:
+        0;
 
-        .link-name {
+    padding:
+        2px 4px;
+}
 
-            min-width: 0;
 
-            font-size: 14px;
+.todo-item:hover
+.todo-delete {
 
-            font-weight: 650;
+    opacity:
+        1;
+}
 
-            overflow: hidden;
 
-            text-overflow: ellipsis;
+.todo-empty {
 
-            white-space: nowrap;
-        }
+    padding:
+        20px 5px;
 
+    text-align:
+        center;
 
-        .link-actions {
+    color:
+        var(--muted);
 
-            display: flex;
+    font-size:
+        11px;
+}
 
-            gap: 6px;
 
-            flex: 0 0 auto;
-        }
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
 
+.important-section {
 
-        .small-btn {
+    margin-top:
+        60px;
+}
 
-            border:
-                1px solid var(--border);
 
-            background:
-                var(--surface);
+.important-links {
 
-            color: var(--text);
+    display:
+        grid;
 
-            border-radius: 9px;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
 
-            padding:
-                7px
-                9px;
+    gap:
+        12px;
+}
 
-            font-size: 11px;
 
-            transition:
-                all var(--transition);
-        }
+.important-link {
 
+    border:
+        1px solid var(--border);
 
-        .small-btn:hover {
+    background:
+        var(--card);
 
-            border-color:
-                color-mix(
-                    in srgb,
-                    var(--accent) 35%,
-                    var(--border)
-                );
+    border-radius:
+        17px;
 
-            color: var(--accent);
-        }
+    padding:
+        15px 16px;
 
+    display:
+        flex;
 
-        /* =========================================================
-           EMPTY
-           ========================================================= */
+    align-items:
+        center;
 
-        .empty-state {
+    justify-content:
+        space-between;
 
-            padding: 50px 20px;
+    gap:
+        12px;
 
-            text-align: center;
+    transition:
+        0.2s ease;
+}
 
-            color: var(--muted);
 
-            border:
-                1px dashed var(--border);
+.important-link:hover {
 
-            border-radius: 20px;
-        }
+    border-color:
+        var(--border-hover);
 
+    transform:
+        translateY(-2px);
+}
 
-        /* =========================================================
-           SETTINGS FAB
-           ========================================================= */
 
-        #settingsFab {
+.important-info {
 
-            position: fixed;
+    min-width:
+        0;
+}
 
-            right: 22px;
-            bottom: 22px;
 
-            z-index: 9000;
+.important-name {
 
-            width: 52px;
-            height: 52px;
+    font-size:
+        13px;
 
-            border: 0;
+    font-weight:
+        700;
 
-            border-radius: 50%;
+    margin-bottom:
+        5px;
+}
 
-            display: flex;
 
-            align-items: center;
+.important-url {
 
-            justify-content: center;
+    color:
+        var(--muted);
 
-            background:
-                var(--surface-solid);
+    font-size:
+        11px;
 
-            color: var(--text);
+    white-space:
+        nowrap;
 
-            box-shadow:
-                0 12px 35px
-                rgba(0,0,0,.18);
+    overflow:
+        hidden;
 
-            border:
-                1px solid var(--border);
+    text-overflow:
+        ellipsis;
 
-            font-size: 22px;
+    max-width:
+        300px;
+}
 
-            transition:
-                transform var(--transition),
-                opacity var(--transition);
-        }
 
+.important-actions {
 
-        #settingsFab:hover {
+    display:
+        flex;
 
-            transform:
-                rotate(25deg)
-                scale(1.05);
-        }
+    gap:
+        6px;
 
+    flex-shrink:
+        0;
+}
 
-        #settingsFab.hidden {
-            display: none;
-        }
 
+.link-button {
 
-        /* =========================================================
-           MODAL
-           ========================================================= */
+    height:
+        34px;
 
-        .modal-backdrop {
+    padding:
+        0 11px;
 
-            position: fixed;
+    border-radius:
+        10px;
 
-            inset: 0;
+    border:
+        1px solid var(--border);
 
-            z-index: 20000;
+    background:
+        var(--input-bg);
 
-            display: none;
+    color:
+        var(--text);
 
-            align-items: center;
+    cursor:
+        pointer;
 
-            justify-content: center;
+    font-size:
+        11px;
 
-            padding: 20px;
+    font-weight:
+        650;
+}
 
-            background:
-                rgba(0,0,0,.52);
 
-            backdrop-filter:
-                blur(8px);
-        }
+.link-button.open {
 
+    background:
+        var(--accent-soft);
 
-        .modal-backdrop.open {
-            display: flex;
-        }
+    color:
+        var(--accent-light);
 
+    border-color:
+        var(--accent);
+}
 
-        .modal {
 
-            width:
-                min(570px, 100%);
+.copy-success {
 
-            max-height:
-                min(88vh, 850px);
+    color:
+        var(--success) !important;
+}
 
-            overflow-y: auto;
 
-            border:
-                1px solid var(--border);
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-            border-radius: 25px;
+.footer {
 
-            background:
-                var(--surface-solid);
+    margin-top:
+        55px;
 
-            color: var(--text);
+    text-align:
+        center;
 
-            box-shadow:
-                0 30px 100px rgba(0,0,0,.3);
+    color:
+        rgba(128,128,128,0.55);
 
-            padding: 24px;
-        }
+    font-size:
+        10px;
+}
 
 
-        .modal-header {
+/* =========================================================
+   SETTINGS GEAR
+   IMPORTANT:
+   Z-INDEX IS BELOW IFRAME VIEWER
+   ========================================================= */
 
-            display: flex;
+.settings-button {
 
-            justify-content: space-between;
+    position:
+        fixed;
 
-            align-items: center;
+    right:
+        22px;
 
-            gap: 15px;
+    bottom:
+        20px;
 
-            margin-bottom: 20px;
-        }
+    z-index:
+        900;
 
+    width:
+        42px;
 
-        .modal-header h3 {
+    height:
+        42px;
 
-            margin: 0;
+    border-radius:
+        50%;
 
-            font-size: 21px;
-        }
+    border:
+        1px solid var(--border);
 
+    background:
+        var(--card);
 
-        .close-btn {
+    color:
+        var(--text);
 
-            width: 36px;
-            height: 36px;
+    display:
+        flex;
 
-            border: 0;
+    align-items:
+        center;
 
-            border-radius: 50%;
+    justify-content:
+        center;
 
-            background:
-                rgba(127,127,127,.1);
+    cursor:
+        pointer;
 
-            color: var(--text);
+    font-size:
+        18px;
 
-            font-size: 19px;
-        }
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.22);
 
+    backdrop-filter:
+        blur(12px);
 
-        .setting-group {
+    transition:
+        0.25s ease;
+}
 
-            padding:
-                16px
-                0;
 
-            border-bottom:
-                1px solid var(--border);
-        }
+.settings-button:hover {
 
+    transform:
+        rotate(35deg)
+        scale(1.05);
+}
 
-        .setting-group:last-child {
-            border-bottom: 0;
-        }
 
+/*
+    Explicitly hidden while iframe is open.
+*/
 
-        .setting-label {
+.settings-button.hidden {
 
-            display: block;
+    opacity:
+        0;
 
-            margin-bottom: 9px;
+    visibility:
+        hidden;
 
-            font-size: 13px;
+    pointer-events:
+        none;
 
-            font-weight: 700;
-        }
+    transform:
+        scale(0.8);
+}
 
 
-        .setting-description {
+/* =========================================================
+   SETTINGS OVERLAY
+   ========================================================= */
 
-            margin:
-                -3px 0 11px;
+#settingsOverlay {
 
-            color: var(--muted);
+    position:
+        fixed;
 
-            font-size: 12px;
+    inset:
+        0;
 
-            line-height: 1.5;
-        }
+    z-index:
+        2000;
 
+    background:
+        rgba(0,0,0,0.48);
 
-        .theme-options {
+    backdrop-filter:
+        blur(7px);
 
-            display: flex;
+    opacity:
+        0;
 
-            flex-wrap: wrap;
+    visibility:
+        hidden;
 
-            gap: 8px;
-        }
+    pointer-events:
+        none;
 
+    transition:
+        0.25s ease;
+}
 
-        .theme-option {
 
-            border:
-                1px solid var(--border);
+#settingsOverlay.active {
 
-            background:
-                var(--surface);
+    opacity:
+        1;
 
-            color: var(--text);
+    visibility:
+        visible;
 
-            padding:
-                9px
-                13px;
+    pointer-events:
+        auto;
+}
 
-            border-radius: 11px;
 
-            font-size: 12px;
-        }
+/* =========================================================
+   SETTINGS PANEL
+   ========================================================= */
 
+.settings-panel {
 
-        .theme-option.active {
+    position:
+        fixed;
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--accent) 12%,
-                    var(--surface-solid)
-                );
+    right:
+        16px;
 
-            border-color:
-                var(--accent);
+    bottom:
+        16px;
 
-            color:
-                var(--accent);
-        }
+    z-index:
+        2100;
 
+    width:
+        min(390px,calc(100vw - 30px));
 
-        .accent-row {
+    max-height:
+        calc(100vh - 30px);
 
-            display: flex;
+    overflow-y:
+        auto;
 
-            flex-wrap: wrap;
+    padding:
+        22px;
 
-            gap: 9px;
-        }
+    border:
+        1px solid var(--border);
 
+    border-radius:
+        24px;
 
-        .accent-btn {
+    background:
+        var(--bg-secondary);
 
-            width: 30px;
-            height: 30px;
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.42);
 
-            border-radius: 50%;
+    transform:
+        translateY(25px)
+        scale(0.97);
 
-            border:
-                3px solid transparent;
+    opacity:
+        0;
 
-            outline:
-                1px solid var(--border);
-        }
+    visibility:
+        hidden;
 
+    pointer-events:
+        none;
 
-        .accent-btn.active {
+    transition:
+        0.25s ease;
+}
 
-            outline:
-                2px solid var(--text);
 
-            outline-offset: 2px;
-        }
+.settings-panel.active {
 
+    transform:
+        translateY(0)
+        scale(1);
 
-        /* =========================================================
-           CUSTOM CARD FORM
-           ========================================================= */
+    opacity:
+        1;
 
-        .form-grid {
+    visibility:
+        visible;
 
-            display: grid;
+    pointer-events:
+        auto;
+}
 
-            grid-template-columns:
-                1fr 1fr;
 
-            gap: 12px;
-        }
+.settings-header {
 
+    display:
+        flex;
 
-        .form-full {
-            grid-column: 1 / -1;
-        }
+    align-items:
+        center;
 
+    justify-content:
+        space-between;
 
-        .form-field {
+    margin-bottom:
+        22px;
+}
 
-            width: 100%;
 
-            border:
-                1px solid var(--border);
+.settings-heading {
 
-            background:
-                var(--surface);
+    font-size:
+        20px;
 
-            color: var(--text);
+    font-weight:
+        800;
+}
 
-            border-radius: 12px;
 
-            padding:
-                11px
-                12px;
+.settings-close {
 
-            outline: none;
-        }
+    width:
+        32px;
 
+    height:
+        32px;
 
-        .form-field:focus {
+    border:
+        1px solid var(--border);
 
-            border-color:
-                var(--accent);
-        }
+    border-radius:
+        10px;
 
+    background:
+        var(--input-bg);
 
-        .primary-btn {
+    color:
+        var(--text);
 
-            width: 100%;
+    cursor:
+        pointer;
 
-            border: 0;
+    font-size:
+        18px;
+}
 
-            border-radius: 13px;
 
-            padding:
-                12px
-                15px;
+.settings-section {
 
-            background:
-                var(--accent);
+    padding:
+        15px 0;
 
-            color: white;
+    border-top:
+        1px solid var(--border);
+}
 
-            font-weight: 700;
 
-            margin-top: 12px;
-        }
+.settings-section:first-of-type {
 
+    border-top:
+        0;
+}
 
-        .danger-btn {
 
-            border: 1px solid rgba(220,38,38,.2);
+.settings-label {
 
-            color: #dc2626;
+    display:
+        block;
 
-            background:
-                rgba(220,38,38,.06);
+    font-size:
+        12px;
 
-            border-radius: 10px;
+    font-weight:
+        750;
 
-            padding:
-                8px
-                11px;
+    margin-bottom:
+        5px;
+}
 
-            font-size: 12px;
-        }
 
+.settings-description {
 
-        .custom-card-list {
+    color:
+        var(--muted);
 
-            display: flex;
+    font-size:
+        10px;
 
-            flex-direction: column;
+    line-height:
+        1.5;
 
-            gap: 8px;
+    margin-bottom:
+        12px;
+}
 
-            margin-top: 12px;
-        }
 
+/* =========================================================
+   THEME OPTIONS
+   ========================================================= */
 
-        .custom-card-row {
+.theme-options {
 
-            display: flex;
+    display:
+        grid;
 
-            align-items: center;
+    grid-template-columns:
+        repeat(3,1fr);
 
-            justify-content: space-between;
+    gap:
+        7px;
+}
 
-            gap: 10px;
 
-            padding:
-                10px 12px;
+.theme-option {
 
-            border:
-                1px solid var(--border);
+    min-height:
+        42px;
 
-            border-radius: 12px;
-        }
+    border:
+        1px solid var(--border);
 
+    border-radius:
+        10px;
 
-        .custom-card-name {
+    background:
+        var(--input-bg);
 
-            min-width: 0;
+    color:
+        var(--text);
 
-            font-size: 13px;
+    cursor:
+        pointer;
 
-            overflow: hidden;
+    font-size:
+        10px;
 
-            text-overflow: ellipsis;
+    font-weight:
+        650;
+}
 
-            white-space: nowrap;
-        }
 
+.theme-option.active {
 
-        /* =========================================================
-           PASSWORD MODAL
-           ========================================================= */
+    border-color:
+        var(--accent);
 
-        .password-modal {
+    background:
+        var(--accent-soft);
 
-            width:
-                min(390px, 100%);
-        }
+    color:
+        var(--accent-light);
+}
 
 
-        .password-icon {
+/* =========================================================
+   COLOR OPTIONS
+   ========================================================= */
 
-            width: 58px;
-            height: 58px;
+.color-options {
 
-            border-radius: 17px;
+    display:
+        flex;
 
-            margin: 0 auto 15px;
+    flex-wrap:
+        wrap;
 
-            display: flex;
+    gap:
+        9px;
+}
 
-            align-items: center;
 
-            justify-content: center;
+.color-option {
 
-            font-size: 25px;
+    width:
+        29px;
 
-            background:
-                color-mix(
-                    in srgb,
-                    var(--accent) 10%,
-                    transparent
-                );
+    height:
+        29px;
 
-            color: var(--accent);
-        }
+    border-radius:
+        50%;
 
+    border:
+        3px solid transparent;
 
-        .password-title {
+    outline:
+        1px solid var(--border);
 
-            text-align: center;
+    outline-offset:
+        2px;
 
-            font-size: 20px;
+    cursor:
+        pointer;
 
-            font-weight: 750;
-        }
+    transition:
+        0.2s ease;
+}
 
 
-        .password-description {
+.color-option:hover {
 
-            text-align: center;
+    transform:
+        scale(1.1);
+}
 
-            color: var(--muted);
 
-            font-size: 13px;
+.color-option.active {
 
-            line-height: 1.5;
+    border-color:
+        white;
 
-            margin:
-                7px 0 18px;
-        }
+    outline-color:
+        var(--accent);
 
+    transform:
+        scale(1.1);
+}
 
-        .password-error {
 
-            color: #dc2626;
+/* =========================================================
+   SETTINGS TOGGLE
+   ========================================================= */
 
-            font-size: 12px;
+.settings-toggle-row {
 
-            margin-top: 8px;
+    display:
+        flex;
 
-            display: none;
-        }
+    align-items:
+        center;
 
+    justify-content:
+        space-between;
 
-        /* =========================================================
-           IFRAME VIEW
-           ========================================================= */
+    gap:
+        15px;
+}
 
-        #iframeView {
 
-            position: fixed;
+.toggle {
 
-            inset: 0;
+    width:
+        42px;
 
-            z-index: 10000;
+    height:
+        23px;
 
-            display: none;
+    position:
+        relative;
 
-            background: var(--surface-solid);
-        }
+    cursor:
+        pointer;
+}
 
 
-        #iframeView.open {
-            display: block;
-        }
+.toggle input {
 
+    opacity:
+        0;
 
-        #appFrame {
+    width:
+        0;
 
-            position: absolute;
+    height:
+        0;
+}
 
-            inset: 0;
 
-            width: 100%;
-            height: 100%;
+.toggle-slider {
 
-            border: 0;
+    position:
+        absolute;
 
-            background: white;
+    inset:
+        0;
 
-            display: block;
-        }
+    border-radius:
+        30px;
 
+    background:
+        rgba(128,128,128,0.3);
 
-        /* =========================================================
-           TOAST
-           ========================================================= */
+    transition:
+        0.2s ease;
+}
 
-        #toast {
 
-            position: fixed;
+.toggle-slider::before {
 
-            left: 50%;
+    content:
+        "";
 
-            bottom: 24px;
+    position:
+        absolute;
 
-            z-index: 50000;
+    width:
+        17px;
 
-            transform:
-                translate(-50%, 20px);
+    height:
+        17px;
 
-            opacity: 0;
+    left:
+        3px;
 
-            pointer-events: none;
+    top:
+        3px;
 
-            padding:
-                11px
-                16px;
+    border-radius:
+        50%;
 
-            border-radius: 999px;
+    background:
+        white;
 
-            background:
-                #111827;
+    transition:
+        0.2s ease;
+}
 
-            color:
-                #fff;
 
-            font-size: 12px;
+.toggle input:checked
++ .toggle-slider {
 
-            transition:
-                opacity .25s ease,
-                transform .25s ease;
-        }
+    background:
+        var(--accent);
+}
 
 
-        #toast.show {
+.toggle input:checked
++ .toggle-slider::before {
 
-            opacity: 1;
+    transform:
+        translateX(19px);
+}
 
-            transform:
-                translate(-50%, 0);
-        }
 
+.settings-reset {
 
-        /* =========================================================
-           FOOTER
-           ========================================================= */
+    width:
+        100%;
 
-        footer {
+    height:
+        40px;
 
-            padding:
-                20px
-                0
-                70px;
+    margin-top:
+        8px;
 
-            text-align: center;
+    border:
+        1px solid var(--border);
 
-            color: var(--muted);
+    border-radius:
+        11px;
 
-            font-size: 11px;
-        }
+    background:
+        var(--input-bg);
 
+    color:
+        var(--text);
 
-        /* =========================================================
-           MOBILE
-           ========================================================= */
+    cursor:
+        pointer;
 
-        @media (max-width: 1000px) {
+    font-size:
+        11px;
 
-            .bento-grid {
+    font-weight:
+        700;
+}
 
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-            }
 
-            .app-card.wide {
-                grid-column: span 2;
-            }
-        }
+/* =========================================================
+   FULL SCREEN IFRAME
+   ========================================================= */
 
+#viewer {
 
-        @media (max-width: 650px) {
+    position:
+        fixed;
 
-            .page {
-                width:
-                    min(100% - 24px, 1380px);
-            }
+    inset:
+        0;
 
+    z-index:
+        1000;
 
-            .hero {
+    display:
+        none;
 
-                min-height: 340px;
+    width:
+        100vw;
 
-                padding-top: 50px;
-            }
+    height:
+        100vh;
 
+    background:
+        #ffffff;
 
-            .hero-logo {
-                width: 190px;
-            }
+    opacity:
+        0;
+}
 
 
-            .bento-grid {
+#viewer.active {
 
-                grid-template-columns:
-                    1fr;
+    display:
+        block;
 
-                gap: 12px;
-            }
+    animation:
+        viewerIn 0.25s ease forwards;
+}
 
 
-            .app-card,
-            .app-card.small,
-            .app-card.medium,
-            .app-card.large,
-            .app-card.wide,
-            .app-card.tall,
-            .utility-card,
-            .utility-card.large {
+#viewer iframe {
 
-                grid-column: span 1;
+    display:
+        block;
 
-                grid-row: span 1;
+    width:
+        100vw;
 
-                min-height: 155px;
-            }
+    height:
+        100vh;
 
+    min-width:
+        100vw;
 
-            .large {
-                min-height: 260px !important;
-            }
+    min-height:
+        100vh;
 
+    border:
+        0;
 
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+    margin:
+        0;
 
+    padding:
+        0;
 
-            .form-full {
-                grid-column: auto;
-            }
+    background:
+        #ffffff;
+}
 
 
-            #settingsFab {
+@keyframes viewerIn {
 
-                right: 15px;
-                bottom: 15px;
-            }
-        }
+    from {
 
-    </style>
+        opacity:
+            0;
+    }
+
+    to {
+
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================================================
+   IFRAME LOADER
+   ========================================================= */
+
+#iframeLoader {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1100;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(5,7,11,0.94);
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+#iframeLoader.hidden {
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+
+.loading-wave {
+
+    width:
+        300px;
+
+    height:
+        100px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-end;
+}
+
+
+.loading-bar {
+
+    width:
+        20px;
+
+    height:
+        10px;
+
+    margin:
+        0 5px;
+
+    background-color:
+        var(--accent);
+
+    border-radius:
+        5px;
+
+    animation:
+        loading-wave-animation
+        1s ease-in-out infinite;
+}
+
+
+.loading-bar:nth-child(2) {
+
+    animation-delay:
+        0.1s;
+}
+
+
+.loading-bar:nth-child(3) {
+
+    animation-delay:
+        0.2s;
+}
+
+
+.loading-bar:nth-child(4) {
+
+    animation-delay:
+        0.3s;
+}
+
+
+@keyframes loading-wave-animation {
+
+    0% {
+
+        height:
+            10px;
+    }
+
+    50% {
+
+        height:
+            50px;
+    }
+
+    100% {
+
+        height:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   PASSWORD MODAL
+   ========================================================= */
+
+#passwordModal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        3000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(3,5,9,0.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        0.25s ease;
+}
+
+
+#passwordModal.active {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+}
+
+
+.password-box {
+
+    width:
+        min(410px,100%);
+
+    padding:
+        28px;
+
+    border-radius:
+        25px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--bg-secondary);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+}
+
+
+.password-icon {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        15px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--accent-soft);
+
+    margin-bottom:
+        18px;
+}
+
+
+.password-title {
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        7px;
+}
+
+
+.password-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        20px;
+}
+
+
+#passwordInput {
+
+    width:
+        100%;
+
+    height:
+        48px;
+
+    border-radius:
+        13px;
+
+    border:
+        1px solid var(--border);
+
+    outline:
+        none;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    padding:
+        0 15px;
+
+    font-size:
+        14px;
+}
+
+
+#passwordInput:focus {
+
+    border-color:
+        var(--accent);
+}
+
+
+.password-error {
+
+    min-height:
+        17px;
+
+    margin-top:
+        8px;
+
+    color:
+        #ff7c87;
+
+    font-size:
+        11px;
+}
+
+
+.password-actions {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+
+    margin-top:
+        13px;
+}
+
+
+.password-button {
+
+    height:
+        44px;
+
+    flex:
+        1;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        700;
+}
+
+
+.password-button.primary {
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    color:
+        white;
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(18px)
+            scale(0.98);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width:1000px) {
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+
+
+    .important-links {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:720px) {
+
+    .main-content {
+
+        padding:
+
+            25px
+            15px
+            90px;
+    }
+
+
+    .home-logo {
+
+        width:
+            190px;
+
+        height:
+            190px;
+    }
+
+
+    .hero h1 {
+
+        letter-spacing:
+            -2px;
+    }
+
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:
+            11px;
+    }
+
+
+    .app-card {
+
+        min-height:
+            165px;
+
+        padding:
+            17px;
+
+        border-radius:
+            19px;
+    }
+
+
+    .app-card.large,
+    .app-card.wide,
+    .app-card.tall {
+
+        grid-column:
+            span 1;
+
+        grid-row:
+            span 1;
+    }
+
+
+    .app-card.large {
+
+        grid-column:
+            span 2;
+    }
+
+
+    .todo-card {
+
+        grid-column:
+            span 2;
+
+        grid-row:
+            span 1;
+    }
+
+
+    .app-logo {
+
+        width:
+            43px;
+
+        height:
+            43px;
+    }
+
+
+    .card-title {
+
+        font-size:
+            15px;
+    }
+
+
+    .card-description {
+
+        font-size:
+            11px;
+    }
+
+
+    .hover-text {
+
+        display:
+            none;
+    }
+
+
+    .important-links {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .important-url {
+
+        max-width:
+            200px;
+    }
+
+
+    .settings-button {
+
+        right:
+            15px;
+
+        bottom:
+            15px;
+    }
+
+
+    .settings-panel {
+
+        right:
+            10px;
+
+        bottom:
+            10px;
+
+        width:
+            calc(100vw - 20px);
+    }
+
+
+    #viewer,
+    #viewer iframe {
+
+        width:
+            100vw;
+
+        height:
+            100vh;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width:420px) {
+
+    .home-logo {
+
+        width:
+            170px;
+
+        height:
+            170px;
+    }
+
+
+    .todo-list {
+
+        max-height:
+            190px;
+    }
+}
+
+</style>
+
 </head>
 
 
 <body>
 
-    <!-- =========================================================
-         LOADER
-         ========================================================= -->
 
-    <div id="loader">
+<!-- =========================================================
+     HORIZON DASHBOARD
+     ========================================================= -->
+
+<div id="dashboard">
+
+    <main class="main-content">
+
+
+        <!-- LOGO -->
+
+        <section class="home-brand">
+
+            <img
+                class="home-logo"
+                src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
+                alt="Horizon"
+            >
+
+        </section>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1>
+
+                Everything.
+                <span>In one place.</span>
+
+            </h1>
+
+
+            <p>
+
+                Access your frequently used websites
+                and applications from one clean, fast
+                and modern workspace.
+
+            </p>
+
+        </section>
+
+
+        <!-- APPLICATIONS -->
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                Applications
+
+            </div>
+
+
+            <div
+                class="section-count"
+                id="appCount"
+            ></div>
+
+        </div>
+
+
+        <!-- BENTO -->
+
+        <div id="bentoGrid"></div>
+
+
+        <!-- IMPORTANT LINKS -->
+
+        <section class="important-section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    Important Links
+
+                </div>
+
+
+                <div class="section-count">
+
+                    Quick access
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="important-links"
+                id="importantLinks"
+            ></div>
+
+        </section>
+
+
+        <div class="footer">
+
+            Horizon Workspace
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     SETTINGS BUTTON
+
+     IMPORTANT:
+     This is hidden when iframe opens.
+     ========================================================= -->
+
+<button
+    class="settings-button"
+    id="settingsButton"
+    title="Settings"
+    aria-label="Open settings"
+>
+
+    ⚙
+
+</button>
+
+
+
+<!-- SETTINGS OVERLAY -->
+
+<div
+    id="settingsOverlay"
+></div>
+
+
+
+<!-- SETTINGS PANEL -->
+
+<div
+    class="settings-panel"
+    id="settingsPanel"
+>
+
+
+    <div class="settings-header">
+
+        <div class="settings-heading">
+
+            Horizon Settings
+
+        </div>
+
+
+        <button
+            class="settings-close"
+            id="settingsClose"
+        >
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <!-- THEME -->
+
+    <section class="settings-section">
+
+        <div class="settings-label">
+
+            Appearance
+
+        </div>
+
+
+        <div class="settings-description">
+
+            Choose how Horizon should look.
+
+        </div>
+
+
+        <div class="theme-options">
+
+
+            <button
+                class="theme-option"
+                data-theme="system"
+            >
+
+                System
+
+            </button>
+
+
+            <button
+                class="theme-option"
+                data-theme="light"
+            >
+
+                Light
+
+            </button>
+
+
+            <button
+                class="theme-option"
+                data-theme="dark"
+            >
+
+                Dark
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- COLOR -->
+
+    <section class="settings-section">
+
+        <div class="settings-label">
+
+            Web Color
+
+        </div>
+
+
+        <div class="settings-description">
+
+            Change Horizon's accent and highlight color.
+
+        </div>
+
+
+        <div class="color-options">
+
+
+            <button
+                class="color-option"
+                data-color="#3498db"
+                style="background:#3498db"
+                title="Blue"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#8b5cf6"
+                style="background:#8b5cf6"
+                title="Purple"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#10b981"
+                style="background:#10b981"
+                title="Green"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#f59e0b"
+                style="background:#f59e0b"
+                title="Amber"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#ef4444"
+                style="background:#ef4444"
+                title="Red"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#ec4899"
+                style="background:#ec4899"
+                title="Pink"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#06b6d4"
+                style="background:#06b6d4"
+                title="Cyan"
+            ></button>
+
+
+            <button
+                class="color-option"
+                data-color="#84cc16"
+                style="background:#84cc16"
+                title="Lime"
+            ></button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- TODO -->
+
+    <section class="settings-section">
+
+        <div class="settings-toggle-row">
+
+
+            <div>
+
+                <div class="settings-label">
+
+                    Show To-Do Card
+
+                </div>
+
+
+                <div class="settings-description">
+
+                    Keep your personal task list visible
+                    on the Horizon dashboard.
+
+                </div>
+
+            </div>
+
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="todoVisibleToggle"
+                >
+
+                <span
+                    class="toggle-slider"
+                ></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESET -->
+
+    <section class="settings-section">
+
+        <button
+            class="settings-reset"
+            id="resetSettings"
+        >
+
+            Reset Horizon Preferences
+
+        </button>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     FULL SCREEN IFRAME
+
+     Z-INDEX 1000
+
+     SETTINGS GEAR = 900
+
+     Therefore gear CANNOT appear above iframe.
+     ========================================================= -->
+
+<div id="viewer">
+
+
+    <!-- LOADER -->
+
+    <div id="iframeLoader">
 
         <div class="loading-wave">
 
@@ -1965,2783 +3193,1739 @@
     </div>
 
 
-    <!-- =========================================================
-         HOME
-         ========================================================= -->
+    <!-- WEBSITE -->
 
-    <main id="homeView">
+    <iframe
+        id="siteFrame"
+        title="Horizon Website Viewer"
+        allowfullscreen
+    ></iframe>
 
-        <div class="page">
 
-            <section class="hero">
+</div>
 
-                <img
-                    class="hero-logo"
-                    src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
-                    alt="Horizon"
-                >
 
-                <h1>
-                    Everything. In one place.
-                </h1>
 
-                <p>
-                    Access your frequently used websites and
-                    applications from one clean, fast and modern
-                    workspace.
-                </p>
+<!-- =========================================================
+     PASSWORD MODAL
+     ========================================================= -->
 
-            </section>
+<div id="passwordModal">
 
 
-            <!-- SEARCH -->
+    <div class="password-box">
 
-            <div class="search-wrap">
 
-                <div class="search-box">
+        <div class="password-icon">
 
-                    <span class="search-icon">
-                        🔎
-                    </span>
-
-                    <input
-                        id="searchInput"
-                        type="search"
-                        autocomplete="off"
-                        placeholder="Search your applications..."
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 HORIZON APPS
-                 ================================================= -->
-
-            <section class="section">
-
-                <div class="section-title">
-
-                    <h2>
-                        Horizon Apps
-                    </h2>
-
-                    <span id="appCount">
-                        0 applications
-                    </span>
-
-                </div>
-
-
-                <div
-                    id="appsGrid"
-                    class="bento-grid"
-                ></div>
-
-            </section>
-
-
-            <!-- =================================================
-                 PERSONAL / UTILITY CARDS
-                 ================================================= -->
-
-            <section
-                id="personalSection"
-                class="section"
-            >
-
-                <div class="section-title">
-
-                    <h2>
-                        Personal Space
-                    </h2>
-
-                    <span>
-                        Stored locally
-                    </span>
-
-                </div>
-
-
-                <div class="bento-grid">
-
-                    <!-- TODO -->
-
-                    <div class="utility-card large todo-card">
-
-                        <div class="utility-header">
-
-                            <div>
-
-                                <div class="utility-title">
-                                    My Tasks
-                                </div>
-
-                                <div class="utility-subtitle">
-                                    Your personal todo list
-                                </div>
-
-                            </div>
-
-                            <span>
-                                ✓
-                            </span>
-
-                        </div>
-
-
-                        <div class="todo-input-row">
-
-                            <input
-                                id="todoInput"
-                                class="todo-input"
-                                type="text"
-                                placeholder="Add a task..."
-                            >
-
-                            <button
-                                id="todoAdd"
-                                class="todo-add"
-                                type="button"
-                                title="Add task"
-                            >
-                                +
-                            </button>
-
-                        </div>
-
-
-                        <div
-                            id="todoList"
-                            class="todo-list"
-                        ></div>
-
-                    </div>
-
-
-                    <!-- DATE / TIME -->
-
-                    <div
-                        id="clockCard"
-                        class="utility-card clock-card"
-                    >
-
-                        <div
-                            id="digitalClock"
-                            class="digital-clock"
-                        >
-                            --:--
-                        </div>
-
-                        <div
-                            id="dateDisplay"
-                            class="date-display"
-                        >
-                            Loading date...
-                        </div>
-
-                        <div
-                            id="clockZone"
-                            class="clock-zone"
-                        >
-                            Local time
-                        </div>
-
-                    </div>
-
-
-                    <!-- IMPORTANT LINKS -->
-
-                    <div class="utility-card">
-
-                        <div class="utility-header">
-
-                            <div>
-
-                                <div class="utility-title">
-                                    Important Links
-                                </div>
-
-                                <div class="utility-subtitle">
-                                    Quick access
-                                </div>
-
-                            </div>
-
-                            <span>
-                                🔗
-                            </span>
-
-                        </div>
-
-
-                        <div id="importantLinksList"></div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <footer>
-                Horizon Workspace
-            </footer>
+            🔒
 
         </div>
 
-    </main>
 
+        <div class="password-title">
 
-    <!-- =========================================================
-         SETTINGS FAB
-         ========================================================= -->
-
-    <button
-        id="settingsFab"
-        type="button"
-        aria-label="Settings"
-        title="Settings"
-    >
-        ⚙
-    </button>
-
-
-    <!-- =========================================================
-         IFRAME
-         ========================================================= -->
-
-    <section id="iframeView">
-
-        <iframe
-            id="appFrame"
-            title="Horizon Application"
-            allow="
-                clipboard-read;
-                clipboard-write;
-                fullscreen;
-                geolocation;
-                microphone;
-                camera
-            "
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-
-    </section>
-
-
-    <!-- =========================================================
-         SETTINGS MODAL
-         ========================================================= -->
-
-    <div
-        id="settingsModal"
-        class="modal-backdrop"
-    >
-
-        <div class="modal">
-
-            <div class="modal-header">
-
-                <h3>
-                    Horizon Settings
-                </h3>
-
-                <button
-                    class="close-btn"
-                    type="button"
-                    data-close-settings
-                >
-                    ×
-                </button>
-
-            </div>
-
-
-            <!-- THEME -->
-
-            <div class="setting-group">
-
-                <label class="setting-label">
-                    Appearance
-                </label>
-
-                <div class="setting-description">
-                    Choose how Horizon looks.
-                </div>
-
-
-                <div class="theme-options">
-
-                    <button
-                        class="theme-option"
-                        data-theme-option="light"
-                    >
-                        ☀ Light
-                    </button>
-
-                    <button
-                        class="theme-option"
-                        data-theme-option="dark"
-                    >
-                        🌙 Dark
-                    </button>
-
-                    <button
-                        class="theme-option"
-                        data-theme-option="system"
-                    >
-                        🖥 System
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- ACCENT -->
-
-            <div class="setting-group">
-
-                <label class="setting-label">
-                    Horizon Color
-                </label>
-
-                <div class="setting-description">
-                    Select your preferred accent color.
-                </div>
-
-
-                <div class="accent-row">
-
-                    <button
-                        class="accent-btn"
-                        style="background:#3498db"
-                        data-accent="#3498db"
-                        aria-label="Blue"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#8b5cf6"
-                        data-accent="#8b5cf6"
-                        aria-label="Purple"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#10b981"
-                        data-accent="#10b981"
-                        aria-label="Green"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#f59e0b"
-                        data-accent="#f59e0b"
-                        aria-label="Orange"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#ef4444"
-                        data-accent="#ef4444"
-                        aria-label="Red"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#ec4899"
-                        data-accent="#ec4899"
-                        aria-label="Pink"
-                    ></button>
-
-                    <button
-                        class="accent-btn"
-                        style="background:#06b6d4"
-                        data-accent="#06b6d4"
-                        aria-label="Cyan"
-                    ></button>
-
-                </div>
-
-            </div>
-
-
-            <!-- CLOCK -->
-
-            <div class="setting-group">
-
-                <label class="setting-label">
-                    Time & Date
-                </label>
-
-                <div class="setting-description">
-                    Enable the clock card and choose its style.
-                </div>
-
-
-                <div class="theme-options">
-
-                    <button
-                        class="theme-option"
-                        id="clockEnabledBtn"
-                    >
-                        Time Card: ON
-                    </button>
-
-                    <button
-                        class="theme-option"
-                        data-clock-type="digital"
-                    >
-                        Digital
-                    </button>
-
-                    <button
-                        class="theme-option"
-                        data-clock-type="analog"
-                    >
-                        Analog
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- CUSTOM CARD -->
-
-            <div class="setting-group">
-
-                <label class="setting-label">
-                    Create Custom Card
-                </label>
-
-                <div class="setting-description">
-                    Create your own application card.
-                    Data is stored only in this browser.
-                </div>
-
-
-                <form id="customCardForm">
-
-                    <div class="form-grid">
-
-                        <input
-                            id="customName"
-                            class="form-field"
-                            type="text"
-                            placeholder="Card name"
-                            required
-                        >
-
-                        <input
-                            id="customEmoji"
-                            class="form-field"
-                            type="text"
-                            placeholder="Logo emoji e.g. 🚀"
-                            maxlength="4"
-                        >
-
-                        <input
-                            id="customUrl"
-                            class="form-field form-full"
-                            type="url"
-                            placeholder="Website URL"
-                            required
-                        >
-
-                        <input
-                            id="customDescription"
-                            class="form-field form-full"
-                            type="text"
-                            placeholder="Description"
-                        >
-
-                        <select
-                            id="customSize"
-                            class="form-field"
-                        >
-
-                            <option value="small">
-                                Small
-                            </option>
-
-                            <option value="medium" selected>
-                                Medium
-                            </option>
-
-                            <option value="large">
-                                Large
-                            </option>
-
-                            <option value="wide">
-                                Wide
-                            </option>
-
-                            <option value="tall">
-                                Tall
-                            </option>
-
-                        </select>
-
-
-                        <input
-                            id="customPassword"
-                            class="form-field"
-                            type="password"
-                            placeholder="Password (optional)"
-                            autocomplete="new-password"
-                        >
-
-                    </div>
-
-
-                    <button
-                        class="primary-btn"
-                        type="submit"
-                    >
-                        + Add Custom Card
-                    </button>
-
-                </form>
-
-
-                <div
-                    id="customCardList"
-                    class="custom-card-list"
-                ></div>
-
-            </div>
-
-
-            <!-- PWA -->
-
-            <div class="setting-group">
-
-                <label class="setting-label">
-                    App Installation
-                </label>
-
-                <div class="setting-description">
-                    Install Horizon as an application on supported
-                    devices.
-                </div>
-
-
-                <button
-                    id="installBtn"
-                    class="primary-btn"
-                    type="button"
-                    style="margin-top:0"
-                >
-                    Install Horizon
-                </button>
-
-            </div>
+            Password Required
 
         </div>
 
-    </div>
+
+        <div class="password-description">
+
+            This application is protected.
+            Enter the password to continue.
+
+        </div>
 
 
-    <!-- =========================================================
-         PASSWORD MODAL
-         ========================================================= -->
-
-    <div
-        id="passwordModal"
-        class="modal-backdrop"
-    >
-
-        <div class="modal password-modal">
-
-            <div class="password-icon">
-                🔐
-            </div>
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter password"
+            autocomplete="off"
+        >
 
 
-            <div class="password-title">
-                Protected Application
-            </div>
+        <div
+            class="password-error"
+            id="passwordError"
+        ></div>
 
 
-            <div class="password-description">
-                Enter the password to continue.
-            </div>
-
-
-            <input
-                id="passwordInput"
-                class="form-field"
-                type="password"
-                autocomplete="off"
-                placeholder="Enter password"
-            >
-
-
-            <div
-                id="passwordError"
-                class="password-error"
-            >
-                Incorrect password.
-            </div>
+        <div class="password-actions">
 
 
             <button
-                id="passwordSubmit"
-                class="primary-btn"
-                type="button"
+                class="password-button"
+                onclick="cancelPassword()"
             >
-                Unlock
-            </button>
 
-
-            <button
-                id="passwordCancel"
-                class="small-btn"
-                type="button"
-                style="
-                    width:100%;
-                    margin-top:8px;
-                    padding:11px;
-                "
-            >
                 Cancel
+
             </button>
+
+
+            <button
+                class="password-button primary"
+                onclick="submitPassword()"
+            >
+
+                Continue
+
+            </button>
+
 
         </div>
 
+
     </div>
 
+</div>
 
-    <!-- =========================================================
-         TOAST
-         ========================================================= -->
 
-    <div id="toast"></div>
 
+<!-- =========================================================
+     DATA FILES
+     ========================================================= -->
 
-    <!-- =========================================================
-         IMPORTANT:
-         These files remain in their EXISTING format.
+<script src="horizonApps.js"></script>
 
-         horizonApps.js:
-             const horizonApps = [ ... ];
+<script src="importantLinks.js"></script>
 
-         importantLinks.js:
-             const importantLinks = [ ... ];
 
-         Do not change them to window.*.
-         ========================================================= -->
 
-    <script src="./horizonApps.js"></script>
-    <script src="./importantLinks.js"></script>
+<script>
 
+/* =========================================================
+   LOCAL STORAGE KEYS
+   ========================================================= */
 
-    <script>
+const STORAGE_KEYS = {
 
-        /* =========================================================
-           HORIZON APPLICATION
-           ========================================================= */
+    theme:
+        "horizon_theme",
 
-        "use strict";
+    accent:
+        "horizon_accent",
 
+    todos:
+        "horizon_todos",
 
-        /* =========================================================
-           STORAGE KEYS
-           ========================================================= */
+    todoVisible:
+        "horizon_todo_visible"
 
-        const STORAGE = {
+};
 
-            theme:
-                "horizon_theme",
 
-            accent:
-                "horizon_accent",
+/* =========================================================
+   DEFAULT SETTINGS
+   ========================================================= */
 
-            clockEnabled:
-                "horizon_clock_enabled",
+const DEFAULT_SETTINGS = {
 
-            clockType:
-                "horizon_clock_type",
+    theme:
+        "system",
 
-            todos:
-                "horizon_todos",
+    accent:
+        "#3498db",
 
-            customCards:
-                "horizon_custom_cards"
+    todoVisible:
+        true
 
-        };
+};
 
 
-        /* =========================================================
-           DEFAULT SETTINGS
-           ========================================================= */
+/* =========================================================
+   DOM
+   ========================================================= */
 
-        const defaults = {
+const grid =
+    document.getElementById(
+        "bentoGrid"
+    );
 
-            theme:
-                "system",
 
-            accent:
-                "#3498db",
+const appCount =
+    document.getElementById(
+        "appCount"
+    );
 
-            clockEnabled:
-                true,
 
-            clockType:
-                "digital"
+const importantLinksContainer =
+    document.getElementById(
+        "importantLinks"
+    );
 
-        };
 
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
 
-        /* =========================================================
-           DOM
-           ========================================================= */
 
-        const $ = selector =>
-            document.querySelector(selector);
+const viewer =
+    document.getElementById(
+        "viewer"
+    );
 
 
-        const $$ = selector =>
-            document.querySelectorAll(selector);
+const iframe =
+    document.getElementById(
+        "siteFrame"
+    );
 
 
-        const appsGrid =
-            $("#appsGrid");
+const loader =
+    document.getElementById(
+        "iframeLoader"
+    );
 
 
-        const searchInput =
-            $("#searchInput");
+const passwordModal =
+    document.getElementById(
+        "passwordModal"
+    );
 
 
-        const iframeView =
-            $("#iframeView");
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
 
 
-        const appFrame =
-            $("#appFrame");
+const passwordError =
+    document.getElementById(
+        "passwordError"
+    );
 
 
-        const settingsFab =
-            $("#settingsFab");
+/*
+    IMPORTANT:
+    This element is the gear.
+*/
 
+const settingsButton =
+    document.getElementById(
+        "settingsButton"
+    );
 
-        const settingsModal =
-            $("#settingsModal");
 
+const settingsPanel =
+    document.getElementById(
+        "settingsPanel"
+    );
 
-        const passwordModal =
-            $("#passwordModal");
 
+const settingsOverlay =
+    document.getElementById(
+        "settingsOverlay"
+    );
 
-        const passwordInput =
-            $("#passwordInput");
 
+const settingsClose =
+    document.getElementById(
+        "settingsClose"
+    );
 
-        const passwordError =
-            $("#passwordError");
 
+const todoVisibleToggle =
+    document.getElementById(
+        "todoVisibleToggle"
+    );
 
-        const toast =
-            $("#toast");
 
+/* =========================================================
+   STATE
+   ========================================================= */
 
-        /* =========================================================
-           STATE
-           ========================================================= */
+let pendingApp =
+    null;
 
-        let currentProtectedCard =
-            null;
 
+let currentApp =
+    null;
 
-        let deferredInstallPrompt =
-            null;
 
+let todos =
+    loadTodos();
 
-        let currentApps = [];
 
+let settings =
+    loadSettings();
 
-        /* =========================================================
-           SAFE STORAGE
-           ========================================================= */
 
-        function getStorage(key, fallback) {
+/* =========================================================
+   STORAGE
+   ========================================================= */
 
-            try {
+function getStorage(
+    key,
+    fallback
+) {
 
-                const value =
-                    localStorage.getItem(key);
+    try {
 
-                if (value === null) {
-                    return fallback;
-                }
-
-                return JSON.parse(value);
-
-            } catch (error) {
-
-                return fallback;
-
-            }
-
-        }
-
-
-        function setStorage(key, value) {
-
-            try {
-
-                localStorage.setItem(
-                    key,
-                    JSON.stringify(value)
-                );
-
-            } catch (error) {
-
-                console.warn(
-                    "LocalStorage unavailable",
-                    error
-                );
-
-            }
-
-        }
-
-
-        /* =========================================================
-           TOAST
-           ========================================================= */
-
-        let toastTimer;
-
-
-        function showToast(message) {
-
-            toast.textContent =
-                message;
-
-            toast.classList.add("show");
-
-            clearTimeout(toastTimer);
-
-            toastTimer =
-                setTimeout(() => {
-
-                    toast.classList.remove("show");
-
-                }, 2200);
-
-        }
-
-
-        /* =========================================================
-           THEME
-           ========================================================= */
-
-        function applyTheme() {
-
-            const theme =
-                getStorage(
-                    STORAGE.theme,
-                    defaults.theme
-                );
-
-
-            const accent =
-                getStorage(
-                    STORAGE.accent,
-                    defaults.accent
-                );
-
-
-            document.documentElement
-                .style
-                .setProperty(
-                    "--accent",
-                    accent
-                );
-
-
-            if (theme === "system") {
-
-                const dark =
-                    window.matchMedia(
-                        "(prefers-color-scheme: dark)"
-                    ).matches;
-
-                document.documentElement
-                    .setAttribute(
-                        "data-theme",
-                        dark
-                            ? "dark"
-                            : "light"
-                    );
-
-            } else {
-
-                document.documentElement
-                    .setAttribute(
-                        "data-theme",
-                        theme
-                    );
-            }
-
-
-            $$(".theme-option[data-theme-option]")
-                .forEach(button => {
-
-                    button.classList.toggle(
-                        "active",
-                        button.dataset.themeOption === theme
-                    );
-
-                });
-
-
-            $$(".accent-btn")
-                .forEach(button => {
-
-                    button.classList.toggle(
-                        "active",
-                        button.dataset.accent === accent
-                    );
-
-                });
-
-        }
-
-
-        /* =========================================================
-           THEME EVENTS
-           ========================================================= */
-
-        $$(".theme-option[data-theme-option]")
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        setStorage(
-                            STORAGE.theme,
-                            button.dataset.themeOption
-                        );
-
-                        applyTheme();
-
-                    }
-                );
-
-            });
-
-
-        $$(".accent-btn")
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        setStorage(
-                            STORAGE.accent,
-                            button.dataset.accent
-                        );
-
-                        applyTheme();
-
-                    }
-                );
-
-            });
-
-
-        window
-            .matchMedia(
-                "(prefers-color-scheme: dark)"
-            )
-            .addEventListener(
-                "change",
-                () => {
-
-                    if (
-                        getStorage(
-                            STORAGE.theme,
-                            defaults.theme
-                        ) === "system"
-                    ) {
-
-                        applyTheme();
-
-                    }
-
-                }
+        const value =
+            localStorage.getItem(
+                key
             );
 
 
-        /* =========================================================
-           NORMALIZE CARD
-           ========================================================= */
-
-        function normalizeCard(card) {
-
-            return {
-
-                name:
-                    card.name ||
-                    "Untitled Application",
-
-                iframeLink:
-                    card.iframeLink ||
-                    "",
-
-                logo:
-                    card.logo ||
-                    "",
-
-                description:
-                    card.description ||
-                    "",
-
-                enabled:
-                    Number(card.enabled) === 1
-                        ? 1
-                        : 0,
-
-                hoverText:
-                    card.hoverText ||
-                    "Open application",
-
-                size:
-                    [
-                        "small",
-                        "medium",
-                        "large",
-                        "wide",
-                        "tall"
-                    ].includes(card.size)
-                        ? card.size
-                        : "medium",
-
-                password:
-                    card.password ||
-                    "",
-
-                custom:
-                    Boolean(card.custom),
-
-                id:
-                    card.id ||
-                    null
-
-            };
-
-        }
-
-
-        /* =========================================================
-           GET DEFAULT APPS
-           ========================================================= */
-
-        function getDefaultApps() {
-
-            if (
-                typeof horizonApps ===
-                "undefined"
-            ) {
-
-                console.error(
-                    "horizonApps.js did not load."
-                );
-
-                return [];
-
-            }
-
-
-            if (
-                !Array.isArray(horizonApps)
-            ) {
-
-                console.error(
-                    "horizonApps is not an array."
-                );
-
-                return [];
-
-            }
-
-
-            return horizonApps.map(
-                normalizeCard
-            );
-
-        }
-
-
-        /* =========================================================
-           CUSTOM CARDS
-           ========================================================= */
-
-        function getCustomCards() {
-
-            const cards =
-                getStorage(
-                    STORAGE.customCards,
-                    []
-                );
-
-
-            if (
-                !Array.isArray(cards)
-            ) {
-
-                return [];
-
-            }
-
-
-            return cards.map(
-                normalizeCard
-            );
-
-        }
-
-
-        function getAllApps() {
-
-            return [
-                ...getDefaultApps(),
-                ...getCustomCards()
-            ];
-
-        }
-
-
-        /* =========================================================
-           CARD LOGO
-           ========================================================= */
-
-        function createLogo(card) {
-
-            if (
-                card.custom &&
-                card.logo &&
-                !card.logo.startsWith("data:")
-            ) {
-
-                const emoji =
-                    document.createElement("div");
-
-                emoji.className =
-                    "emoji-logo";
-
-                emoji.textContent =
-                    card.logo;
-
-                return emoji;
-
-            }
-
-
-            if (
-                card.logo
-            ) {
-
-                const img =
-                    document.createElement("img");
-
-                img.className =
-                    "card-logo";
-
-                img.src =
-                    card.logo;
-
-                img.alt =
-                    "";
-
-                img.loading =
-                    "lazy";
-
-                img.onerror =
-                    () => {
-
-                        img.style.display =
-                            "none";
-
-                    };
-
-                return img;
-
-            }
-
-
-            const fallback =
-                document.createElement("div");
-
-            fallback.className =
-                "emoji-logo";
-
-            fallback.textContent =
-                "🌐";
+        if (
+            value === null
+        ) {
 
             return fallback;
 
         }
 
 
-        /* =========================================================
-           RENDER APPS
-           ========================================================= */
+        return JSON.parse(
+            value
+        );
 
-        function renderApps(
-            filter = ""
-        ) {
+    }
 
-            currentApps =
-                getAllApps();
+    catch {
 
+        return fallback;
 
-            const query =
-                filter
-                    .trim()
-                    .toLowerCase();
+    }
+
+}
 
 
-            const filtered =
-                currentApps.filter(card => {
+function setStorage(
+    key,
+    value
+) {
 
-                    if (!query) {
-                        return true;
-                    }
+    try {
 
+        localStorage.setItem(
+            key,
+            JSON.stringify(
+                value
+            )
+        );
 
-                    return (
+    }
 
-                        card.name
-                            .toLowerCase()
-                            .includes(query)
+    catch {
 
-                        ||
+        console.warn(
+            "Horizon: localStorage unavailable."
+        );
 
-                        card.description
-                            .toLowerCase()
-                            .includes(query)
+    }
 
-                    );
-
-                });
-
-
-            appsGrid.innerHTML =
-                "";
+}
 
 
-            if (
-                filtered.length === 0
-            ) {
+/* =========================================================
+   TODO STORAGE
+   ========================================================= */
 
-                appsGrid.innerHTML = `
+function loadTodos() {
 
-                    <div
-                        class="empty-state"
-                        style="grid-column:1/-1"
-                    >
-                        No applications found.
-                    </div>
-
-                `;
-
-            }
+    const saved =
+        getStorage(
+            STORAGE_KEYS.todos,
+            []
+        );
 
 
-            filtered.forEach(card => {
+    return Array.isArray(saved)
+        ?
+        saved
+        :
+        [];
 
-                const element =
-                    document.createElement("article");
-
-
-                element.className =
-                    `app-card ${card.size}`;
-
-                if (!card.enabled) {
-
-                    element.classList.add(
-                        "disabled"
-                    );
-
-                }
+}
 
 
-                const top =
-                    document.createElement("div");
+function saveTodos() {
 
-                top.className =
-                    "card-top";
+    setStorage(
+        STORAGE_KEYS.todos,
+        todos
+    );
+
+}
 
 
-                top.appendChild(
-                    createLogo(card)
+/* =========================================================
+   SETTINGS STORAGE
+   ========================================================= */
+
+function loadSettings() {
+
+    return {
+
+        theme:
+            getStorage(
+                STORAGE_KEYS.theme,
+                DEFAULT_SETTINGS.theme
+            ),
+
+        accent:
+            getStorage(
+                STORAGE_KEYS.accent,
+                DEFAULT_SETTINGS.accent
+            ),
+
+        todoVisible:
+            getStorage(
+                STORAGE_KEYS.todoVisible,
+                DEFAULT_SETTINGS.todoVisible
+            )
+
+    };
+
+}
+
+
+function saveSettings() {
+
+    setStorage(
+        STORAGE_KEYS.theme,
+        settings.theme
+    );
+
+
+    setStorage(
+        STORAGE_KEYS.accent,
+        settings.accent
+    );
+
+
+    setStorage(
+        STORAGE_KEYS.todoVisible,
+        settings.todoVisible
+    );
+
+}
+
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+function hexToRGB(
+    hex
+) {
+
+    const clean =
+        String(hex)
+            .replace("#","");
+
+
+    if (
+        clean.length !== 6
+    ) {
+
+        return null;
+
+    }
+
+
+    const number =
+        parseInt(
+            clean,
+            16
+        );
+
+
+    return {
+
+        r:
+            (number >> 16) & 255,
+
+        g:
+            (number >> 8) & 255,
+
+        b:
+            number & 255
+
+    };
+
+}
+
+
+function applyAccent(
+    color
+) {
+
+    if (
+        !color
+    ) {
+
+        color =
+            DEFAULT_SETTINGS.accent;
+
+    }
+
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
+
+
+    const rgb =
+        hexToRGB(
+            color
+        );
+
+
+    if (
+        rgb
+    ) {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-soft",
+                `rgba(
+                    ${rgb.r},
+                    ${rgb.g},
+                    ${rgb.b},
+                    0.14
+                )`
+            );
+
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-light",
+                `rgb(
+                    ${Math.min(rgb.r + 70,255)},
+                    ${Math.min(rgb.g + 70,255)},
+                    ${Math.min(rgb.b + 70,255)}
+                )`
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   THEME
+   ========================================================= */
+
+function applyTheme(
+    theme
+) {
+
+    document.body.classList.remove(
+        "light-theme"
+    );
+
+
+    let actualTheme =
+        theme;
+
+
+    if (
+        theme === "system"
+    ) {
+
+        actualTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: light)"
+            ).matches
+            ?
+            "light"
+            :
+            "dark";
+
+    }
+
+
+    if (
+        actualTheme === "light"
+    ) {
+
+        document.body.classList.add(
+            "light-theme"
+        );
+
+    }
+
+
+    const meta =
+        document.getElementById(
+            "themeColorMeta"
+        );
+
+
+    if (
+        meta
+    ) {
+
+        meta.content =
+            actualTheme === "light"
+            ?
+            "#f4f7fb"
+            :
+            "#080b12";
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".theme-option"
+        )
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.theme === theme
                 );
-
-
-                const status =
-                    document.createElement("span");
-
-                status.className =
-                    "status";
-
-
-                if (card.enabled) {
-
-                    status.textContent =
-                        "READY";
-
-                } else {
-
-                    status.textContent =
-                        "DISABLED";
-
-                    status.classList.add(
-                        "disabled-status"
-                    );
-
-                }
-
-
-                top.appendChild(status);
-
-
-                const body =
-                    document.createElement("div");
-
-                body.className =
-                    "card-body";
-
-
-                const name =
-                    document.createElement("h3");
-
-                name.className =
-                    "card-name";
-
-                name.textContent =
-                    card.name;
-
-
-                const description =
-                    document.createElement("p");
-
-                description.className =
-                    "card-description";
-
-                description.textContent =
-                    card.description;
-
-
-                body.appendChild(name);
-
-                body.appendChild(description);
-
-
-                const hover =
-                    document.createElement("div");
-
-                hover.className =
-                    "hover-label";
-
-                hover.textContent =
-                    card.enabled
-                        ? card.hoverText
-                        : "Currently disabled";
-
-
-                element.appendChild(top);
-
-                element.appendChild(body);
-
-                element.appendChild(hover);
-
-
-                if (card.enabled) {
-
-                    element.addEventListener(
-                        "click",
-                        () => openCard(card)
-                    );
-
-                }
-
-
-                appsGrid.appendChild(
-                    element
-                );
-
-            });
-
-
-            $("#appCount").textContent =
-                `${currentApps.length} applications`;
-
-        }
-
-
-        /* =========================================================
-           OPEN CARD
-           ========================================================= */
-
-        function openCard(card) {
-
-            if (
-                !card ||
-                !card.enabled ||
-                !card.iframeLink
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                card.password &&
-                String(card.password).trim()
-            ) {
-
-                currentProtectedCard =
-                    card;
-
-                passwordInput.value =
-                    "";
-
-                passwordError.style.display =
-                    "none";
-
-                passwordModal.classList.add(
-                    "open"
-                );
-
-                setTimeout(
-                    () =>
-                        passwordInput.focus(),
-                    80
-                );
-
-                return;
-
-            }
-
-
-            launchIframe(card);
-
-        }
-
-
-        /* =========================================================
-           PASSWORD
-           ========================================================= */
-
-        function submitPassword() {
-
-            if (
-                !currentProtectedCard
-            ) {
-
-                return;
-
-            }
-
-
-            const entered =
-                passwordInput.value;
-
-
-            /*
-             * Multiple passwords are supported.
-
-             * Examples:
-             *
-             * password: "pass1"
-             *
-             * OR
-             *
-             * password: "pass1,pass2,pass3"
-             *
-             * OR
-             *
-             * password: ["pass1","pass2","pass3"]
-             */
-
-            let validPasswords = [];
-
-
-            if (
-                Array.isArray(
-                    currentProtectedCard.password
-                )
-            ) {
-
-                validPasswords =
-                    currentProtectedCard.password
-                        .map(String);
-
-            } else {
-
-                validPasswords =
-                    String(
-                        currentProtectedCard.password
-                    )
-                    .split(",")
-                    .map(
-                        p =>
-                            p.trim()
-                    )
-                    .filter(Boolean);
-
-            }
-
-
-            if (
-                validPasswords.includes(
-                    entered
-                )
-            ) {
-
-                const card =
-                    currentProtectedCard;
-
-
-                passwordModal.classList.remove(
-                    "open"
-                );
-
-
-                currentProtectedCard =
-                    null;
-
-
-                launchIframe(card);
-
-            } else {
-
-                passwordError.style.display =
-                    "block";
-
-                passwordInput.select();
-
-            }
-
-        }
-
-
-        $("#passwordSubmit")
-            .addEventListener(
-                "click",
-                submitPassword
-            );
-
-
-        passwordInput
-            .addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-                        event.key ===
-                        "Enter"
-                    ) {
-
-                        submitPassword();
-
-                    }
-
-                }
-            );
-
-
-        $("#passwordCancel")
-            .addEventListener(
-                "click",
-                () => {
-
-                    passwordModal.classList.remove(
-                        "open"
-                    );
-
-                    currentProtectedCard =
-                        null;
-
-                }
-            );
-
-
-        /* =========================================================
-           IFRAME
-           ========================================================= */
-
-        function launchIframe(card) {
-
-            /*
-             * Hide Settings FAB while iframe is open.
-             */
-
-            settingsFab.classList.add(
-                "hidden"
-            );
-
-
-            /*
-             * Prevent background scrolling.
-             */
-
-            document.body.style.overflow =
-                "hidden";
-
-
-            /*
-             * Load application.
-             */
-
-            appFrame.src =
-                card.iframeLink;
-
-
-            iframeView.classList.add(
-                "open"
-            );
-
-        }
-
-
-        /*
-         * There are intentionally NO overlay buttons here.
-         *
-         * The iframe is the complete workspace.
-         */
-
-
-        function closeIframe() {
-
-            iframeView.classList.remove(
-                "open"
-            );
-
-
-            appFrame.src =
-                "about:blank";
-
-
-            document.body.style.overflow =
-                "";
-
-
-            settingsFab.classList.remove(
-                "hidden"
-            );
-
-        }
-
-
-        /*
-         * Escape closes iframe.
-         *
-         * This does not create visible buttons over the website.
-         */
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape" &&
-                    iframeView.classList.contains(
-                        "open"
-                    )
-                ) {
-
-                    closeIframe();
-
-                }
 
             }
         );
 
+}
 
-        /* =========================================================
-           SEARCH
-           ========================================================= */
 
-        searchInput
-            .addEventListener(
-                "input",
+/* =========================================================
+   APPLY SETTINGS
+   ========================================================= */
+
+function applySettings() {
+
+    applyTheme(
+        settings.theme
+    );
+
+
+    applyAccent(
+        settings.accent
+    );
+
+
+    todoVisibleToggle.checked =
+        settings.todoVisible;
+
+
+    document
+        .querySelectorAll(
+            ".color-option"
+        )
+        .forEach(
+            option => {
+
+                option.classList.toggle(
+                    "active",
+                    option.dataset.color.toLowerCase()
+                    ===
+                    settings.accent.toLowerCase()
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   SETTINGS OPEN
+   ========================================================= */
+
+function openSettings() {
+
+    /*
+        Extra protection:
+        NEVER open settings while iframe is active.
+    */
+
+    if (
+        viewer.classList.contains(
+            "active"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    settingsPanel.classList.add(
+        "active"
+    );
+
+
+    settingsOverlay.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   SETTINGS CLOSE
+   ========================================================= */
+
+function closeSettings() {
+
+    settingsPanel.classList.remove(
+        "active"
+    );
+
+
+    settingsOverlay.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+settingsButton.addEventListener(
+    "click",
+    openSettings
+);
+
+
+settingsClose.addEventListener(
+    "click",
+    closeSettings
+);
+
+
+settingsOverlay.addEventListener(
+    "click",
+    closeSettings
+);
+
+
+/* =========================================================
+   THEME BUTTONS
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        ".theme-option"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
                 () => {
 
-                    renderApps(
-                        searchInput.value
-                    );
+                    settings.theme =
+                        button.dataset.theme;
+
+
+                    saveSettings();
+
+
+                    applySettings();
 
                 }
             );
 
-
-        /* =========================================================
-           TODO
-           ========================================================= */
-
-        let todos =
-            getStorage(
-                STORAGE.todos,
-                []
-            );
-
-
-        if (
-            !Array.isArray(todos)
-        ) {
-
-            todos = [];
-
         }
+    );
 
 
-        function saveTodos() {
+/* =========================================================
+   COLOR BUTTONS
+   ========================================================= */
 
-            setStorage(
-                STORAGE.todos,
-                todos
-            );
+document
+    .querySelectorAll(
+        ".color-option"
+    )
+    .forEach(
+        button => {
 
-        }
-
-
-        function renderTodos() {
-
-            const list =
-                $("#todoList");
-
-
-            list.innerHTML =
-                "";
-
-
-            if (
-                todos.length === 0
-            ) {
-
-                const empty =
-                    document.createElement("div");
-
-                empty.style.color =
-                    "var(--muted)";
-
-                empty.style.fontSize =
-                    "12px";
-
-                empty.style.padding =
-                    "8px";
-
-                empty.textContent =
-                    "No tasks yet. Add something to get started.";
-
-                list.appendChild(empty);
-
-                return;
-
-            }
-
-
-            todos.forEach(
-                (todo, index) => {
-
-                    const row =
-                        document.createElement("div");
-
-                    row.className =
-                        "todo-item";
-
-
-                    if (
-                        todo.done
-                    ) {
-
-                        row.classList.add(
-                            "completed"
-                        );
-
-                    }
-
-
-                    const check =
-                        document.createElement("input");
-
-                    check.type =
-                        "checkbox";
-
-                    check.className =
-                        "todo-check";
-
-                    check.checked =
-                        Boolean(todo.done);
-
-
-                    check.addEventListener(
-                        "change",
-                        () => {
-
-                            todos[index].done =
-                                check.checked;
-
-                            saveTodos();
-
-                            renderTodos();
-
-                        }
-                    );
-
-
-                    const text =
-                        document.createElement("div");
-
-                    text.className =
-                        "todo-text";
-
-                    text.textContent =
-                        todo.text;
-
-
-                    const del =
-                        document.createElement("button");
-
-                    del.className =
-                        "todo-delete";
-
-                    del.type =
-                        "button";
-
-                    del.textContent =
-                        "×";
-
-
-                    del.addEventListener(
-                        "click",
-                        () => {
-
-                            todos.splice(
-                                index,
-                                1
-                            );
-
-                            saveTodos();
-
-                            renderTodos();
-
-                        }
-                    );
-
-
-                    row.appendChild(check);
-
-                    row.appendChild(text);
-
-                    row.appendChild(del);
-
-                    list.appendChild(row);
-
-                }
-            );
-
-        }
-
-
-        function addTodo() {
-
-            const input =
-                $("#todoInput");
-
-
-            const text =
-                input.value.trim();
-
-
-            if (!text) {
-
-                input.focus();
-
-                return;
-
-            }
-
-
-            todos.unshift({
-
-                id:
-                    Date.now(),
-
-                text,
-
-                done:
-                    false
-
-            });
-
-
-            saveTodos();
-
-            renderTodos();
-
-            input.value =
-                "";
-
-            input.focus();
-
-        }
-
-
-        $("#todoAdd")
-            .addEventListener(
+            button.addEventListener(
                 "click",
-                addTodo
-            );
+                () => {
+
+                    settings.accent =
+                        button.dataset.color;
 
 
-        $("#todoInput")
-            .addEventListener(
-                "keydown",
-                event => {
+                    saveSettings();
 
-                    if (
-                        event.key ===
-                        "Enter"
-                    ) {
 
-                        addTodo();
-
-                    }
+                    applySettings();
 
                 }
             );
 
-
-        /* =========================================================
-           CLOCK
-           ========================================================= */
-
-        function updateClock() {
-
-            const enabled =
-                getStorage(
-                    STORAGE.clockEnabled,
-                    defaults.clockEnabled
-                );
+        }
+    );
 
 
-            const type =
-                getStorage(
-                    STORAGE.clockType,
-                    defaults.clockType
-                );
+/* =========================================================
+   TODO VISIBILITY
+   ========================================================= */
+
+todoVisibleToggle.addEventListener(
+    "change",
+    () => {
+
+        settings.todoVisible =
+            todoVisibleToggle.checked;
 
 
-            $("#clockCard").style.display =
-                enabled
-                    ? ""
-                    : "none";
+        saveSettings();
 
 
-            if (!enabled) {
-                return;
-            }
+        renderApps();
+
+    }
+);
 
 
-            const now =
-                new Date();
+/* =========================================================
+   RESET SETTINGS
+   ========================================================= */
+
+document
+    .getElementById(
+        "resetSettings"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            settings =
+                {
+                    ...DEFAULT_SETTINGS
+                };
 
 
-            const dateText =
-                new Intl.DateTimeFormat(
-                    undefined,
-                    {
-                        weekday:
-                            "long",
-
-                        day:
-                            "numeric",
-
-                        month:
-                            "long",
-
-                        year:
-                            "numeric"
-                    }
-                ).format(now);
+            saveSettings();
 
 
-            $("#dateDisplay")
-                .textContent =
-                dateText;
+            applySettings();
 
 
-            $("#clockZone")
-                .textContent =
-                Intl.DateTimeFormat()
-                    .resolvedOptions()
-                    .timeZone;
-
-
-            if (
-                type === "analog"
-            ) {
-
-                renderAnalogClock();
-
-                return;
-
-            }
-
-
-            const timeText =
-                new Intl.DateTimeFormat(
-                    undefined,
-                    {
-                        hour:
-                            "2-digit",
-
-                        minute:
-                            "2-digit",
-
-                        second:
-                            "2-digit"
-                    }
-                ).format(now);
-
-
-            $("#digitalClock")
-                .textContent =
-                timeText;
+            renderApps();
 
         }
+    );
 
 
-        function renderAnalogClock() {
+/* =========================================================
+   SYSTEM THEME
+   ========================================================= */
 
-            const card =
-                $("#clockCard");
+window
+    .matchMedia(
+        "(prefers-color-scheme: light)"
+    )
+    .addEventListener(
+        "change",
+        () => {
+
+            if (
+                settings.theme ===
+                "system"
+            ) {
+
+                applyTheme(
+                    "system"
+                );
+
+            }
+
+        }
+    );
 
 
-            card.innerHTML = `
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
-                <div class="analog-clock">
+function escapeHTML(
+    value
+) {
 
-                    <div
-                        class="hand hour-hand"
-                        id="hourHand"
-                    ></div>
+    if (
+        value === null ||
+        value === undefined
+    ) {
 
-                    <div
-                        class="hand minute-hand"
-                        id="minuteHand"
-                    ></div>
+        return "";
 
-                    <div
-                        class="hand second-hand"
-                        id="secondHand"
-                    ></div>
+    }
 
-                    <div class="clock-center"></div>
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   APP NAME
+   ========================================================= */
+
+function getAppName(
+    app
+) {
+
+    if (
+        app.name
+    ) {
+
+        return app.name;
+
+    }
+
+
+    try {
+
+        const url =
+            new URL(
+                app.iframeLink
+            );
+
+
+        return url.hostname
+
+            .replace(
+                /^www\./,
+                ""
+            )
+
+            .split(".")[0]
+
+            .replace(
+                /^./,
+                c =>
+                    c.toUpperCase()
+            );
+
+    }
+
+    catch {
+
+        return "Application";
+
+    }
+
+}
+
+
+/* =========================================================
+   PASSWORD CHECK
+   ========================================================= */
+
+function hasPassword(
+    app
+) {
+
+    if (
+        !app
+    ) {
+
+        return false;
+
+    }
+
+
+    if (
+        typeof app.password ===
+        "string"
+    ) {
+
+        return (
+            app.password.trim() !== ""
+        );
+
+    }
+
+
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
+
+        return app.password.some(
+            password =>
+                String(password)
+                    .trim() !== ""
+        );
+
+    }
+
+
+    return false;
+
+}
+
+
+function getPasswords(
+    app
+) {
+
+    if (
+        typeof app.password ===
+        "string"
+    ) {
+
+        return app.password.trim()
+            ?
+            [app.password]
+            :
+            [];
+
+    }
+
+
+    if (
+        Array.isArray(
+            app.password
+        )
+    ) {
+
+        return app.password
+
+            .map(
+                password =>
+                    String(password)
+            )
+
+            .filter(
+                password =>
+                    password.trim() !== ""
+            );
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   TODO CARD
+   ========================================================= */
+
+function createTodoCard() {
+
+    if (
+        !settings.todoVisible
+    ) {
+
+        return null;
+
+    }
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "app-card todo-card";
+
+
+    card.innerHTML = `
+
+        <div class="todo-header">
+
+            <div class="todo-title-area">
+
+                <div class="todo-icon">
+
+                    ✓
 
                 </div>
 
-                <div
-                    id="dateDisplay"
-                    class="date-display"
-                ></div>
 
-                <div
-                    id="clockZone"
-                    class="clock-zone"
-                ></div>
+                <div>
+
+                    <div class="todo-title">
+
+                        To-Do
+
+                    </div>
+
+
+                    <div
+                        class="todo-counter"
+                        id="todoCounter"
+                    >
+
+                        0 tasks
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="todo-input-row">
+
+            <input
+                class="todo-input"
+                id="todoInput"
+                type="text"
+                maxlength="180"
+                placeholder="Add a task..."
+                autocomplete="off"
+            >
+
+
+            <button
+                class="todo-add"
+                id="todoAdd"
+            >
+
+                +
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="todo-list"
+            id="todoList"
+        ></div>
+
+    `;
+
+
+    card.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+    setTimeout(
+        () => {
+
+            const input =
+                document.getElementById(
+                    "todoInput"
+                );
+
+
+            const add =
+                document.getElementById(
+                    "todoAdd"
+                );
+
+
+            if (
+                input &&
+                add
+            ) {
+
+                add.addEventListener(
+                    "click",
+                    addTodoFromInput
+                );
+
+
+                input.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key ===
+                            "Enter"
+                        ) {
+
+                            addTodoFromInput();
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            renderTodos();
+
+        },
+        0
+    );
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   ADD TODO
+   ========================================================= */
+
+function addTodoFromInput() {
+
+    const input =
+        document.getElementById(
+            "todoInput"
+        );
+
+
+    if (
+        !input
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        input.value.trim();
+
+
+    if (
+        !text
+    ) {
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    todos.unshift({
+
+        id:
+            Date.now(),
+
+        text:
+            text,
+
+        completed:
+            false,
+
+        created:
+            new Date().toISOString()
+
+    });
+
+
+    saveTodos();
+
+
+    input.value =
+        "";
+
+
+    renderTodos();
+
+
+    input.focus();
+
+}
+
+
+/* =========================================================
+   RENDER TODO
+   ========================================================= */
+
+function renderTodos() {
+
+    const list =
+        document.getElementById(
+            "todoList"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "todoCounter"
+        );
+
+
+    if (
+        !list ||
+        !counter
+    ) {
+
+        return;
+
+    }
+
+
+    const remaining =
+        todos.filter(
+            todo =>
+                !todo.completed
+        ).length;
+
+
+    counter.textContent =
+        `${remaining} remaining · ${todos.length} total`;
+
+
+    list.innerHTML =
+        "";
+
+
+    if (
+        todos.length === 0
+    ) {
+
+        list.innerHTML = `
+
+            <div class="todo-empty">
+
+                No tasks yet.
+                Add something you need to remember.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    todos.forEach(
+        todo => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                `todo-item ${
+                    todo.completed
+                    ?
+                    "completed"
+                    :
+                    ""
+                }`;
+
+
+            item.innerHTML = `
+
+                <button
+                    class="todo-check"
+                >
+
+                    ${
+                        todo.completed
+                        ?
+                        "✓"
+                        :
+                        ""
+                    }
+
+                </button>
+
+
+                <div class="todo-text">
+
+                    ${escapeHTML(
+                        todo.text
+                    )}
+
+                </div>
+
+
+                <button
+                    class="todo-delete"
+                >
+
+                    ×
+
+                </button>
 
             `;
 
 
-            const now =
-                new Date();
+            item
+                .querySelector(
+                    ".todo-check"
+                )
+                .addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
 
 
-            const seconds =
-                now.getSeconds();
+                        toggleTodo(
+                            todo.id
+                        );
 
-
-            const minutes =
-                now.getMinutes();
-
-
-            const hours =
-                now.getHours();
-
-
-            const secondAngle =
-                seconds * 6;
-
-
-            const minuteAngle =
-                minutes * 6 +
-                seconds * .1;
-
-
-            const hourAngle =
-                (hours % 12) * 30 +
-                minutes * .5;
-
-
-            $("#secondHand")
-                .style.transform =
-                `translateX(-50%) rotate(${secondAngle}deg)`;
-
-
-            $("#minuteHand")
-                .style.transform =
-                `translateX(-50%) rotate(${minuteAngle}deg)`;
-
-
-            $("#hourHand")
-                .style.transform =
-                `translateX(-50%) rotate(${hourAngle}deg)`;
-
-
-            $("#dateDisplay")
-                .textContent =
-                new Intl.DateTimeFormat(
-                    undefined,
-                    {
-                        weekday:
-                            "long",
-
-                        day:
-                            "numeric",
-
-                        month:
-                            "long",
-
-                        year:
-                            "numeric"
                     }
-                ).format(now);
+                );
 
 
-            $("#clockZone")
-                .textContent =
-                Intl.DateTimeFormat()
-                    .resolvedOptions()
-                    .timeZone;
+            item
+                .querySelector(
+                    ".todo-delete"
+                )
+                .addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        deleteTodo(
+                            todo.id
+                        );
+
+                    }
+                );
+
+
+            list.appendChild(
+                item
+            );
 
         }
+    );
+
+}
 
 
-        setInterval(
-            updateClock,
-            1000
+/* =========================================================
+   TODO TOGGLE
+   ========================================================= */
+
+function toggleTodo(
+    id
+) {
+
+    todos =
+        todos.map(
+            todo => {
+
+                if (
+                    todo.id === id
+                ) {
+
+                    return {
+
+                        ...todo,
+
+                        completed:
+                            !todo.completed
+
+                    };
+
+                }
+
+
+                return todo;
+
+            }
         );
 
 
-        /* =========================================================
-           CLOCK SETTINGS
-           ========================================================= */
+    saveTodos();
 
-        function updateClockButtons() {
+
+    renderTodos();
+
+}
+
+
+/* =========================================================
+   TODO DELETE
+   ========================================================= */
+
+function deleteTodo(
+    id
+) {
+
+    todos =
+        todos.filter(
+            todo =>
+                todo.id !== id
+        );
+
+
+    saveTodos();
+
+
+    renderTodos();
+
+}
+
+
+/* =========================================================
+   RENDER APPLICATIONS
+   ========================================================= */
+
+function renderApps() {
+
+    grid.innerHTML =
+        "";
+
+
+    /*
+        TODO IS ALWAYS THE FIRST CARD
+    */
+
+    const todoCard =
+        createTodoCard();
+
+
+    if (
+        todoCard
+    ) {
+
+        grid.appendChild(
+            todoCard
+        );
+
+    }
+
+
+    const apps =
+        Array.isArray(
+            horizonApps
+        )
+        ?
+        horizonApps
+        :
+        [];
+
+
+    const activeCount =
+        apps.filter(
+            app =>
+                Number(app.enabled) === 1
+        ).length;
+
+
+    appCount.textContent =
+        `${activeCount} active · ${apps.length} total`;
+
+
+    apps.forEach(
+        (app,index) => {
 
             const enabled =
-                getStorage(
-                    STORAGE.clockEnabled,
-                    defaults.clockEnabled
+                Number(
+                    app.enabled
+                ) === 1;
+
+
+            const card =
+                document.createElement(
+                    "article"
                 );
 
 
-            const type =
-                getStorage(
-                    STORAGE.clockType,
-                    defaults.clockType
-                );
-
-
-            const button =
-                $("#clockEnabledBtn");
-
-
-            button.textContent =
-                `Time Card: ${
+            card.className =
+                `app-card ${
+                    app.size ||
+                    "normal"
+                } ${
                     enabled
-                        ? "ON"
-                        : "OFF"
+                    ?
+                    ""
+                    :
+                    "disabled"
                 }`;
 
 
-            button.classList.toggle(
-                "active",
-                enabled
-            );
+            card.style.animationDelay =
+                `${(index + 1) * 45}ms`;
 
 
-            $$("[data-clock-type]")
-                .forEach(btn => {
-
-                    btn.classList.toggle(
-                        "active",
-                        btn.dataset.clockType === type
-                    );
-
-                });
-
-        }
+            const logo =
+                app.logo ||
+                "https://i.ibb.co/kgzJb34B/horizon-logo.png";
 
 
-        $("#clockEnabledBtn")
-            .addEventListener(
-                "click",
-                () => {
-
-                    const current =
-                        getStorage(
-                            STORAGE.clockEnabled,
-                            defaults.clockEnabled
-                        );
-
-
-                    setStorage(
-                        STORAGE.clockEnabled,
-                        !current
-                    );
-
-
-                    updateClockButtons();
-
-                    updateClock();
-
-                }
-            );
-
-
-        $$("[data-clock-type]")
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        setStorage(
-                            STORAGE.clockType,
-                            button.dataset.clockType
-                        );
-
-                        updateClockButtons();
-
-                        updateClock();
-
-                    }
+            const protectedApp =
+                hasPassword(
+                    app
                 );
 
-            });
+
+            card.innerHTML = `
+
+                <div class="card-glow"></div>
 
 
-        /* =========================================================
-           IMPORTANT LINKS
-           ========================================================= */
+                <div>
 
-        function renderImportantLinks() {
-
-            const container =
-                $("#importantLinksList");
+                    <div class="card-top">
 
 
-            container.innerHTML =
-                "";
+                        <img
+                            class="app-logo"
+                            src="${escapeHTML(
+                                logo
+                            )}"
+                            alt=""
+                            loading="lazy"
+                            onerror="
+                                this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
+                            "
+                        >
 
 
-            if (
-                typeof importantLinks ===
-                "undefined" ||
-                !Array.isArray(
-                    importantLinks
-                )
-            ) {
+                        <div class="card-status">
 
-                container.innerHTML = `
 
-                    <div
-                        style="
-                            color:var(--muted);
-                            font-size:12px;
-                        "
-                    >
-                        No important links configured.
+                            ${
+                                protectedApp &&
+                                enabled
+
+                                ?
+
+                                `
+                                <span
+                                    class="lock-icon"
+                                    title="Password protected"
+                                >
+                                    🔒
+                                </span>
+                                `
+
+                                :
+
+                                ""
+
+                            }
+
+
+                            ${
+                                enabled
+
+                                ?
+
+                                `
+                                <span
+                                    class="status-dot"
+                                ></span>
+                                `
+
+                                :
+
+                                `
+                                <span
+                                    class="disabled-status"
+                                >
+                                    Disabled
+                                </span>
+                                `
+
+                            }
+
+
+                        </div>
+
                     </div>
 
-                `;
 
-                return;
+                    <div class="card-content">
 
-            }
 
+                        <div class="card-title">
 
-            importantLinks.forEach(
-                link => {
+                            ${escapeHTML(
+                                getAppName(app)
+                            )}
 
-                    if (
-                        !link ||
-                        !link.url
-                    ) {
+                        </div>
 
-                        return;
 
-                    }
+                        <div class="card-description">
 
+                            ${escapeHTML(
+                                app.description ||
+                                ""
+                            )}
 
-                    const row =
-                        document.createElement("div");
+                        </div>
 
-                    row.className =
-                        "important-link";
 
+                    </div>
 
-                    const name =
-                        document.createElement("div");
+                </div>
 
-                    name.className =
-                        "link-name";
 
-                    name.textContent =
-                        link.name ||
-                        link.url;
+                <div class="hover-text">
 
+                    ${escapeHTML(
+                        app.hoverText ||
+                        "Open application"
+                    )}
 
-                    const actions =
-                        document.createElement("div");
+                    &nbsp; →
 
-                    actions.className =
-                        "link-actions";
+                </div>
 
+            `;
 
-                    const copy =
-                        document.createElement("button");
 
-                    copy.className =
-                        "small-btn";
-
-                    copy.type =
-                        "button";
-
-                    copy.textContent =
-                        "Copy";
-
-
-                    copy.addEventListener(
-                        "click",
-                        async () => {
-
-                            await copyText(
-                                link.url
-                            );
-
-                        }
-                    );
-
-
-                    const open =
-                        document.createElement("button");
-
-                    open.className =
-                        "small-btn";
-
-                    open.type =
-                        "button";
-
-                    open.textContent =
-                        "Open";
-
-
-                    open.addEventListener(
-                        "click",
-                        () => {
-
-                            window.open(
-                                link.url,
-                                "_blank",
-                                "noopener,noreferrer"
-                            );
-
-                        }
-                    );
-
-
-                    actions.appendChild(copy);
-
-                    actions.appendChild(open);
-
-                    row.appendChild(name);
-
-                    row.appendChild(actions);
-
-                    container.appendChild(row);
-
-                }
-            );
-
-        }
-
-
-        /* =========================================================
-           CLIPBOARD
-           ========================================================= */
-
-        async function copyText(text) {
-
-            try {
-
-                if (
-                    navigator.clipboard &&
-                    window.isSecureContext
-                ) {
-
-                    await navigator.clipboard.writeText(
-                        text
-                    );
-
-                    showToast(
-                        "Copied to clipboard"
-                    );
-
-                    return;
-
-                }
-
-
-                const textarea =
-                    document.createElement("textarea");
-
-                textarea.value =
-                    text;
-
-                textarea.style.position =
-                    "fixed";
-
-                textarea.style.opacity =
-                    "0";
-
-                document.body.appendChild(
-                    textarea
-                );
-
-                textarea.select();
-
-                document.execCommand(
-                    "copy"
-                );
-
-                textarea.remove();
-
-                showToast(
-                    "Copied to clipboard"
-                );
-
-            } catch (error) {
-
-                showToast(
-                    "Clipboard permission required"
-                );
-
-            }
-
-        }
-
-
-        /* =========================================================
-           CUSTOM CARDS
-           ========================================================= */
-
-        function createCustomCard(event) {
-
-            event.preventDefault();
-
-
-            const name =
-                $("#customName")
-                    .value
-                    .trim();
-
-
-            const emoji =
-                $("#customEmoji")
-                    .value
-                    .trim() ||
-                "🌐";
-
-
-            const url =
-                $("#customUrl")
-                    .value
-                    .trim();
-
-
-            const description =
-                $("#customDescription")
-                    .value
-                    .trim() ||
-                "Custom Horizon application.";
-
-
-            const size =
-                $("#customSize")
-                    .value;
-
-
-            const password =
-                $("#customPassword")
-                    .value;
-
-
-            if (
-                !name ||
-                !url
-            ) {
-
-                return;
-
-            }
-
-
-            let normalizedUrl =
-                url;
-
-
-            if (
-                !/^https?:\/\//i.test(
-                    normalizedUrl
-                )
-            ) {
-
-                normalizedUrl =
-                    "https://" +
-                    normalizedUrl;
-
-            }
-
-
-            const cards =
-                getCustomCards();
-
-
-            cards.push({
-
-                id:
-                    "custom_" +
-                    Date.now(),
-
-                custom:
-                    true,
-
-                name,
-
-                iframeLink:
-                    normalizedUrl,
-
-                logo:
-                    emoji,
-
-                description,
-
-                enabled:
-                    1,
-
-                hoverText:
-                    "Open application",
-
-                size,
-
-                password
-
-            });
-
-
-            setStorage(
-                STORAGE.customCards,
-                cards
-            );
-
-
-            event.target.reset();
-
-
-            renderApps(
-                searchInput.value
-            );
-
-
-            renderCustomCardList();
-
-
-            showToast(
-                "Custom card created"
-            );
-
-        }
-
-
-        $("#customCardForm")
-            .addEventListener(
-                "submit",
-                createCustomCard
-            );
-
-
-        /* =========================================================
-           CUSTOM CARD MANAGEMENT
-           ========================================================= */
-
-        function renderCustomCardList() {
-
-            const container =
-                $("#customCardList");
-
-
-            container.innerHTML =
-                "";
-
-
-            const cards =
-                getCustomCards();
-
-
-            if (
-                cards.length === 0
-            ) {
-
-                return;
-
-            }
-
-
-            cards.forEach(
-                card => {
-
-                    const row =
-                        document.createElement("div");
-
-                    row.className =
-                        "custom-card-row";
-
-
-                    const name =
-                        document.createElement("div");
-
-                    name.className =
-                        "custom-card-name";
-
-                    name.textContent =
-                        card.name;
-
-
-                    /*
-                     * Important:
-                     *
-                     * We intentionally DO NOT show:
-                     *
-                     * card.iframeLink
-                     *
-                     * or
-                     *
-                     * card.password
-                     *
-                     *
-                     * This keeps protected URLs/passwords
-                     * out of the Settings UI.
-                     */
-
-
-                    const deleteBtn =
-                        document.createElement("button");
-
-                    deleteBtn.className =
-                        "danger-btn";
-
-                    deleteBtn.type =
-                        "button";
-
-                    deleteBtn.textContent =
-                        "Delete";
-
-
-                    deleteBtn.addEventListener(
-                        "click",
-                        () => {
-
-                            deleteCustomCard(
-                                card.id
-                            );
-
-                        }
-                    );
-
-
-                    row.appendChild(name);
-
-                    row.appendChild(deleteBtn);
-
-                    container.appendChild(row);
-
-                }
-            );
-
-        }
-
-
-        function deleteCustomCard(id) {
-
-            const cards =
-                getCustomCards()
-                    .filter(
-                        card =>
-                            card.id !== id
-                    );
-
-
-            setStorage(
-                STORAGE.customCards,
-                cards
-            );
-
-
-            renderApps(
-                searchInput.value
-            );
-
-
-            renderCustomCardList();
-
-
-            showToast(
-                "Custom card deleted"
-            );
-
-        }
-
-
-        /* =========================================================
-           SETTINGS
-           ========================================================= */
-
-        settingsFab
-            .addEventListener(
+            card.addEventListener(
                 "click",
                 () => {
 
                     if (
-                        iframeView.classList.contains(
-                            "open"
-                        )
+                        !enabled
                     ) {
 
                         return;
@@ -4749,238 +4933,752 @@
                     }
 
 
-                    renderCustomCardList();
-
-                    updateClockButtons();
-
-                    settingsModal.classList.add(
-                        "open"
+                    handleAppClick(
+                        app
                     );
 
                 }
             );
 
 
-        $$("[data-close-settings]")
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        settingsModal.classList.remove(
-                            "open"
-                        );
-
-                    }
-                );
-
-            });
-
-
-        settingsModal
-            .addEventListener(
-                "click",
-                event => {
-
-                    if (
-                        event.target ===
-                        settingsModal
-                    ) {
-
-                        settingsModal.classList.remove(
-                            "open"
-                        );
-
-                    }
-
-                }
+            grid.appendChild(
+                card
             );
 
+        }
+    );
 
-        passwordModal
-            .addEventListener(
-                "click",
-                event => {
-
-                    if (
-                        event.target ===
-                        passwordModal
-                    ) {
-
-                        passwordModal.classList.remove(
-                            "open"
-                        );
-
-                        currentProtectedCard =
-                            null;
-
-                    }
-
-                }
-            );
+}
 
 
-        /* =========================================================
-           PWA INSTALL
-           ========================================================= */
+/* =========================================================
+   APP CLICK
+   ========================================================= */
 
-        window.addEventListener(
-            "beforeinstallprompt",
-            event => {
+function handleAppClick(
+    app
+) {
 
-                event.preventDefault();
+    if (
+        !app ||
+        Number(app.enabled) !== 1
+    ) {
 
-                deferredInstallPrompt =
-                    event;
+        return;
 
-            }
+    }
+
+
+    if (
+        !hasPassword(
+            app
+        )
+    ) {
+
+        openApp(
+            app
+        );
+
+        return;
+
+    }
+
+
+    pendingApp =
+        app;
+
+
+    passwordInput.value =
+        "";
+
+
+    passwordError.textContent =
+        "";
+
+
+    passwordModal.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    setTimeout(
+        () =>
+            passwordInput.focus(),
+        100
+    );
+
+}
+
+
+/* =========================================================
+   PASSWORD SUBMIT
+   ========================================================= */
+
+function submitPassword() {
+
+    if (
+        !pendingApp
+    ) {
+
+        return;
+
+    }
+
+
+    const entered =
+        passwordInput.value;
+
+
+    const valid =
+        getPasswords(
+            pendingApp
+        ).some(
+            password =>
+                entered === password
         );
 
 
-        $("#installBtn")
-            .addEventListener(
-                "click",
-                async () => {
+    if (
+        !valid
+    ) {
 
-                    if (
-                        !deferredInstallPrompt
-                    ) {
-
-                        showToast(
-                            "Use your browser's Install option."
-                        );
-
-                        return;
-
-                    }
+        passwordError.textContent =
+            "Incorrect password. Please try again.";
 
 
-                    deferredInstallPrompt.prompt();
+        passwordInput.value =
+            "";
 
 
-                    const result =
-                        await deferredInstallPrompt
-                            .userChoice;
+        passwordInput.focus();
 
 
-                    if (
-                        result.outcome ===
-                        "accepted"
-                    ) {
+        return;
 
-                        showToast(
-                            "Horizon installation started"
-                        );
-
-                    }
+    }
 
 
-                    deferredInstallPrompt =
-                        null;
-
-                }
-            );
+    const app =
+        pendingApp;
 
 
-        window.addEventListener(
-            "appinstalled",
-            () => {
-
-                deferredInstallPrompt =
-                    null;
-
-                showToast(
-                    "Horizon installed"
-                );
-
-            }
-        );
+    pendingApp =
+        null;
 
 
-        /* =========================================================
-           SERVICE WORKER
-           ========================================================= */
+    closePasswordModal();
+
+
+    openApp(
+        app
+    );
+
+}
+
+
+/* =========================================================
+   PASSWORD CLOSE
+   ========================================================= */
+
+function closePasswordModal() {
+
+    passwordModal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+
+    passwordInput.value =
+        "";
+
+
+    passwordError.textContent =
+        "";
+
+}
+
+
+function cancelPassword() {
+
+    pendingApp =
+        null;
+
+
+    closePasswordModal();
+
+}
+
+
+passwordInput.addEventListener(
+    "keydown",
+    event => {
 
         if (
-            "serviceWorker" in navigator
+            event.key ===
+            "Enter"
         ) {
 
-            window.addEventListener(
-                "load",
-                () => {
-
-                    navigator.serviceWorker
-                        .register(
-                            "./sw.js"
-                        )
-                        .catch(
-                            error =>
-                                console.warn(
-                                    "Service Worker registration failed:",
-                                    error
-                                )
-                        );
-
-                }
-            );
+            submitPassword();
 
         }
 
 
-        /* =========================================================
-           INITIALIZATION
-           ========================================================= */
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
-        function initialize() {
+            cancelPassword();
 
-            applyTheme();
+        }
 
-            renderApps();
-
-            renderImportantLinks();
-
-            renderTodos();
-
-            updateClockButtons();
-
-            updateClock();
+    }
+);
 
 
-            /*
-             * Small startup delay for the
-             * Horizon loading animation.
-             */
+/* =========================================================
+   OPEN APP
+   ========================================================= */
 
-            setTimeout(
-                () => {
+function openApp(
+    app
+) {
 
-                    $("#loader")
-                        .classList
-                        .add("hidden");
+    if (
+        !app ||
+        Number(app.enabled) !== 1
+    ) {
 
-                },
-                450
-            );
+        return;
+
+    }
+
+
+    currentApp =
+        app;
+
+
+    /*
+        CLOSE SETTINGS
+    */
+
+    closeSettings();
+
+
+    /*
+        HIDE DASHBOARD
+    */
+
+    dashboard.classList.add(
+        "hidden"
+    );
+
+
+    /*
+        CRITICAL:
+        HIDE SETTINGS GEAR
+    */
+
+    settingsButton.classList.add(
+        "hidden"
+    );
+
+
+    /*
+        OPEN FULL SCREEN VIEWER
+    */
+
+    viewer.classList.add(
+        "active"
+    );
+
+
+    /*
+        SHOW LOADER
+    */
+
+    loader.classList.remove(
+        "hidden"
+    );
+
+
+    /*
+        CLEAR PREVIOUS PAGE
+    */
+
+    iframe.src =
+        "about:blank";
+
+
+    /*
+        LOAD NEW PAGE
+    */
+
+    setTimeout(
+        () => {
+
+            iframe.src =
+                app.iframeLink;
+
+        },
+        80
+    );
+
+
+    /*
+        BROWSER HISTORY
+    */
+
+    history.pushState(
+        {
+            horizonViewer:
+                true
+        },
+        "",
+        "#app"
+    );
+
+}
+
+
+/* =========================================================
+   IFRAME LOADED
+   ========================================================= */
+
+iframe.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                loader.classList.add(
+                    "hidden"
+                );
+
+            },
+            250
+        );
+
+    }
+);
+
+
+/* =========================================================
+   RETURN TO HORIZON
+   ========================================================= */
+
+function goBack() {
+
+    /*
+        CLEAR IFRAME
+    */
+
+    iframe.src =
+        "about:blank";
+
+
+    /*
+        CLOSE VIEWER
+    */
+
+    viewer.classList.remove(
+        "active"
+    );
+
+
+    /*
+        SHOW DASHBOARD
+    */
+
+    dashboard.classList.remove(
+        "hidden"
+    );
+
+
+    /*
+        CRITICAL:
+        SHOW SETTINGS GEAR AGAIN
+    */
+
+    settingsButton.classList.remove(
+        "hidden"
+    );
+
+
+    /*
+        RESET APP
+    */
+
+    currentApp =
+        null;
+
+
+    /*
+        REMOVE #app
+    */
+
+    if (
+        location.hash === "#app"
+    ) {
+
+        history.replaceState(
+            null,
+            "",
+            location.pathname +
+            location.search
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   BROWSER BACK
+   ========================================================= */
+
+window.addEventListener(
+    "popstate",
+    () => {
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key !==
+            "Escape"
+        ) {
+
+            return;
 
         }
 
 
         /*
-         * IMPORTANT:
-         *
-         * horizonApps.js is loaded BEFORE this script.
-         *
-         * Therefore this works with your existing:
-         *
-         * const horizonApps = [...]
-         *
-         * format.
-         */
+            Password modal
+        */
 
-        initialize();
+        if (
+            passwordModal.classList.contains(
+                "active"
+            )
+        ) {
 
-    </script>
+            cancelPassword();
+
+            return;
+
+        }
+
+
+        /*
+            Settings
+        */
+
+        if (
+            settingsPanel.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeSettings();
+
+            return;
+
+        }
+
+
+        /*
+            Iframe
+        */
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
+
+function renderImportantLinks() {
+
+    importantLinksContainer.innerHTML =
+        "";
+
+
+    const links =
+        Array.isArray(
+            importantLinks
+        )
+        ?
+        importantLinks
+        :
+        [];
+
+
+    links.forEach(
+        item => {
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "important-link";
+
+
+            wrapper.innerHTML = `
+
+                <div
+                    class="important-info"
+                >
+
+                    <div
+                        class="important-name"
+                    >
+
+                        ${escapeHTML(
+                            item.name
+                        )}
+
+                    </div>
+
+
+                    <div
+                        class="important-url"
+                    >
+
+                        ${escapeHTML(
+                            item.url
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="important-actions"
+                >
+
+                    <button
+                        class="link-button copy-button"
+                    >
+
+                        Copy
+
+                    </button>
+
+
+                    <button
+                        class="link-button open"
+                    >
+
+                        Open
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const copyButton =
+                wrapper.querySelector(
+                    ".copy-button"
+                );
+
+
+            const openButton =
+                wrapper.querySelector(
+                    ".open"
+                );
+
+
+            copyButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+
+                    copyLink(
+                        item.url,
+                        copyButton
+                    );
+
+                }
+            );
+
+
+            openButton.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+
+                    window.open(
+                        item.url,
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+                }
+            );
+
+
+            importantLinksContainer
+                .appendChild(
+                    wrapper
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   COPY LINK
+   ========================================================= */
+
+async function copyLink(
+    url,
+    button
+) {
+
+    try {
+
+        await navigator.clipboard.writeText(
+            url
+        );
+
+    }
+
+    catch {
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+
+        textarea.value =
+            url;
+
+
+        textarea.style.position =
+            "fixed";
+
+
+        textarea.style.opacity =
+            "0";
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        textarea.remove();
+
+    }
+
+
+    const original =
+        button.textContent;
+
+
+    button.textContent =
+        "Copied ✓";
+
+
+    button.classList.add(
+        "copy-success"
+    );
+
+
+    setTimeout(
+        () => {
+
+            button.textContent =
+                original;
+
+
+            button.classList.remove(
+                "copy-success"
+            );
+
+        },
+        1500
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+applySettings();
+
+renderApps();
+
+renderImportantLinks();
+
+</script>
+
 
 </body>
+
 </html>
