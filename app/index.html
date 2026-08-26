@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Horizon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="icon" type="image/png" href="https://i.ibb.co/G4DyH3QN/horizon-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Fullscreen Web Content Iframe */
+        #content-frame {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+        }
+
+        /* PWA Float Install Button */
+        #installBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 100000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating PWA Installation Trigger -->
+    <button id="installBtn">⬇ Install horizon App</button>
+
+    <!-- Main Content Frame -->
+    <iframe
+        id="content-frame"
+        allow="clipboard-read; clipboard-write"
+        src="https://horizon.rakhechamedical.in/">
+    </iframe>
+
+<script>
+  // 1. Mandatory PWA Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('SW Registered'))
+        .catch(err => console.log('SW Failed', err));
+    });
+  }
+
+  // 2. PWA Installation Banner Event Management
+  let deferredPrompt;
+  const installBtn = document.getElementById("installBtn");
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block'; // Shows button floating on top of the iframe content safely
+
+    installBtn.addEventListener('click', () => {
+      installBtn.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('App successfully installed.');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
