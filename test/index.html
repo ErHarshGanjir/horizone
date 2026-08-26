@@ -1,1 +1,6962 @@
-now we will only working on index fill thire has need miner changes, thire all web will have acces of clipboad, and we will add time and date if user will inebal this si this card will apering on main space, as well thire will option time in digital or analog, and thire will an words card that was contening positive words result by an API https://www.affirmations.dev/ and thire respinse format is {"affirmation":"Sucking at something is the first step towards being good at something"}  and this card will also optional if user will inebal this 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<title>Horizon</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="https://i.ibb.co/G4DyH3QN/horizon-icon.png"
+>
+
+<meta
+    name="theme-color"
+    content="#080b12"
+    id="themeColorMeta"
+>
+
+<style>
+
+/* =========================================================
+   HORIZON CORE
+   ========================================================= */
+
+:root {
+
+    --bg:#080b12;
+    --bg-secondary:#0d111a;
+
+    --card:rgba(18,23,34,.82);
+    --card-hover:rgba(27,34,49,.96);
+
+    --border:rgba(255,255,255,.08);
+    --border-hover:rgba(255,255,255,.17);
+
+    --text:#f4f7fb;
+    --muted:#8c96a8;
+
+    --accent:#3498db;
+    --accent-light:#8fcfff;
+    --accent-soft:rgba(52,152,219,.14);
+
+    --success:#42d17d;
+    --danger:#ff5f6d;
+    --warning:#f5b642;
+
+    --input-bg:rgba(255,255,255,.045);
+
+    --radius:24px;
+}
+
+
+/* =========================================================
+   LIGHT
+   ========================================================= */
+
+body.light-theme {
+
+    --bg:#f4f7fb;
+    --bg-secondary:#ffffff;
+
+    --card:rgba(255,255,255,.92);
+    --card-hover:#ffffff;
+
+    --border:rgba(15,23,42,.09);
+    --border-hover:rgba(15,23,42,.17);
+
+    --text:#101827;
+    --muted:#667085;
+
+    --input-bg:rgba(15,23,42,.045);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+
+    min-height:100vh;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color:var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(52,152,219,.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(113,76,255,.08),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+    overflow-x:hidden;
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family:inherit;
+}
+
+button {
+    -webkit-tap-highlight-color:transparent;
+}
+
+body.modal-open {
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+#dashboard {
+
+    min-height:100vh;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+#dashboard.hidden {
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:scale(.985);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main-content {
+
+    width:min(1500px,100%);
+
+    margin:auto;
+
+    padding:
+        45px
+        clamp(18px,5vw,60px)
+        100px;
+}
+
+
+/* =========================================================
+   HOME LOGO
+   ========================================================= */
+
+.home-brand {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        10px
+        10px
+        20px;
+}
+
+.home-logo {
+
+    width:clamp(190px,21vw,300px);
+
+    height:clamp(190px,21vw,300px);
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(
+            0 22px 45px rgba(0,0,0,.34)
+        );
+
+    animation:
+        logoAppear .7s ease both;
+}
+
+@keyframes logoAppear {
+
+    from {
+        opacity:0;
+        transform:
+            translateY(18px)
+            scale(.9);
+    }
+
+    to {
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+    text-align:center;
+
+    margin:
+        0 auto 42px;
+
+    animation:
+        heroAppear .6s ease both;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(34px,5vw,64px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    font-weight:850;
+
+    margin-bottom:15px;
+}
+
+.hero h1 span {
+    color:var(--accent-light);
+}
+
+.hero p {
+
+    max-width:680px;
+
+    margin:auto;
+
+    color:var(--muted);
+
+    font-size:
+        clamp(13px,1.5vw,15px);
+
+    line-height:1.65;
+}
+
+@keyframes heroAppear {
+
+    from {
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section-header {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:16px;
+}
+
+.section-title {
+
+    font-size:14px;
+
+    font-weight:750;
+}
+
+.section-count {
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   BENTO
+   ========================================================= */
+
+#bentoGrid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    grid-auto-rows:
+        minmax(180px,auto);
+
+    gap:16px;
+}
+
+
+/* =========================================================
+   GENERIC APP CARD
+   ========================================================= */
+
+.app-card {
+
+    position:relative;
+
+    min-height:190px;
+
+    overflow:hidden;
+
+    padding:22px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        ),
+
+        var(--card);
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:
+        transform .28s cubic-bezier(.2,.8,.2,1),
+        border-color .28s ease,
+        background .28s ease,
+        box-shadow .28s ease;
+
+    animation:
+        cardAppear .5s ease both;
+}
+
+.app-card:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.008);
+
+    border-color:
+        var(--border-hover);
+
+    background:
+        var(--card-hover);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.22);
+}
+
+.app-card:active {
+    transform:scale(.985);
+}
+
+
+/* =========================================================
+   CARD SIZES
+   ========================================================= */
+
+.app-card.small {
+
+    grid-column:span 1;
+    grid-row:span 1;
+}
+
+.app-card.medium {
+
+    grid-column:span 1;
+    grid-row:span 1;
+}
+
+.app-card.large {
+
+    grid-column:span 2;
+    grid-row:span 2;
+}
+
+.app-card.wide {
+
+    grid-column:span 2;
+    grid-row:span 1;
+}
+
+.app-card.tall {
+
+    grid-column:span 1;
+    grid-row:span 2;
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.card-glow {
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-80px;
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(52,152,219,.18),
+            transparent 70%
+        );
+
+    pointer-events:none;
+
+    transition:
+        transform .4s ease;
+}
+
+.app-card:hover .card-glow {
+    transform:scale(1.5);
+}
+
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.app-card.disabled {
+
+    cursor:not-allowed;
+
+    opacity:.52;
+
+    filter:saturate(.45);
+}
+
+.app-card.disabled:hover {
+
+    transform:none;
+
+    background:var(--card);
+
+    border-color:var(--border);
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   APP CARD
+   ========================================================= */
+
+.card-top {
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+}
+
+.app-logo {
+
+    width:50px;
+    height:50px;
+
+    object-fit:contain;
+
+    padding:8px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+}
+
+.emoji-logo {
+
+    width:50px;
+    height:50px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.card-status {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+}
+
+.status-dot {
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+    box-shadow:
+        0 0 12px rgba(66,209,125,.65);
+}
+
+.lock-icon {
+    font-size:12px;
+    opacity:.65;
+}
+
+.disabled-status {
+
+    padding:
+        4px 8px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+}
+
+.card-content {
+    margin-top:20px;
+}
+
+.card-title {
+
+    font-size:18px;
+
+    font-weight:750;
+
+    margin-bottom:7px;
+}
+
+.card-description {
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.55;
+
+    max-width:90%;
+}
+
+.hover-text {
+
+    position:absolute;
+
+    left:22px;
+    bottom:18px;
+
+    color:var(--accent-light);
+
+    font-size:11px;
+
+    font-weight:650;
+
+    opacity:0;
+
+    transform:translateY(7px);
+
+    transition:.25s ease;
+}
+
+.app-card:hover .hover-text {
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   TODO CARD
+   ========================================================= */
+
+.todo-card {
+
+    grid-column:span 2;
+    grid-row:span 2;
+
+    cursor:default;
+
+    padding:25px;
+}
+
+.todo-card:hover {
+    transform:none;
+}
+
+
+/* Header */
+
+.todo-header {
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.todo-title-area {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.todo-icon {
+
+    width:46px;
+    height:46px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-soft),
+            rgba(255,255,255,.025)
+        );
+
+    color:var(--accent-light);
+
+    font-size:20px;
+
+    border:
+        1px solid var(--border);
+}
+
+.todo-title {
+
+    font-size:19px;
+
+    font-weight:800;
+}
+
+.todo-subtitle {
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+}
+
+
+/* Progress */
+
+.todo-progress-box {
+
+    text-align:right;
+
+    min-width:90px;
+}
+
+.todo-progress-number {
+
+    font-size:19px;
+
+    font-weight:800;
+
+    color:var(--accent-light);
+}
+
+.todo-progress-label {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:2px;
+}
+
+.todo-progress {
+
+    height:5px;
+
+    margin:
+        17px 0
+        15px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.todo-progress-bar {
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    transition:
+        width .35s ease;
+}
+
+
+/* Input */
+
+.todo-input-row {
+
+    display:flex;
+
+    gap:7px;
+
+    margin-bottom:12px;
+}
+
+.todo-input {
+
+    flex:1;
+
+    min-width:0;
+
+    height:42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--input-bg);
+
+    color:var(--text);
+
+    outline:none;
+
+    padding:
+        0 13px;
+
+    font-size:12px;
+}
+
+.todo-input:focus {
+    border-color:var(--accent);
+}
+
+.todo-add {
+
+    width:42px;
+    height:42px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:var(--accent);
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+
+/* Task list */
+
+.todo-list {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    max-height:230px;
+
+    overflow-y:auto;
+
+    padding-right:3px;
+}
+
+.todo-item {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:
+        9px 10px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:12px;
+
+    transition:.2s ease;
+}
+
+.todo-item:hover {
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-color:
+        var(--border);
+}
+
+.todo-check {
+
+    width:19px;
+    height:19px;
+
+    flex-shrink:0;
+
+    border:
+        1px solid var(--border-hover);
+
+    border-radius:6px;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.todo-item.completed .todo-check {
+
+    background:var(--accent);
+
+    border-color:var(--accent);
+}
+
+.todo-text {
+
+    flex:1;
+
+    min-width:0;
+
+    font-size:12px;
+
+    line-height:1.4;
+
+    word-break:break-word;
+}
+
+.todo-item.completed .todo-text {
+
+    text-decoration:line-through;
+
+    opacity:.43;
+}
+
+.todo-delete {
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    opacity:0;
+}
+
+.todo-item:hover .todo-delete {
+    opacity:1;
+}
+
+.todo-empty {
+
+    padding:
+        25px 5px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* Footer */
+
+.todo-footer {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:13px;
+}
+
+.todo-counter {
+
+    color:var(--muted);
+
+    font-size:9px;
+}
+
+.clear-completed {
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    transition:.2s ease;
+}
+
+.clear-completed:hover {
+    color:var(--danger);
+}
+
+
+/* =========================================================
+   DATE TIME PREMIUM CARD
+   ========================================================= */
+
+.datetime-card {
+
+    grid-column:span 2;
+    grid-row:span 2;
+
+    cursor:default;
+
+    padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 20%,
+            var(--accent-soft),
+            transparent 35%
+        ),
+
+        var(--card);
+}
+
+.datetime-card:hover {
+    transform:none;
+}
+
+.datetime-top {
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+}
+
+.datetime-brand {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+}
+
+.datetime-icon {
+
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--accent-light);
+
+    font-size:21px;
+
+    border:
+        1px solid var(--border);
+}
+
+.datetime-title {
+
+    font-size:13px;
+
+    font-weight:750;
+}
+
+.datetime-zone {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+.datetime-mode {
+
+    padding:
+        5px 8px;
+
+    border-radius:999px;
+
+    color:var(--accent-light);
+
+    background:
+        var(--accent-soft);
+
+    font-size:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+}
+
+
+/* Digital */
+
+.digital-clock-area {
+
+    margin-top:28px;
+
+    position:relative;
+}
+
+.digital-time {
+
+    font-size:
+        clamp(38px,4.7vw,67px);
+
+    line-height:.95;
+
+    letter-spacing:-4px;
+
+    font-weight:850;
+
+    white-space:nowrap;
+}
+
+.digital-seconds {
+
+    color:var(--accent-light);
+
+    font-size:.43em;
+
+    letter-spacing:-1px;
+
+    vertical-align:top;
+
+    margin-left:4px;
+}
+
+.digital-date {
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-top:13px;
+}
+
+.digital-day {
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin-top:5px;
+
+    color:var(--accent-light);
+}
+
+
+/* Bottom visual */
+
+.time-visual {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.time-line {
+
+    flex:1;
+
+    height:5px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+.time-line-fill {
+
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    border-radius:inherit;
+}
+
+.time-percent {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    min-width:34px;
+
+    text-align:right;
+}
+
+
+/* Analog */
+
+.analog-layout {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:18px;
+}
+
+.analog-clock {
+
+    position:relative;
+
+    width:165px;
+    height:165px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    border:
+        2px solid var(--border-hover);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.035),
+            transparent 65%
+        );
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.16),
+        inset 0 0 35px rgba(0,0,0,.12);
+}
+
+.clock-number {
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    color:var(--muted);
+
+    transform:
+        translate(-50%,-50%);
+}
+
+.clock-mark {
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:2px;
+    height:7px;
+
+    background:var(--muted);
+
+    transform-origin:
+        50% -76px;
+}
+
+.clock-hand {
+
+    position:absolute;
+
+    left:50%;
+    bottom:50%;
+
+    width:2px;
+
+    transform-origin:
+        bottom center;
+
+    border-radius:10px;
+
+    transform:
+        translateX(-50%);
+}
+
+.hour-hand {
+
+    height:38px;
+
+    width:4px;
+
+    background:var(--text);
+}
+
+.minute-hand {
+
+    height:52px;
+
+    background:var(--accent-light);
+}
+
+.second-hand {
+
+    height:59px;
+
+    width:1px;
+
+    background:var(--danger);
+}
+
+.clock-center {
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:8px;
+    height:8px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+}
+
+.analog-info {
+
+    text-align:left;
+}
+
+.analog-time {
+
+    font-size:24px;
+
+    font-weight:800;
+}
+
+.analog-date {
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    margin-top:5px;
+
+    max-width:150px;
+}
+
+
+/* =========================================================
+   AFFIRMATION
+   ========================================================= */
+
+.affirmation-card {
+
+    grid-column:span 2;
+    grid-row:span 2;
+
+    cursor:default;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            var(--accent-soft),
+            transparent 35%
+        ),
+
+        var(--card);
+}
+
+.affirmation-card:hover {
+    transform:none;
+}
+
+.affirmation-mark {
+
+    font-size:45px;
+
+    color:var(--accent-light);
+
+    opacity:.55;
+
+    line-height:1;
+}
+
+.affirmation-text {
+
+    font-size:
+        clamp(18px,2vw,25px);
+
+    line-height:1.45;
+
+    font-weight:700;
+
+    margin-top:12px;
+}
+
+.affirmation-footer {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.affirmation-label {
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.refresh-affirmation {
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--input-bg);
+
+    color:var(--text);
+
+    border-radius:10px;
+
+    padding:
+        7px 10px;
+
+    cursor:pointer;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
+
+.important-section {
+    margin-top:60px;
+}
+
+.important-links {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:12px;
+}
+
+.important-link {
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    border-radius:17px;
+
+    padding:
+        15px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    transition:.2s ease;
+}
+
+.important-link:hover {
+
+    border-color:
+        var(--border-hover);
+
+    transform:translateY(-2px);
+}
+
+.important-info {
+    min-width:0;
+}
+
+.important-name {
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+}
+
+.important-url {
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    max-width:300px;
+}
+
+.important-actions {
+
+    display:flex;
+
+    gap:6px;
+
+    flex-shrink:0;
+}
+
+.link-button {
+
+    height:34px;
+
+    padding:
+        0 11px;
+
+    border-radius:10px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--input-bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:650;
+}
+
+.link-button.open {
+
+    background:
+        var(--accent-soft);
+
+    color:var(--accent-light);
+
+    border-color:
+        var(--accent);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+    margin-top:55px;
+
+    text-align:center;
+
+    color:
+        rgba(128,128,128,.55);
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   SETTINGS BUTTON
+   ========================================================= */
+
+.settings-button {
+
+    position:fixed;
+
+    right:22px;
+    bottom:20px;
+
+    z-index:900;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    color:var(--text);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.22);
+
+    backdrop-filter:blur(12px);
+
+    transition:.25s ease;
+}
+
+.settings-button:hover {
+
+    transform:
+        rotate(35deg)
+        scale(1.05);
+}
+
+.settings-button.hidden {
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:scale(.8);
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+#settingsOverlay {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:
+        rgba(0,0,0,.48);
+
+    backdrop-filter:blur(7px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.25s ease;
+}
+
+#settingsOverlay.active {
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+.settings-panel {
+
+    position:fixed;
+
+    right:16px;
+    bottom:16px;
+
+    z-index:2100;
+
+    width:
+        min(470px,calc(100vw - 30px));
+
+    max-height:
+        calc(100vh - 30px);
+
+    overflow-y:auto;
+
+    padding:22px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:24px;
+
+    background:
+        var(--bg-secondary);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.42);
+
+    transform:
+        translateY(25px)
+        scale(.97);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.25s ease;
+}
+
+.settings-panel.active {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+.settings-header {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:22px;
+}
+
+.settings-heading {
+
+    font-size:20px;
+
+    font-weight:800;
+}
+
+.settings-close {
+
+    width:32px;
+    height:32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--input-bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.settings-section {
+
+    padding:
+        15px 0;
+
+    border-top:
+        1px solid var(--border);
+}
+
+.settings-section:first-of-type {
+    border-top:0;
+}
+
+.settings-label {
+
+    display:block;
+
+    font-size:12px;
+
+    font-weight:750;
+
+    margin-bottom:5px;
+}
+
+.settings-description {
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================================================
+   SETTINGS BUTTON OPTIONS
+   ========================================================= */
+
+.theme-options {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+}
+
+.theme-option {
+
+    min-height:42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--input-bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:650;
+}
+
+.theme-option.active {
+
+    border-color:var(--accent);
+
+    background:var(--accent-soft);
+
+    color:var(--accent-light);
+}
+
+
+/* =========================================================
+   COLORS
+   ========================================================= */
+
+.color-options {
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:9px;
+}
+
+.color-option {
+
+    width:29px;
+    height:29px;
+
+    border-radius:50%;
+
+    border:3px solid transparent;
+
+    outline:
+        1px solid var(--border);
+
+    outline-offset:2px;
+
+    cursor:pointer;
+}
+
+.color-option.active {
+
+    border-color:white;
+
+    outline-color:var(--accent);
+
+    transform:scale(1.1);
+}
+
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.settings-toggle-row {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.toggle {
+
+    width:42px;
+    height:23px;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.toggle input {
+
+    opacity:0;
+
+    width:0;
+    height:0;
+}
+
+.toggle-slider {
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:30px;
+
+    background:
+        rgba(128,128,128,.3);
+
+    transition:.2s ease;
+}
+
+.toggle-slider::before {
+
+    content:"";
+
+    position:absolute;
+
+    width:17px;
+    height:17px;
+
+    left:3px;
+    top:3px;
+
+    border-radius:50%;
+
+    background:white;
+
+    transition:.2s ease;
+}
+
+.toggle input:checked +
+.toggle-slider {
+
+    background:var(--accent);
+}
+
+.toggle input:checked +
+.toggle-slider::before {
+
+    transform:
+        translateX(19px);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.custom-form {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+}
+
+.form-input {
+
+    width:100%;
+
+    min-height:42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    background:
+        var(--input-bg);
+
+    color:var(--text);
+
+    outline:none;
+
+    padding:
+        0 12px;
+
+    font-size:12px;
+}
+
+.form-input:focus {
+    border-color:var(--accent);
+}
+
+.form-textarea {
+
+    min-height:75px;
+
+    padding:
+        11px 12px;
+
+    resize:vertical;
+}
+
+.form-row {
+
+    display:grid;
+
+    grid-template-columns:
+        80px 1fr;
+
+    gap:8px;
+}
+
+.emoji-input {
+
+    text-align:center;
+
+    font-size:23px;
+}
+
+
+/* =========================================================
+   CUSTOM SIZE
+   ========================================================= */
+
+.custom-size-title {
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    margin-top:4px;
+}
+
+.custom-size-options {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:6px;
+}
+
+.size-option {
+
+    height:38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:9px;
+
+    background:
+        var(--input-bg);
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:650;
+}
+
+.size-option.active {
+
+    color:var(--accent-light);
+
+    border-color:var(--accent);
+
+    background:var(--accent-soft);
+}
+
+
+.custom-password-help {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    line-height:1.45;
+}
+
+.add-custom-button {
+
+    height:42px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:var(--accent);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:750;
+}
+
+
+/* =========================================================
+   CUSTOM LIST
+   ========================================================= */
+
+.custom-list {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+    margin-top:12px;
+}
+
+.custom-item {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:9px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--input-bg);
+}
+
+.custom-item-emoji {
+
+    width:35px;
+    height:35px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    font-size:19px;
+}
+
+.custom-item-info {
+
+    min-width:0;
+
+    flex:1;
+}
+
+.custom-item-name {
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+.custom-item-url {
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.custom-item-protected {
+
+    color:var(--accent-light);
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+.custom-delete {
+
+    width:31px;
+    height:31px;
+
+    border:
+        1px solid rgba(255,95,109,.18);
+
+    border-radius:9px;
+
+    background:
+        rgba(255,95,109,.07);
+
+    color:#ff7c87;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.settings-reset {
+
+    width:100%;
+
+    height:40px;
+
+    margin-top:8px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    background:var(--input-bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   VIEWER
+   ========================================================= */
+
+#viewer {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:none;
+
+    width:100vw;
+    height:100vh;
+
+    background:white;
+
+    opacity:0;
+}
+
+#viewer.active {
+
+    display:block;
+
+    animation:
+        viewerIn .25s ease forwards;
+}
+
+#viewer iframe {
+
+    display:block;
+
+    width:100vw;
+    height:100vh;
+
+    border:0;
+
+    margin:0;
+    padding:0;
+
+    background:white;
+}
+
+@keyframes viewerIn {
+
+    from {
+        opacity:0;
+    }
+
+    to {
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+#iframeLoader {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1100;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(5,7,11,.94);
+
+    backdrop-filter:blur(8px);
+
+    transition:opacity .25s ease;
+}
+
+#iframeLoader.hidden {
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.loading-wave {
+
+    width:300px;
+    height:100px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+}
+
+.loading-bar {
+
+    width:20px;
+    height:10px;
+
+    margin:
+        0 5px;
+
+    background-color:var(--accent);
+
+    border-radius:5px;
+
+    animation:
+        loading-wave-animation
+        1s ease-in-out infinite;
+}
+
+.loading-bar:nth-child(2) {
+    animation-delay:.1s;
+}
+
+.loading-bar:nth-child(3) {
+    animation-delay:.2s;
+}
+
+.loading-bar:nth-child(4) {
+    animation-delay:.3s;
+}
+
+@keyframes loading-wave-animation {
+
+    0% {
+        height:10px;
+    }
+
+    50% {
+        height:50px;
+    }
+
+    100% {
+        height:10px;
+    }
+}
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+#passwordModal {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(3,5,9,.72);
+
+    backdrop-filter:blur(18px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.25s ease;
+}
+
+#passwordModal.active {
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+.password-box {
+
+    width:
+        min(410px,100%);
+
+    padding:28px;
+
+    border-radius:25px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--bg-secondary);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+}
+
+.password-icon {
+
+    width:48px;
+    height:48px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        var(--accent-soft);
+
+    margin-bottom:18px;
+}
+
+.password-title {
+
+    font-size:20px;
+
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+.password-description {
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-bottom:20px;
+}
+
+#passwordInput {
+
+    width:100%;
+
+    height:48px;
+
+    border-radius:13px;
+
+    border:
+        1px solid var(--border);
+
+    outline:none;
+
+    background:
+        var(--input-bg);
+
+    color:var(--text);
+
+    padding:
+        0 15px;
+
+    font-size:14px;
+}
+
+.password-error {
+
+    min-height:17px;
+
+    margin-top:8px;
+
+    color:#ff7c87;
+
+    font-size:11px;
+}
+
+.password-actions {
+
+    display:flex;
+
+    gap:8px;
+
+    margin-top:13px;
+}
+
+.password-button {
+
+    height:44px;
+
+    flex:1;
+
+    border-radius:12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--input-bg);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+.password-button.primary {
+
+    background:var(--accent);
+
+    border-color:var(--accent);
+
+    color:white;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity:0;
+
+        transform:
+            translateY(18px)
+            scale(.98);
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:1000px) {
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+
+    .important-links {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+}
+
+
+@media(max-width:720px) {
+
+    .main-content {
+
+        padding:
+            25px
+            15px
+            90px;
+    }
+
+    .home-logo {
+
+        width:190px;
+        height:190px;
+    }
+
+    #bentoGrid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:11px;
+    }
+
+    .app-card.large,
+    .app-card.wide,
+    .app-card.tall,
+    .todo-card,
+    .datetime-card,
+    .affirmation-card {
+
+        grid-column:span 2;
+        grid-row:span 1;
+    }
+
+    .app-card {
+
+        min-height:165px;
+
+        padding:17px;
+
+        border-radius:19px;
+    }
+
+    .app-logo,
+    .emoji-logo {
+
+        width:43px;
+        height:43px;
+    }
+
+    .card-title {
+        font-size:15px;
+    }
+
+    .card-description {
+        font-size:11px;
+    }
+
+    .hover-text {
+        display:none;
+    }
+
+    .analog-layout {
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .analog-info {
+
+        text-align:center;
+    }
+
+    .important-links {
+
+        grid-template-columns:1fr;
+    }
+
+    .important-url {
+        max-width:200px;
+    }
+
+    .settings-button {
+
+        right:15px;
+        bottom:15px;
+    }
+
+    .settings-panel {
+
+        right:10px;
+        bottom:10px;
+
+        width:
+            calc(100vw - 20px);
+    }
+
+    .custom-size-options {
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    #viewer,
+    #viewer iframe {
+
+        width:100vw;
+        height:100vh;
+    }
+}
+
+
+@media(max-width:420px) {
+
+    .home-logo {
+
+        width:170px;
+        height:170px;
+    }
+
+    .todo-list {
+        max-height:190px;
+    }
+
+    .form-row {
+        grid-template-columns:70px 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     DASHBOARD
+     ========================================================= -->
+
+<div id="dashboard">
+
+<main class="main-content">
+
+
+<section class="home-brand">
+
+<img
+    class="home-logo"
+    src="https://i.ibb.co/kgzJb34B/horizon-logo.png"
+    alt="Horizon"
+>
+
+</section>
+
+
+<section class="hero">
+
+<h1>
+    Everything.
+    <span>In one place.</span>
+</h1>
+
+<p>
+    Access your frequently used websites and applications
+    from one clean, fast and modern workspace.
+</p>
+
+</section>
+
+
+<div class="section-header">
+
+<div class="section-title">
+    Horizon
+</div>
+
+<div
+    class="section-count"
+    id="appCount"
+></div>
+
+</div>
+
+
+<div id="bentoGrid"></div>
+
+
+<section class="important-section">
+
+<div class="section-header">
+
+<div class="section-title">
+    Important Links
+</div>
+
+<div class="section-count">
+    Quick access
+</div>
+
+</div>
+
+
+<div
+    class="important-links"
+    id="importantLinks"
+></div>
+
+</section>
+
+
+<div class="footer">
+    Horizon Workspace
+</div>
+
+
+</main>
+
+</div>
+
+
+<!-- =========================================================
+     SETTINGS BUTTON
+     ========================================================= -->
+
+<button
+    class="settings-button"
+    id="settingsButton"
+    title="Settings"
+>
+    ⚙
+</button>
+
+
+<div id="settingsOverlay"></div>
+
+
+<!-- =========================================================
+     SETTINGS
+     ========================================================= -->
+
+<div
+    class="settings-panel"
+    id="settingsPanel"
+>
+
+
+<div class="settings-header">
+
+<div class="settings-heading">
+    Horizon Settings
+</div>
+
+<button
+    class="settings-close"
+    id="settingsClose"
+>
+    ×
+</button>
+
+</div>
+
+
+<!-- APPEARANCE -->
+
+<section class="settings-section">
+
+<div class="settings-label">
+    Appearance
+</div>
+
+<div class="settings-description">
+    Choose how Horizon should look.
+</div>
+
+<div class="theme-options">
+
+<button
+    class="theme-option"
+    data-theme="system"
+>
+    System
+</button>
+
+<button
+    class="theme-option"
+    data-theme="light"
+>
+    Light
+</button>
+
+<button
+    class="theme-option"
+    data-theme="dark"
+>
+    Dark
+</button>
+
+</div>
+
+</section>
+
+
+<!-- COLOR -->
+
+<section class="settings-section">
+
+<div class="settings-label">
+    Web Color
+</div>
+
+<div class="settings-description">
+    Change Horizon's accent color.
+</div>
+
+<div class="color-options">
+
+<button
+    class="color-option"
+    data-color="#3498db"
+    style="background:#3498db"
+></button>
+
+<button
+    class="color-option"
+    data-color="#8b5cf6"
+    style="background:#8b5cf6"
+></button>
+
+<button
+    class="color-option"
+    data-color="#10b981"
+    style="background:#10b981"
+></button>
+
+<button
+    class="color-option"
+    data-color="#f59e0b"
+    style="background:#f59e0b"
+></button>
+
+<button
+    class="color-option"
+    data-color="#ef4444"
+    style="background:#ef4444"
+></button>
+
+<button
+    class="color-option"
+    data-color="#ec4899"
+    style="background:#ec4899"
+></button>
+
+<button
+    class="color-option"
+    data-color="#06b6d4"
+    style="background:#06b6d4"
+></button>
+
+<button
+    class="color-option"
+    data-color="#84cc16"
+    style="background:#84cc16"
+></button>
+
+</div>
+
+</section>
+
+
+<!-- DATE TIME -->
+
+<section class="settings-section">
+
+<div class="settings-toggle-row">
+
+<div>
+
+<div class="settings-label">
+    Date & Time
+</div>
+
+<div class="settings-description">
+    Show a premium live clock and date.
+</div>
+
+</div>
+
+<label class="toggle">
+
+<input
+    type="checkbox"
+    id="datetimeToggle"
+>
+
+<span class="toggle-slider"></span>
+
+</label>
+
+</div>
+
+
+<div
+    id="clockTypeArea"
+    style="display:none;margin-top:14px;"
+>
+
+<div class="settings-label">
+    Clock Style
+</div>
+
+<div class="theme-options">
+
+<button
+    class="theme-option clock-option"
+    data-clock="digital"
+>
+    Digital
+</button>
+
+<button
+    class="theme-option clock-option"
+    data-clock="analog"
+>
+    Analog
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- AFFIRMATION -->
+
+<section class="settings-section">
+
+<div class="settings-toggle-row">
+
+<div>
+
+<div class="settings-label">
+    Positive Words
+</div>
+
+<div class="settings-description">
+    Show a positive affirmation from affirmations.dev.
+</div>
+
+</div>
+
+<label class="toggle">
+
+<input
+    type="checkbox"
+    id="affirmationToggle"
+>
+
+<span class="toggle-slider"></span>
+
+</label>
+
+</div>
+
+</section>
+
+
+<!-- TODO -->
+
+<section class="settings-section">
+
+<div class="settings-toggle-row">
+
+<div>
+
+<div class="settings-label">
+    Show To-Do Card
+</div>
+
+<div class="settings-description">
+    Keep your personal task manager visible.
+</div>
+
+</div>
+
+<label class="toggle">
+
+<input
+    type="checkbox"
+    id="todoVisibleToggle"
+>
+
+<span class="toggle-slider"></span>
+
+</label>
+
+</div>
+
+</section>
+
+
+<!-- CUSTOM CARD -->
+
+<section class="settings-section">
+
+<div class="settings-label">
+    Create Your Own Card
+</div>
+
+<div class="settings-description">
+    Create a personal shortcut. It is stored locally and
+    opens in a new browser tab.
+</div>
+
+
+<div class="custom-form">
+
+
+<input
+    class="form-input"
+    id="customName"
+    type="text"
+    maxlength="60"
+    placeholder="Card name"
+>
+
+
+<input
+    class="form-input"
+    id="customUrl"
+    type="url"
+    placeholder="https://example.com"
+>
+
+
+<textarea
+    class="form-input form-textarea"
+    id="customDescription"
+    maxlength="180"
+    placeholder="Short description"
+></textarea>
+
+
+<div class="form-row">
+
+<input
+    class="form-input emoji-input"
+    id="customEmoji"
+    type="text"
+    maxlength="4"
+    value="🌐"
+    placeholder="😀"
+>
+
+
+<input
+    class="form-input"
+    id="customHover"
+    type="text"
+    maxlength="60"
+    placeholder="Hover text"
+>
+
+</div>
+
+
+<div class="custom-size-title">
+    Card Size
+</div>
+
+
+<div class="custom-size-options">
+
+<button
+    class="size-option"
+    data-size="small"
+>
+    Small
+</button>
+
+<button
+    class="size-option active"
+    data-size="medium"
+>
+    Medium
+</button>
+
+<button
+    class="size-option"
+    data-size="large"
+>
+    Large
+</button>
+
+<button
+    class="size-option"
+    data-size="wide"
+>
+    Wide
+</button>
+
+<button
+    class="size-option"
+    data-size="tall"
+>
+    Tall
+</button>
+
+</div>
+
+
+<input
+    class="form-input"
+    id="customPassword"
+    type="text"
+    placeholder="Password (optional)"
+>
+
+
+<div class="custom-password-help">
+    Multiple passwords can be entered using commas:
+    pass1, pass2, pass3
+</div>
+
+
+<button
+    class="add-custom-button"
+    id="addCustomCard"
+>
+    + Add Card
+</button>
+
+
+</div>
+
+
+<div
+    class="custom-list"
+    id="customList"
+></div>
+
+
+</section>
+
+
+<section class="settings-section">
+
+<button
+    class="settings-reset"
+    id="resetSettings"
+>
+    Reset Horizon Preferences
+</button>
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================================
+     IFRAME
+     ========================================================= -->
+
+<div id="viewer">
+
+<div id="iframeLoader">
+
+<div class="loading-wave">
+
+<div class="loading-bar"></div>
+<div class="loading-bar"></div>
+<div class="loading-bar"></div>
+<div class="loading-bar"></div>
+
+</div>
+
+</div>
+
+
+<iframe
+    id="siteFrame"
+    title="Horizon Website Viewer"
+    allowfullscreen
+></iframe>
+
+</div>
+
+
+<!-- =========================================================
+     PASSWORD MODAL
+     ========================================================= -->
+
+<div id="passwordModal">
+
+<div class="password-box">
+
+<div class="password-icon">
+    🔒
+</div>
+
+<div class="password-title">
+    Password Required
+</div>
+
+<div class="password-description">
+    This application is protected.
+    Enter the password to continue.
+</div>
+
+<input
+    type="password"
+    id="passwordInput"
+    placeholder="Enter password"
+    autocomplete="off"
+>
+
+<div
+    class="password-error"
+    id="passwordError"
+></div>
+
+<div class="password-actions">
+
+<button
+    class="password-button"
+    onclick="cancelPassword()"
+>
+    Cancel
+</button>
+
+<button
+    class="password-button primary"
+    onclick="submitPassword()"
+>
+    Continue
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script src="horizonApps.js"></script>
+<script src="importantLinks.js"></script>
+
+
+<script>
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+
+const STORAGE_KEYS = {
+
+    theme:"horizon_theme",
+
+    accent:"horizon_accent",
+
+    todos:"horizon_todos",
+
+    todoVisible:"horizon_todo_visible",
+
+    datetime:"horizon_datetime",
+
+    clockType:"horizon_clock_type",
+
+    affirmation:"horizon_affirmation",
+
+    customCards:"horizon_custom_cards"
+
+};
+
+
+const DEFAULT_SETTINGS = {
+
+    theme:"system",
+
+    accent:"#3498db",
+
+    todoVisible:true,
+
+    datetime:false,
+
+    clockType:"digital",
+
+    affirmation:false
+
+};
+
+
+/* =========================================================
+   DOM
+   ========================================================= */
+
+const dashboard =
+    document.getElementById("dashboard");
+
+const grid =
+    document.getElementById("bentoGrid");
+
+const appCount =
+    document.getElementById("appCount");
+
+const importantLinksContainer =
+    document.getElementById("importantLinks");
+
+const viewer =
+    document.getElementById("viewer");
+
+const iframe =
+    document.getElementById("siteFrame");
+
+const loader =
+    document.getElementById("iframeLoader");
+
+const settingsButton =
+    document.getElementById("settingsButton");
+
+const settingsPanel =
+    document.getElementById("settingsPanel");
+
+const settingsOverlay =
+    document.getElementById("settingsOverlay");
+
+const passwordModal =
+    document.getElementById("passwordModal");
+
+const passwordInput =
+    document.getElementById("passwordInput");
+
+const passwordError =
+    document.getElementById("passwordError");
+
+const datetimeToggle =
+    document.getElementById("datetimeToggle");
+
+const affirmationToggle =
+    document.getElementById("affirmationToggle");
+
+const todoVisibleToggle =
+    document.getElementById("todoVisibleToggle");
+
+const clockTypeArea =
+    document.getElementById("clockTypeArea");
+
+
+/* =========================================================
+   LOAD
+   ========================================================= */
+
+function loadJSON(key,fallback) {
+
+    try {
+
+        const value =
+            localStorage.getItem(key);
+
+        return value === null
+            ? fallback
+            : JSON.parse(value);
+
+    }
+
+    catch {
+
+        return fallback;
+
+    }
+
+}
+
+
+function saveJSON(key,value) {
+
+    try {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(value)
+        );
+
+    }
+
+    catch {
+
+        console.warn(
+            "Horizon storage unavailable."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let todos =
+    loadJSON(
+        STORAGE_KEYS.todos,
+        []
+    );
+
+let customCards =
+    loadJSON(
+        STORAGE_KEYS.customCards,
+        []
+    );
+
+let pendingApp =
+    null;
+
+let currentApp =
+    null;
+
+let selectedCustomSize =
+    "medium";
+
+
+let settings = {
+
+    theme:
+        loadJSON(
+            STORAGE_KEYS.theme,
+            "system"
+        ),
+
+    accent:
+        loadJSON(
+            STORAGE_KEYS.accent,
+            "#3498db"
+        ),
+
+    todoVisible:
+        loadJSON(
+            STORAGE_KEYS.todoVisible,
+            true
+        ),
+
+    datetime:
+        loadJSON(
+            STORAGE_KEYS.datetime,
+            false
+        ),
+
+    clockType:
+        loadJSON(
+            STORAGE_KEYS.clockType,
+            "digital"
+        ),
+
+    affirmation:
+        loadJSON(
+            STORAGE_KEYS.affirmation,
+            false
+        )
+
+};
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return "";
+    }
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   THEME
+   ========================================================= */
+
+function applyTheme(theme) {
+
+    document.body.classList.remove(
+        "light-theme"
+    );
+
+    let actual =
+        theme;
+
+    if (
+        theme === "system"
+    ) {
+
+        actual =
+            window.matchMedia(
+                "(prefers-color-scheme: light)"
+            ).matches
+            ?
+            "light"
+            :
+            "dark";
+
+    }
+
+    if (
+        actual === "light"
+    ) {
+
+        document.body.classList.add(
+            "light-theme"
+        );
+
+    }
+
+    document
+        .querySelectorAll(
+            ".theme-option"
+        )
+        .forEach(
+            button => {
+
+                if (
+                    button.dataset.theme
+                ) {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.theme === theme
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+function hexToRGB(hex) {
+
+    const clean =
+        String(hex)
+            .replace("#","");
+
+    if (
+        clean.length !== 6
+    ) {
+        return null;
+    }
+
+    const number =
+        parseInt(clean,16);
+
+    return {
+
+        r:(number >> 16) & 255,
+
+        g:(number >> 8) & 255,
+
+        b:number & 255
+
+    };
+
+}
+
+
+function applyAccent(color) {
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
+
+    const rgb =
+        hexToRGB(color);
+
+    if (rgb) {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-soft",
+                `rgba(
+                    ${rgb.r},
+                    ${rgb.g},
+                    ${rgb.b},
+                    .14
+                )`
+            );
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--accent-light",
+                `rgb(
+                    ${Math.min(rgb.r+70,255)},
+                    ${Math.min(rgb.g+70,255)},
+                    ${Math.min(rgb.b+70,255)}
+                )`
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+function saveSettings() {
+
+    saveJSON(
+        STORAGE_KEYS.theme,
+        settings.theme
+    );
+
+    saveJSON(
+        STORAGE_KEYS.accent,
+        settings.accent
+    );
+
+    saveJSON(
+        STORAGE_KEYS.todoVisible,
+        settings.todoVisible
+    );
+
+    saveJSON(
+        STORAGE_KEYS.datetime,
+        settings.datetime
+    );
+
+    saveJSON(
+        STORAGE_KEYS.clockType,
+        settings.clockType
+    );
+
+    saveJSON(
+        STORAGE_KEYS.affirmation,
+        settings.affirmation
+    );
+
+}
+
+
+function applySettings() {
+
+    applyTheme(
+        settings.theme
+    );
+
+    applyAccent(
+        settings.accent
+    );
+
+    datetimeToggle.checked =
+        settings.datetime;
+
+    affirmationToggle.checked =
+        settings.affirmation;
+
+    todoVisibleToggle.checked =
+        settings.todoVisible;
+
+    clockTypeArea.style.display =
+        settings.datetime
+        ?
+        "block"
+        :
+        "none";
+
+
+    document
+        .querySelectorAll(
+            ".clock-option"
+        )
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.clock ===
+                    settings.clockType
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".color-option"
+        )
+        .forEach(
+            option => {
+
+                option.classList.toggle(
+                    "active",
+                    option.dataset.color
+                        .toLowerCase()
+                    ===
+                    settings.accent
+                        .toLowerCase()
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   SETTINGS OPEN
+   ========================================================= */
+
+function openSettings() {
+
+    if (
+        viewer.classList.contains("active")
+    ) {
+        return;
+    }
+
+    settingsPanel.classList.add("active");
+
+    settingsOverlay.classList.add("active");
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+    renderCustomCardsList();
+
+}
+
+
+function closeSettings() {
+
+    settingsPanel.classList.remove(
+        "active"
+    );
+
+    settingsOverlay.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+settingsButton.onclick =
+    openSettings;
+
+document
+    .getElementById("settingsClose")
+    .onclick =
+    closeSettings;
+
+settingsOverlay.onclick =
+    closeSettings;
+
+
+/* =========================================================
+   THEME
+   ========================================================= */
+
+document
+    .querySelectorAll(".theme-option")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        !button.dataset.theme
+                    ) {
+                        return;
+                    }
+
+                    settings.theme =
+                        button.dataset.theme;
+
+                    saveSettings();
+
+                    applySettings();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   COLORS
+   ========================================================= */
+
+document
+    .querySelectorAll(".color-option")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    settings.accent =
+                        button.dataset.color;
+
+                    saveSettings();
+
+                    applySettings();
+
+                    renderApps();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   DATE TIME
+   ========================================================= */
+
+datetimeToggle.onchange =
+    () => {
+
+        settings.datetime =
+            datetimeToggle.checked;
+
+        saveSettings();
+
+        applySettings();
+
+        renderApps();
+
+    };
+
+
+document
+    .querySelectorAll(".clock-option")
+    .forEach(
+        button => {
+
+            button.onclick =
+                () => {
+
+                    settings.clockType =
+                        button.dataset.clock;
+
+                    saveSettings();
+
+                    applySettings();
+
+                    renderApps();
+
+                };
+
+        }
+    );
+
+
+/* =========================================================
+   AFFIRMATION
+   ========================================================= */
+
+affirmationToggle.onchange =
+    () => {
+
+        settings.affirmation =
+            affirmationToggle.checked;
+
+        saveSettings();
+
+        renderApps();
+
+        if (
+            settings.affirmation
+        ) {
+
+            loadAffirmation();
+
+        }
+
+    };
+
+
+/* =========================================================
+   TODO VISIBILITY
+   ========================================================= */
+
+todoVisibleToggle.onchange =
+    () => {
+
+        settings.todoVisible =
+            todoVisibleToggle.checked;
+
+        saveSettings();
+
+        renderApps();
+
+    };
+
+
+/* =========================================================
+   TODO CARD
+   ========================================================= */
+
+function createTodoCard() {
+
+    if (
+        !settings.todoVisible
+    ) {
+        return null;
+    }
+
+
+    const card =
+        document.createElement("article");
+
+
+    card.className =
+        "app-card todo-card";
+
+
+    card.innerHTML = `
+
+<div class="todo-header">
+
+<div class="todo-title-area">
+
+<div class="todo-icon">
+    ✓
+</div>
+
+<div>
+
+<div class="todo-title">
+    My Tasks
+</div>
+
+<div class="todo-subtitle">
+    Stay focused and keep moving.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="todo-progress-box">
+
+<div
+    class="todo-progress-number"
+    id="todoProgressNumber"
+>
+    0%
+</div>
+
+<div class="todo-progress-label">
+    complete
+</div>
+
+</div>
+
+</div>
+
+
+<div class="todo-progress">
+
+<div
+    class="todo-progress-bar"
+    id="todoProgressBar"
+></div>
+
+</div>
+
+
+<div class="todo-input-row">
+
+<input
+    class="todo-input"
+    id="todoInput"
+    type="text"
+    maxlength="180"
+    placeholder="What needs to be done?"
+>
+
+<button
+    class="todo-add"
+    id="todoAdd"
+>
+    +
+</button>
+
+</div>
+
+
+<div
+    class="todo-list"
+    id="todoList"
+></div>
+
+
+<div class="todo-footer">
+
+<div
+    class="todo-counter"
+    id="todoCounter"
+>
+    0 tasks
+</div>
+
+<button
+    class="clear-completed"
+    id="clearCompleted"
+>
+    Clear completed
+</button>
+
+</div>
+
+`;
+
+
+    card.onclick =
+        e =>
+            e.stopPropagation();
+
+
+    setTimeout(
+        () => {
+
+            const input =
+                document.getElementById(
+                    "todoInput"
+                );
+
+            const add =
+                document.getElementById(
+                    "todoAdd"
+                );
+
+            const clear =
+                document.getElementById(
+                    "clearCompleted"
+                );
+
+            if (
+                add
+            ) {
+                add.onclick =
+                    addTodo;
+            }
+
+            if (
+                input
+            ) {
+
+                input.onkeydown =
+                    e => {
+
+                        if (
+                            e.key ===
+                            "Enter"
+                        ) {
+
+                            addTodo();
+
+                        }
+
+                    };
+
+            }
+
+            if (
+                clear
+            ) {
+
+                clear.onclick =
+                    clearCompleted;
+
+            }
+
+            renderTodos();
+
+        },
+        0
+    );
+
+
+    return card;
+
+}
+
+
+function addTodo() {
+
+    const input =
+        document.getElementById(
+            "todoInput"
+        );
+
+    if (!input) {
+        return;
+    }
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    todos.unshift({
+
+        id:Date.now(),
+
+        text:text,
+
+        completed:false
+
+    });
+
+    saveJSON(
+        STORAGE_KEYS.todos,
+        todos
+    );
+
+    input.value = "";
+
+    renderTodos();
+
+}
+
+
+function clearCompleted() {
+
+    const completed =
+        todos.filter(
+            item =>
+                item.completed
+        );
+
+    if (
+        completed.length === 0
+    ) {
+        return;
+    }
+
+    todos =
+        todos.filter(
+            item =>
+                !item.completed
+        );
+
+    saveJSON(
+        STORAGE_KEYS.todos,
+        todos
+    );
+
+    renderTodos();
+
+}
+
+
+function renderTodos() {
+
+    const list =
+        document.getElementById(
+            "todoList"
+        );
+
+    const counter =
+        document.getElementById(
+            "todoCounter"
+        );
+
+    const progressBar =
+        document.getElementById(
+            "todoProgressBar"
+        );
+
+    const progressNumber =
+        document.getElementById(
+            "todoProgressNumber"
+        );
+
+
+    if (
+        !list
+    ) {
+        return;
+    }
+
+
+    const total =
+        todos.length;
+
+    const completed =
+        todos.filter(
+            item =>
+                item.completed
+        ).length;
+
+
+    const percentage =
+        total === 0
+        ?
+        0
+        :
+        Math.round(
+            (completed / total) * 100
+        );
+
+
+    if (
+        counter
+    ) {
+
+        counter.textContent =
+            `${completed} completed · ${total} total`;
+
+    }
+
+
+    if (
+        progressBar
+    ) {
+
+        progressBar.style.width =
+            percentage + "%";
+
+    }
+
+
+    if (
+        progressNumber
+    ) {
+
+        progressNumber.textContent =
+            percentage + "%";
+
+    }
+
+
+    list.innerHTML =
+        "";
+
+
+    if (
+        total === 0
+    ) {
+
+        list.innerHTML = `
+
+<div class="todo-empty">
+    ✨ Nothing pending. Add your first task above.
+</div>
+
+`;
+
+        return;
+
+    }
+
+
+    todos.forEach(
+        todo => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "todo-item " +
+                (
+                    todo.completed
+                    ?
+                    "completed"
+                    :
+                    ""
+                );
+
+
+            item.innerHTML = `
+
+<button
+    class="todo-check"
+>
+    ${
+        todo.completed
+        ?
+        "✓"
+        :
+        ""
+    }
+</button>
+
+<div class="todo-text">
+    ${escapeHTML(todo.text)}
+</div>
+
+<button
+    class="todo-delete"
+>
+    ×
+</button>
+
+`;
+
+
+            item
+                .querySelector(".todo-check")
+                .onclick =
+                () => {
+
+                    todo.completed =
+                        !todo.completed;
+
+                    saveJSON(
+                        STORAGE_KEYS.todos,
+                        todos
+                    );
+
+                    renderTodos();
+
+                };
+
+
+            item
+                .querySelector(".todo-delete")
+                .onclick =
+                () => {
+
+                    todos =
+                        todos.filter(
+                            x =>
+                                x.id !==
+                                todo.id
+                        );
+
+                    saveJSON(
+                        STORAGE_KEYS.todos,
+                        todos
+                    );
+
+                    renderTodos();
+
+                };
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DATE TIME
+   ========================================================= */
+
+function createDateTimeCard() {
+
+    if (
+        !settings.datetime
+    ) {
+        return null;
+    }
+
+
+    const card =
+        document.createElement("article");
+
+
+    card.className =
+        "app-card datetime-card";
+
+
+    if (
+        settings.clockType ===
+        "digital"
+    ) {
+
+        card.innerHTML = `
+
+<div class="datetime-top">
+
+<div class="datetime-brand">
+
+<div class="datetime-icon">
+    ◷
+</div>
+
+<div>
+
+<div class="datetime-title">
+    Local Time
+</div>
+
+<div class="datetime-zone">
+    Your current date & time
+</div>
+
+</div>
+
+</div>
+
+<div class="datetime-mode">
+    Digital
+</div>
+
+</div>
+
+
+<div class="digital-clock-area">
+
+<div
+    class="digital-time"
+    id="digitalTime"
+>
+    --:--<span class="digital-seconds">--</span>
+</div>
+
+<div
+    class="digital-date"
+    id="digitalDate"
+>
+    Loading...
+</div>
+
+<div
+    class="digital-day"
+    id="digitalDay"
+>
+    --
+</div>
+
+</div>
+
+
+<div class="time-visual">
+
+<div class="time-line">
+
+<div
+    class="time-line-fill"
+    id="timeLineFill"
+></div>
+
+</div>
+
+<div
+    class="time-percent"
+    id="timePercent"
+>
+    0%
+</div>
+
+</div>
+
+`;
+
+    }
+
+    else {
+
+        card.innerHTML = `
+
+<div class="datetime-top">
+
+<div class="datetime-brand">
+
+<div class="datetime-icon">
+    ◷
+</div>
+
+<div>
+
+<div class="datetime-title">
+    Local Time
+</div>
+
+<div class="datetime-zone">
+    Your current date & time
+</div>
+
+</div>
+
+</div>
+
+<div class="datetime-mode">
+    Analog
+</div>
+
+</div>
+
+
+<div class="analog-layout">
+
+<div class="analog-clock">
+
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+<div class="clock-mark"></div>
+
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateY(-59px)"
+>
+    12
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateX(59px)"
+>
+    3
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateY(59px)"
+>
+    6
+</div>
+
+<div
+    class="clock-number"
+    style="transform:translate(-50%,-50%) translateX(-59px)"
+>
+    9
+</div>
+
+
+<div
+    class="clock-hand hour-hand"
+    id="hourHand"
+></div>
+
+<div
+    class="clock-hand minute-hand"
+    id="minuteHand"
+></div>
+
+<div
+    class="clock-hand second-hand"
+    id="secondHand"
+></div>
+
+<div class="clock-center"></div>
+
+</div>
+
+
+<div class="analog-info">
+
+<div
+    class="analog-time"
+    id="analogTime"
+>
+    --:--
+</div>
+
+<div
+    class="analog-date"
+    id="analogDate"
+>
+    Loading...
+</div>
+
+</div>
+
+</div>
+
+`;
+
+    }
+
+
+    card.onclick =
+        e =>
+            e.stopPropagation();
+
+
+    return card;
+
+}
+
+
+function updateClock() {
+
+    if (
+        !settings.datetime
+    ) {
+        return;
+    }
+
+
+    const now =
+        new Date();
+
+
+    const hours =
+        now.getHours();
+
+    const minutes =
+        now.getMinutes();
+
+    const seconds =
+        now.getSeconds();
+
+
+    const dateText =
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"long",
+                year:"numeric",
+                month:"long",
+                day:"numeric"
+            }
+        );
+
+
+    const day =
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"long"
+            }
+        );
+
+
+    /*
+       DIGITAL
+    */
+
+    const digital =
+        document.getElementById(
+            "digitalTime"
+        );
+
+
+    if (
+        digital
+    ) {
+
+        let hh =
+            hours % 12 || 12;
+
+        const mm =
+            String(minutes)
+                .padStart(2,"0");
+
+        const ss =
+            String(seconds)
+                .padStart(2,"0");
+
+        digital.innerHTML =
+            `${hh}:${mm}<span class="digital-seconds">${ss}</span>`;
+
+        document
+            .getElementById(
+                "digitalDate"
+            )
+            .textContent =
+            dateText;
+
+        document
+            .getElementById(
+                "digitalDay"
+            )
+            .textContent =
+            `${day} · ${
+                hours >= 12
+                ?
+                "PM"
+                :
+                "AM"
+            }`;
+
+
+        const secondsOfDay =
+            hours * 3600 +
+            minutes * 60 +
+            seconds;
+
+        const dayPercentage =
+            (
+                secondsOfDay /
+                86400
+            ) * 100;
+
+
+        document
+            .getElementById(
+                "timeLineFill"
+            )
+            .style.width =
+            dayPercentage + "%";
+
+
+        document
+            .getElementById(
+                "timePercent"
+            )
+            .textContent =
+            Math.round(
+                dayPercentage
+            ) + "%";
+
+    }
+
+
+    /*
+       ANALOG
+    */
+
+    const hour =
+        document.getElementById(
+            "hourHand"
+        );
+
+    if (
+        hour
+    ) {
+
+        hour.style.transform =
+            `translateX(-50%) rotate(${
+                (hours % 12) * 30 +
+                minutes * .5
+            }deg)`;
+
+    }
+
+
+    const minute =
+        document.getElementById(
+            "minuteHand"
+        );
+
+    if (
+        minute
+    ) {
+
+        minute.style.transform =
+            `translateX(-50%) rotate(${
+                minutes * 6 +
+                seconds * .1
+            }deg)`;
+
+    }
+
+
+    const second =
+        document.getElementById(
+            "secondHand"
+        );
+
+    if (
+        second
+    ) {
+
+        second.style.transform =
+            `translateX(-50%) rotate(${
+                seconds * 6
+            }deg)`;
+
+    }
+
+
+    const analogTime =
+        document.getElementById(
+            "analogTime"
+        );
+
+
+    if (
+        analogTime
+    ) {
+
+        analogTime.textContent =
+            now.toLocaleTimeString(
+                undefined,
+                {
+                    hour:"2-digit",
+                    minute:"2-digit"
+                }
+            );
+
+    }
+
+
+    const analogDate =
+        document.getElementById(
+            "analogDate"
+        );
+
+
+    if (
+        analogDate
+    ) {
+
+        analogDate.textContent =
+            dateText;
+
+    }
+
+}
+
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =========================================================
+   AFFIRMATIONS
+   ========================================================= */
+
+let currentAffirmation =
+    "Believe in yourself and keep moving forward.";
+
+
+function createAffirmationCard() {
+
+    if (
+        !settings.affirmation
+    ) {
+        return null;
+    }
+
+
+    const card =
+        document.createElement("article");
+
+
+    card.className =
+        "app-card affirmation-card";
+
+
+    card.innerHTML = `
+
+<div>
+
+<div class="affirmation-mark">
+    “
+</div>
+
+<div
+    class="affirmation-text"
+    id="affirmationText"
+>
+    ${escapeHTML(
+        currentAffirmation
+    )}
+</div>
+
+</div>
+
+
+<div class="affirmation-footer">
+
+<div class="affirmation-label">
+    Positive words
+</div>
+
+<button
+    class="refresh-affirmation"
+    id="refreshAffirmation"
+>
+    New affirmation ↻
+</button>
+
+</div>
+
+`;
+
+
+    card.onclick =
+        e =>
+            e.stopPropagation();
+
+
+    setTimeout(
+        () => {
+
+            const button =
+                document.getElementById(
+                    "refreshAffirmation"
+                );
+
+            if (
+                button
+            ) {
+
+                button.onclick =
+                    loadAffirmation;
+
+            }
+
+        },
+        0
+    );
+
+
+    return card;
+
+}
+
+
+async function loadAffirmation() {
+
+    const text =
+        document.getElementById(
+            "affirmationText"
+        );
+
+
+    if (
+        text
+    ) {
+
+        text.textContent =
+            "Finding something positive...";
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "https://www.affirmations.dev/",
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+            throw new Error();
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            data &&
+            data.affirmation
+        ) {
+
+            currentAffirmation =
+                data.affirmation;
+
+        }
+
+    }
+
+    catch {
+
+        currentAffirmation =
+            "Every step forward, no matter how small, is progress.";
+
+    }
+
+
+    const element =
+        document.getElementById(
+            "affirmationText"
+        );
+
+
+    if (
+        element
+    ) {
+
+        element.textContent =
+            currentAffirmation;
+
+    }
+
+}
+
+
+/* =========================================================
+   CUSTOM SIZE SELECTOR
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        ".size-option"
+    )
+    .forEach(
+        button => {
+
+            button.onclick =
+                () => {
+
+                    selectedCustomSize =
+                        button.dataset.size;
+
+
+                    document
+                        .querySelectorAll(
+                            ".size-option"
+                        )
+                        .forEach(
+                            option => {
+
+                                option.classList.toggle(
+                                    "active",
+                                    option.dataset.size ===
+                                    selectedCustomSize
+                                );
+
+                            }
+                        );
+
+                };
+
+        }
+    );
+
+
+/* =========================================================
+   PASSWORD HELPERS
+   ========================================================= */
+
+function customHasPassword(card) {
+
+    return (
+        Array.isArray(card.passwords) &&
+        card.passwords.length > 0
+    );
+
+}
+
+
+function customPasswords(card) {
+
+    return Array.isArray(card.passwords)
+        ?
+        card.passwords
+        :
+        [];
+
+}
+
+
+function hasPassword(app) {
+
+    if (
+        typeof app.password === "string"
+    ) {
+
+        return (
+            app.password.trim() !== ""
+        );
+
+    }
+
+
+    if (
+        Array.isArray(app.password)
+    ) {
+
+        return app.password.some(
+            p =>
+                String(p).trim() !== ""
+        );
+
+    }
+
+
+    return false;
+
+}
+
+
+function getPasswords(app) {
+
+    if (
+        typeof app.password === "string"
+    ) {
+
+        return app.password.trim()
+            ?
+            [app.password]
+            :
+            [];
+
+    }
+
+
+    if (
+        Array.isArray(app.password)
+    ) {
+
+        return app.password
+            .map(
+                p =>
+                    String(p)
+            )
+            .filter(
+                p =>
+                    p.trim() !== ""
+            );
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =========================================================
+   CREATE CUSTOM CARD
+   ========================================================= */
+
+document
+    .getElementById(
+        "addCustomCard"
+    )
+    .onclick =
+    createCustomCard;
+
+
+function createCustomCard() {
+
+    const name =
+        document
+            .getElementById("customName")
+            .value
+            .trim();
+
+
+    const url =
+        document
+            .getElementById("customUrl")
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById("customDescription")
+            .value
+            .trim();
+
+
+    const emoji =
+        document
+            .getElementById("customEmoji")
+            .value
+            .trim()
+            ||
+            "🌐";
+
+
+    const hover =
+        document
+            .getElementById("customHover")
+            .value
+            .trim()
+            ||
+            "Open website";
+
+
+    const passwordText =
+        document
+            .getElementById("customPassword")
+            .value
+            .trim();
+
+
+    if (!name) {
+
+        alert(
+            "Please enter a card name."
+        );
+
+        return;
+
+    }
+
+
+    if (!url) {
+
+        alert(
+            "Please enter a website URL."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        new URL(url);
+
+    }
+
+    catch {
+
+        alert(
+            "Please enter a valid URL."
+        );
+
+        return;
+
+    }
+
+
+    let passwords = [];
+
+
+    if (
+        passwordText
+    ) {
+
+        passwords =
+            passwordText
+                .split(",")
+                .map(
+                    password =>
+                        password.trim()
+                )
+                .filter(
+                    Boolean
+                );
+
+    }
+
+
+    const card = {
+
+        id:
+            "custom_" +
+            Date.now(),
+
+        name:name,
+
+        url:url,
+
+        description:
+            description ||
+            "Custom Horizon shortcut.",
+
+        emoji:emoji,
+
+        hoverText:hover,
+
+        passwords:passwords,
+
+        size:
+            selectedCustomSize ||
+            "medium",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    customCards.push(
+        card
+    );
+
+
+    saveJSON(
+        STORAGE_KEYS.customCards,
+        customCards
+    );
+
+
+    /*
+       Clear
+    */
+
+    document
+        .getElementById("customName")
+        .value = "";
+
+    document
+        .getElementById("customUrl")
+        .value = "";
+
+    document
+        .getElementById("customDescription")
+        .value = "";
+
+    document
+        .getElementById("customEmoji")
+        .value = "🌐";
+
+    document
+        .getElementById("customHover")
+        .value = "";
+
+    document
+        .getElementById("customPassword")
+        .value = "";
+
+
+    selectedCustomSize =
+        "medium";
+
+
+    document
+        .querySelectorAll(
+            ".size-option"
+        )
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.size ===
+                    "medium"
+                );
+
+            }
+        );
+
+
+    renderApps();
+
+    renderCustomCardsList();
+
+}
+
+
+/* =========================================================
+   CUSTOM CARD LIST
+   ========================================================= */
+
+function renderCustomCardsList() {
+
+    const list =
+        document.getElementById(
+            "customList"
+        );
+
+
+    list.innerHTML =
+        "";
+
+
+    customCards.forEach(
+        card => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "custom-item";
+
+
+            const protectedCard =
+                customHasPassword(
+                    card
+                );
+
+
+            /*
+                IMPORTANT:
+                If password exists,
+                DO NOT expose URL.
+            */
+
+            item.innerHTML = `
+
+<div class="custom-item-emoji">
+    ${escapeHTML(
+        card.emoji ||
+        "🌐"
+    )}
+</div>
+
+
+<div class="custom-item-info">
+
+<div class="custom-item-name">
+
+    ${escapeHTML(
+        card.name
+    )}
+
+</div>
+
+
+${
+    protectedCard
+
+    ?
+
+    `<div class="custom-item-protected">
+        🔒 Protected · ${escapeHTML(
+            card.size || "medium"
+        )}
+    </div>`
+
+    :
+
+    `<div class="custom-item-url">
+        ${escapeHTML(
+            card.url
+        )}
+    </div>
+
+    <div class="custom-item-protected">
+        ${escapeHTML(
+            card.size || "medium"
+        )}
+    </div>`
+
+}
+
+</div>
+
+
+<button
+    class="custom-delete"
+>
+    ×
+</button>
+
+`;
+
+
+            item
+                .querySelector(
+                    ".custom-delete"
+                )
+                .onclick =
+                () =>
+                    deleteCustomCard(
+                        card.id
+                    );
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+function deleteCustomCard(id) {
+
+    const card =
+        customCards.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!card) {
+        return;
+    }
+
+
+    if (
+        !confirm(
+            `Delete "${card.name}"?`
+        )
+    ) {
+        return;
+    }
+
+
+    customCards =
+        customCards.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveJSON(
+        STORAGE_KEYS.customCards,
+        customCards
+    );
+
+
+    renderApps();
+
+    renderCustomCardsList();
+
+}
+
+
+/* =========================================================
+   APP NAME
+   ========================================================= */
+
+function getAppName(app) {
+
+    if (app.name) {
+        return app.name;
+    }
+
+
+    try {
+
+        const url =
+            new URL(
+                app.iframeLink
+            );
+
+        return url.hostname
+            .replace(/^www\./,"")
+            .split(".")[0]
+            .replace(
+                /^./,
+                c =>
+                    c.toUpperCase()
+            );
+
+    }
+
+    catch {
+
+        return "Application";
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER APPS
+   ========================================================= */
+
+function renderApps() {
+
+    grid.innerHTML =
+        "";
+
+
+    const todo =
+        createTodoCard();
+
+    if (todo) {
+        grid.appendChild(todo);
+    }
+
+
+    const datetime =
+        createDateTimeCard();
+
+    if (datetime) {
+        grid.appendChild(datetime);
+    }
+
+
+    const affirmation =
+        createAffirmationCard();
+
+    if (affirmation) {
+        grid.appendChild(affirmation);
+    }
+
+
+    const apps =
+        Array.isArray(
+            horizonApps
+        )
+        ?
+        horizonApps
+        :
+        [];
+
+
+    const active =
+        apps.filter(
+            app =>
+                Number(app.enabled) === 1
+        ).length;
+
+
+    appCount.textContent =
+        `${active + customCards.length} active · ${
+            apps.length + customCards.length
+        } total`;
+
+
+    apps.forEach(
+        (app,index) => {
+
+            grid.appendChild(
+                createStandardAppCard(
+                    app,
+                    index
+                )
+            );
+
+        }
+    );
+
+
+    customCards.forEach(
+        (app,index) => {
+
+            grid.appendChild(
+                createCustomAppCard(
+                    app,
+                    index
+                )
+            );
+
+        }
+    );
+
+
+    updateClock();
+
+}
+
+
+/* =========================================================
+   STANDARD APP
+   ========================================================= */
+
+function createStandardAppCard(
+    app,
+    index
+) {
+
+    const enabled =
+        Number(app.enabled) === 1;
+
+
+    const protectedApp =
+        hasPassword(app);
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        `app-card ${
+            app.size ||
+            "large"
+        } ${
+            enabled
+            ?
+            ""
+            :
+            "disabled"
+        }`;
+
+
+    card.style.animationDelay =
+        `${index * 40}ms`;
+
+
+    card.innerHTML = `
+
+<div class="card-glow"></div>
+
+
+<div>
+
+<div class="card-top">
+
+<img
+    class="app-logo"
+    src="${escapeHTML(
+        app.logo ||
+        "https://i.ibb.co/kgzJb34B/horizon-logo.png"
+    )}"
+    alt=""
+    loading="lazy"
+    onerror="
+        this.src='https://i.ibb.co/kgzJb34B/horizon-logo.png'
+    "
+>
+
+
+<div class="card-status">
+
+${
+    protectedApp &&
+    enabled
+    ?
+    `<span class="lock-icon">🔒</span>`
+    :
+    ""
+}
+
+${
+    enabled
+    ?
+    `<span class="status-dot"></span>`
+    :
+    `<span class="disabled-status">
+        Disabled
+    </span>`
+}
+
+</div>
+
+</div>
+
+
+<div class="card-content">
+
+<div class="card-title">
+    ${escapeHTML(
+        getAppName(app)
+    )}
+</div>
+
+<div class="card-description">
+    ${escapeHTML(
+        app.description ||
+        ""
+    )}
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hover-text">
+
+${escapeHTML(
+    app.hoverText ||
+    "Open application"
+)}
+
+&nbsp; →
+
+</div>
+
+`;
+
+
+    if (enabled) {
+
+        card.onclick =
+            () =>
+                handleAppClick(app);
+
+    }
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   CUSTOM APP
+   ========================================================= */
+
+function createCustomAppCard(
+    app,
+    index
+) {
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    /*
+        Backward compatibility:
+        Old cards without size become large.
+    */
+
+    const size =
+        [
+            "small",
+            "medium",
+            "large",
+            "wide",
+            "tall"
+        ].includes(
+            app.size
+        )
+        ?
+        app.size
+        :
+        "large";
+
+
+    card.className =
+        `app-card ${size}`;
+
+
+    card.style.animationDelay =
+        `${index * 40}ms`;
+
+
+    const protectedApp =
+        customHasPassword(app);
+
+
+    card.innerHTML = `
+
+<div class="card-glow"></div>
+
+
+<div>
+
+<div class="card-top">
+
+<div class="emoji-logo">
+
+    ${escapeHTML(
+        app.emoji ||
+        "🌐"
+    )}
+
+</div>
+
+
+<div class="card-status">
+
+${
+    protectedApp
+    ?
+    `<span class="lock-icon">🔒</span>`
+    :
+    ""
+}
+
+<span class="status-dot"></span>
+
+</div>
+
+</div>
+
+
+<div class="card-content">
+
+<div class="card-title">
+
+    ${escapeHTML(
+        app.name
+    )}
+
+</div>
+
+
+<div class="card-description">
+
+    ${escapeHTML(
+        app.description ||
+        ""
+    )}
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hover-text">
+
+${escapeHTML(
+    app.hoverText ||
+    "Open website"
+)}
+
+&nbsp; ↗
+
+</div>
+
+`;
+
+
+    card.onclick =
+        () =>
+            openCustomCard(app);
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   OPEN STANDARD
+   ========================================================= */
+
+function handleAppClick(app) {
+
+    if (
+        !app ||
+        Number(app.enabled) !== 1
+    ) {
+        return;
+    }
+
+
+    if (
+        !hasPassword(app)
+    ) {
+
+        openApp(app);
+
+        return;
+
+    }
+
+
+    pendingApp = {
+
+        type:"iframe",
+
+        app:app
+
+    };
+
+
+    showPasswordModal();
+
+}
+
+
+/* =========================================================
+   CUSTOM OPEN
+   ========================================================= */
+
+function openCustomCard(app) {
+
+    if (
+        !customHasPassword(app)
+    ) {
+
+        openCustomInNewTab(app);
+
+        return;
+
+    }
+
+
+    pendingApp = {
+
+        type:"custom",
+
+        app:app
+
+    };
+
+
+    showPasswordModal();
+
+}
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+function showPasswordModal() {
+
+    passwordInput.value =
+        "";
+
+    passwordError.textContent =
+        "";
+
+    passwordModal.classList.add(
+        "active"
+    );
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+    setTimeout(
+        () =>
+            passwordInput.focus(),
+        100
+    );
+
+}
+
+
+function submitPassword() {
+
+    if (!pendingApp) {
+        return;
+    }
+
+
+    const entered =
+        passwordInput.value;
+
+
+    let passwords = [];
+
+
+    if (
+        pendingApp.type ===
+        "iframe"
+    ) {
+
+        passwords =
+            getPasswords(
+                pendingApp.app
+            );
+
+    }
+
+    else {
+
+        passwords =
+            customPasswords(
+                pendingApp.app
+            );
+
+    }
+
+
+    const valid =
+        passwords.some(
+            password =>
+                entered === password
+        );
+
+
+    if (!valid) {
+
+        passwordError.textContent =
+            "Incorrect password. Please try again.";
+
+        passwordInput.value =
+            "";
+
+        passwordInput.focus();
+
+        return;
+
+    }
+
+
+    const target =
+        pendingApp;
+
+
+    pendingApp =
+        null;
+
+
+    closePasswordModal();
+
+
+    if (
+        target.type ===
+        "iframe"
+    ) {
+
+        openApp(
+            target.app
+        );
+
+    }
+
+    else {
+
+        openCustomInNewTab(
+            target.app
+        );
+
+    }
+
+}
+
+
+function cancelPassword() {
+
+    pendingApp =
+        null;
+
+    closePasswordModal();
+
+}
+
+
+function closePasswordModal() {
+
+    passwordModal.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+    passwordInput.value =
+        "";
+
+    passwordError.textContent =
+        "";
+
+}
+
+
+passwordInput.onkeydown =
+    event => {
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            submitPassword();
+
+        }
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            cancelPassword();
+
+        }
+
+    };
+
+
+/* =========================================================
+   NEW TAB
+   ========================================================= */
+
+function openCustomInNewTab(app) {
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href =
+        app.url;
+
+    link.target =
+        "_blank";
+
+    link.rel =
+        "noopener noreferrer";
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+}
+
+
+/* =========================================================
+   IFRAME
+   ========================================================= */
+
+function openApp(app) {
+
+    if (
+        !app ||
+        Number(app.enabled) !== 1
+    ) {
+        return;
+    }
+
+
+    currentApp =
+        app;
+
+
+    closeSettings();
+
+
+    dashboard.classList.add(
+        "hidden"
+    );
+
+
+    settingsButton.classList.add(
+        "hidden"
+    );
+
+
+    viewer.classList.add(
+        "active"
+    );
+
+
+    loader.classList.remove(
+        "hidden"
+    );
+
+
+    iframe.src =
+        "about:blank";
+
+
+    setTimeout(
+        () => {
+
+            iframe.src =
+                app.iframeLink;
+
+        },
+        80
+    );
+
+
+    history.pushState(
+        {
+            horizonViewer:true
+        },
+        "",
+        "#app"
+    );
+
+}
+
+
+iframe.onload =
+    () => {
+
+        setTimeout(
+            () => {
+
+                loader.classList.add(
+                    "hidden"
+                );
+
+            },
+            250
+        );
+
+    };
+
+
+function goBack() {
+
+    iframe.src =
+        "about:blank";
+
+
+    viewer.classList.remove(
+        "active"
+    );
+
+
+    dashboard.classList.remove(
+        "hidden"
+    );
+
+
+    settingsButton.classList.remove(
+        "hidden"
+    );
+
+
+    currentApp =
+        null;
+
+
+    if (
+        location.hash ===
+        "#app"
+    ) {
+
+        history.replaceState(
+            null,
+            "",
+            location.pathname +
+            location.search
+        );
+
+    }
+
+}
+
+
+window.onpopstate =
+    () => {
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    };
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+document.onkeydown =
+    event => {
+
+        if (
+            event.key !==
+            "Escape"
+        ) {
+            return;
+        }
+
+
+        if (
+            passwordModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            cancelPassword();
+
+            return;
+
+        }
+
+
+        if (
+            settingsPanel.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeSettings();
+
+            return;
+
+        }
+
+
+        if (
+            viewer.classList.contains(
+                "active"
+            )
+        ) {
+
+            goBack();
+
+        }
+
+    };
+
+
+/* =========================================================
+   IMPORTANT LINKS
+   ========================================================= */
+
+function renderImportantLinks() {
+
+    importantLinksContainer.innerHTML =
+        "";
+
+
+    const links =
+        Array.isArray(
+            importantLinks
+        )
+        ?
+        importantLinks
+        :
+        [];
+
+
+    links.forEach(
+        item => {
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "important-link";
+
+
+            wrapper.innerHTML = `
+
+<div class="important-info">
+
+<div class="important-name">
+    ${escapeHTML(item.name)}
+</div>
+
+<div class="important-url">
+    ${escapeHTML(item.url)}
+</div>
+
+</div>
+
+
+<div class="important-actions">
+
+<button
+    class="link-button copy-button"
+>
+    Copy
+</button>
+
+<button
+    class="link-button open"
+>
+    Open
+</button>
+
+</div>
+
+`;
+
+
+            wrapper
+                .querySelector(
+                    ".copy-button"
+                )
+                .onclick =
+                () =>
+                    copyToClipboard(
+                        item.url
+                    );
+
+
+            wrapper
+                .querySelector(
+                    ".open"
+                )
+                .onclick =
+                () =>
+                    window.open(
+                        item.url,
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+
+            importantLinksContainer
+                .appendChild(
+                    wrapper
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CLIPBOARD
+   ========================================================= */
+
+async function copyToClipboard(text) {
+
+    try {
+
+        if (
+            navigator.clipboard &&
+            window.isSecureContext
+        ) {
+
+            await navigator.clipboard.writeText(
+                text
+            );
+
+        }
+
+        else {
+
+            const textarea =
+                document.createElement(
+                    "textarea"
+                );
+
+            textarea.value =
+                text;
+
+            textarea.style.position =
+                "fixed";
+
+            textarea.style.opacity =
+                "0";
+
+            document.body.appendChild(
+                textarea
+            );
+
+            textarea.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            textarea.remove();
+
+        }
+
+
+        showClipboardToast(
+            "Copied to clipboard ✓"
+        );
+
+    }
+
+    catch {
+
+        showClipboardToast(
+            "Clipboard permission denied"
+        );
+
+    }
+
+}
+
+
+function showClipboardToast(message) {
+
+    let toast =
+        document.getElementById(
+            "clipboardToast"
+        );
+
+
+    if (!toast) {
+
+        toast =
+            document.createElement(
+                "div"
+            );
+
+        toast.id =
+            "clipboardToast";
+
+
+        Object.assign(
+            toast.style,
+            {
+
+                position:"fixed",
+
+                left:"50%",
+
+                bottom:"28px",
+
+                transform:
+                    "translateX(-50%)",
+
+                zIndex:"5000",
+
+                padding:
+                    "10px 15px",
+
+                borderRadius:"12px",
+
+                background:
+                    "rgba(20,25,35,.94)",
+
+                color:"#fff",
+
+                fontSize:"11px",
+
+                boxShadow:
+                    "0 10px 35px rgba(0,0,0,.3)"
+
+            }
+        );
+
+
+        document.body.appendChild(
+            toast
+        );
+
+    }
+
+
+    toast.textContent =
+        message;
+
+
+    clearTimeout(
+        toast._timer
+    );
+
+
+    toast._timer =
+        setTimeout(
+            () =>
+                toast.remove(),
+            1800
+        );
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+document
+    .getElementById(
+        "resetSettings"
+    )
+    .onclick =
+    () => {
+
+        if (
+            !confirm(
+                "Reset Horizon preferences? To-Do tasks and custom cards will remain."
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        settings =
+            {
+                ...DEFAULT_SETTINGS
+            };
+
+
+        saveSettings();
+
+        applySettings();
+
+        renderApps();
+
+    };
+
+
+/* =========================================================
+   SYSTEM THEME
+   ========================================================= */
+
+window
+    .matchMedia(
+        "(prefers-color-scheme: light)"
+    )
+    .addEventListener(
+        "change",
+        () => {
+
+            if (
+                settings.theme ===
+                "system"
+            ) {
+
+                applyTheme(
+                    "system"
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+applySettings();
+
+renderApps();
+
+renderImportantLinks();
+
+renderCustomCardsList();
+
+
+if (
+    settings.affirmation
+) {
+
+    loadAffirmation();
+
+}
+
+</script>
+
+</body>
+</html>
